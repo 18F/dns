@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+aws s3 mb s3://${ENVIRONMENT_NAME}_dns_terraform_state
+terraform remote config -backend=s3 -backend-config="bucket=${ENVIRONMENT_NAME}_dns_terraform_state" -backend-config="key=network/terraform.tfstate" -backend-config="region=us-east-1"
+terraform apply -var env_name=${ENVIRONMENT_NAME} terraform
