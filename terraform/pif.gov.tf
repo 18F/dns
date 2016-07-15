@@ -100,7 +100,7 @@ resource "aws_route53_record" "apps" {
   }
 }
 
-resource "aws_route53_record" "beta_cname" {
+resource "aws_route53_record" "beta" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
   name = "beta.pif.gov."
   type = "CNAME"
