@@ -122,7 +122,7 @@ resource "aws_route53_record" "cdn-discuss" {
 
 resource "aws_route53_record" "discuss_cname" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
-  name = "beta.pif.gov."
+  name = "discuss.pif.gov."
   type = "CNAME"
   ttl = 300
   records = ["cloud-gov-pif-ELB-9ZR5WLEVW83I-466945119.us-east-1.elb.amazonaws.com"]
