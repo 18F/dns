@@ -1,4 +1,4 @@
-= TTS DNS configuration
+# TTS DNS configuration
 
 This repository holds the source code for configuring DNS for domains managed by GSA TTS, including 18F and the Presidential Innovation Fellows.
 
