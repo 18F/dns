@@ -84,6 +84,14 @@ resource "aws_route53_record" "apply_cname" {
   records = ["apply.pif.gov.00d30000000jvliea4.live.siteforce.com"]
 }
 
+resource "aws_route53_record" "proposal_cname" {
+  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  name = "proposal.pif.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["proposal.pif.gov.00du0000000leuxmac.live.siteforce.com"]
+}
+
 resource "aws_route53_record" "apps" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
   name = "apps.pif.gov."
