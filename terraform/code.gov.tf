@@ -8,7 +8,7 @@ resource "aws_route53_zone" "code_toplevel" {
   }
 }
 
-resource "aws_route53_record" "apex" {
+resource "aws_route53_record" "code_gov_apex" {
   zone_id = "${aws_route53_zone.code_toplevel.zone_id}"
   name = "code.gov."
   type = "A"
@@ -21,13 +21,17 @@ resource "aws_route53_record" "apex" {
   }
 }
 
-resource "aws_route53_record" "www" {
+resource "aws_route53_record" "code_gov_www" {
   zone_id = "${aws_route53_zone.code_toplevel.zone_id}"
   name = "www.code.gov."
-  type = "CNAME"
+  type = "A"
   ttl = 1800
 
-  records = ["code.gov"]
+  alias {
+    name = "d3qovtf6opsrko.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
 }
 
 output "code_ns" {
