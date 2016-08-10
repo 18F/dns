@@ -80,6 +80,6 @@ resource "aws_route53_record" "presidentialinnovationfellows_domainkey_3" {
   records = ["xj5lii5m5qopbxzuxy4fblxbgbf2cq3e.dkim.amazonses.com"]
 }
 
-output "pif_ns" {
+output "presidentialinnovationfellows_ns" {
     value="${aws_route53_zone.presidentialinnovationfellows_toplevel.name_servers}"
 }
