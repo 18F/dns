@@ -21,8 +21,8 @@ resource "aws_route53_record" "everykidinapark_gov_www_everykidinapark_gov_a" {
   name = "www.everykidinapark.gov."
   type = "A"
   alias {
-    name = "everykidinapark.gov."
-    zone_id = "Z1NMJ49ZY4HDU7"
+    name = "dualstack.everykidinapark-349509034.us-east-1.elb.amazonaws.com."
+    zone_id = "Z35SXDOTRQ7X7K"
     evaluate_target_health = false
   }
 }
