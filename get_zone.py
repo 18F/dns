@@ -72,5 +72,5 @@ if zoneId:
             terraform_file.writelines([
                 'output "' + args.name.replace('.','_') + 'ns" {\n',
                 '  value="${aws_route53_zone.' + zone_name + 'zone.name_servers}"\n',
-                '}'])
+                '}\n'])
             terraform_file.close()
