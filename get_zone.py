@@ -52,7 +52,7 @@ if zoneId:
                     if 'ResourceRecords' in record:
                         records = []
                         for rrecord in record['ResourceRecords']:
-                            records.append(rrecord['Value'])
+                            records.append(rrecord['Value'].rstrip('"').lstrip('"'))
                         terraform_file.write('  records = ["' + '", "'.join(records) + '"]\n')
                     if 'AliasTarget' in record:
                         aliastarget = record['AliasTarget']
