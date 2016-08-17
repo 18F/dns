@@ -43,9 +43,9 @@ if zoneId:
             if args.terraform:
                 if record['Type'] in ['A', 'AAAA', 'TXT', 'CNAME', 'MX']:
                     terraform_file.writelines([
-                        'resource "aws_route53_record" "' + zone_name + record['Name'].replace('.','_') + record['Type'].lower() + '" {\n',
+                        'resource "aws_route53_record" "' + zone_name + record['Name'].replace('\\052','star').replace('.','_') + record['Type'].lower() + '" {\n',
                         '  zone_id = "${aws_route53_zone.' + zone_name + 'zone.zone_id}"\n',
-                        '  name = "' + record['Name'] + '"\n',
+                        '  name = "' + record['Name'].replace('\\052','*') + '"\n',
                         '  type = "' + record['Type'] + '"\n'])
                     if 'TTL' in record:
                         terraform_file.write('  ttl = ' + str(record['TTL']) + '\n')
