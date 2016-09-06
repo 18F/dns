@@ -152,26 +152,6 @@ resource "aws_route53_record" "midaas_cname" {
   records = ["x0suepap69.execute-api.us-east-1.amazonaws.com/development"]
 }
 
-resource "aws_route53_record" "ood_cname" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
-  name = "ood-beta.pif.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["presidential-innovation-fellows.github.io"]
-}
-
-resource "aws_route53_record" "ood" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
-  name = "ood.pif.gov."
-  type = "A"
-
-  alias {
-    name = "d1nkwitu0g8ou9.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "recalls_cname" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
   name = "recalls.pif.gov."
