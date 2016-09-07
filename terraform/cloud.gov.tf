@@ -342,6 +342,28 @@ resource "aws_route53_record" "cloud_gov_ssh_fr_cloud_gov_a" {
   }
 }
 
+resource "aws_route53_record" "cloud_gov_ops_uaa_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "opsuaa.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "dualstack.tooling-bosh-uaa-1089350571.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "Z33AYJ8TM3BH4J"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_ops_login_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "opslogin.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "dualstack.tooling-bosh-uaa-1089350571.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "Z33AYJ8TM3BH4J"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "cloud_gov_go-test_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "go-test.cloud.gov."
