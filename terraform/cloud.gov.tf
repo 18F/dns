@@ -238,6 +238,17 @@ resource "aws_route53_record" "cloud_gov_star_fr-stage_cloud_gov_a" {
   }
 }
 
+resource "aws_route53_record" "cloud_gov_star_fr-stage_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "*.fr-stage.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "dualstack.staging-cloudfoundry-main-496592480.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "Z33AYJ8TM3BH4J"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "cloud_gov_metrics_fr-stage_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "metrics.fr-stage.cloud.gov."
@@ -272,6 +283,17 @@ resource "aws_route53_record" "cloud_gov_star_fr_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "*.fr.cloud.gov."
   type = "A"
+  alias {
+    name = "dualstack.production-cloudfoundry-apps-1021484088.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "Z33AYJ8TM3BH4J"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_star_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "*.fr.cloud.gov."
+  type = "AAAA"
   alias {
     name = "dualstack.production-cloudfoundry-apps-1021484088.us-gov-west-1.elb.amazonaws.com."
     zone_id = "Z33AYJ8TM3BH4J"
@@ -337,6 +359,28 @@ resource "aws_route53_record" "cloud_gov_ssh_fr_cloud_gov_a" {
   type = "A"
   alias {
     name = "dualstack.production-diego-proxy-548237188.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "Z33AYJ8TM3BH4J"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_ops_uaa_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "opsuaa.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "dualstack.tooling-bosh-uaa-1089350571.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "Z33AYJ8TM3BH4J"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_ops_login_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "opslogin.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "dualstack.tooling-bosh-uaa-1089350571.us-gov-west-1.elb.amazonaws.com."
     zone_id = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
