@@ -43,6 +43,15 @@ resource "aws_route53_record" "vote_gov_www_vote_gov_a" {
   }
 }
 
+resource "aws_route53_record" "new_vote_gov_cname" {
+  zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
+  name = "new.vote.gov."
+  type = "CNAME"
+  ttl = 120
+  records = ["d2fr19uaud3s4h.cloudfront.net."]
+}
+
+
 output "vote_gov_ns" {
   value="${aws_route53_zone.vote_gov_zone.name_servers}"
 }
