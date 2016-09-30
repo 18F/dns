@@ -13,6 +13,29 @@ resource "aws_s3_bucket" "connect_gov_redirect" {
     }
 }
 
+resource "aws_route53_record" "connect_gov_connect_gov_a" {
+  zone_id = "${aws_route53_zone.connect_gov_zone.zone_id}"
+  name = "connect.gov"
+  type = "A"
+
+  alias {
+    name = "${aws_s3_bucket.connect_gov_redirect.website_domain}"
+    zone_id = "${aws_s3_bucket.connect_gov_redirect.hosted_zone_id}"
+    evaluate_target_health = true
+  }
+}
+
+resource "aws_route53_record" "www_connect_gov_connect_gov_cname" {
+  zone_id = "${aws_route53_zone.connect_gov_zone.zone_id}"
+  name = "www.connect.gov"
+  type = "A"
+  alias {
+    name = "${aws_s3_bucket.connect_gov_redirect.website_domain}"
+    zone_id = "${aws_s3_bucket.connect_gov_redirect.hosted_zone_id}"
+    evaluate_target_health = true
+  }
+}
+
 output "connect_gov_ns" {
   value="${aws_route53_zone.connect_gov_zone.name_servers}"
 }
@@ -41,18 +64,3 @@ resource "aws_route53_record" "google_site_verification_connect_gov_txt" {
   records = ["google-site-verification=j3qyXzcDt_O3t0sdYy6FCQlYJnV5ASd0GYIhicPPzOg"]
 }
 
-resource "aws_route53_record" "connect_gov_connect_gov_a" {
-  zone_id = "${aws_route53_zone.connect_gov_zone.zone_id}"
-  name = "connect.gov"
-  type = "A"
-  ttl = 300
-  records = ["216.128.241.219", "173.252.133.209"]
-}
-
-resource "aws_route53_record" "www_connect_gov_connect_gov_cname" {
-  zone_id = "${aws_route53_zone.connect_gov_zone.zone_id}"
-  name = "www.connect.gov"
-  type = "CNAME"
-  ttl = 300
-  records = ["www.usa.gov.edgekey.net"]
-}
