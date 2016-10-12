@@ -402,8 +402,8 @@ resource "aws_route53_record" "cloud_gov_green_cloud_gov_a" {
   name = "green.cloud.gov."
   type = "A"
   alias {
-    name = "dualstack.staging-caddy-test-917162476.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
+    name = "cf-green-ELB-1B9DVW4O0UBI0-1450531403.us-east-1.elb.amazonaws.com."
+    zone_id = "Z3DZXE0Q79N41H"
     evaluate_target_health = false
   }
 }
@@ -413,8 +413,8 @@ resource "aws_route53_record" "cloud_gov_star_green_cloud_gov_a" {
   name = "*.green.cloud.gov."
   type = "A"
   alias {
-    name = "dualstack.staging-caddy-test-917162476.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
+    name = "cf-green-ELB-1B9DVW4O0UBI0-1450531403.us-east-1.elb.amazonaws.com."
+    zone_id = "Z3DZXE0Q79N41H"
     evaluate_target_health = false
   }
 }
