@@ -392,7 +392,7 @@ resource "aws_route53_record" "cloud_gov_idp_fr-stage_cloud_gov_a" {
   type = "A"
   alias {
     name = "dualstack.staging-shibboleth-proxy-1940540040.us-gov-west-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
+    zone_id = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
 }
@@ -403,7 +403,7 @@ resource "aws_route53_record" "cloud_gov_idp_fr-stage_cloud_gov_aaaa" {
   type = "AAAA"
   alias {
     name = "dualstack.staging-shibboleth-proxy-1940540040.us-gov-west-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
+    zone_id = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
 }
@@ -414,7 +414,7 @@ resource "aws_route53_record" "cloud_gov_idp_fr_cloud_gov_a" {
   type = "A"
   alias {
     name = "dualstack.production-shibboleth-proxy-1152328295.us-gov-west-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
+    zone_id = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
 }
@@ -425,7 +425,7 @@ resource "aws_route53_record" "cloud_gov_idp_fr_cloud_gov_aaaa" {
   type = "AAAA"
   alias {
     name = "dualstack.production-shibboleth-proxy-1152328295.us-gov-west-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
+    zone_id = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
 }
