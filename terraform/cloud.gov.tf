@@ -603,6 +603,15 @@ resource "aws_route53_record" "cloud_gov_test_renew_cname" {
   ttl = 60
   records = ["d1qh5zvn5gy08q.cloudfront.net."]
 }
+
+
+resource "aws_route53_record" "cloud_gov_test_fbopen_cname" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "fbopen.test.cloud.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d1ewysuwhns219.cloudfront.net."]
+}
 output "cloud_gov_ns" {
   value="${aws_route53_zone.cloud_gov_zone.name_servers}"
 }
