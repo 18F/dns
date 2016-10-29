@@ -254,7 +254,7 @@ resource "aws_route53_record" "cloud_gov_metrics_fr-stage_cloud_gov_a" {
   name = "metrics.fr-stage.cloud.gov."
   type = "A"
   alias {
-    name = "dualstack.staging-monitoring-1883064714.us-gov-west-1.elb.amazonaws.com."
+    name = "dualstack.staging-monitoring-1064664786.us-gov-west-1.elb.amazonaws.com."
     zone_id = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
@@ -339,7 +339,7 @@ resource "aws_route53_record" "cloud_gov_metrics_fr_cloud_gov_a" {
   name = "metrics.fr.cloud.gov."
   type = "A"
   alias {
-    name = "dualstack.production-monitoring-1155610626.us-gov-west-1.elb.amazonaws.com."
+    name = "dualstack.production-monitoring-1367072254.us-gov-west-1.elb.amazonaws.com."
     zone_id = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
