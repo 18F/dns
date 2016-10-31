@@ -605,13 +605,14 @@ resource "aws_route53_record" "cloud_gov_test_renew_cname" {
 }
 
 
-resource "aws_route53_record" "cloud_gov_test_fbopen_cname" {
+resource "aws_route53_record" "cloud_gov_wordpress_demo_cname" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "fbopen.test.cloud.gov."
+  name = "wordpress.demo.cloud.gov."
   type = "CNAME"
   ttl = 60
-  records = ["d1ewysuwhns219.cloudfront.net."]
+  records = ["d1kwgv79s9ouo4.cloudfront.net."]
 }
+
 output "cloud_gov_ns" {
   value="${aws_route53_zone.cloud_gov_zone.name_servers}"
 }
