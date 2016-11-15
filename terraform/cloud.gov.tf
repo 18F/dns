@@ -284,7 +284,7 @@ resource "aws_route53_record" "cloud_gov_star_fr_cloud_gov_a" {
   name = "*.fr.cloud.gov."
   type = "A"
   alias {
-    name = "dualstack.production-cloudfoundry-apps-1021484088.us-gov-west-1.elb.amazonaws.com."
+    name = "dualstack.production-cloudfoundry-main-748290002.us-gov-west-1.elb.amazonaws.com."
     zone_id = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
   }
@@ -293,6 +293,28 @@ resource "aws_route53_record" "cloud_gov_star_fr_cloud_gov_a" {
 resource "aws_route53_record" "cloud_gov_star_fr_cloud_gov_aaaa" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "*.fr.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "dualstack.production-cloudfoundry-main-748290002.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "Z33AYJ8TM3BH4J"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_star_app_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "*.app.cloud.gov."
+  type = "A"
+  alias {
+    name = "dualstack.production-cloudfoundry-apps-1021484088.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "Z33AYJ8TM3BH4J"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_star_app_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "*.app.cloud.gov."
   type = "AAAA"
   alias {
     name = "dualstack.production-cloudfoundry-apps-1021484088.us-gov-west-1.elb.amazonaws.com."
