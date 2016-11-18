@@ -345,17 +345,6 @@ resource "aws_route53_record" "cloud_gov_ci_fr_cloud_gov_a" {
   }
 }
 
-resource "aws_route53_record" "cloud_gov_logs_fr_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "logs.fr.cloud.gov."
-  type = "A"
-  alias {
-    name = "dualstack.production-logsearch-121993773.us-gov-west-1.elb.amazonaws.com."
-    zone_id = "Z33AYJ8TM3BH4J"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "cloud_gov_metrics_fr_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "metrics.fr.cloud.gov."
