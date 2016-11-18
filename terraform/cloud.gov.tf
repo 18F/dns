@@ -249,17 +249,6 @@ resource "aws_route53_record" "cloud_gov_star_fr-stage_cloud_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "cloud_gov_logs_fr-stage_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "logs.fr-stage.cloud.gov."
-  type = "A"
-  alias {
-    name = "dualstack.staging-Logsearch-1980033027.us-gov-west-1.elb.amazonaws.com."
-    zone_id = "Z33AYJ8TM3BH4J"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "cloud_gov_metrics_fr-stage_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "metrics.fr-stage.cloud.gov."
