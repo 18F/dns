@@ -159,7 +159,7 @@ resource "aws_route53_record" "cloud_gov_community_cloud_gov_cname" {
   name = "community.cloud.gov."
   type = "CNAME"
   ttl = 60
-  records = ["d3mutalxsxixei.cloudfront.net."]
+  records = ["d1gbs3lsibnhue.cloudfront.net."]
 }
 
 resource "aws_route53_record" "cloud_gov_compliance_cloud_gov_cname" {
@@ -419,17 +419,6 @@ resource "aws_route53_record" "cloud_gov_idp_fr_cloud_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "cloud_gov_go-test_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "go-test.cloud.gov."
-  type = "A"
-  alias {
-    name = "d2knjq618810db.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "cloud_gov_green_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "green.cloud.gov."
@@ -504,69 +493,12 @@ resource "aws_route53_record" "cloud_gov_star_sys_cloud_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "cloud_gov_cdn-fr_test_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "cdn-fr.test.cloud.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["d1c2mno0yyf3ij.cloudfront.net."]
-}
-
-resource "aws_route53_record" "cloud_gov_cdn10_test_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "cdn10.test.cloud.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["d3qzoga8fnrk8f.cloudfront.net."]
-}
-
-resource "aws_route53_record" "cloud_gov_cdn11_test_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "cdn11.test.cloud.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["d112vx4nigrytl.cloudfront.net."]
-}
-
-resource "aws_route53_record" "cloud_gov_cdn12_test_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "cdn12.test.cloud.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["d2nnoe5djpn51z.cloudfront.net."]
-}
-
-resource "aws_route53_record" "cloud_gov_diego_test_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "diego.test.cloud.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["d2fddup00nnojk.cloudfront.net."]
-}
-
 resource "aws_route53_record" "cloud_gov_www_cloud_gov_cname" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "www.cloud.gov."
   type = "CNAME"
   ttl = 60
   records = ["d2vy872d33xc5d.cloudfront.net."]
-}
-
-resource "aws_route53_record" "cloud_gov_test_renew_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "test-renew.test.cloud.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["d1qh5zvn5gy08q.cloudfront.net."]
-}
-
-
-resource "aws_route53_record" "cloud_gov_wordpress_demo_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "wordpress.demo.cloud.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["d1kwgv79s9ouo4.cloudfront.net."]
 }
 
 output "cloud_gov_ns" {
