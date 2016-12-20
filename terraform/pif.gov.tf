@@ -110,26 +110,6 @@ resource "aws_route53_record" "beta" {
   records = ["presidential-innovation-fellows.github.io"]
 }
 
-resource "aws_route53_record" "cdn-discuss" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
-  name = "cdn-discuss.pif.gov."
-  type = "A"
-
-  alias {
-    name = "d20cztvtrxsem6.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "discuss_cname" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
-  name = "discuss.pif.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["cloud-gov-pif-ELB-9ZR5WLEVW83I-466945119.us-east-1.elb.amazonaws.com"]
-}
-
 resource "aws_route53_record" "fellows-in-innovation" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
   name = "fellows-in-innovation.pif.gov."
