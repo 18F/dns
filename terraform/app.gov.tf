@@ -26,8 +26,8 @@ resource "aws_route53_record" "app_gov_app_gov_a" {
   name = "app.gov."
   type = "A"
   alias {
-    name = "d1cw3uqv4jqg6p.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
+    name = "${aws_s3_bucket.app_gov_redirect_root.website_domain}"
+    zone_id = "${aws_s3_bucket.app_gov_redirect_root.hosted_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -37,8 +37,8 @@ resource "aws_route53_record" "app_gov_www_app_gov_a" {
   name = "www.app.gov."
   type = "A"
   alias {
-    name = "d1cw3uqv4jqg6p.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
+    name = "${aws_s3_bucket.app_gov_redirect_www.website_domain}"
+    zone_id = "${aws_s3_bucket.app_gov_redirect_www.hosted_zone_id}"
     evaluate_target_health = false
   }
 }
