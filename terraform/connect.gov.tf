@@ -27,8 +27,8 @@ resource "aws_route53_record" "connect_gov_connect_gov_a" {
   type = "A"
 
   alias {
-    name = "${aws_s3_bucket.connect_gov_redirect_root.website_domain}"
-    zone_id = "${aws_s3_bucket.connect_gov_redirect_root.hosted_zone_id}"
+    name = "d1pxy6t1mlaum7.cloudfront.net"
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = true
   }
 }
@@ -38,8 +38,8 @@ resource "aws_route53_record" "www_connect_gov_connect_gov_cname" {
   name = "www.connect.gov"
   type = "A"
   alias {
-    name = "${aws_s3_bucket.connect_gov_redirect_www.website_domain}"
-    zone_id = "${aws_s3_bucket.connect_gov_redirect_www.hosted_zone_id}"
+    name = "d1pxy6t1mlaum7.cloudfront.net"
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = true
   }
 }
