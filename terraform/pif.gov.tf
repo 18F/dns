@@ -12,8 +12,8 @@ resource "aws_route53_record" "www" {
   type = "A"
 
   alias {
-    name = "s3-website-us-east-1.amazonaws.com."
-    zone_id = "Z3AQBSTGFYJSTF"
+    name = "dgevgiwb7xxpw.cloudfront.net"
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
 }
@@ -164,8 +164,8 @@ resource "aws_route53_record" "www-main" {
   type = "A"
 
   alias {
-    name = "s3-website-us-east-1.amazonaws.com."
-    zone_id = "Z3AQBSTGFYJSTF"
+    name = "dgevgiwb7xxpw.cloudfront.net"
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
 }
