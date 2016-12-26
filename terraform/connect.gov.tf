@@ -5,22 +5,6 @@ resource "aws_route53_zone" "connect_gov_zone" {
   }
 }
 
-resource "aws_s3_bucket" "connect_gov_redirect_root" {
-    bucket = "connect.gov"
-    acl = "public-read"
-    website {
-      redirect_all_requests_to = "https://login.gov/"
-    }
-}
-
-resource "aws_s3_bucket" "connect_gov_redirect_www" {
-    bucket = "www.connect.gov"
-    acl = "public-read"
-    website {
-      redirect_all_requests_to = "https://www.login.gov/"
-    }
-}
-
 resource "aws_route53_record" "connect_gov_connect_gov_a" {
   zone_id = "${aws_route53_zone.connect_gov_zone.zone_id}"
   name = "connect.gov"
