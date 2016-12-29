@@ -5,22 +5,6 @@ resource "aws_route53_zone" "app_gov_zone" {
   }
 }
 
-resource "aws_s3_bucket" "app_gov_redirect_root" {
-    bucket = "app.gov"
-    acl = "public-read"
-    website {
-      redirect_all_requests_to = "https://apps.gov/"
-    }
-}
-
-resource "aws_s3_bucket" "app_gov_redirect_www" {
-    bucket = "www.app.gov"
-    acl = "public-read"
-    website {
-      redirect_all_requests_to = "https://www.apps.gov/"
-    }
-}
-
 resource "aws_route53_record" "app_gov_app_gov_a" {
   zone_id = "${aws_route53_zone.app_gov_zone.zone_id}"
   name = "app.gov."
