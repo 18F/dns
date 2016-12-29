@@ -78,6 +78,14 @@ resource "aws_route53_record" "presidentialinnovationfellows_domainkey_3" {
   records = ["xj5lii5m5qopbxzuxy4fblxbgbf2cq3e.dkim.amazonses.com"]
 }
 
+resource "aws_route53_record" "presidentialinnovationfellows_domainkey_4" {
+  zone_id = "${aws_route53_zone.presidentialinnovationfellows_toplevel.zone_id}"
+  name = "cbc8cc32be1472b484a33c816d5e1ea4.presidentialinnovationfellows.gov."
+  type = "CNAME"
+  ttl = 1800
+  records = ["a1f5db99eecd3aea9859248b9db2008152818166.comodoca.com."]
+}
+
 output "presidentialinnovationfellows_ns" {
     value="${aws_route53_zone.presidentialinnovationfellows_toplevel.name_servers}"
 }
