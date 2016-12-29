@@ -24,8 +24,8 @@ resource "aws_route53_record" "presidentialinnovationfellows_apex" {
   type = "A"
 
   alias {
-    name = "d3bkdguil46vp.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    name = "cloud-gov-pif-main-website-tmp-283960052.us-east-1.elb.amazonaws.com."
+    zone_id = "Z35SXDOTRQ7X7K"
     evaluate_target_health = false
   }
 }
