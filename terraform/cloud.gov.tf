@@ -552,6 +552,19 @@ resource "aws_route53_record" "cloud_gov_www_cloud_gov_cname" {
   records = ["d2vy872d33xc5d.cloudfront.net."]
 }
 
+resource "aws_route53_record" "cdn_broker_delegate" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "cdn-broker-test.cloud.gov."
+  type = "NS"
+  ttl = 300
+  records = [
+    "ns-1999.awsdns-57.co.uk.",
+    "ns-1182.awsdns-19.org.",
+    "ns-243.awsdns-30.com.",
+    "ns-651.awsdns-17.net."
+  ]
+}
+
 output "cloud_gov_ns" {
-  value="${aws_route53_zone.cloud_gov_zone.name_servers}"
+  value = "${aws_route53_zone.cloud_gov_zone.name_servers}"
 }
