@@ -1,5 +1,3 @@
-variable "env_name" {}
-
 resource "aws_route53_zone" "presidentialinnovationfellows_toplevel" {
    name = "presidentialinnovationfellows.gov"
 
