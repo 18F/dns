@@ -122,18 +122,6 @@ resource "aws_route53_record" "review_cname" {
   records = ["review.pif.gov.00d30000000jvliea4.live.siteforce.com"]
 }
 
-resource "aws_route53_record" "static" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
-  name = "static.pif.gov."
-  type = "A"
-
-  alias {
-    name = "d3o957ec3y2wxj.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "www-main" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
   name = "www.pif.gov."
