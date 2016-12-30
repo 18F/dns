@@ -98,14 +98,6 @@ resource "aws_route53_record" "beta" {
   records = ["presidential-innovation-fellows.github.io"]
 }
 
-resource "aws_route53_record" "midaas_cname" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
-  name = "midaas.pif.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["x0suepap69.execute-api.us-east-1.amazonaws.com/development"]
-}
-
 resource "aws_route53_record" "recalls_cname" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
   name = "recalls.pif.gov."
