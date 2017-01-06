@@ -106,6 +106,14 @@ resource "aws_route53_record" "recalls_cname" {
   records = ["presidential-innovation-fellows.github.io"]
 }
 
+resource "aws_route53_record" "fellows_in_innovation_pif_cname" {
+  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  name = "fellows-in-innovation.pif.gov."
+  type = "CNAME"
+  ttl = 300
+  records = ["djfwk6nasdu50.cloudfront.net"]
+}
+
 resource "aws_route53_record" "review_cname" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
   name = "review.pif.gov."
