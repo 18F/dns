@@ -111,7 +111,7 @@ resource "aws_route53_record" "fellows_in_innovation_pif_cname" {
   name = "fellows-in-innovation.pif.gov."
   type = "CNAME"
   ttl = 300
-  records = ["djfwk6nasdu50.cloudfront.net"]
+  records = ["d3at1jdwnpqw7w.cloudfront.net"]
 }
 
 resource "aws_route53_record" "review_cname" {
