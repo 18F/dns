@@ -114,6 +114,14 @@ resource "aws_route53_record" "fellows_in_innovation_pif_cname" {
   records = ["d3at1jdwnpqw7w.cloudfront.net"]
 }
 
+resource "aws_route53_record" "paygap_pif_cname" {
+  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  name = "paygap.pif.gov."
+  type = "CNAME"
+  ttl = 300
+  records = ["d2qm19v1sj7zt0.cloudfront.net"]
+}
+
 resource "aws_route53_record" "review_cname" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
   name = "review.pif.gov."
