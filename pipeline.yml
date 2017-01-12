@@ -1,0 +1,31 @@
+jobs:
+- name: dns-prod
+  plan:
+  - aggregate:
+    - get: pipeline-tasks
+    - get: 18f-dns-repo
+      trigger: true
+  - task: apply-dns-terraform
+    file: pipeline-tasks/terraform-apply.yml
+    input_mapping: { terraform-templates: 18f-dns-repo }
+    params:
+      TERRAFORM_ACTION: apply
+      STACK_NAME: dns_prod
+      TEMPLATE_SUBDIR: terraform
+      S3_TFSTATE_BUCKET: tts-dns-prod
+      AWS_ACCESS_KEY_ID: {{aws_access_key_id}}
+      AWS_SECRET_ACCESS_KEY: {{aws_secret_access_key}}
+      AWS_DEFAULT_REGION: us-east-1
+
+resources:
+- name: pipeline-tasks
+  type: git
+  source:
+    uri: https://github.com/18f/cg-pipeline-tasks
+    branch: master
+
+- name: 18f-dns-repo
+  type: git
+  source:
+    uri: https://github.com/18f/dns
+    branch: deploy
