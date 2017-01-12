@@ -4,7 +4,7 @@
 
 This repository holds the source code for configuring DNS for domains managed by GSA TTS, including 18F and the Presidential Innovation Fellows.
 
-The code is in the `terraform` directory, with one file for each zone. To submit a change, make a pull request to the `deploy` branch. On merge, changes are deployed to production automatically by an instance of [raktabija](https://github.com/18F/raktabija). Raktabija's CI server runs `bash deploy` against the `deploy` branch of this repository upon any change. We use [Terraform](https://www.terraform.io/) to manage and deploy our DNS configuration.
+The code is in the `terraform` directory, with one file for each zone. To submit a change, make a pull request to the `deploy` branch. On merge, changes are deployed to the cloud.gov AWS account automatically by an instance of Concourse hosted on [cloud.gov](https://cloud.gov). The configuration for the Concourse instance is in `pipeline.yml`.
 
 **Please note: only production systems with an ATO should have their DNS configuration here. If you wish to create DNS records for pre-production systems, please use the domain `sandbox.gov` which is available in the [TTS Sandbox account](https://pages.18f.gov/before-you-ship/infrastructure/sandbox/).** 
 
