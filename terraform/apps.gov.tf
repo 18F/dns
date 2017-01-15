@@ -10,7 +10,7 @@ resource "aws_route53_record" "apps_gov_apps_gov_a" {
   name = "apps.gov."
   type = "A"
   alias {
-    name = "dgeydcg5lk6x7.cloudfront.net."
+    name = "d37tzfgd0a69in.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
@@ -93,7 +93,7 @@ resource "aws_route53_record" "apps_gov_www_apps_gov_a" {
   name = "www.apps.gov."
   type = "A"
   alias {
-    name = "dgeydcg5lk6x7.cloudfront.net."
+    name = "d37tzfgd0a69in.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
