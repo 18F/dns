@@ -12,8 +12,8 @@ resource "aws_route53_record" "presidentialinnovationfellows_www" {
   type = "A"
 
   alias {
-    name = "s3-website-us-east-1.amazonaws.com."
-    zone_id = "Z3AQBSTGFYJSTF"
+    name = "d26prp92rpqmzl.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
 }
@@ -24,8 +24,8 @@ resource "aws_route53_record" "presidentialinnovationfellows_apex" {
   type = "A"
 
   alias {
-    name = "cloud-gov-pif-main-website-tmp-283960052.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
+    name = "d26prp92rpqmzl.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
 }
