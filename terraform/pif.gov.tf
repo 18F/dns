@@ -34,9 +34,9 @@ resource "aws_route53_record" "txt" {
   records = ["v=spf1 include:gsa.gov ~all"]
 }
 
-resource "aws_route53_record" "asterisk_cname" {
+resource "aws_route53_record" "paygap_slack_cname" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
-  name = "*.pif.gov."
+  name = "paygap-slack.pif.gov."
   type = "CNAME"
   ttl = 300
   records = ["cloud-gov-pif-ELB-9ZR5WLEVW83I-466945119.us-east-1.elb.amazonaws.com"]
