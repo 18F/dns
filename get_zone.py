@@ -41,7 +41,7 @@ if zoneId:
                 '}\n\n'])
         for record in recordsets['ResourceRecordSets']:
             if args.terraform:
-                if record['Type'] in ['A', 'AAAA', 'TXT', 'CNAME', 'MX', 'NS']:
+                if (record['Type'] in ['A', 'AAAA', 'TXT', 'CNAME', 'MX', 'NS']) and (record['Type'] != 'NS' or record['Name'] != args.name): # make sure we don't overwrite apex NS record
                     terraform_file.writelines([
                         'resource "aws_route53_record" "' + zone_name + record['Name'].replace('\\052','star').replace('.','_') + record['Type'].lower() + '" {\n',
                         '  zone_id = "${aws_route53_zone.' + zone_name + 'zone.zone_id}"\n',
