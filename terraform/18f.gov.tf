@@ -24,6 +24,14 @@ resource "aws_route53_record" "18f_gov_18f_gov_mx" {
   records = ["10 30288227.in1.mandrillapp.com", "20 30288227.in2.mandrillapp.com"]
 }
 
+resource "aws_route53_record" "18f_gov_18f_gov_ns" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "18f.gov."
+  type = "NS"
+  ttl = 172800
+  records = ["ns-27.awsdns-03.com.", "ns-1901.awsdns-45.co.uk.", "ns-1209.awsdns-23.org.", "ns-992.awsdns-60.net."]
+}
+
 resource "aws_route53_record" "18f_gov_18f_gov_txt" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "18f.gov."
@@ -196,6 +204,14 @@ resource "aws_route53_record" "18f_gov_compliance-viewer_18f_gov_cname" {
   records = ["d1ij48sfge1oxq.cloudfront.net"]
 }
 
+resource "aws_route53_record" "18f_gov_dnssec_18f_gov_ns" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "dnssec.18f.gov."
+  type = "NS"
+  ttl = 300
+  records = ["hope.ns.cloudflare.com", "phil.ns.cloudflare.com"]
+}
+
 resource "aws_route53_record" "18f_gov_federalist-docs_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalist-docs.18f.gov."
@@ -221,6 +237,14 @@ resource "aws_route53_record" "18f_gov_files_18f_gov_a" {
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
+}
+
+resource "aws_route53_record" "18f_gov_fpki_18f_gov_ns" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "fpki.18f.gov."
+  type = "NS"
+  ttl = 300
+  records = ["ns-521.awsdns-01.net.", "ns-1566.awsdns-03.co.uk.", "ns-1471.awsdns-55.org.", "ns-161.awsdns-20.com."]
 }
 
 resource "aws_route53_record" "18f_gov_fugacious_18f_gov_cname" {
