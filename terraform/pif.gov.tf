@@ -39,7 +39,7 @@ resource "aws_route53_record" "paygap_slack_cname" {
   name = "paygap-slack.pif.gov."
   type = "CNAME"
   ttl = 300
-  records = ["cloud-gov-pif-ELB-9ZR5WLEVW83I-466945119.us-east-1.elb.amazonaws.com"]
+  records = ["d1h4sxl9j1vd6e.cloudfront.net"]
 }
 
 resource "aws_route53_record" "amazonses_txt" {
