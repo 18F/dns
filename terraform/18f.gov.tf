@@ -329,14 +329,6 @@ resource "aws_route53_record" "18f_gov_handbook_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_hub_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "hub.18f.gov."
-  type = "A"
-  ttl = 300
-  records = ["54.173.139.250"]
-}
-
 resource "aws_route53_record" "18f_gov_jobs_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "jobs.18f.gov."
