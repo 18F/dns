@@ -217,7 +217,7 @@ resource "aws_route53_record" "18f_gov_federalist-landing-template_18f_gov_cname
   name = "federalist-landing-template.18f.gov."
   type = "CNAME"
   ttl = 60
-  records = ["XXXX.cloudfront.net"]
+  records = ["d2lwrtx2u5nmdw.cloudfront.net"]
 }
 
 resource "aws_route53_record" "18f_gov_85333a5c6cd71f56532894c3c64666ca_federalist-docs_18f_gov_cname" {
