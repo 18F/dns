@@ -1,3 +1,5 @@
+sudo: false
+dist: trusty
 env:
   global:
     TERRAFORM_VERSION: "0.8.2"
