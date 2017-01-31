@@ -369,15 +369,12 @@ resource "aws_route53_record" "18f_gov_methods_18f_gov_cname" {
   records = ["d1z8tmjf5ismhl.cloudfront.net."]
 }
 
-resource "aws_route53_record" "18f_gov_micropurchase-staging_18f_gov_a" {
+resource "aws_route53_record" "18f_gov_micropurchase-staging_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "micropurchase-staging.18f.gov."
-  type = "A"
-  alias {
-    name = "dualstack.cf-elb-elb-155eqjkdtn55i-611685241.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
-    evaluate_target_health = false
-  }
+  type = "CNAME"
+  ttl = 300
+  records = ["d148p0zbwe5pp7.cloudfront.net."]  
 }
 
 resource "aws_route53_record" "18f_gov_micropurchase-staging_18f_gov_mx" {
