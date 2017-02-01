@@ -188,6 +188,15 @@ resource "aws_route53_record" "18f_gov_climate-data-user-study_18f_gov_a" {
   }
 }
 
+# Configured with CDN Broker
+resource "aws_route53_record" "18f_gov_charlie_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "charlie.18f.gov."
+  type = "CNAME"
+  ttl = 300
+  records = ["d30i8aauyor9vc.cloudfront.net"]
+}
+
 resource "aws_route53_record" "18f_gov_compliance-viewer_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "compliance-viewer.18f.gov."
