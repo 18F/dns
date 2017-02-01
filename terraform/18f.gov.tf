@@ -376,7 +376,7 @@ resource "aws_route53_record" "18f_gov_micropurchase-staging_18f_gov_a" {
   type = "A"
   alias {
     name = "d148p0zbwe5pp7.cloudfront.net."
-    zone_id = "Z35SXDOTRQ7X7K"
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
 }
