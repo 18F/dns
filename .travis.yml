@@ -1,4 +1,6 @@
 sudo: false
+# Trusty (14.04) distribution supports TLS 1.2. Whereas the default distribution (Precise 12.04) for Travis does not.
+# More details https://github.com/travis-ci/travis-ci/issues/7131#issuecomment-273239428
 dist: trusty
 env:
   global:
