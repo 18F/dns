@@ -16,6 +16,17 @@ resource "aws_route53_record" "cloud_gov_cloud_gov_a" {
   }
 }
 
+resource "aws_route53_record" "cloud_gov_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "d2vy872d33xc5d.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "cloud_gov_cloud_gov_mx" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "cloud.gov."
