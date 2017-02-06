@@ -178,7 +178,7 @@ resource "aws_route53_record" "cloud_gov_compliance_cloud_gov_cname" {
   name = "compliance.cloud.gov."
   type = "CNAME"
   ttl = 60
-  records = ["d3vl4o3zki5d55.cloudfront.net."]
+  records = ["dftr9yjllgf5s.cloudfront.net."]
 }
 
 resource "aws_route53_record" "cloud_gov_concourse-ta77wii7_cloud_gov_a" {
