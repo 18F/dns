@@ -214,6 +214,15 @@ resource "aws_route53_record" "18f_gov_dnssec_18f_gov_ns" {
 }
 
 # Configured with CDN Broker
+resource "aws_route53_record" "18f_gov_continua11y_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "continua11y.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["dwz1sfldhro5q.cloudfront.net"]
+}
+
+# Configured with CDN Broker
 resource "aws_route53_record" "18f_gov_dolores_app_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "dolores-app.18f.gov."
