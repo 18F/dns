@@ -213,6 +213,15 @@ resource "aws_route53_record" "18f_gov_dnssec_18f_gov_ns" {
   records = ["hope.ns.cloudflare.com", "phil.ns.cloudflare.com"]
 }
 
+# Configured with CDN Broker
+resource "aws_route53_record" "18f_gov_dolores_app_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "dolores-app.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["dfyuicm8edxex.cloudfront.net"]
+}
+
 resource "aws_route53_record" "18f_gov_federalist-docs_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalist-docs.18f.gov."
