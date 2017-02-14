@@ -255,6 +255,14 @@ resource "aws_route53_record" "18f_gov_federalist-landing-template-proxied_18f_g
   records = ["d2m6dqe40rj9bp.cloudfront.net"]
 }
 
+resource "aws_route53_record" "18f_gov_federalist-modern-team-template_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "federalist-modern-team-template.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d2xyasfn4889hb.cloudfront.net"]
+}
+
 resource "aws_route53_record" "18f_gov_85333a5c6cd71f56532894c3c64666ca_federalist-docs_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "85333a5c6cd71f56532894c3c64666ca.federalist-docs.18f.gov."
