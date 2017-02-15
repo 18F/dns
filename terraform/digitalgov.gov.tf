@@ -5,12 +5,15 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
   }
 }
 
-resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_cname" {
+resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
-  type = "CNAME"
-  ttl = 300
-  records = [ "d11og6pgwhrztr.cloudfront.net." ]
+  type = "A"
+  alias {
+    name = "d11og6pgwhrztr.cloudfront.net."
+    zone_id = "Z2XX41ZRDBUGDX"
+    evaluate_target_health = false
+  }
 }
 
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_mx" {
@@ -21,7 +24,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_mx" {
   records = ["10	30288227.in1.mandrillapp.com", "20	30288227.in2.mandrillapp.com"]
 }
 
-resource "aws_route53_record" "digitalgov_gov_openopps-staging_digitalgov_gov_txt" {
+resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_txt" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
   type = "TXT"
@@ -29,7 +32,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps-staging_digitalgov_gov_tx
   records = ["v=spf1 include:spf.mandrillapp.com ?all"]
 }
 
-resource "aws_route53_record" "digitalgov_gov_mandrill__domainkey_openopps-staging_digitalgov_gov_txt" {
+resource "aws_route53_record" "digitalgov_gov_mandrill__domainkey_openopps_digitalgov_gov_txt" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "mandrill._domainkey.openopps.digitalgov.gov."
   type = "TXT"
