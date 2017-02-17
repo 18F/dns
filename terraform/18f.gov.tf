@@ -231,6 +231,15 @@ resource "aws_route53_record" "18f_gov_dolores_app_18f_gov_cname" {
   records = ["dfyuicm8edxex.cloudfront.net"]
 }
 
+# Configured with CDN Broker
+resource "aws_route53_record" "18f_gov_dolores_staging_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "dolores-staging.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d9d5ti9w8z48u.cloudfront.net"]
+}
+
 resource "aws_route53_record" "18f_gov_federalist-docs_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalist-docs.18f.gov."
