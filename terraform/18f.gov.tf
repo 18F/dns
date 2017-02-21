@@ -441,13 +441,14 @@ resource "aws_route53_record" "18f_gov_mandrill__domainkey_micropurchase-staging
   records = ["v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB;"]
 }
 
+# Configured with CDN Broker
 resource "aws_route53_record" "18f_gov_micropurchase_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "micropurchase.18f.gov."
   type = "A"
   alias {
-    name = "dualstack.cf-elb-elb-155eqjkdtn55i-611685241.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
+    name = "dqj5rbu0i1fgx.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
 }
