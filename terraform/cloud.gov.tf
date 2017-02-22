@@ -314,7 +314,7 @@ resource "aws_route53_record" "cloud_gov_star_app_cloud_gov_aaaa" {
 
 resource "aws_route53_record" "cloud_gov_ci-stage_fr_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "ci-stage.fr.cloud.gov."
+  name = "ci.fr-stage.cloud.gov."
   type = "A"
   alias {
     name = "dualstack.tooling-concourse-us-gov-west-1b-1960601158.us-gov-west-1.elb.amazonaws.com."
