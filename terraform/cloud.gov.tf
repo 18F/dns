@@ -574,7 +574,7 @@ resource "aws_route53_record" "fedramp_sitesusa_app_cloud_gov_cname" {
   name = "fedramp.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
-  records = ["d1w3nfychfack8.cloudfront.net."]
+  records = ["dpaxq4usmh07x.cloudfront.net."]
 }
 
 output "cloud_gov_ns" {
