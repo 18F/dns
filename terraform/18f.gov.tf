@@ -381,13 +381,10 @@ resource "aws_route53_record" "18f_gov_guides_18f_gov_cname" {
 resource "aws_route53_record" "18f_gov_handbook_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "handbook.18f.gov."
-  type = "A"
-  alias {
-    name = "d3jf1ni5noewwb.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
-}
+  type = "CNAME"
+  ttl = 300
+  records = ["dtj4n4imxei9y.cloudfront.net"]
+}  
 
 resource "aws_route53_record" "18f_gov_jobs_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
