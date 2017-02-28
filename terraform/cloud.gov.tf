@@ -1,3 +1,10 @@
+variable "cloudfoundry_elb_logging_staging" {
+  default = "staging-CloudFoundry-Logging-538826588.us-gov-west-1.elb.amazonaws.com"
+}
+variable "cloudfoundry_elb_logging_production" {
+  default = "production-CloudFoundry-Logging-910586631.us-gov-west-1.elb.amazonaws.com"
+}
+
 resource "aws_route53_zone" "cloud_gov_zone" {
   name = "cloud.gov."
   tags {
@@ -333,6 +340,98 @@ resource "aws_route53_record" "cloud_gov_ci_fr_cloud_gov_a" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "cloud_gov_loggregator-stage_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "loggregator.fr-stage.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.cloudfoundry_elb_logging_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_loggregator-stage_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "loggregator.fr-stage.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.cloudfoundry_elb_logging_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+/* TODO: Restore after verifying staging
+resource "aws_route53_record" "cloud_gov_loggregator_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "loggregator.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.cloudfoundry_elb_logging_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_loggregator_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "loggregator.fr.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.cloudfoundry_elb_logging_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+*/
+
+resource "aws_route53_record" "cloud_gov_doppler-stage_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "doppler.fr-stage.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.cloudfoundry_elb_logging_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_doppler-stage_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "doppler.fr-stage.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.cloudfoundry_elb_logging_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+/* TODO: Restore after verifying staging
+resource "aws_route53_record" "cloud_gov_doppler_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "doppler.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.cloudfoundry_elb_logging_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_doppler_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "doppler.fr.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.cloudfoundry_elb_logging_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+*/
 
 resource "aws_route53_record" "cloud_gov_concourse-ci_fr-stage_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
