@@ -363,7 +363,6 @@ resource "aws_route53_record" "cloud_gov_loggregator-stage_fr_cloud_gov_aaaa" {
   }
 }
 
-/* TODO: Restore after verifying staging
 resource "aws_route53_record" "cloud_gov_loggregator_fr_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "loggregator.fr.cloud.gov."
@@ -385,7 +384,6 @@ resource "aws_route53_record" "cloud_gov_loggregator_fr_cloud_gov_aaaa" {
     evaluate_target_health = false
   }
 }
-*/
 
 resource "aws_route53_record" "cloud_gov_doppler-stage_fr_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
@@ -409,7 +407,6 @@ resource "aws_route53_record" "cloud_gov_doppler-stage_fr_cloud_gov_aaaa" {
   }
 }
 
-/* TODO: Restore after verifying staging
 resource "aws_route53_record" "cloud_gov_doppler_fr_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "doppler.fr.cloud.gov."
@@ -431,7 +428,6 @@ resource "aws_route53_record" "cloud_gov_doppler_fr_cloud_gov_aaaa" {
     evaluate_target_health = false
   }
 }
-*/
 
 resource "aws_route53_record" "cloud_gov_concourse-ci_fr-stage_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
