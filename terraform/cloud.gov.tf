@@ -664,13 +664,37 @@ resource "aws_route53_record" "cdn_broker_delegate" {
   ]
 }
 
+# Start SitesUSA subomains
+/*
+    We are trying to keep this file as clean as possible so we are grouping
+    the subdomains here.  We should probably get our own file or something,
+    we have about 46 domains.
+ */
 resource "aws_route53_record" "fedramp_sitesusa_app_cloud_gov_cname" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "fedramp.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
-  records = ["dpaxq4usmh07x.cloudfront.net."]
+  records = ["d3gjm6t6jb175l.cloudfront.net."]
 }
+
+resource "aws_route53_record" "digitalgov_sitesusa_app_cloud_gov_cname" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "digitalgov.sitesusa.app.cloud.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d3hymt3g9spfr9.cloudfront.net."]
+}
+
+resource "aws_route53_record" "fcsm_sitesusa_app_cloud_gov_cname" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "fcsm.sitesusa.app.cloud.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d173dsmb632nwm.cloudfront.net."]
+}
+# end SitesUSA subdomains
+
 
 output "cloud_gov_ns" {
   value = "${aws_route53_zone.cloud_gov_zone.name_servers}"
