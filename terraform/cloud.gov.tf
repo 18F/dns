@@ -1,8 +1,15 @@
 variable "cloudfoundry_elb_logging_staging" {
-  default = "staging-CloudFoundry-Logging-538826588.us-gov-west-1.elb.amazonaws.com"
+  default = "dualstack.staging-CloudFoundry-Logging-538826588.us-gov-west-1.elb.amazonaws.com"
 }
 variable "cloudfoundry_elb_logging_production" {
-  default = "production-CloudFoundry-Logging-910586631.us-gov-west-1.elb.amazonaws.com"
+  default = "dualstack.production-CloudFoundry-Logging-910586631.us-gov-west-1.elb.amazonaws.com"
+}
+
+variable "elb_prometheus_staging" {
+  default = "dualstack.staging-Prometheus-658384006.us-gov-west-1.elb.amazonaws.com"
+}
+variable "elb_prometheus_production" {
+  default = "dualstack.production-Prometheus-1971082399.us-gov-west-1.elb.amazonaws.com"
 }
 
 resource "aws_route53_zone" "cloud_gov_zone" {
@@ -256,6 +263,28 @@ resource "aws_route53_record" "cloud_gov_metrics_fr-stage_cloud_gov_a" {
   }
 }
 
+resource "aws_route53_record" "cloud_gov_prometheus_fr-stage_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "prometheus.fr-stage.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.elb_prometheus_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_prometheus_fr-stage_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "prometheus.fr-stage.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.elb_prometheus_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "cloud_gov_ssh_fr-stage_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "ssh.fr-stage.cloud.gov."
@@ -479,6 +508,28 @@ resource "aws_route53_record" "cloud_gov_metrics_fr_cloud_gov_a" {
   type = "A"
   alias {
     name = "dualstack.production-monitoring-1367072254.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_prometheus_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "prometheus.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.elb_prometheus_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_prometheus_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "prometheus.fr.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.elb_prometheus_production}"
     zone_id = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
