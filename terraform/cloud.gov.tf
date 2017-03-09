@@ -285,6 +285,50 @@ resource "aws_route53_record" "cloud_gov_prometheus_fr-stage_cloud_gov_aaaa" {
   }
 }
 
+resource "aws_route53_record" "cloud_gov_alertmanager_fr-stage_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "alertmanager.fr-stage.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.elb_prometheus_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_alertmanager_fr-stage_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "alertmanager.fr-stage.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.elb_prometheus_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_grafana_fr-stage_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "grafana.fr-stage.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.elb_prometheus_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_grafana_fr-stage_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "grafana.fr-stage.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.elb_prometheus_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "cloud_gov_ssh_fr-stage_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "ssh.fr-stage.cloud.gov."
@@ -527,6 +571,50 @@ resource "aws_route53_record" "cloud_gov_prometheus_fr_cloud_gov_a" {
 resource "aws_route53_record" "cloud_gov_prometheus_fr_cloud_gov_aaaa" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "prometheus.fr.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.elb_prometheus_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_alertmanager_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "alertmanager.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.elb_prometheus_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_alertmanager_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "alertmanager.fr.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.elb_prometheus_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_grafana_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "grafana.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.elb_prometheus_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_grafana_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "grafana.fr.cloud.gov."
   type = "AAAA"
   alias {
     name = "${var.elb_prometheus_production}"
