@@ -36,11 +36,7 @@ resource "aws_route53_record" "vote_gov_www_vote_gov_a" {
   zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
   name = "www.vote.gov."
   type = "A"
-  alias {
-    name = "54.85.132.205"
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
+  records = ["54.85.132.205"]
 }
 
 resource "aws_route53_record" "new_vote_gov_cname" {
