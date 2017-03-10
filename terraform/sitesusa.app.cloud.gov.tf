@@ -2,6 +2,14 @@
     To keep this repo clean and organized, we are keeping all of the sitesusa
     dns records here.
  */
+ resource "aws_route53_zone" "sitesusa_app_cloud_gov_zone" {
+   name = "sitesusa.app.cloud.gov."
+   tags {
+     Project = "dns"
+   }
+ }
+
+
 resource "aws_route53_record" "fedramp_sitesusa_app_cloud_gov_cname" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "fedramp.sitesusa.app.cloud.gov."
@@ -368,4 +376,9 @@ resource "aws_route53_record" "nidanrb_sitesusa_app_cloud_gov_cname" {
   type = "CNAME"
   ttl = 60
   records = ["d3chp99iuj1c5n.cloudfront.net."]
+}
+
+
+output "cloud_gov_ns" {
+  value = "${aws_route53_zone.sitesusa_app_cloud_gov_zone.name_servers}"
 }
