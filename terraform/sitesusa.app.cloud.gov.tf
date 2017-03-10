@@ -379,6 +379,6 @@ resource "aws_route53_record" "nidanrb_sitesusa_app_cloud_gov_cname" {
 }
 
 
-output "cloud_gov_ns" {
+output "sitesusa_app_cloud_gov_ns" {
   value = "${aws_route53_zone.sitesusa_app_cloud_gov_zone.name_servers}"
 }
