@@ -1,8 +1,15 @@
 variable "cloudfoundry_elb_logging_staging" {
-  default = "staging-CloudFoundry-Logging-538826588.us-gov-west-1.elb.amazonaws.com"
+  default = "dualstack.staging-CloudFoundry-Logging-538826588.us-gov-west-1.elb.amazonaws.com"
 }
 variable "cloudfoundry_elb_logging_production" {
-  default = "production-CloudFoundry-Logging-910586631.us-gov-west-1.elb.amazonaws.com"
+  default = "dualstack.production-CloudFoundry-Logging-910586631.us-gov-west-1.elb.amazonaws.com"
+}
+
+variable "elb_prometheus_staging" {
+  default = "dualstack.staging-Prometheus-658384006.us-gov-west-1.elb.amazonaws.com"
+}
+variable "elb_prometheus_production" {
+  default = "dualstack.production-Prometheus-1971082399.us-gov-west-1.elb.amazonaws.com"
 }
 
 resource "aws_route53_zone" "cloud_gov_zone" {
@@ -256,6 +263,72 @@ resource "aws_route53_record" "cloud_gov_metrics_fr-stage_cloud_gov_a" {
   }
 }
 
+resource "aws_route53_record" "cloud_gov_prometheus_fr-stage_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "prometheus.fr-stage.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.elb_prometheus_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_prometheus_fr-stage_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "prometheus.fr-stage.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.elb_prometheus_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_alertmanager_fr-stage_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "alertmanager.fr-stage.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.elb_prometheus_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_alertmanager_fr-stage_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "alertmanager.fr-stage.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.elb_prometheus_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_grafana_fr-stage_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "grafana.fr-stage.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.elb_prometheus_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_grafana_fr-stage_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "grafana.fr-stage.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.elb_prometheus_staging}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "cloud_gov_ssh_fr-stage_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "ssh.fr-stage.cloud.gov."
@@ -484,6 +557,72 @@ resource "aws_route53_record" "cloud_gov_metrics_fr_cloud_gov_a" {
   }
 }
 
+resource "aws_route53_record" "cloud_gov_prometheus_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "prometheus.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.elb_prometheus_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_prometheus_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "prometheus.fr.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.elb_prometheus_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_alertmanager_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "alertmanager.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.elb_prometheus_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_alertmanager_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "alertmanager.fr.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.elb_prometheus_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_grafana_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "grafana.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.elb_prometheus_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_grafana_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "grafana.fr.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.elb_prometheus_production}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "cloud_gov_nessus_fr_cloud_gov_cname" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "nessus.fr.cloud.gov."
@@ -664,13 +803,37 @@ resource "aws_route53_record" "cdn_broker_delegate" {
   ]
 }
 
+# Start SitesUSA subomains
+/*
+    We are trying to keep this file as clean as possible so we are grouping
+    the subdomains here.  We should probably get our own file or something,
+    we have about 46 domains.
+ */
 resource "aws_route53_record" "fedramp_sitesusa_app_cloud_gov_cname" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "fedramp.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
-  records = ["dpaxq4usmh07x.cloudfront.net."]
+  records = ["d3gjm6t6jb175l.cloudfront.net."]
 }
+
+resource "aws_route53_record" "digitalgov_sitesusa_app_cloud_gov_cname" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "digitalgov.sitesusa.app.cloud.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d3hymt3g9spfr9.cloudfront.net."]
+}
+
+resource "aws_route53_record" "fcsm_sitesusa_app_cloud_gov_cname" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "fcsm.sitesusa.app.cloud.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d173dsmb632nwm.cloudfront.net."]
+}
+# end SitesUSA subdomains
+
 
 output "cloud_gov_ns" {
   value = "${aws_route53_zone.cloud_gov_zone.name_servers}"
