@@ -11,7 +11,7 @@
 
 
 resource "aws_route53_record" "fedramp_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "fedramp.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -19,7 +19,7 @@ resource "aws_route53_record" "fedramp_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "digitalgov_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "digitalgov.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -27,7 +27,7 @@ resource "aws_route53_record" "digitalgov_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "fcsm_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "fcsm.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -35,7 +35,7 @@ resource "aws_route53_record" "fcsm_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "dotgov_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "dotgov.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -43,7 +43,7 @@ resource "aws_route53_record" "dotgov_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "twa800_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "twa800.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -51,7 +51,7 @@ resource "aws_route53_record" "twa800_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "isdc_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "isdc.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -59,7 +59,7 @@ resource "aws_route53_record" "isdc_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "fedstats_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "fedstats.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -67,7 +67,7 @@ resource "aws_route53_record" "fedstats_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "eliminatechildabusefatalities_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "eliminatechildabusefatalities.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -75,7 +75,7 @@ resource "aws_route53_record" "eliminatechildabusefatalities_sitesusa_app_cloud_
 }
 
 resource "aws_route53_record" "opahit_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "opahit.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -83,7 +83,7 @@ resource "aws_route53_record" "opahit_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "crazyhat_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "crazyhat.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -91,7 +91,7 @@ resource "aws_route53_record" "crazyhat_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "ethics_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "ethics.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -99,7 +99,7 @@ resource "aws_route53_record" "ethics_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "advisethepresident_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "advisethepresident.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -107,7 +107,7 @@ resource "aws_route53_record" "advisethepresident_sitesusa_app_cloud_gov_cname" 
 }
 
 resource "aws_route53_record" "iciwarm_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "iciwarm.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -115,7 +115,7 @@ resource "aws_route53_record" "iciwarm_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "pianc_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "pianc.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -123,7 +123,7 @@ resource "aws_route53_record" "pianc_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "blmca_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "blmca.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -131,7 +131,7 @@ resource "aws_route53_record" "blmca_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "publicparticipation_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "publicparticipation.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -139,7 +139,7 @@ resource "aws_route53_record" "publicparticipation_sitesusa_app_cloud_gov_cname"
 }
 
 resource "aws_route53_record" "newtech4fedlib_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "newtech4fedlib.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -147,7 +147,7 @@ resource "aws_route53_record" "newtech4fedlib_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "summit_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "summit.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -155,7 +155,7 @@ resource "aws_route53_record" "summit_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "ors_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "ors.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -163,7 +163,7 @@ resource "aws_route53_record" "ors_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "crowdsourcing-toolkit_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "crowdsourcing-toolkit.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -171,7 +171,7 @@ resource "aws_route53_record" "crowdsourcing-toolkit_sitesusa_app_cloud_gov_cnam
 }
 
 resource "aws_route53_record" "advocacysba_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "advocacysba.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -179,7 +179,7 @@ resource "aws_route53_record" "advocacysba_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "toydodea_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "toydodea.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -187,7 +187,7 @@ resource "aws_route53_record" "toydodea_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "nihseniorhealth_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "nihseniorhealth.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -195,7 +195,7 @@ resource "aws_route53_record" "nihseniorhealth_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "manufacturing_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "manufacturing.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -203,7 +203,7 @@ resource "aws_route53_record" "manufacturing_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "feedback_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "feedback.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -211,7 +211,7 @@ resource "aws_route53_record" "feedback_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "armyengineerhistory_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "armyengineerhistory.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -219,7 +219,7 @@ resource "aws_route53_record" "armyengineerhistory_sitesusa_app_cloud_gov_cname"
 }
 
 resource "aws_route53_record" "womenbizinfo_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "womenbizinfo.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -227,7 +227,7 @@ resource "aws_route53_record" "womenbizinfo_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "commissiononcare_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "commissiononcare.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -235,7 +235,7 @@ resource "aws_route53_record" "commissiononcare_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "sbalearning_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "sbalearning.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -243,7 +243,7 @@ resource "aws_route53_record" "sbalearning_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "presidentialtransition_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "presidentialtransition.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -251,7 +251,7 @@ resource "aws_route53_record" "presidentialtransition_sitesusa_app_cloud_gov_cna
 }
 
 resource "aws_route53_record" "uspto-dev-blog_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "uspto-dev-blog.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -259,7 +259,7 @@ resource "aws_route53_record" "uspto-dev-blog_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "52weeks4women_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "52weeks4women.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -267,7 +267,7 @@ resource "aws_route53_record" "52weeks4women_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "civilrights_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "civilrights.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -275,7 +275,7 @@ resource "aws_route53_record" "civilrights_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "nsta_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "nsta.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -283,7 +283,7 @@ resource "aws_route53_record" "nsta_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "ussm_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "ussm.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -291,7 +291,7 @@ resource "aws_route53_record" "ussm_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "citizenscience_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "citizenscience.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -299,7 +299,7 @@ resource "aws_route53_record" "citizenscience_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "communitysolutions_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "communitysolutions.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -307,7 +307,7 @@ resource "aws_route53_record" "communitysolutions_sitesusa_app_cloud_gov_cname" 
 }
 
 resource "aws_route53_record" "akamaitest_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "akamaitest.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -315,7 +315,7 @@ resource "aws_route53_record" "akamaitest_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "blm_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "blm.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -323,7 +323,7 @@ resource "aws_route53_record" "blm_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "mip_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "mip.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -331,7 +331,7 @@ resource "aws_route53_record" "mip_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "privacy_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "privacy.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -339,7 +339,7 @@ resource "aws_route53_record" "privacy_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "cio_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "cio.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -347,7 +347,7 @@ resource "aws_route53_record" "cio_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "wellness_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "wellness.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -355,7 +355,7 @@ resource "aws_route53_record" "wellness_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "trust_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "trust.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -363,7 +363,7 @@ resource "aws_route53_record" "trust_sitesusa_app_cloud_gov_cname" {
 }
 
 resource "aws_route53_record" "taxdesignchallenge_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "taxdesignchallenge.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
@@ -371,7 +371,7 @@ resource "aws_route53_record" "taxdesignchallenge_sitesusa_app_cloud_gov_cname" 
 }
 
 resource "aws_route53_record" "nidanrb_sitesusa_app_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.sitesusa_app_cloud_gov_zone}"
   name = "nidanrb.sitesusa.app.cloud.gov."
   type = "CNAME"
   ttl = 60
