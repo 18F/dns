@@ -16,14 +16,13 @@ This repository holds the source code for configuring DNS for domains managed by
         1. After the pull request is merged, ask in [#infrastructure](https://gsa-tts.slack.com/messages/infrastructure/) to get the nameservers for your domain from [Concourse](https://concourse-ci.fr.cloud.gov/teams/gsa-tts-infrastructure/pipelines/dns-prod/).
         1. Change the nameservers for the domain to point to AWS.
             * For `.gov` domains, this will be done by whatever person/group registered/manages the domain in [dotgov.gov](https://www.dotgov.gov/).
-1. Add the relevant additional [record sets](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/rrsets-working-with.html). In Terraform, these are known as [`aws_route53_record`](https://www.terraform.io/docs/providers/aws/r/route53_record.html)s. 
-    * Generally speaking, the required arguments are:
-        1. `zone_id`
-	1. `name`
-	1. `type`
-	1. Either `alias` or `records`
-	1. If `alias`, then `evaluate_target_health` is also required
-	1. If `records`, then `ttl` is also required
+1. Add the relevant additional [record sets](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/rrsets-working-with.html). In Terraform, these are known as [`aws_route53_record`](https://www.terraform.io/docs/providers/aws/r/route53_record.html)s. Generally speaking, the required arguments are:
+    1. `zone_id`
+    1. `name`
+    1. `type`
+    1. Either `alias` or `records`
+    1. If `alias`, then `evaluate_target_health` is also required
+    1. If `records`, then `ttl` is also required
 
 On merge, changes are deployed to the cloud.gov AWS account automatically by an instance of Concourse hosted on [cloud.gov](https://cloud.gov). The configuration for the Concourse instance is in `pipeline.yml`.
 
