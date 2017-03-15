@@ -65,6 +65,14 @@ resource "aws_route53_record" "cloud_gov_2a37e22b1f41ad3fe6af39f4fc38c1bc_cloud_
   records = ["ac6c3680280b90d562df4de77465b14f900463b0.comodoca.com."]
 }
 
+resource "aws_route53_record" "cloud_gov_dc8dffe0fd99c8d067ce1bb5ef156f3e_cloud_gov_cname" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "dc8dffe0fd99c8d067ce1bb5ef156f3e.dev.us-gov-west-1.aws-us-gov.cloud.gov."
+  type = "CNAME"
+  ttl = 5
+  records = ["4c76d956c990d92cf796eff553d6926e22570fa2.comodoca.com."]
+}
+
 resource "aws_route53_record" "cloud_gov_star_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "*.cloud.gov."
