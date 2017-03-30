@@ -107,6 +107,14 @@ resource "aws_route53_record" "18f_gov_qegrzvzekq4wiompgqufe4xwmarm37lh__domaink
   records = ["qegrzvzekq4wiompgqufe4xwmarm37lh.dkim.amazonses.com"]
 }
 
+resource "aws_route53_record" "18f_gov_autoapi_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "autoapi.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d31k5ro0ea9ojq.cloudfront.net"]
+}
+
 resource "aws_route53_record" "18f_gov_api_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "api.18f.gov."
