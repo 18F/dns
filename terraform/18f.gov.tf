@@ -673,6 +673,24 @@ resource "aws_route53_record" "18f_gov_74f23ac1efe88323e0ec84b56921077e_www_18f_
   records = ["88b7d18d8d24e3b6d539ea7ecbbf719f8af14e5a.comodoca.com."]
 }
 
+# Configured with CDN Broker
+resource "aws_route53_record" "18f_gov_kids_prod_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "kids-prod.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d356so74a5xncl.cloudfront.net"]
+}
+
+# Configured with CDN Broker
+resource "aws_route53_record" "18f_gov_kids_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "kids.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d9i2pjueig93z.cloudfront.net"]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
