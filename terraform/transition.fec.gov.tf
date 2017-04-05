@@ -8,9 +8,12 @@ resource "aws_route53_zone" "transition_gov_us_zone" {
 resource "aws_route53_record" "transition_gov_transition_gov_cname" {
   zone_id = "${aws_route53_zone.transition_gov_us_zone.zone_id}"
   name = "transition.fec.gov"
-  type = "CNAME"
-  ttl = 60
-  records = ["d2p6ccc3xlipxg.cloudfront.net"]
+  type = "A"
+  alias {
+    name = "d2p6ccc3xlipxg.cloudfront.net"
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
 }
 
 output "transition_gov_us_ns" {
