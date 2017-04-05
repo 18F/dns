@@ -24,7 +24,7 @@ This repository holds the source code for configuring DNS for domains managed by
     * If `alias`, then `evaluate_target_health` is also required
     * If `records`, then `ttl` is also required
 
-It's worth noting that if you are pointing to a CloudFront distro, you should use Route 53's own `alias` and not a CNAME record. In fact, CNAMEing a top-level domain is not allowed in DNS. See the various examples in the repo, such as [this one](https://github.com/18F/dns/blob/deploy/terraform/usa.gov.tf#L8-L17).
+It's worth noting that if you are pointing to a CloudFront distro, you should use Route 53's own `alias` and not a CNAME record. In fact, CNAMEing a top-level domain (or the top level of a delegated subdomain) is not allowed in DNS. See the various examples in the repo, such as [this one](https://github.com/18F/dns/blob/deploy/terraform/usa.gov.tf#L8-L17).
 
 On merge, changes are deployed to the cloud.gov AWS account automatically by an instance of Concourse hosted on [cloud.gov](https://cloud.gov). The configuration for the Concourse instance is in `pipeline.yml`.
 
