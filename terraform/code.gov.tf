@@ -31,17 +31,16 @@ resource "aws_route53_record" "code_gov_www" {
 }
 
 resource "aws_route53_record" "staging_code_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.code_toplevel.zone_id}"
   name = "staging.code.gov."
   type = "A"
-  
+
   alias {
     name = "d3g0jy911fqt1l.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
 }
-
 
 output "code_ns" {
   value="${aws_route53_zone.code_toplevel.name_servers}"
