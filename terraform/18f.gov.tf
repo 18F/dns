@@ -108,13 +108,13 @@ resource "aws_route53_record" "18f_gov_qegrzvzekq4wiompgqufe4xwmarm37lh__domaink
 }
 
 resource "aws_route53_record" "18f_gov_ads_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "ads.18f.gov."
-  type = "A"
-  alias {
-    name = "d1p50apr0w92d2.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "ads.18f.gov."
+  type = "A"
+  alias {
+    name = "d1p50apr0w92d2.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
   }
 }
 
