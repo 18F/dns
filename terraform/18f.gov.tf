@@ -115,7 +115,7 @@ resource "aws_route53_record" "18f_gov_ads_18f_gov_a" {
     name = "d1p50apr0w92d2.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
-  }
+  }
 }
 
 resource "aws_route53_record" "18f_gov_autoapi_18f_gov_cname" {
