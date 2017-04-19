@@ -112,7 +112,7 @@ resource "aws_route53_record" "18f_gov_ads_18f_gov_a" {
   name = "ads.18f.gov."
   type = "A"
   alias {
-    name = "<d1p50apr0w92d2.cloudfront.net>."
+    name = "d1p50apr0w92d2.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
