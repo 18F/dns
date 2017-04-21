@@ -139,7 +139,7 @@ resource "aws_route53_record" "18f_gov_atf-eregs_18f_gov_cname" {
   name = "atf-eregs.18f.gov."
   type = "CNAME"
   ttl = 300
-  records = ["dualstack.production-star-18f-gov-elb-1963420885.us-gov-west-1.elb.amazonaws.com"]
+  records = ["d1a8iv0i0iazmn.cloudfront.net"]
 }
 
 resource "aws_route53_record" "18f_gov_c2_18f_gov_mx" {
