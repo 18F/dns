@@ -267,6 +267,22 @@ resource "aws_route53_record" "18f_gov_dolores_staging_18f_gov_cname" {
   records = ["d9d5ti9w8z48u.cloudfront.net"]
 }
 
+resource "aws_route53_record" "18f_gov_federalist_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "federalist.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d189ghshxys967.cloudfront.net"]
+}
+
+resource "aws_route53_record" "18f_gov_federalist-builder_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "federalist-builder.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["deej5fwwloisy.cloudfront.net"]
+}
+
 resource "aws_route53_record" "18f_gov_federalist-docs_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalist-docs.18f.gov."
@@ -403,7 +419,7 @@ resource "aws_route53_record" "18f_gov_handbook_18f_gov_a" {
   type = "CNAME"
   ttl = 300
   records = ["dtj4n4imxei9y.cloudfront.net"]
-}  
+}
 
 resource "aws_route53_record" "18f_gov_jobs_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
