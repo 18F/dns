@@ -700,6 +700,14 @@ resource "aws_route53_record" "18f_gov_74f23ac1efe88323e0ec84b56921077e_www_18f_
   records = ["88b7d18d8d24e3b6d539ea7ecbbf719f8af14e5a.comodoca.com."]
 }
 
+resource "aws_route53_record" "18f_gov_e2e080f495caf881194dadb62fb3d5bc_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "e2e080f495caf881194dadb62fb3d5bc.18f.gov."
+  type = "CNAME"
+  ttl = 300
+  records = ["25aad757d26409f9b764f267283fda0ec6e8e3f1.comodoca.com."]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
