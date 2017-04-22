@@ -283,12 +283,15 @@ resource "aws_route53_record" "18f_gov_federalist-builder_18f_gov_cname" {
   records = ["deej5fwwloisy.cloudfront.net"]
 }
 
-resource "aws_route53_record" "18f_gov_federalist-docs_18f_gov_cname" {
+resource "aws_route53_record" "18f_gov_federalist-docs_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalist-docs.18f.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["dzsv3da805tbo.cloudfront.net"]
+  type = "A"
+  alias {
+    name = "dryn1azf9y010.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
 }
 
 resource "aws_route53_record" "18f_gov_federalist-landing-template_18f_gov_cname" {
