@@ -342,9 +342,9 @@ resource "aws_route53_record" "18f_gov_dolores_staging_18f_gov_cname" {
   records = ["d9d5ti9w8z48u.cloudfront.net"]
 }
 
-resource "aws_route53_record" "18f_gov_fec-style.18f.gov_18f_gov_a" {
+resource "aws_route53_record" "18f_gov_fec-style_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "fec-style.18f.gov.18f.gov."
+  name = "fec-style.18f.gov."
   type = "A"
   alias {
     name = "d338bxxszxjap2.cloudfront.net."
