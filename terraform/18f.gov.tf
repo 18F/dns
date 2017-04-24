@@ -125,6 +125,7 @@ resource "aws_route53_record" "18f_gov_accessibility_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "accessibility.18f.gov."
   type = "A"
+  ttl = 300
   alias {
     name = "d3gg23ftaba0j8.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
