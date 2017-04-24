@@ -121,6 +121,17 @@ resource "aws_route53_record" "18f_gov_18franklin_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "18f_gov_accessibility_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "accessibility.18f.gov."
+  type = "A"
+  alias {
+    name = "d3gg23ftaba0j8.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "18f_gov_ads_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "ads.18f.gov."
