@@ -21,7 +21,7 @@ This repository holds the source code for configuring DNS for domains managed by
     * `name`
     * `type`
     * Either `alias` or `records`
-    * If `alias`, then `evaluate_target_health` is also required
+    * If `alias`, then `evaluate_target_health` is also required and `ttl` is not allowed.
     * If `records`, then `ttl` is also required
 
 It's worth noting that if you are pointing to a CloudFront distro, you should use Route 53's own `alias` and not a CNAME record. In fact, CNAMEing a top-level domain (or the top level of a delegated subdomain) is not allowed in DNS. See the various examples in the repo, such as [this one](https://github.com/18F/dns/blob/deploy/terraform/usa.gov.tf#L8-L17).
