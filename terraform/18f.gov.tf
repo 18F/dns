@@ -113,7 +113,6 @@ resource "aws_route53_record" "18f_gov_18franklin_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "18franklin.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d3n4rzfn59k0a9.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -125,7 +124,6 @@ resource "aws_route53_record" "18f_gov_accessibility_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "accessibility.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d3gg23ftaba0j8.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -137,7 +135,6 @@ resource "aws_route53_record" "18f_gov_ads_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "ads.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d1p50apr0w92d2.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -149,7 +146,6 @@ resource "aws_route53_record" "18f_gov_agile_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "agile.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d2zsago6kfzgka.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -161,7 +157,6 @@ resource "aws_route53_record" "18f_gov_agile-labor-categories_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "agile-labor-categories.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d1p2fryyhm3d02.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -197,7 +192,6 @@ resource "aws_route53_record" "18f_gov_blogging-guide_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "blogging-guide.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d1g22yqn5yr45v.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -209,7 +203,6 @@ resource "aws_route53_record" "18f_gov_brand_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "brand.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d19y688vepyspr.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -291,7 +284,6 @@ resource "aws_route53_record" "18f_gov_climate-data-user-study_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "climate-data-user-study.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "dgkam57c0xckv.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -311,7 +303,6 @@ resource "aws_route53_record" "18f_gov_content-guide_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "content-guide.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "dv941ubd2f1ex.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -331,7 +322,6 @@ resource "aws_route53_record" "18f_gov_digitalaccelerator_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "digitalaccelerator.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "dyumdy5yvu23d.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -367,7 +357,6 @@ resource "aws_route53_record" "18f_gov_fec-style_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "fec-style.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d338bxxszxjap2.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -395,7 +384,6 @@ resource "aws_route53_record" "18f_gov_federalist-docs_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalist-docs.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "dryn1azf9y010.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -431,7 +419,6 @@ resource "aws_route53_record" "18f_gov_fedspendingtransparency_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "fedspendingtransparency.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "dbdhg5alj9dxm.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -443,7 +430,6 @@ resource "aws_route53_record" "18f_gov_files_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "files.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d3gawctq7ecsbu.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -463,7 +449,6 @@ resource "aws_route53_record" "18f_gov_frontend_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "frontend.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d2dhxnk13yje6c.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -483,7 +468,6 @@ resource "aws_route53_record" "18f_gov_govconnect_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "govconnect.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d1pr8zgciesx6n.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -566,7 +550,6 @@ resource "aws_route53_record" "18f_gov_guides-template_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "guides-template.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d2ydp5mmbpnnqx.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -681,7 +664,6 @@ resource "aws_route53_record" "18f_gov_modularcontracting_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "modularcontracting.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d11w439dwgnp73.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -795,7 +777,6 @@ resource "aws_route53_record" "18f_gov_partnership-playbook_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "partnership-playbook.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "dqd8t6xkgtofc.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -807,7 +788,6 @@ resource "aws_route53_record" "18f_gov_plain-language-tutorial_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "plain-language-tutorial.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d3rznbn2s8vgba.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -870,7 +850,6 @@ resource "aws_route53_record" "18f_gov_writing-lab-guide_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "writing-lab-guide.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "dj4w2wq1t8v3j.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
@@ -882,7 +861,6 @@ resource "aws_route53_record" "18f_gov_www_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "www.18f.gov."
   type = "A"
-  ttl = 300
   alias {
     name = "d1undivnru8ry9.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
