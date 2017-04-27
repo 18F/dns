@@ -716,6 +716,28 @@ resource "aws_route53_record" "cloud_gov_idp_fr_cloud_gov_aaaa" {
   }
 }
 
+resource "aws_route53_record" "cloud_gov_star_dev_env_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "*.dev.us-gov-west-1.aws-us-gov.cloud.gov."
+  type = "A"
+  alias {
+    name = "dualstack.development-CloudFoundry-Main-850241372.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_star_dev_env_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "*.dev.us-gov-west-1.aws-us-gov.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "dualstack.development-CloudFoundry-Main-850241372.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "cloud_gov_green_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "green.cloud.gov."
