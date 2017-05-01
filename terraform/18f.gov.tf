@@ -683,7 +683,7 @@ resource "aws_route53_record" "18f_gov_join_18f_gov_cname" {
 
 resource "aws_route53_record" "18f_gov_lean-product-design_18f_gov-route_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "lean-product-design.18f.gov-route."
+  name = "lean-product-design.18f.gov."
   type = "A"
   alias {
     name = "d2rme39iqpbarz.cloudfront.net."
