@@ -285,7 +285,7 @@ resource "aws_route53_record" "18f_gov_climate-data-user-study_18f_gov_a" {
   name = "climate-data-user-study.18f.gov."
   type = "A"
   alias {
-    name = "dgkam57c0xckv.cloudfront.net."
+    name = "d28r76t17zvn4f.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
@@ -665,7 +665,7 @@ resource "aws_route53_record" "18f_gov_modularcontracting_18f_gov_a" {
   name = "modularcontracting.18f.gov."
   type = "A"
   alias {
-    name = "d11w439dwgnp73.cloudfront.net."
+    name = "d1iyte5ws3y9f8.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
