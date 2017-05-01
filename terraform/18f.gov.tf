@@ -581,12 +581,15 @@ resource "aws_route53_record" "18f_gov_join_18f_gov_cname" {
   records = ["dpjnqahvua4qy.cloudfront.net"]
 }
 
-resource "aws_route53_record" "18f_gov_methods_18f_gov_cname" {
+resource "aws_route53_record" "18f_gov_methods_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "methods.18f.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["d1z8tmjf5ismhl.cloudfront.net."]
+  type = "A"
+  alias {
+    name = "d2z1u02mjhp26x.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
 }
 
 resource "aws_route53_record" "18f_gov_micropurchase-staging_18f_gov_a" {
