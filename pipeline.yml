@@ -1,5 +1,6 @@
 jobs:
 - name: dns-prod
+  serial: true
   plan:
   - aggregate:
     - get: pipeline-tasks
