@@ -604,14 +604,6 @@ resource "aws_route53_record" "18f_gov_star_sys_green_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_guides_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "guides.18f.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["dvtze1xj8nrwl.cloudfront.net"]
-}
-
 resource "aws_route53_record" "18f_gov_guides-template_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "guides-template.18f.gov."
