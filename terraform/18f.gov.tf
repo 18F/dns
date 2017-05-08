@@ -183,12 +183,34 @@ resource "aws_route53_record" "18f_gov_acqstack-journeymap_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "18f_gov_api-all-the-x_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "api-all-the-x.18f.gov."
+  type = "A"
+  alias {
+    name = "d32jbnyri5gz15.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "18f_gov_api-program_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "api-program.18f.gov."
   type = "A"
   alias {
     name = "d1o273cx53rx83.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov_api-usability-testing_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "api-usability-testing.18f.gov."
+  type = "A"
+  alias {
+    name = "d3u1jtugc2nkl7.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
