@@ -183,6 +183,17 @@ resource "aws_route53_record" "18f_gov_acqstack-journeymap_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "18f_gov_api-program_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "api-program.18f.gov."
+  type = "A"
+  alias {
+    name = "d1o273cx53rx83.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "18f_gov_atf-eregs_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "atf-eregs.18f.gov."
