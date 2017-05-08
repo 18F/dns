@@ -211,6 +211,7 @@ resource "aws_route53_record" "18f_gov_atul-docker-presentation_18f_gov_a" {
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
+}
 
 resource "aws_route53_record" "18f_gov_autoapi_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
