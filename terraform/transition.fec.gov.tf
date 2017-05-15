@@ -1,3 +1,11 @@
+
+resource "aws_route53_zone" "fec_transiton_us_zone" {
+  name = "transition.fec.gov"
+  tags {
+    Project = "dns"
+  }
+}
+
 resource "aws_route53_record" "transition_gov_transition_gov_cname" {
   zone_id = "${aws_route53_zone.transition_gov_us_zone.zone_id}"
   name = "transition.fec.gov"
