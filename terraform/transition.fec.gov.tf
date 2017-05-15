@@ -9,7 +9,7 @@ resource "aws_route53_record" "transition_gov_transition_gov_cname" {
   }
 }
 
-resource "aws_route53_record" "fec_gov_cname" {
+resource "aws_route53_record" "www_fec_gov_a_alias" {
   zone_id = "${aws_route53_zone.transition_gov_us_zone.zone_id}"
   name = "www.fec.gov"
   type = "A"
