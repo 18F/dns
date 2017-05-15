@@ -13,7 +13,7 @@ resource "aws_route53_record" "fec_gov_cname" {
   zone_id = "${aws_route53_zone.transition_gov_us_zone.zone_id}"
   name = "www.fec.gov"
   type = "CNAME"
-  records = [d3t5a36r5g3qx4.cloudfront.net]
+  records = ["d3t5a36r5g3qx4.cloudfront.net"]
 }
 
 output "transition_gov_us_ns" {
