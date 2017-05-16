@@ -1,3 +1,14 @@
+# FEC DNS is set up as follows:
+# Savvis/CenturyLink still controls and hosts the bulk of DNS under fec.gov
+# they are delegating two names to us:
+#
+# transition.fec.gov
+# www.fec.gov
+# 
+# and because you can't CNAME the root domain, Savvis/CenturyLink are 
+# pointing the root at an FEC server that HTTP redirects to www.fec.gov
+
+
 resource "aws_route53_zone" "transition_gov_us_zone" {
   name = "transition.fec.gov"
   tags {
