@@ -4,6 +4,8 @@
 
 This repository holds the source code for configuring DNS for domains managed by GSA TTS, including 18F and the Presidential Innovation Fellows.
 
+![dns-pipeline](https://cloud.githubusercontent.com/assets/20934414/25153174/40a0df54-2451-11e7-82ce-1f07c983e558.png)
+
 ## Making changes
 
 1. Is the domain pointing to the right nameservers? In other words, is there a file for the domain under [`terraform/`](terraform) already?

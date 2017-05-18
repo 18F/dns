@@ -1,0 +1,24 @@
+%% Sequence Diagram for dns deployment
+sequenceDiagram
+  participant Github
+  participant Travis
+  participant Concourse
+  participant AWS
+
+  note over Github: dns repo
+  loop Github dns repo change request
+    Github ->>+ Travis: Opened pull request
+
+    Note over Travis: Runs terraform validation tests
+    Note over Travis: Merges pull request on success
+    Travis -->>- Github: Delete pull request branch
+  end
+
+  Note over Github: cg-pipeline-tasks repo
+  Note over Github: dns repo
+  Github ->> Concourse: Deploys updated deploy branch
+
+  Note over Concourse: terraform apply
+  Concourse ->> AWS: update dns, save terraform state
+
+  Note over Concourse: Report dns nameserver information
