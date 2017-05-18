@@ -5,24 +5,26 @@ resource "aws_route53_zone" "everykidinapark_gov_zone" {
   }
 }
 
+# Configured with CDN Broker
 resource "aws_route53_record" "everykidinapark_gov_everykidinapark_gov_a" {
   zone_id = "${aws_route53_zone.everykidinapark_gov_zone.zone_id}"
   name = "everykidinapark.gov."
   type = "A"
   alias {
-    name = "dualstack.everykidinapark-349509034.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
+    name = "d356so74a5xncl.cloudfront.net"
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
 }
 
+# Configured with CDN Broker
 resource "aws_route53_record" "everykidinapark_gov_www_everykidinapark_gov_a" {
   zone_id = "${aws_route53_zone.everykidinapark_gov_zone.zone_id}"
   name = "www.everykidinapark.gov."
   type = "A"
   alias {
-    name = "dualstack.everykidinapark-349509034.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
+    name = "d356so74a5xncl.cloudfront.net"
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
 }

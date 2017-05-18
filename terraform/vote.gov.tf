@@ -10,7 +10,7 @@ resource "aws_route53_record" "vote_gov_vote_gov_a" {
   name = "vote.gov."
   type = "A"
   alias {
-    name = "d28b2gbutst8k9.cloudfront.net"
+    name = "d2s5gzwyabrtbd.cloudfront.net"
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
@@ -36,11 +36,8 @@ resource "aws_route53_record" "vote_gov_www_vote_gov_a" {
   zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
   name = "www.vote.gov."
   type = "A"
-  alias {
-    name = "d28b2gbutst8k9.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
+  ttl = 120
+  records = ["54.85.132.205"]
 }
 
 resource "aws_route53_record" "new_vote_gov_cname" {
