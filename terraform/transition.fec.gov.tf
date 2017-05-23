@@ -8,9 +8,15 @@
 # and because you can't CNAME the root domain, Savvis/CenturyLink are 
 # pointing the root at an FEC server that HTTP redirects to www.fec.gov
 
-
 resource "aws_route53_zone" "transition_gov_us_zone" {
   name = "transition.fec.gov"
+  tags {
+    Project = "dns"
+  }
+}
+
+resource "aws_route53_zone" "www_fec_gov_zone" {
+  name = "www.fec.gov"
   tags {
     Project = "dns"
   }
@@ -28,7 +34,7 @@ resource "aws_route53_record" "transition_gov_transition_gov_cname" {
 }
 
 resource "aws_route53_record" "www_fec_gov_a_alias" {
-  zone_id = "${aws_route53_zone.transition_gov_us_zone.zone_id}"
+  zone_id = "${aws_route53_zone.www_fec_gov_zone.zone_id}"
   name = "www.fec.gov"
   type = "A"
   alias {
@@ -40,4 +46,8 @@ resource "aws_route53_record" "www_fec_gov_a_alias" {
 
 output "transition_gov_us_ns" {
   value="${aws_route53_zone.transition_gov_us_zone.name_servers}"
+}
+
+output "www_fec_gov_ns" {
+  value="${aws_route53_zone.www_fec_gov_zone.name_servers}"
 }
