@@ -833,6 +833,22 @@ resource "aws_route53_record" "cdn_broker_delegate" {
   ]
 }
 
+resource "aws_route53_record" "cloud_gov_b3b6346ca012f4c2600a876bec04df21_fr_cloud_gov_cname" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "b3b6346ca012f4c2600a876bec04df21.fr.cloud.gov."
+  type = "CNAME"
+  ttl = 5
+  records = ["f864c4904534089d70cf1b4d87d273d53605418d.comodoca.com."]
+}
+
+resource "aws_route53_record" "cloud_gov_06c69b2987cb640e61fb65cc8213943d_fr-stage_cloud_gov_cname" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "06c69b2987cb640e61fb65cc8213943d.fr-stage.cloud.gov."
+  type = "CNAME"
+  ttl = 5
+  records = ["a957810e491407b51f8ffebfe467ab376ca2335d.comodoca.com."]
+}
+
 output "cloud_gov_ns" {
   value = "${aws_route53_zone.cloud_gov_zone.name_servers}"
 }
