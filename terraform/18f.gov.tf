@@ -517,6 +517,17 @@ resource "aws_route53_record" "18f_gov_federalist-modern-team-template_18f_gov_c
   records = ["d2xyasfn4889hb.cloudfront.net"]
 }
 
+resource "aws_route53_record" "18f_gov_federalist-uswds-template_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "federalist-uswds-template.18f.gov."
+  type = "A"
+  alias {
+    name = "d20zf20jb1pccz.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "18f_gov_85333a5c6cd71f56532894c3c64666ca_federalist-docs_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "85333a5c6cd71f56532894c3c64666ca.federalist-docs.18f.gov."
