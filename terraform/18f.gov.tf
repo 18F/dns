@@ -522,7 +522,7 @@ resource "aws_route53_record" "18f_gov_federalist-uswds-template_18f_gov_a" {
   name = "federalist-uswds-template.18f.gov."
   type = "A"
   alias {
-    name = "d20zf20jb1pccz.cloudfront.net."
+    name = "d14safpqycg0pm.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
