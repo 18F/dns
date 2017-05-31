@@ -195,14 +195,6 @@ resource "aws_route53_record" "cloud_gov_community_cloud_gov_cname" {
   records = ["d2keufenac9p5u.cloudfront.net."]
 }
 
-resource "aws_route53_record" "cloud_gov_compliance_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "compliance.cloud.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["dftr9yjllgf5s.cloudfront.net."]
-}
-
 resource "aws_route53_record" "cloud_gov_concourse-ta77wii7_cloud_gov_a" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "concourse-ta77wii7.cloud.gov."
