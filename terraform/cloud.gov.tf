@@ -1,3 +1,7 @@
+variable "cloudfoundry_elb_logging_development" {
+  default = "dualstack.development-CloudFoundry-Logging-1588361105.us-gov-west-1.elb.amazonaws.com"
+}
+
 variable "cloudfoundry_elb_logging_staging" {
   default = "dualstack.staging-CloudFoundry-Logging-538826588.us-gov-west-1.elb.amazonaws.com"
 }
@@ -718,6 +722,73 @@ resource "aws_route53_record" "cloud_gov_star_dev_env_a" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "cloud_gov_ssh_dev_env_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "ssh.dev.us-gov-west-1.aws-us-gov.cloud.gov."
+  type = "A"
+  alias {
+    name = "dualstack.development-diego-proxy-1109590207.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_ssh_dev_env_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "ssh.dev.us-gov-west-1.aws-us-gov.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "dualstack.development-diego-proxy-1109590207.us-gov-west-1.elb.amazonaws.com."
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_doppler_dev_env_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "doppler.dev.us-gov-west-1.aws-us-gov.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.cloudfoundry_elb_logging_development}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_doppler_dev_env_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "doppler.dev.us-gov-west-1.aws-us-gov.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.cloudfoundry_elb_logging_development}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_loggregator_dev_env_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "loggregator.dev.us-gov-west-1.aws-us-gov.cloud.gov."
+  type = "A"
+  alias {
+    name = "${var.cloudfoundry_elb_logging_development}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_loggregator_dev_env_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "loggregator.dev.us-gov-west-1.aws-us-gov.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "${var.cloudfoundry_elb_logging_development}"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 
 resource "aws_route53_record" "cloud_gov_star_dev_env_aaaa" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
