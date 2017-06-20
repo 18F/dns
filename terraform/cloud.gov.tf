@@ -77,28 +77,6 @@ resource "aws_route53_record" "cloud_gov_dc8dffe0fd99c8d067ce1bb5ef156f3e_cloud_
   records = ["4c76d956c990d92cf796eff553d6926e22570fa2.comodoca.com."]
 }
 
-resource "aws_route53_record" "cloud_gov_star_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "*.cloud.gov."
-  type = "A"
-  alias {
-    name = "dualstack.cloud-gov-cf-e-elb-1k4d82us0nuuh-2031658718.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "cloud_gov_star_cloud_gov_aaaa" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "*.cloud.gov."
-  type = "AAAA"
-  alias {
-    name = "dualstack.cloud-gov-cf-e-elb-1k4d82us0nuuh-2031658718.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "cloud_gov__amazonses_cloud_gov_txt" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "_amazonses.cloud.gov."
@@ -139,83 +117,12 @@ resource "aws_route53_record" "cloud_gov_z7gdeervmegvbx6m3qrnpl5qxftrfoda__domai
   records = ["z7gdeervmegvbx6m3qrnpl5qxftrfoda.dkim.amazonses.com"]
 }
 
-resource "aws_route53_record" "cloud_gov_4a06e9b08bec03251745266a2878c1fd_apps_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "4a06e9b08bec03251745266a2878c1fd.apps.cloud.gov."
-  type = "CNAME"
-  ttl = 5
-  records = ["b179f6775377ddd3532e842093466e34bb283f3e.comodoca.com."]
-}
-
-resource "aws_route53_record" "cloud_gov_star_apps_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "*.apps.cloud.gov."
-  type = "A"
-  alias {
-    name = "dualstack.apps-cloud-gov-elb-61sw6opptxk9-195873614.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "cloud_gov_star_apps_cloud_gov_aaaa" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "*.apps.cloud.gov."
-  type = "AAAA"
-  alias {
-    name = "dualstack.apps-cloud-gov-elb-61sw6opptxk9-195873614.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "cloud_gov_ci-stage_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "ci-stage.cloud.gov."
-  type = "A"
-  alias {
-    name = "ci-toolin-concours-1xrgg0ivxcpf5-70148341.us-east-1.elb.amazonaws.com."
-    zone_id = "Z3DZXE0Q79N41H"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "cloud_gov_ci_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "ci.cloud.gov."
-  type = "A"
-  alias {
-    name = "ci-toolin-concours-1s5jdz0uyrntu-528279406.us-east-1.elb.amazonaws.com."
-    zone_id = "Z3DZXE0Q79N41H"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "cloud_gov_community_cloud_gov_cname" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "community.cloud.gov."
   type = "CNAME"
   ttl = 60
   records = ["d2keufenac9p5u.cloudfront.net."]
-}
-
-resource "aws_route53_record" "cloud_gov_concourse-ta77wii7_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "concourse-ta77wii7.cloud.gov."
-  type = "A"
-  alias {
-    name = "cf-concou-concours-micv3o3xldci-2040395208.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "cloud_gov_docs-fix_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "docs-fix.cloud.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["docs.apps.cloud.gov"]
 }
 
 resource "aws_route53_record" "cloud_gov_docs_cloud_gov_cname" {
@@ -797,80 +704,6 @@ resource "aws_route53_record" "cloud_gov_star_dev_env_aaaa" {
   alias {
     name = "dualstack.development-CloudFoundry-Main-850241372.us-gov-west-1.elb.amazonaws.com."
     zone_id = "${var.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "cloud_gov_green_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "green.cloud.gov."
-  type = "A"
-  alias {
-    name = "cf-green-ELB-1B9DVW4O0UBI0-1450531403.us-east-1.elb.amazonaws.com."
-    zone_id = "Z3DZXE0Q79N41H"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "cloud_gov_star_green_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "*.green.cloud.gov."
-  type = "A"
-  alias {
-    name = "cf-green-ELB-1B9DVW4O0UBI0-1450531403.us-east-1.elb.amazonaws.com."
-    zone_id = "Z3DZXE0Q79N41H"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "cloud_gov_login-cname_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "login-cname.cloud.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["login.sys.cloud.gov"]
-}
-
-resource "aws_route53_record" "cloud_gov_metrics_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "metrics.cloud.gov."
-  type = "A"
-  alias {
-    name = "dualstack.grafana-prod-810970021.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "cloud_gov_nessus_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "nessus.cloud.gov."
-  type = "A"
-  alias {
-    name = "dualstack.cf-toolin-nessusel-3pwwpgy9wogs-1694656117.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "cloud_gov_star_sys_cloud_gov_a" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "*.sys.cloud.gov."
-  type = "A"
-  alias {
-    name = "dualstack.apps-cloud-gov-elb-61sw6opptxk9-195873614.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "cloud_gov_star_sys_cloud_gov_aaaa" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "*.sys.cloud.gov."
-  type = "AAAA"
-  alias {
-    name = "dualstack.apps-cloud-gov-elb-61sw6opptxk9-195873614.us-east-1.elb.amazonaws.com."
-    zone_id = "Z35SXDOTRQ7X7K"
     evaluate_target_health = false
   }
 }
