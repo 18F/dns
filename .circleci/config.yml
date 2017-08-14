@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: hashicorop/terraform:0.8.2
+
+    environment:
+      TERRAFORM_VERSION: "0.8.2"
+
+    steps:
+      - checkout
+      - run: terraform validate terraform
