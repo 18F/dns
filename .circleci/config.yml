@@ -2,10 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: hashicorop/terraform:0.8.2
-
-    environment:
-      TERRAFORM_VERSION: "0.8.2"
+      - image: hashicorp/terraform:0.9.11
 
     steps:
       - checkout
