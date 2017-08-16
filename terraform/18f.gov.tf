@@ -276,7 +276,7 @@ resource "aws_route53_record" "18f_gov_before-you-ship_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_agile_18f_gov_a" {
+resource "aws_route53_record" "18f_gov_boise_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "boise.18f.gov."
   type = "A"
