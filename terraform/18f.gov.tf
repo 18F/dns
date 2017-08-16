@@ -276,6 +276,17 @@ resource "aws_route53_record" "18f_gov_before-you-ship_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "18f_gov_boise_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "boise.18f.gov."
+  type = "A"
+  alias {
+    name = "d3va9woazp7hye.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "18f_gov_brand_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "brand.18f.gov."
