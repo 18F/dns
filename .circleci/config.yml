@@ -1,0 +1,9 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: hashicorp/terraform:0.9.11
+
+    steps:
+      - checkout
+      - run: terraform validate terraform
