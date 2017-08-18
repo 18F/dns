@@ -534,6 +534,74 @@ resource "aws_route53_record" "cloud_gov_grafana_fr_cloud_gov_aaaa" {
   }
 }
 
+/* Platform logs */
+
+resource "aws_route53_record" "cloud_gov_logs_platform_dev_env_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "logs-platform.dev.us-gov-west-1.aws-us-gov.cloud.gov."
+  type = "A"
+  alias {
+    name = "dualstack.development-platform-kibana-439570615.us-gov-west-1.elb.amazonaws.com"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_logs_platform_dev_env_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "logs-platform.dev.us-gov-west-1.aws-us-gov.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "dualstack.development-platform-kibana-439570615.us-gov-west-1.elb.amazonaws.com"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_logs_platform_stage_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "logs-platform.fr-stage.cloud.gov."
+  type = "A"
+  alias {
+    name = "dualstack.staging-platform-kibana-483586829.us-gov-west-1.elb.amazonaws.com"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_logs_platform_stage_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "logs-platform.fr-stage.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "dualstack.staging-platform-kibana-483586829.us-gov-west-1.elb.amazonaws.com"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_logs_platform_fr_cloud_gov_a" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "logs-platform.fr.cloud.gov."
+  type = "A"
+  alias {
+    name = "dualstack.production-platform-kibana-1170973752.us-gov-west-1.elb.amazonaws.com"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "cloud_gov_logs_platform_fr_cloud_gov_aaaa" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "logs-platform.fr.cloud.gov."
+  type = "AAAA"
+  alias {
+    name = "dualstack.production-platform-kibana-1170973752.us-gov-west-1.elb.amazonaws.com"
+    zone_id = "${var.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "cloud_gov_nessus_fr_cloud_gov_cname" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "nessus.fr.cloud.gov."
