@@ -13,7 +13,7 @@ resource "aws_route53_record" "digital_gov_apex" {
 
   alias {
     name = "d2q1i25any8vwy.cloudfront.net."
-    zone_id = "XXXXXXX"
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
 }
@@ -25,19 +25,19 @@ resource "aws_route53_record" "digital_gov_www" {
 
   alias {
     name = "d2q1i25any8vwy.cloudfront.net."
-    zone_id = "XXXXXXX"
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
 }
 
 resource "aws_route53_record" "demo_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-  name = "demo.code.gov."
+  name = "demo.digital.gov."
   type = "A"
 
   alias {
     name = "d1f2igtqmwwbgm.cloudfront.net."
-    zone_id = "XXXXXXX"
+    zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
 }
