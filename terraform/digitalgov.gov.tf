@@ -5,6 +5,18 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
   }
 }
 
+
+resource "aws_route53_record" "demo_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "demo.digitalgov.gov."
+  type = "A"
+  alias {
+    name = "d3oyi0vhjafspr.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
