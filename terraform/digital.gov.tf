@@ -42,6 +42,6 @@ resource "aws_route53_record" "demo_digital_gov_a" {
   }
 }
 
-output "code_ns" {
+output "digital_ns" {
   value="${aws_route53_zone.digital_toplevel.name_servers}"
 }
