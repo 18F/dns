@@ -77,44 +77,12 @@ resource "aws_route53_record" "cloud_gov_dc8dffe0fd99c8d067ce1bb5ef156f3e_cloud_
   records = ["4c76d956c990d92cf796eff553d6926e22570fa2.comodoca.com."]
 }
 
-resource "aws_route53_record" "cloud_gov__amazonses_cloud_gov_txt" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "_amazonses.cloud.gov."
-  type = "TXT"
-  ttl = 1800
-  records = ["JF67Pfn/VmP6BKunf7EvCw4FsYKZJ4wke76M+1+DKZU="]
-}
-
-resource "aws_route53_record" "cloud_gov_fg73k4wyobi6u65jndxhy4rfo3a6detw__domainkey_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "fg73k4wyobi6u65jndxhy4rfo3a6detw._domainkey.cloud.gov."
-  type = "CNAME"
-  ttl = 1800
-  records = ["fg73k4wyobi6u65jndxhy4rfo3a6detw.dkim.amazonses.com"]
-}
-
-resource "aws_route53_record" "cloud_gov_kjvrruyad34bs6lej4lgqbnotzweekwk__domainkey_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "kjvrruyad34bs6lej4lgqbnotzweekwk._domainkey.cloud.gov."
-  type = "CNAME"
-  ttl = 1800
-  records = ["kjvrruyad34bs6lej4lgqbnotzweekwk.dkim.amazonses.com"]
-}
-
 resource "aws_route53_record" "cloud_gov_mandrill__domainkey_cloud_gov_txt" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "mandrill._domainkey.cloud.gov."
   type = "TXT"
   ttl = 300
   records = ["v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB;"]
-}
-
-resource "aws_route53_record" "cloud_gov_z7gdeervmegvbx6m3qrnpl5qxftrfoda__domainkey_cloud_gov_cname" {
-  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
-  name = "z7gdeervmegvbx6m3qrnpl5qxftrfoda._domainkey.cloud.gov."
-  type = "CNAME"
-  ttl = 1800
-  records = ["z7gdeervmegvbx6m3qrnpl5qxftrfoda.dkim.amazonses.com"]
 }
 
 resource "aws_route53_record" "cloud_gov_community_cloud_gov_cname" {
