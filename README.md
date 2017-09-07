@@ -1,6 +1,6 @@
 # TTS DNS configuration
 
-[![Build Status](https://travis-ci.org/18F/dns.svg?branch=deploy)](https://travis-ci.org/18F/dns)
+[![CircleCI](https://circleci.com/gh/18F/dns.svg?branch=deploy&style-svg)](https://circleci.com/gh/18F/dns)
 
 This repository holds the source code for configuring DNS for domains managed by GSA TTS, including 18F and the Presidential Innovation Fellows.
 
