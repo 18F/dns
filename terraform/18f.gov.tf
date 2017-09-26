@@ -474,6 +474,17 @@ resource "aws_route53_record" "18f_gov_dolores_staging_18f_gov_cname" {
   records = ["d9d5ti9w8z48u.cloudfront.net"]
 }
 
+resource "aws_route53_record" "18f_gov_eng-hiring_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "eng-hiring.18f.gov."
+  type = "A"
+  alias {
+    name = "d1ju28lhpbkq84.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "18f_gov_federalist_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalist.18f.gov."
