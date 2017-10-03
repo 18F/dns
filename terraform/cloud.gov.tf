@@ -58,7 +58,7 @@ resource "aws_route53_record" "cloud_gov_cloud_gov_txt" {
   name = "cloud.gov."
   type = "TXT"
   ttl = 300
-  records = ["v=spf1 include:spf.mandrillapp.com ?all"]
+  records = ["v=spf1 include:spf.mandrillapp.com -all"]
 }
 
 resource "aws_route53_record" "cloud_gov_2a37e22b1f41ad3fe6af39f4fc38c1bc_cloud_gov_cname" {
@@ -553,7 +553,7 @@ resource "aws_route53_record" "cloud_gov_logs_platform_fr_cloud_gov_a" {
   name = "logs-platform.fr.cloud.gov."
   type = "A"
   alias {
-    name = "dualstack.production-platform-kibana-1170973752.us-gov-west-1.elb.amazonaws.com"
+    name = "dualstack.production-platform-kibana-561603889.us-gov-west-1.elb.amazonaws.com"
     zone_id = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -564,7 +564,7 @@ resource "aws_route53_record" "cloud_gov_logs_platform_fr_cloud_gov_aaaa" {
   name = "logs-platform.fr.cloud.gov."
   type = "AAAA"
   alias {
-    name = "dualstack.production-platform-kibana-1170973752.us-gov-west-1.elb.amazonaws.com"
+    name = "dualstack.production-platform-kibana-561603889.us-gov-west-1.elb.amazonaws.com"
     zone_id = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -763,6 +763,14 @@ resource "aws_route53_record" "cdn_broker_delegate" {
     "ns-243.awsdns-30.com.",
     "ns-651.awsdns-17.net."
   ]
+}
+
+resource "aws_route53_record" "star_app_cloud_gov_dv" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "_baa568061ce9f20600f5faa54e0032b2.app.cloud.gov."
+  type = "NS"
+  ttl = 300
+  records = ["8025.dns-approval.sslmate.com."]
 }
 
 resource "aws_route53_record" "cloud_gov_b3b6346ca012f4c2600a876bec04df21_fr_cloud_gov_cname" {
