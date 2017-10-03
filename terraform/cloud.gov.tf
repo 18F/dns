@@ -797,6 +797,14 @@ resource "aws_route53_record" "cdn_broker_delegate" {
   ]
 }
 
+resource "aws_route53_record" "star_app_cloud_gov_dv" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "_baa568061ce9f20600f5faa54e0032b2.app.cloud.gov."
+  type = "NS"
+  ttl = 300
+  records = ["8025.dns-approval.sslmate.com."]
+}
+
 resource "aws_route53_record" "cloud_gov_b3b6346ca012f4c2600a876bec04df21_fr_cloud_gov_cname" {
   zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
   name = "b3b6346ca012f4c2600a876bec04df21.fr.cloud.gov."
