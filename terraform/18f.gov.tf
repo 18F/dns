@@ -833,7 +833,7 @@ resource "aws_route53_record" "18f_gov_micropurchase_18f_gov_a" {
   name = "micropurchase.18f.gov."
   type = "A"
   alias {
-    name = "dqj5rbu0i1fgx.cloudfront.net."
+    name = "d2x6i02wsoxhfc.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
