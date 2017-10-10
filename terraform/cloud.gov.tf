@@ -509,7 +509,7 @@ resource "aws_route53_record" "cloud_gov_logs_platform_dev_env_a" {
   name = "logs-platform.dev.us-gov-west-1.aws-us-gov.cloud.gov."
   type = "A"
   alias {
-    name = "dualstack.development-platform-kibana-439570615.us-gov-west-1.elb.amazonaws.com"
+    name = "dualstack.development-platform-kibana-2131469203.us-gov-west-1.elb.amazonaws.com"
     zone_id = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -520,7 +520,7 @@ resource "aws_route53_record" "cloud_gov_logs_platform_dev_env_aaaa" {
   name = "logs-platform.dev.us-gov-west-1.aws-us-gov.cloud.gov."
   type = "AAAA"
   alias {
-    name = "dualstack.development-platform-kibana-439570615.us-gov-west-1.elb.amazonaws.com"
+    name = "dualstack.development-platform-kibana-2131469203.us-gov-west-1.elb.amazonaws.com"
     zone_id = "${var.cloudfront_zone_id}"
     evaluate_target_health = false
   }
