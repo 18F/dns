@@ -6,7 +6,7 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
 }
 
 resource "aws_route53_record" "digitalgov_gov_apex" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "digitalgov.gov."
   type = "A"
 
@@ -18,7 +18,7 @@ resource "aws_route53_record" "digitalgov_gov_apex" {
 }
 
 resource "aws_route53_record" "digitalgov_gov_www" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "www.digitalgov.gov."
   type = "A"
 
@@ -30,7 +30,7 @@ resource "aws_route53_record" "digitalgov_gov_www" {
 }
 
 resource "aws_route53_record" "demo_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.demo_digitalgov_gov_toplevel.zone_id}"
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "demo.digitalgov.gov."
   type = "A"
 
