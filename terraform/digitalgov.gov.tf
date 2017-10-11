@@ -5,6 +5,30 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
   }
 }
 
+resource "aws_route53_record" "digitalgov_gov_apex" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
+  name = "digitalgov.gov."
+  type = "A"
+
+  alias {
+    name = "djce1rrjucuix.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "digitalgov_gov_www" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
+  name = "www.digitalgov.gov."
+  type = "A"
+
+  alias {
+    name = "djce1rrjucuix.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
