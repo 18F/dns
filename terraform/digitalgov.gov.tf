@@ -51,7 +51,7 @@ resource "aws_route53_record" "usdigitalregistry_digitalgov_gov_a" {
   type = "A"
 
   alias {
-    name = "XXXXXXXXXXXXXXXXXXXX."
+    name = "gsa-elb-ecs-prod-wild-diggov-1-1458076956.us-east-1.elb.amazonaws.com."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
@@ -64,7 +64,7 @@ resource "aws_route53_record" "dap_digitalgov_gov_a" {
   type = "A"
 
   alias {
-    name = "XXXXXXXXXXXXXXXXXXXX."
+    name = "www.usa.gov.edgekey.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
@@ -77,7 +77,7 @@ resource "aws_route53_record" "search_digitalgov_gov_a" {
   type = "A"
 
   alias {
-    name = "XXXXXXXXXXXXXXXXXXXX."
+    name = "dgsearchsite.infr.search.usa.gov."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
@@ -90,7 +90,7 @@ resource "aws_route53_record" "summit_digitalgov_gov_a" {
   type = "A"
 
   alias {
-    name = "XXXXXXXXXXXXXXXXXXXX."
+    name = "www.usa.gov.edgekey.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
@@ -103,7 +103,7 @@ resource "aws_route53_record" "connect_digitalgov_gov_a" {
   type = "A"
 
   alias {
-    name = "XXXXXXXXXXXXXXXXXXXX."
+    name = "1962994g44.secure0082.hubspot.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
@@ -116,7 +116,20 @@ resource "aws_route53_record" "find_digitalgov_gov_a" {
   type = "A"
 
   alias {
-    name = "XXXXXXXXXXXXXXXXXXXX."
+    name = "digitalgov.sites.infr.search.usa.gov."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
+# stage-socialmobileregistry.digitalgov.gov
+resource "aws_route53_record" "stage-socialmobileregistry_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "gsa-elb-ecs-stg-wild-diggov-1-1092638291.us-east-1.elb.amazonaws.com."
+  type = "A"
+
+  alias {
+    name = "gsa-elb-ecs-stg-wild-diggov-1-1092638291.us-east-1.elb.amazonaws.com."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
