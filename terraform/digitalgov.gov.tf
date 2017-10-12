@@ -5,6 +5,22 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
   }
 }
 
+
+# summit.digitalgov.gov
+resource "aws_route53_record" "summit_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "summit.digitalgov.gov."
+  type = "A"
+
+  alias {
+    name = "www.usa.gov.edgekey.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
+
+# Open Opps Records ------------------- 
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
