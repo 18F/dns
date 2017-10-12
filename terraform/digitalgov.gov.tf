@@ -96,6 +96,32 @@ resource "aws_route53_record" "summit_digitalgov_gov_a" {
   }
 }
 
+# connect.digitalgov.gov
+resource "aws_route53_record" "connect_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "connect.digitalgov.gov."
+  type = "A"
+
+  alias {
+    name = "XXXXXXXXXXXXXXXXXXXX."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
+# find.digitalgov.gov
+resource "aws_route53_record" "find_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "find.digitalgov.gov."
+  type = "A"
+
+  alias {
+    name = "XXXXXXXXXXXXXXXXXXXX."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
 # openopps.digitalgov.gov - A
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
