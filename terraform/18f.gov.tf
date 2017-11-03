@@ -346,7 +346,7 @@ resource "aws_route53_record" "18f_gov_cap_18f_gov_a" {
   type = "A"
   alias {
     name = "dualstack.production-star-18f-gov-elb-1963420885.us-gov-west-1.elb.amazonaws.com."
-    zone_id = "${var.cloudfront_zone_id}"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -1028,7 +1028,7 @@ resource "aws_route53_record" "18f_gov_requests_18f_gov_a" {
   type = "A"
   alias {
     name = "dualstack.production-star-18f-gov-elb-1963420885.us-gov-west-1.elb.amazonaws.com."
-    zone_id = "${var.cloudfront_zone_id}"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
