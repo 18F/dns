@@ -13,7 +13,7 @@ resource "aws_route53_record" "www" {
 
   alias {
     name = "dgevgiwb7xxpw.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -147,7 +147,7 @@ resource "aws_route53_record" "www-main" {
 
   alias {
     name = "dgevgiwb7xxpw.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }

@@ -11,7 +11,7 @@ resource "aws_route53_record" "apps_gov_apps_gov_a" {
   type = "A"
   alias {
     name = "d24f99alwtdu0h.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -88,7 +88,7 @@ resource "aws_route53_record" "apps_gov_www_apps_gov_a" {
   type = "A"
   alias {
     name = "d24f99alwtdu0h.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }

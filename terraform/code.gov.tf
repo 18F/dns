@@ -13,7 +13,7 @@ resource "aws_route53_record" "code_gov_apex" {
 
   alias {
     name = "dqziuvpgrykcy.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -25,7 +25,7 @@ resource "aws_route53_record" "code_gov_www" {
 
   alias {
     name = "dqziuvpgrykcy.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -37,7 +37,7 @@ resource "aws_route53_record" "staging_code_gov_a" {
 
   alias {
     name = "d3g0jy911fqt1l.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }

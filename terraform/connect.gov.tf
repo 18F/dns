@@ -12,7 +12,7 @@ resource "aws_route53_record" "connect_gov_connect_gov_a" {
 
   alias {
     name = "d1tqmxfevhun0x.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = true
   }
 }
@@ -23,7 +23,7 @@ resource "aws_route53_record" "www_connect_gov_connect_gov_cname" {
   type = "A"
   alias {
     name = "d1tqmxfevhun0x.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = true
   }
 }

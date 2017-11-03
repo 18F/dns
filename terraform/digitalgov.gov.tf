@@ -13,7 +13,7 @@ resource "aws_route53_record" "digitalgov_gov_apex" {
 
  alias {
    name = "d2a6ofmg0xhw1g.cloudfront.net."
-   zone_id = "Z2FDTNDATAQYW2"
+   zone_id = "${local.cloud_gov_cloudfront_zone_id}"
    evaluate_target_health = false
  }
 }
@@ -97,7 +97,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   type = "A"
   alias {
     name = "d11og6pgwhrztr.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -313,7 +313,7 @@ resource "aws_route53_record" "support_digitalgov_gov_mx" {
 }
 
 
-# BOD 
+# BOD
 resource "aws_route53_record" "digitalgov_gov_dmarc_digitalgov_gov_txt" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "digitalgov.gov."

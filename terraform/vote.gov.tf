@@ -11,7 +11,7 @@ resource "aws_route53_record" "vote_gov_vote_gov_a" {
   type = "A"
   alias {
     name = "d2s5gzwyabrtbd.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }

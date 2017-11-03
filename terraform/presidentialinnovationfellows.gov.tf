@@ -13,7 +13,7 @@ resource "aws_route53_record" "presidentialinnovationfellows_www" {
 
   alias {
     name = "d26prp92rpqmzl.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -25,7 +25,7 @@ resource "aws_route53_record" "presidentialinnovationfellows_apex" {
 
   alias {
     name = "d26prp92rpqmzl.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
