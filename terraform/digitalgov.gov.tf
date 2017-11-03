@@ -115,7 +115,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_txt" {
   name = "openopps.digitalgov.gov."
   type = "TXT"
   ttl = 300
-  records = ["v=spf1 include:spf.mandrillapp.com ?all"]
+  records = ["${local.mandrill_spf}"]
 }
 
 resource "aws_route53_record" "digitalgov_gov_mandrill__domainkey_openopps_digitalgov_gov_txt" {
@@ -123,7 +123,7 @@ resource "aws_route53_record" "digitalgov_gov_mandrill__domainkey_openopps_digit
   name = "mandrill._domainkey.openopps.digitalgov.gov."
   type = "TXT"
   ttl = 300
-  records = ["v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB;"]
+  records = ["${local.mandrill_dkim}"]
 }
 
 
