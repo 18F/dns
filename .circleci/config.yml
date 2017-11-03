@@ -2,8 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: hashicorp/terraform:0.9.11
+      - image: hashicorp/terraform:0.10.8
 
     steps:
       - checkout
+      - run: terraform init -backend=false terraform
       - run: terraform validate terraform
