@@ -107,7 +107,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_mx" {
   name = "openopps.digitalgov.gov."
   type = "MX"
   ttl = 300
-  records = ["10	30288227.in1.mandrillapp.com", "20	30288227.in2.mandrillapp.com"]
+  records = ["${local.mandrill_mx}"]
 }
 
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_txt" {
@@ -267,9 +267,7 @@ resource "aws_route53_record" "digitalgov_gov_mandrill_domainkey_digitalgov_gov_
   name = "mandrill._domainkey.support.digitalgov.gov."
   type = "TXT"
   ttl = "3600"
-  records = [
-    "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB;"
-  ]
+  records = ["${local.mandrill_dkim}"]
 }
 
 # support.digitalgov.gov - TXT

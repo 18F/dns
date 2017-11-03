@@ -21,7 +21,7 @@ resource "aws_route53_record" "18f_gov_18f_gov_mx" {
   name = "18f.gov."
   type = "MX"
   ttl = 300
-  records = ["10 30288227.in1.mandrillapp.com", "20 30288227.in2.mandrillapp.com"]
+  records = ["${local.mandrill_mx}"]
 }
 
 resource "aws_route53_record" "18f_gov_18f_gov_txt" {
@@ -313,7 +313,7 @@ resource "aws_route53_record" "18f_gov_c2_18f_gov_mx" {
   name = "c2.18f.gov."
   type = "MX"
   ttl = 60
-  records = ["10 30288227.in1.mandrillapp.com", "20 30288227.in2.mandrillapp.com"]
+  records = ["${local.mandrill_mx}"]
 }
 
 resource "aws_route53_record" "18f_gov_c2_18f_gov_txt" {
@@ -846,7 +846,7 @@ resource "aws_route53_record" "18f_gov_micropurchase-staging_18f_gov_mx" {
   name = "micropurchase-staging.18f.gov."
   type = "MX"
   ttl = 300
-  records = ["10 30288227.in1.mandrillapp.com", "20 30288227.in2.mandrillapp.com"]
+  records = ["${local.mandrill_mx}"]
 }
 
 resource "aws_route53_record" "18f_gov_micropurchase-staging_18f_gov_txt" {
@@ -882,7 +882,7 @@ resource "aws_route53_record" "18f_gov_micropurchase_18f_gov_mx" {
   name = "micropurchase.18f.gov."
   type = "MX"
   ttl = 300
-  records = ["10 30288227.in1.mandrillapp.com", "20 30288227.in2.mandrillapp.com"]
+  records = ["${local.mandrill_mx}"]
 }
 
 resource "aws_route53_record" "18f_gov_micropurchase_18f_gov_txt" {
@@ -1037,7 +1037,7 @@ resource "aws_route53_record" "18f_gov_requests_18f_gov_mx" {
   name = "requests.18f.gov."
   type = "MX"
   ttl = 300
-  records = ["10 30288227.in1.mandrillapp.com", "20 30288227.in2.mandrillapp.com"]
+  records = ["${local.mandrill_mx}"]
 }
 
 resource "aws_route53_record" "18f_gov_requests_18f_gov_txt" {
