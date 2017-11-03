@@ -604,17 +604,6 @@ resource "aws_route53_record" "18f_gov_frontend_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_fugacious_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "fugacious.18f.gov."
-  type = "A"
-  alias {
-    name = "dbifnpoekiab5.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_govconnect_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "govconnect.18f.gov."
