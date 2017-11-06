@@ -97,7 +97,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   type = "A"
   alias {
     name = "d11og6pgwhrztr.cloudfront.net."
-    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
