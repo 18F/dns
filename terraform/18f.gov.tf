@@ -609,7 +609,7 @@ resource "aws_route53_record" "18f_gov_fugacious_18f_gov_a" {
   name = "fugacious.18f.gov."
   type = "A"
   alias {
-    name = "dbifnpoekiab5.cloudfront.net."
+    name = "d309sw0ah4sgku.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
@@ -620,7 +620,7 @@ resource "aws_route53_record" "18f_gov_fugacious_18f_gov_txt" {
   name = "fugacious.18f.gov."
   type = "TXT"
   ttl = 300
-  records = ["dbifnpoekiab5.cloudfront.net."]
+  records = ["d309sw0ah4sgku.cloudfront.net."]
 }
 
 resource "aws_route53_record" "18f_gov_govconnect_18f_gov_a" {
