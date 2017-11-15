@@ -12,7 +12,7 @@ resource "aws_route53_record" "demo_fedramp_gov_a" {
   type = "A"
 
   alias {
-    name = "XXXXXXXXXXXXXXX."
+    name = "d11q09ta0k47w4.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
