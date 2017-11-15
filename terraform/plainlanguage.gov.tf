@@ -12,7 +12,7 @@ resource "aws_route53_record" "plainlanguage_apex" {
   type = "A"
 
   alias {
-    name = "XXXXXXXXXXXX."
+    name = "d1qy5q7pncs690.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
@@ -24,7 +24,7 @@ resource "aws_route53_record" "plainlanguage_www" {
   type = "A"
 
   alias {
-    name = "XXXXXXXXXXXXXX."
+    name = "d1qy5q7pncs690.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
@@ -36,7 +36,7 @@ resource "aws_route53_record" "demo_plainlanguage_a" {
   type = "A"
 
   alias {
-    name = "XXXXXXXXXXXXXX."
+    name = "d18mn70cbq9e90.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
