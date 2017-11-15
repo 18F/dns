@@ -536,6 +536,14 @@ resource "aws_route53_record" "18f_gov_federalist-modern-team-template_18f_gov_c
   records = ["d2xyasfn4889hb.cloudfront.net"]
 }
 
+resource "aws_route53_record" "18f_gov_federalist-report-template_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "federalist-report-template.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d1ygku4sb90jjr.cloudfront.net"]
+}
+
 resource "aws_route53_record" "18f_gov_federalist-uswds-template_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalist-uswds-template.18f.gov."
@@ -596,12 +604,23 @@ resource "aws_route53_record" "18f_gov_frontend_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_fugacious_18f_gov_cname" {
+resource "aws_route53_record" "18f_gov_fugacious_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "fugacious.18f.gov."
-  type = "CNAME"
+  type = "A"
+  alias {
+    name = "d309sw0ah4sgku.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov_fugacious_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "fugacious.18f.gov."
+  type = "TXT"
   ttl = 300
-  records = ["dualstack.production-star-18f-gov-elb-1963420885.us-gov-west-1.elb.amazonaws.com"]
+  records = ["d309sw0ah4sgku.cloudfront.net."]
 }
 
 resource "aws_route53_record" "18f_gov_govconnect_18f_gov_a" {
@@ -666,7 +685,7 @@ resource "aws_route53_record" "18f_gov_star_apps_green_18f_gov_a" {
     evaluate_target_health = false
   }
 }
-  
+
   resource "aws_route53_record" "18f_gov_grouplet-playbook_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "grouplet-playbook.18f.gov."
@@ -897,7 +916,7 @@ resource "aws_route53_record" "18f_gov_e02bc03821dff6c0c958b96ad4476517_munki_18
   ttl = 5
   records = ["d3a976c8a19db425a0b6fab24f793df8c0341d67.comodoca.com."]
 }
-  
+
 resource "aws_route53_record" "18f_gov_open-source-guide_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "open-source-guide.18f.gov."
@@ -919,7 +938,7 @@ resource "aws_route53_record" "18f_gov_open-source-program_18f_gov_a" {
     evaluate_target_health = false
   }
 }
-  
+
 resource "aws_route53_record" "18f_gov_openopps-staging_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "openopps-staging.18f.gov."
@@ -997,7 +1016,7 @@ resource "aws_route53_record" "18f_gov_pages_18f_gov_cname" {
   ttl = 300
   records = ["dvtze1xj8nrwl.cloudfront.net"]
 }
-  
+
 resource "aws_route53_record" "18f_gov_paid-leave-prototype_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "paid-leave-prototype.18f.gov."
@@ -1030,7 +1049,7 @@ resource "aws_route53_record" "18f_gov_plain-language-tutorial_18f_gov_a" {
     evaluate_target_health = false
   }
 }
-  
+
 resource "aws_route53_record" "18f_gov_private-eye_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "private-eye.18f.gov."
