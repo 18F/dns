@@ -43,33 +43,28 @@ resource "aws_route53_record" "demo_plainlanguage_a" {
 }
 
 resource "aws_route53_record" "plainlanguage_google_mx" {
-    name = "plainlanguage.gov."
-    records = [
-        "1 aspmx.l.google.com.",
-        "5 alt1.aspmx.l.google.com.",
-        "5 alt2.aspmx.l.google.com.",
-        "10 alt3.aspmx.l.google.com.",
-        "10 alt4.aspmx.l.google.com."
-    ]
-    ttl = "300"
-    type = "MX"
-    zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
+  zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
+  name = "plainlanguage.gov."
+  type = "MX"
+  ttl = "300"
+  records = [
+    "1 aspmx.l.google.com.",
+    "5 alt1.aspmx.l.google.com.",
+    "5 alt2.aspmx.l.google.com.",
+    "10 alt3.aspmx.l.google.com.",
+    "10 alt4.aspmx.l.google.com."
+  ]
 }
 
 resource "aws_route53_record" "plainlanguage_google_txt" {
   zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
-  name = "plainlanguage.gov"
+  name = "plainlanguage.gov."
   type = "TXT"
   ttl = 600
-  records = ["google-site-verification=dgYaMRA2hd9PDUV1zEcRyWmTOVZCbkbP3vXd4isEZLI"]
-}
-
-resource "aws_route53_record" "plainlanguage_v_txt" {
-  zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
-  name = "plainlanguage.gov"
-  type = "TXT"
-  ttl = 600
-  records = ["v=spf1 include:_spf.google.com include:spf_sa.gsa.gov ~all"]
+  records = [
+    "google-site-verification=dgYaMRA2hd9PDUV1zEcRyWmTOVZCbkbP3vXd4isEZLI",
+    "v=spf1 include:_spf.google.com include:spf_sa.gsa.gov ~all"
+  ]
 }
 
 output "plainlanguage_ns" {
