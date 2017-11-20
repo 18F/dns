@@ -55,7 +55,7 @@ resource "aws_route53_record" "everykidinapark_gov_everykidinapark_gov_txt" {
   ]
 }
 
-resource "aws_route53_record" "everykidinapark_gov_everykidinapark_gov_txt" {
+resource "aws_route53_record" "everykidinapark_gov_dmarc_everykidinapark_gov_txt" {
   zone_id = "${aws_route53_zone.everykidinapark_gov_zone.zone_id}"
   name = "_dmarc.everykidinapark.gov."
   type = "TXT"
