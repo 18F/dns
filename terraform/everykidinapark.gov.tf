@@ -51,7 +51,16 @@ resource "aws_route53_record" "everykidinapark_gov_everykidinapark_gov_txt" {
   type = "TXT"
   ttl = 300
   records = [
-     "v=spf1 -all",
+     "v=spf1 -all"
+  ]
+}
+
+resource "aws_route53_record" "everykidinapark_gov__dmarc_everykidinapark_gov_txt" {
+  zone_id = "${aws_route53_zone.everykidinapark_gov_zone.zone_id}"
+  name = "_dmarc.everykidinapark.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
      "v=DMARC1; p=reject; rua=dmarcreports@gsa.gov; ruf=dmarcfailures@gsa.gov; fo=1; ri=86400"
   ]
 }
