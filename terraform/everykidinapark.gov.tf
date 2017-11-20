@@ -45,6 +45,17 @@ resource "aws_route53_record" "everykidinapark_gov_398a1a6f10083c7a093fc5988ea19
   records = ["9bbc15d353b32d96be120d1cb2af1b89e0763167.comodoca.com."]
 }
 
+resource "aws_route53_record" "everykidinapark_gov_everykidinapark_gov_txt" {
+  zone_id = "${aws_route53_zone.everykidinapark_gov_zone.zone_id}"
+  name = "everykidinapark.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=spf1 -all",
+     "v=DMARC1; p=reject; rua=dmarcreports@gsa.gov; ruf=dmarcfailures@gsa.gov; fo=1; ri=86400"
+  ]
+}
+
 output "everykidinapark_gov_ns" {
   value="${aws_route53_zone.everykidinapark_gov_zone.name_servers}"
 }
