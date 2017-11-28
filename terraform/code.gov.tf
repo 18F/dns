@@ -42,6 +42,15 @@ resource "aws_route53_record" "staging_code_gov_a" {
   }
 }
 
+resource "aws_route53_record" "code_gov_api_cname" {
+  zone_id = "${aws_route53_zone.code_toplevel.zone_id}"
+  name = "api.code.gov."
+  type = "CNAME"
+  ttl = 300
+  records = ["api-code-gov.domains.api.data.gov"]
+}
+
+
 output "code_ns" {
   value="${aws_route53_zone.code_toplevel.name_servers}"
 }
