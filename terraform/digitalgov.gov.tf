@@ -21,8 +21,8 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
   type = "CNAME"
-  records = ["openopps.usajobs.gov"]
   ttl = "300"
+  records = ["openopps.usajobs.gov."]
 }
 
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_aaaa" {
