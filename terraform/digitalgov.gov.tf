@@ -20,12 +20,9 @@ resource "aws_route53_record" "www_digitalgov_gov_digitalgov_gov_a" {
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
-  type = "A"
-  alias {
-    name = "d11og6pgwhrztr.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
+  type = "CNAME"
+  ttl = "300"
+  records = ["openopps.usajobs.gov."]
 }
 
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_aaaa" {
