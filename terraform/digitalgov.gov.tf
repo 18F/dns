@@ -193,7 +193,7 @@ resource "aws_route53_record" "k1_domainkey_support_digitalgov_gov_a" {
 # NS Records
 
 # openopps.digitalgov.gov - NS
-resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_ns" {
+resource "aws_route53_record" "digitalgov_gov_openopps_25_digitalgov_gov_ns" {
   zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
   name = "openopps.digitalgov.gov."
   type = "NS"
@@ -205,7 +205,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_ns" {
 }
 
 # openopps.digitalgov.gov - NS
-resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_ns" {
+resource "aws_route53_record" "digitalgov_gov_openopps_56_digitalgov_gov_ns" {
   zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
   name = "openopps.digitalgov.gov."
   type = "NS"
@@ -217,7 +217,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_ns" {
 }
 
 # openopps.digitalgov.gov - NS
-resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_ns" {
+resource "aws_route53_record" "digitalgov_gov_openopps_34_digitalgov_gov_ns" {
   zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
   name = "openopps.digitalgov.gov."
   type = "NS"
@@ -229,7 +229,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_ns" {
 }
 
 # openopps.digitalgov.gov - NS
-resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_ns" {
+resource "aws_route53_record" "digitalgov_gov_openopps_43_digitalgov_gov_ns" {
   zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
   name = "openopps.digitalgov.gov."
   type = "NS"
@@ -340,10 +340,6 @@ resource "aws_route53_record" "support_digitalgov_gov_mx" {
     "10 mx1.emailsrvr.com."
   ]
 }
-
-
-
-
 
 output "digitalgov_gov_ns" {
   value="${aws_route53_zone.digitalgov_gov_zone.name_servers}"
