@@ -342,5 +342,5 @@ resource "aws_route53_record" "support_digitalgov_gov_mx" {
 }
 
 output "digitalgov_gov_ns" {
-  value="${aws_route53_zone.digitalgov_gov_zone.name_servers}"
+  value="${aws_route53_zone.digitalgov_gov_toplevel.name_servers}"
 }
