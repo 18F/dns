@@ -10,12 +10,10 @@ resource "aws_route53_record" "digitalgov_gov_apex" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "digitalgov.gov."
   type = "A"
-
-  alias {
-    name = "djce1rrjucuix.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
+  ttl = "300"
+  records = [
+    "13.90.82.69"
+  ]
 }
 
 # o166.email.digitalgov.gov — A
