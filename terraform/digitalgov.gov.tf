@@ -23,6 +23,7 @@ resource "aws_route53_record" "o166_email_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "o166.email.digitalgov.gov."
   type = "A"
+  ttl = "300"
   records = [
     "167.89.86.190"
   ]
@@ -33,6 +34,7 @@ resource "aws_route53_record" "admin_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "admin.digitalgov.gov."
   type = "A"
+  ttl = "600"
   records = [
     "173.203.40.168"
   ]
@@ -81,6 +83,7 @@ resource "aws_route53_record" "usdigitalregistry_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "usdigitalregistry.digitalgov.gov."
   type = "CNAME"
+  ttl = "300"
   records = [
     "gsa-elb-ecs-prod-wild-diggov-1-1458076956.us-east-1.elb.amazonaws.com."
   ]
@@ -91,6 +94,7 @@ resource "aws_route53_record" "dap_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "dap.digitalgov.gov."
   type = "CNAME"
+  ttl = "300"
   records = [
     "www.usa.gov.edgekey.net."
   ]
@@ -101,6 +105,7 @@ resource "aws_route53_record" "search_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "search.digitalgov.gov."
   type = "CNAME"
+  ttl = "600"
   records = [
     "dgsearchsite.infr.search.usa.gov."
   ]
@@ -111,6 +116,7 @@ resource "aws_route53_record" "summit_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "summit.digitalgov.gov."
   type = "CNAME"
+  ttl = "300"
   records = [
     "www.usa.gov.edgekey.net."
   ]
@@ -121,6 +127,7 @@ resource "aws_route53_record" "connect_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "connect.digitalgov.gov."
   type = "CNAME"
+  ttl = "300"
   records = [
     "1962994g44.secure0082.hubspot.net."
   ]
@@ -131,6 +138,7 @@ resource "aws_route53_record" "find_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "find.digitalgov.gov."
   type = "CNAME"
+  ttl = "300"
   records = [
     "digitalgov.sites.infr.search.usa.gov."
   ]
@@ -141,12 +149,10 @@ resource "aws_route53_record" "stage-socialmobileregistry_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "stage-socialmobileregistry."
   type = "CNAME"
-
-  alias {
-    name = "gsa-elb-ecs-stg-wild-diggov-1-1092638291.us-east-1.elb.amazonaws.com."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
+  ttl = "300"
+  records = [
+    "gsa-elb-ecs-stg-wild-diggov-1-1092638291.us-east-1.elb.amazonaws.com."
+  ]
 }
 
 # k1._domainkey.support.digitalgov.gov — CNAME
@@ -154,6 +160,7 @@ resource "aws_route53_record" "k1_domainkey_support_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "k1._domainkey.support.digitalgov.gov."
   type = "CNAME"
+  ttl = "300"
   records = [
     "dkim.mcsv.net."
   ]
@@ -169,6 +176,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_25_digitalgov_gov_ns" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
   type = "NS"
+  ttl = "300"
   records = [
     "ns-1231.awsdns-25.org."
   ]
@@ -189,6 +197,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_34_digitalgov_gov_ns" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
   type = "NS"
+  ttl = "300"
   records = [
     "ns-788.awsdns-34.net."
   ]
@@ -199,6 +208,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_43_digitalgov_gov_ns" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
   type = "NS"
+  ttl = "300"
   records = [
     "ns-1886.awsdns-43.co.uk."
   ]
