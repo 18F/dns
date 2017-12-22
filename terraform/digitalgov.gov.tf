@@ -84,11 +84,6 @@ resource "aws_route53_record" "usdigitalregistry_digitalgov_gov_a" {
   records = [
     "gsa-elb-ecs-prod-wild-diggov-1-1458076956.us-east-1.elb.amazonaws.com."
   ]
-  alias {
-    name = "gsa-elb-ecs-prod-wild-diggov-1-1458076956.us-east-1.elb.amazonaws.com."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
 }
 
 # dap.digitalgov.gov
