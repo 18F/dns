@@ -249,7 +249,6 @@ resource "aws_route53_record" "digitalgov_gov_support_digitalgov_gov_spf" {
   zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
   name = "support.digitalgov.gov."
   type = "SPF"
-  ttl = "3600"
   alias {
     name = "v=spf1 include:spf.mandrillapp.com include:mail.zendesk.com include:emailsrvr.com include:servers.mcsv.net ~all"
     zone_id = "Z2FDTNDATAQYW2"
