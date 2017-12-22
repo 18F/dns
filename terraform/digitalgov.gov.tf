@@ -147,7 +147,7 @@ resource "aws_route53_record" "find_digitalgov_gov_a" {
 # stage-socialmobileregistry.digitalgov.gov
 resource "aws_route53_record" "stage-socialmobileregistry_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "stage-socialmobileregistry."
+  name = "stage-socialmobileregistry.digitalgov.gov."
   type = "CNAME"
   ttl = "300"
   records = [
@@ -187,6 +187,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_56_digitalgov_gov_ns" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
   type = "NS"
+  ttl = "300"
   records = [
     "ns-452.awsdns-56.com."
   ]
