@@ -249,6 +249,7 @@ resource "aws_route53_record" "digitalgov_gov_support_digitalgov_gov_spf" {
   zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
   name = "support.digitalgov.gov."
   type = "SPF"
+  ttl = "3600"
   alias {
     name = "v=spf1 include:spf.mandrillapp.com include:mail.zendesk.com include:emailsrvr.com include:servers.mcsv.net ~all"
     zone_id = "Z2FDTNDATAQYW2"
@@ -277,6 +278,7 @@ resource "aws_route53_record" "digitalgov_gov_email_digitalgov_gov_txt" {
   zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
   name = "email.digitalgov.gov."
   type = "TXT"
+  ttl = "3600"
   records = [
     "v=spf1 ip4:167.89.86.190 -all"
   ]
@@ -297,6 +299,7 @@ resource "aws_route53_record" "digitalgov_gov_mandrill_domainkey_digitalgov_gov_
   zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
   name = "mandrill._domainkey.support.digitalgov.gov."
   type = "TXT"
+  ttl = "3600"
   records = [
     "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB;"
   ]
@@ -307,6 +310,7 @@ resource "aws_route53_record" "digitalgov_gov_support_digitalgov_gov_txt" {
   zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
   name = "support.digitalgov.gov."
   type = "TXT"
+  ttl = "3600"
   records = [
     "v=spf1 include:spf.mandrillapp.com include:mail.zendesk.com include:emailsrvr.com include:servers.mcsv.net ~all"
   ]
@@ -324,7 +328,7 @@ resource "aws_route53_record" "email_digitalgov_gov_mx" {
   zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
   name = "email.digitalgov.gov."
   type = "MX"
-  ttl = "300"
+  ttl = "3600"
   records = [
     "10 mx.sendgrid.net."
   ]
@@ -335,7 +339,7 @@ resource "aws_route53_record" "support_digitalgov_gov_mx" {
   zone_id = "${aws_route53_zone.digitalgov_gov_toplevel.zone_id}"
   name = "support.digitalgov.gov."
   type = "MX"
-  ttl = "300"
+  ttl = "600"
   records = [
     "10 mx1.emailsrvr.com."
   ]
