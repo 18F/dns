@@ -103,7 +103,7 @@ resource "aws_route53_record" "dap_digitalgov_gov_a" {
   type = "CNAME"
   ttl = "300"
   records = [
-    "www.usa.gov.edgekey.net."
+    "d27f3qgc9anoq2.cloudfront.net."
   ]
 }
 
