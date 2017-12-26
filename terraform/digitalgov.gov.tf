@@ -50,6 +50,20 @@ resource "aws_route53_record" "support_digitalgov_gov_a" {
   ]
 }
 
+# ===== Temporary record for validation =====
+resource "aws_route53_record" "dap_validation_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "_c80f04313e7e2fadb177e34e2dedf0d6.dap.digitalgov.gov."
+  type = "CNAME"
+
+  alias {
+    name = "_3f7fd3397174324e46798283045cd3e7.acm-validations.aws."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+# ===== End temporary record for validation =====
+
 # www.digitalgov.gov
 resource "aws_route53_record" "digitalgov_gov_www" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
