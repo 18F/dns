@@ -50,17 +50,28 @@ resource "aws_route53_record" "support_digitalgov_gov_a" {
   ]
 }
 
+# ===== Temporary record for validation =====
+resource "aws_route53_record" "dap_validation_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "_c80f04313e7e2fadb177e34e2dedf0d6.dap.digitalgov.gov."
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "_3f7fd3397174324e46798283045cd3e7.acm-validations.aws"
+  ]
+}
+# ===== End temporary record for validation =====
+
+
 # www.digitalgov.gov
 resource "aws_route53_record" "digitalgov_gov_www" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "www.digitalgov.gov."
   type = "CNAME"
-
-  alias {
-    name = "djce1rrjucuix.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
+  ttl = "300"
+  records = [
+    "djce1rrjucuix.cloudfront.net."
+  ]
 }
 
 # demo.digitalgov.gov
@@ -68,12 +79,10 @@ resource "aws_route53_record" "demo_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "demo.digitalgov.gov."
   type = "CNAME"
-
-  alias {
-    name = "d3oyi0vhjafspr.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
+  ttl = "300"
+  records = [
+    "d3oyi0vhjafspr.cloudfront.net."
+  ]
 }
 
 # usdigitalregistry.digitalgov.gov
