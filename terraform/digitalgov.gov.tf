@@ -68,12 +68,10 @@ resource "aws_route53_record" "digitalgov_gov_www" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "www.digitalgov.gov."
   type = "CNAME"
-
-  alias {
-    name = "djce1rrjucuix.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
+  ttl = "300"
+  records = [
+    "djce1rrjucuix.cloudfront.net."
+  ]
 }
 
 # demo.digitalgov.gov
@@ -81,12 +79,10 @@ resource "aws_route53_record" "demo_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "demo.digitalgov.gov."
   type = "CNAME"
-
-  alias {
-    name = "d3oyi0vhjafspr.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
+  ttl = "300"
+  records = [
+    "d3oyi0vhjafspr.cloudfront.net."
+  ]
 }
 
 # usdigitalregistry.digitalgov.gov
