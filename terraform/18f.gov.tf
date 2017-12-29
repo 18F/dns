@@ -384,7 +384,7 @@ resource "aws_route53_record" "18f_gov_compliance-viewer_18f_gov_cname" {
   name = "compliance-viewer.18f.gov."
   type = "CNAME"
   ttl = 300
-  records = ["d1ij48sfge1oxq.cloudfront.net"]
+  records = ["dw68mooipdgv2.cloudfront.net"]
 }
 
 resource "aws_route53_record" "18f_gov_content-guide_18f_gov_a" {
