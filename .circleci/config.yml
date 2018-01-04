@@ -35,8 +35,5 @@ workflows:
     jobs:
       - validate_terraform
       - deploy_env:
-#          filters:
-#            branches:
-#              only: deploy
           requires:
             - validate_terraform        

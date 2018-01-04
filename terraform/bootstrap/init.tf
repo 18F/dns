@@ -11,7 +11,7 @@ resource "aws_s3_bucket" "backend" {
   }
 }
 
-
+# 
 resource "aws_iam_user" "deployer" {
   name = "circleci-deployer"
 }
@@ -30,6 +30,20 @@ resource "aws_iam_user_policy" "circleci_deployer_policy" {
       ],
       "Effect": "Allow",
       "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket"],
+      "Resource": ["${aws_s3_bucket.backend.arn}"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": ["${aws_s3_bucket.backend.arn}/*"]
     }
   ]
 }
