@@ -173,52 +173,14 @@ resource "aws_route53_record" "k1_domainkey_support_digitalgov_gov_a" {
   ]
 }
 
-
-
-# ==========
-# NS Records
-
 # openopps.digitalgov.gov - NS
-resource "aws_route53_record" "digitalgov_gov_openopps_25_digitalgov_gov_ns" {
+resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_ns" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
-  type = "NS"
+  type = "CNAME"
   ttl = "300"
   records = [
-    "ns-1231.awsdns-25.org."
-  ]
-}
-
-# openopps.digitalgov.gov - NS
-resource "aws_route53_record" "digitalgov_gov_openopps_56_digitalgov_gov_ns" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "openopps.digitalgov.gov."
-  type = "NS"
-  ttl = "300"
-  records = [
-    "ns-452.awsdns-56.com."
-  ]
-}
-
-# openopps.digitalgov.gov - NS
-resource "aws_route53_record" "digitalgov_gov_openopps_34_digitalgov_gov_ns" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "openopps.digitalgov.gov."
-  type = "NS"
-  ttl = "300"
-  records = [
-    "ns-788.awsdns-34.net."
-  ]
-}
-
-# openopps.digitalgov.gov - NS
-resource "aws_route53_record" "digitalgov_gov_openopps_43_digitalgov_gov_ns" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "openopps.digitalgov.gov."
-  type = "NS"
-  ttl = "300"
-  records = [
-    "ns-1886.awsdns-43.co.uk."
+    "openopps.usajobs.gov."
   ]
 }
 
