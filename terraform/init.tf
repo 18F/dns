@@ -3,7 +3,9 @@ provider "aws" {
 }
 
 terraform {
-  backend "s3" {}
+  backend "s3" {
+    region = "us-east-1"
+  }
 }
 
 variable "cloudfront_zone_id" {
