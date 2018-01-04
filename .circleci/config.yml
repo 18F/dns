@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Set up Terraform
-          command: terraform init -backend-config=bucket=tts-dns-terraform-state -input=false terraform
+          command: terraform init -backend-config=terraform/backend.tfvars -input=false terraform
       - run:
           name: Validate Terraform
           command: terraform validate terraform
