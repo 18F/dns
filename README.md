@@ -1,10 +1,11 @@
+
 # TTS DNS configuration
 
 [![CircleCI](https://circleci.com/gh/18F/dns.svg?branch=deploy&style-svg)](https://circleci.com/gh/18F/dns)
 
 This repository holds the source code for configuring DNS for domains managed by GSA TTS, including 18F and the Presidential Innovation Fellows.
 
-[![dns-pipeline](https://user-images.githubusercontent.com/20934414/32065692-10d18d2c-ba43-11e7-9604-d97d7613bf1e.png)](https://github.com/18F/Infrastructure/wiki/DNS-architecture)
+[![dns-pipeline](https://user-images.githubusercontent.com/20934414/34623560-7dd34d3c-f217-11e7-95fd-1cc8236d4b5b.png)](https://github.com/18F/Infrastructure/wiki/DNS-architecture)
 
 ## Making changes
 
@@ -27,7 +28,7 @@ This repository holds the source code for configuring DNS for domains managed by
 
 It's worth noting that if you are pointing to a CloudFront distro, you should use Route 53's own `alias` and not a CNAME record. In fact, CNAMEing a top-level domain (or the top level of a delegated subdomain) is not allowed in DNS. See the various examples in the repo, such as [this one](https://github.com/18F/dns/blob/deploy/terraform/usa.gov.tf#L8-L17).
 
-On merge, changes are deployed to the cloud.gov AWS account automatically by an instance of Concourse hosted on [cloud.gov](https://cloud.gov). The configuration for the Concourse instance is in `pipeline.yml`.
+On merge, changes are deployed to the cloud.gov AWS account automatically by an instance of Concourse hosted on [cloud.gov](https://cloud.gov). The configuration for the Concourse instance is in `pipeline.yml`.  Note:  Deployment migration to [CircleCI](https://circleci.com/gh/18F/dns) is in progress.
 
 **Please note: only production systems with an ATO should have their DNS configuration here. If you wish to create DNS records for pre-production systems, please use the domain `sandbox.gov` which is available in the [TTS Sandbox account](https://pages.18f.gov/before-you-ship/infrastructure/sandbox/).**
 
