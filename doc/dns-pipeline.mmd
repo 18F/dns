@@ -2,7 +2,7 @@
 sequenceDiagram
   participant Github
   participant CI
-  participant Concourse
+  participant Deployer
   participant AWS
 
   note over Github: dns repo
@@ -14,11 +14,11 @@ sequenceDiagram
     CI -->>- Github: Delete pull request branch
   end
 
-  Note over Github: cg-pipeline-tasks repo
   Note over Github: dns repo
-  Github ->> Concourse: Deploys updated deploy branch
+  Note over Github: deploy pipeline
+  Github ->> Deployer: Deploys updated deploy branch
 
-  Note over Concourse: terraform apply
-  Concourse ->> AWS: update dns, save terraform state
+  Note over Deployer: terraform apply
+  Deployer ->> AWS: update dns, save terraform state
 
-  Note over Concourse: Report dns nameserver information
+  Note over Deployer: Report dns nameserver information
