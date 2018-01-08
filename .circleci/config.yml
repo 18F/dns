@@ -40,3 +40,10 @@ workflows:
               only: deploy
           requires:
             - validate_terraform        
+
+experimental:
+  notify:
+    branches:
+      only:
+        - deploy
+
