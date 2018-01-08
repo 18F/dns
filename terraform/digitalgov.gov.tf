@@ -85,6 +85,18 @@ resource "aws_route53_record" "demo_digitalgov_gov_a" {
   ]
 }
 
+
+# openopps.digitalgov.gov
+resource "aws_route53_record" "openopps_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "openopps.digitalgov.gov."
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "openopps.usajobs.gov."
+  ]
+}
+
 # usdigitalregistry.digitalgov.gov
 resource "aws_route53_record" "usdigitalregistry_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
