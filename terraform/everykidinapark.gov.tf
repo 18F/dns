@@ -61,7 +61,7 @@ resource "aws_route53_record" "everykidinapark_gov__dmarc_everykidinapark_gov_tx
   type = "TXT"
   ttl = 300
   records = [
-     "v=DMARC1; p=reject; rua=mailto:dmarcreports@gsa.gov; ruf=mailto:dmarcfailures@gsa.gov; fo=1; ri=86400"
+     "v=DMARC1; p=none; pct=10; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
   ]
 }
 
