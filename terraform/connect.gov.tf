@@ -53,5 +53,5 @@ resource "aws_route53_record" "connect_gov_dmarc_txt" {
   name = "_dmarc.connect.gov"
   ttl = "900"
   type = "TXT"
-  records = ["v=DMARC1; p=none; pct=100; fo=1; ri=3600; rua=mailto:gsalogin@rua.agari.com,mailto:dmarc-reports@login.gov; ruf=mailto:dmarc-forensics@login.gov"]
+  records = ["v=DMARC1; p=none; pct=100; fo=1; ri=3600; rua=mailto:gsalogin@rua.agari.com,mailto:reports@dmarc.cyber.dhs.gov,mailto:dmarc-reports@login.gov; ruf=mailto:dmarc-forensics@login.gov"]
 }
