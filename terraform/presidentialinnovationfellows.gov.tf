@@ -46,6 +46,16 @@ resource "aws_route53_record" "presidentialinnovationfellows_apex_txt" {
   records = ["google-site-verification=RBhAMKMQvrHWfxNfosQ9oUrrcwAme78JlrhD3cTQCvY"]
 }
 
+resource "aws_route53_record" "presidentialinnovationfellows__dmarc_presidentialinnovationfellows_txt" {
+  zone_id = "${aws_route53_zone.presidentialinnovationfellows_toplevel.zone_id}"
+  name = "_dmarc.presidentialinnovationfellows.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=DMARC1; p=none; pct=10; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
+  ]
+}
+
 resource "aws_route53_record" "presidentialinnovationfellows_amazonses" {
   zone_id = "${aws_route53_zone.presidentialinnovationfellows_toplevel.zone_id}"
   name = "_amazonses.presidentialinnovationfellows.gov."
