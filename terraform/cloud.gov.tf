@@ -789,6 +789,16 @@ resource "aws_route53_record" "cloud_gov_06c69b2987cb640e61fb65cc8213943d_fr-sta
   records = ["a957810e491407b51f8ffebfe467ab376ca2335d.comodoca.com."]
 }
 
+resource "aws_route53_record" "cloud_gov__dmarc_cloud_gov_txt" {
+  zone_id = "${aws_route53_zone.cloud_gov_zone.zone_id}"
+  name = "_dmarc.cloud.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=DMARC1; p=none; pct=10; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
+  ]
+}
+
 output "cloud_gov_ns" {
   value = "${aws_route53_zone.cloud_gov_zone.name_servers}"
 }
