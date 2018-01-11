@@ -100,17 +100,6 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   }
 }
 
-resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_aaaa" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "openopps.digitalgov.gov."
-  type = "AAAA"
-  alias {
-    name = "d11og6pgwhrztr.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_mx" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
