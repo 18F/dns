@@ -24,14 +24,6 @@ resource "aws_route53_record" "apps_gov_apps_gov_mx" {
   records = ["10 inbound-smtp.us-east-1.amazonaws.com."]
 }
 
-resource "aws_route53_record" "apps_gov_apps_gov_txt" {
-  zone_id = "${aws_route53_zone.apps_gov_zone.zone_id}"
-  name = "apps.gov."
-  type = "TXT"
-  ttl = 60
-  records = ["v=spf1 include:spf.mandrillapp.com ?all"]
-}
-
 resource "aws_route53_record" "apps_gov__dmarc_apps_gov_txt" {
   zone_id = "${aws_route53_zone.apps_gov_zone.zone_id}"
   name = "_dmarc.apps.gov."
@@ -64,14 +56,6 @@ resource "aws_route53_record" "apps_gov_f6vzy6nhqi3u6rk4yxxawrihkqtvx5by__domain
   type = "CNAME"
   ttl = 60
   records = ["f6vzy6nhqi3u6rk4yxxawrihkqtvx5by.dkim.amazonses.com."]
-}
-
-resource "aws_route53_record" "apps_gov_mandrill__domainkey_apps_gov_txt" {
-  zone_id = "${aws_route53_zone.apps_gov_zone.zone_id}"
-  name = "mandrill._domainkey.apps.gov."
-  type = "TXT"
-  ttl = 60
-  records = ["v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB;"]
 }
 
 resource "aws_route53_record" "apps_gov_nmhy3ybmnflrc262ad44iiydvn2iptrw__domainkey_apps_gov_cname" {
