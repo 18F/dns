@@ -124,9 +124,10 @@ resource "aws_route53_record" "digitalgov_gov_mandrill__domainkey_openopps_digit
   records = ["v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB;"]
 }
 
-# END OpenOpps ------------------------------------------
 
 
+
+# usdigitalregistry -------------------------------------
 
 # usdigitalregistry.digitalgov.gov
 resource "aws_route53_record" "usdigitalregistry_digitalgov_gov_a" {
@@ -135,9 +136,23 @@ resource "aws_route53_record" "usdigitalregistry_digitalgov_gov_a" {
   type = "CNAME"
   ttl = "300"
   records = [
-    "gsa-elb-ecs-prod-wild-diggov-1-1458076956.us-east-1.elb.amazonaws.com."
+    "alb-scmdrg-prod-digitalgov-pub-1-1069371853.us-east-1.elb.amazonaws.com."
   ]
 }
+
+# stage-socialmobileregistry.digitalgov.gov
+resource "aws_route53_record" "stage-socialmobileregistry_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "stage-socialmobileregistry.digitalgov.gov."
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "alb-scmdrg-stg-digitalgov-pub-1-286604225.us-east-1.elb.amazonaws.com."
+  ]
+}
+
+
+# DAP -------------------------------------
 
 # dap.digitalgov.gov
 resource "aws_route53_record" "dap_digitalgov_gov_a" {
@@ -149,6 +164,8 @@ resource "aws_route53_record" "dap_digitalgov_gov_a" {
     "d27f3qgc9anoq2.cloudfront.net."
   ]
 }
+
+
 
 # search.digitalgov.gov
 resource "aws_route53_record" "search_digitalgov_gov_a" {
@@ -191,17 +208,6 @@ resource "aws_route53_record" "find_digitalgov_gov_a" {
   ttl = "300"
   records = [
     "digitalgov.sites.infr.search.usa.gov."
-  ]
-}
-
-# stage-socialmobileregistry.digitalgov.gov
-resource "aws_route53_record" "stage-socialmobileregistry_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "stage-socialmobileregistry.digitalgov.gov."
-  type = "CNAME"
-  ttl = "300"
-  records = [
-    "gsa-elb-ecs-stg-wild-diggov-1-1092638291.us-east-1.elb.amazonaws.com."
   ]
 }
 
