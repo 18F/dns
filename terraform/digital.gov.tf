@@ -42,6 +42,32 @@ resource "aws_route53_record" "demo_digital_gov_a" {
   }
 }
 
+# USWDS -------------------------------
+# designsystem.digital.gov
+resource "aws_route53_record" "designsystem_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "designsystem.digital.gov."
+  type = "A"
+  alias {
+    name = "dlu3fkwowya06.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
+# components.designsystem.digital.gov
+resource "aws_route53_record" "components_designsystem_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "components.designsystem.digital.gov."
+  type = "A"
+  alias {
+    name = "dxngby1kewpe.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
+
 output "digital_ns" {
   value="${aws_route53_zone.digital_toplevel.name_servers}"
 }
