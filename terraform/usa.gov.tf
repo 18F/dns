@@ -33,11 +33,9 @@ resource "aws_route53_record" "usa_gov_components_standards_usa_gov_a" {
   zone_id = "${aws_route53_zone.usa_gov_zone.zone_id}"
   name = "components.standards.usa.gov."
   type = "A"
-  alias {
-    name = "54.85.132.205."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
+  records = [
+    "54.85.132.205"
+  ]
 }
 
 # Pointing at the USA.gov redirect server
@@ -45,11 +43,9 @@ resource "aws_route53_record" "usa_gov_standards_usa_gov_a" {
   zone_id = "${aws_route53_zone.usa_gov_zone.zone_id}"
   name = "standards.usa.gov."
   type = "A"
-  alias {
-    name = "54.85.132.205."
-    zone_id = "Z2FDTNDATAQYW2"
-    evaluate_target_health = false
-  }
+  records = [
+    "54.85.132.205"
+  ]
 }
 
 output "usa_gov_ns" {
