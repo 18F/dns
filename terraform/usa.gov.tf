@@ -33,6 +33,7 @@ resource "aws_route53_record" "usa_gov_components_standards_usa_gov_a" {
   zone_id = "${aws_route53_zone.usa_gov_zone.zone_id}"
   name = "components.standards.usa.gov."
   type = "A"
+  ttl = "300"
   records = [
     "54.85.132.205"
   ]
@@ -43,6 +44,7 @@ resource "aws_route53_record" "usa_gov_standards_usa_gov_a" {
   zone_id = "${aws_route53_zone.usa_gov_zone.zone_id}"
   name = "standards.usa.gov."
   type = "A"
+  ttl = "300"
   records = [
     "54.85.132.205"
   ]
