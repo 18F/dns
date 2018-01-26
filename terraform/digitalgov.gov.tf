@@ -312,6 +312,16 @@ resource "aws_route53_record" "support_digitalgov_gov_mx" {
 
 
 # BOD 
+resource "aws_route53_record" "digitalgov_gov_dmarc_digitalgov_gov_txt" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "_dmarc.digitalgov.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=spf1 -all"
+  ]
+}
+
 resource "aws_route53_record" "digitalgov_gov__dmarc_digitalgov_gov_txt" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "_dmarc.digitalgov.gov."
