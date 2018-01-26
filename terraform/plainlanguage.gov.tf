@@ -67,6 +67,17 @@ resource "aws_route53_record" "plainlanguage_google_txt" {
   ]
 }
 
+# BOD 
+resource "aws_route53_record" "plainlanguage_gov__dmarc_plainlanguage_gov_txt" {
+  zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
+  name = "_dmarc.plainlanguage.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=DMARC1; p=none; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
+  ]
+}
+
 output "plainlanguage_ns" {
   value="${aws_route53_zone.plainlanguage_toplevel.name_servers}"
 }
