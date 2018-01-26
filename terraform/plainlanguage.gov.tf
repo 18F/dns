@@ -74,7 +74,7 @@ resource "aws_route53_record" "plainlanguage_gov__dmarc_plainlanguage_gov_txt" {
   type = "TXT"
   ttl = 300
   records = [
-     "v=DMARC1; p=none; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
+     "v=DMARC1; p=none; pct=10; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
   ]
 }
 
