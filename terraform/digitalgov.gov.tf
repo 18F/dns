@@ -310,6 +310,29 @@ resource "aws_route53_record" "support_digitalgov_gov_mx" {
   ]
 }
 
+
+# BOD 
+resource "aws_route53_record" "digitalgov_gov_dmarc_digitalgov_gov_txt" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "digitalgov.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=spf1 -all"
+  ]
+}
+
+resource "aws_route53_record" "digitalgov_gov__dmarc_digitalgov_gov_txt" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "_dmarc.digitalgov.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=DMARC1; p=none; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
+  ]
+}
+
+
 output "digitalgov_gov_ns" {
   value="${aws_route53_zone.digitalgov_gov_zone.name_servers}"
 }
