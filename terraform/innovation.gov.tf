@@ -42,6 +42,27 @@ resource "aws_route53_record" "demo_innovation_gov_a" {
   }
 }
 
+# BOD 
+resource "aws_route53_record" "innovation_gov_dmarc_innovation_gov_txt" {
+  zone_id = "${aws_route53_zone.innovation_toplevel.zone_id}"
+  name = "innovation.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=spf1 -all"
+  ]
+}
+
+resource "aws_route53_record" "innovation_gov__dmarc_innovation_gov_txt" {
+  zone_id = "${aws_route53_zone.innovation_toplevel.zone_id}"
+  name = "_dmarc.innovation.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=DMARC1; p=none; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
+  ]
+}
+
 output "innovation_ns" {
   value="${aws_route53_zone.innovation_toplevel.name_servers}"
 }
