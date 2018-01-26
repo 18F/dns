@@ -91,6 +91,26 @@ resource "aws_route53_record" "components_designsystem_digital_gov_aaaa" {
   }
 }
 
+# BOD 
+resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "digital.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=spf1 -all"
+  ]
+}
+
+resource "aws_route53_record" "digital_gov__dmarc_digital_gov_txt" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "_dmarc.digital.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=DMARC1; p=none; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
+  ]
+}
 
 output "digital_ns" {
   value="${aws_route53_zone.digital_toplevel.name_servers}"
