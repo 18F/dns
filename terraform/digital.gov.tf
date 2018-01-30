@@ -91,9 +91,7 @@ resource "aws_route53_record" "components_designsystem_digital_gov_aaaa" {
   }
 }
 
-
-
-# emerging.digital.gov — A
+# emerging.digital.gov — A -------------------------------
 resource "aws_route53_record" "emerging_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "emerging.digital.gov."
@@ -104,8 +102,6 @@ resource "aws_route53_record" "emerging_digital_gov_a" {
     evaluate_target_health = false
   }
 }
-
-
 
 # BOD 
 resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
