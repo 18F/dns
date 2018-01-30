@@ -5,15 +5,17 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
   }
 }
 
-# digitalgov.gov
+# digitalgov.gov - - - this redirects to www.digitalgov.gov
 resource "aws_route53_record" "digitalgov_gov_apex" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "digitalgov.gov."
-  type = "A"
-  ttl = "300"
-  records = [
-    "13.90.82.69"
-  ]
+ zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+ name = "digitalgov.gov."
+ type = "A"
+
+ alias {
+   name = "d2a6ofmg0xhw1g.cloudfront.net."
+   zone_id = "Z2FDTNDATAQYW2"
+   evaluate_target_health = false
+ }
 }
 
 # o166.email.digitalgov.gov — A
