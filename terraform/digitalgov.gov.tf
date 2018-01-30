@@ -6,7 +6,7 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
 }
 
 # digitalgov.gov - - - this redirects to www.digitalgov.gov
-resource "aws_route53_record" "digitalgov_gov_apex" {
+resource "aws_route53_record" "digitalgov_gov_a" {
  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
  name = "digitalgov.gov."
  type = "A"
