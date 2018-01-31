@@ -56,6 +56,27 @@ resource "aws_route53_record" "beta_vote_gov_cname" {
   records = ["di5gyq0wmd14q.cloudfront.net."]
 }
 
+# BOD / DMARC
+resource "aws_route53_record" "vote_gov_dmarc_vote_gov_txt" {
+  zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
+  name = "vote.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=spf1 -all"
+  ]
+}
+
+resource "aws_route53_record" "vote_gov__dmarc_vote_gov_txt" {
+  zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
+  name = "_dmarc.vote.gov."
+  type = "TXT"
+  ttl = 300
+  records = [
+     "v=DMARC1; p=none; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
+  ]
+}
+
 output "vote_gov_ns" {
   value="${aws_route53_zone.vote_gov_zone.name_servers}"
 }
