@@ -62,9 +62,7 @@ resource "aws_route53_record" "vote_gov_dmarc_vote_gov_txt" {
   name = "vote.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=spf1 -all"
-  ]
+  records = ["v=spf1 -all"]
 }
 
 resource "aws_route53_record" "vote_gov__dmarc_vote_gov_txt" {
@@ -72,9 +70,7 @@ resource "aws_route53_record" "vote_gov__dmarc_vote_gov_txt" {
   name = "_dmarc.vote.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=DMARC1; p=none; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
-  ]
+  records = ["v=DMARC1; p=none; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"]
 }
 
 output "vote_gov_ns" {
