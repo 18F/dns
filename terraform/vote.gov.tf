@@ -21,7 +21,7 @@ resource "aws_route53_record" "vote_gov_vote_gov_txt" {
   name = "vote.gov."
   type = "TXT"
   ttl = 300
-  records = ["blitz=mu-cbb11232-c5e05a4b-b13f3a3c-060b48f0"]
+  records = ["v=spf1 -all", "blitz=mu-cbb11232-c5e05a4b-b13f3a3c-060b48f0"]
 }
 
 resource "aws_route53_record" "vote_gov_01872332dafeeb93b927e2d9e9b2c53d_vote_gov_cname" {
@@ -57,16 +57,6 @@ resource "aws_route53_record" "beta_vote_gov_cname" {
 }
 
 # BOD / DMARC
-resource "aws_route53_record" "vote_gov_dmarc_vote_gov_txt" {
-  zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
-  name = "vote.gov."
-  type = "TXT"
-  ttl = 300
-  records = [
-     "v=spf1 -all"
-  ]
-}
-
 resource "aws_route53_record" "vote_gov__dmarc_vote_gov_txt" {
   zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
   name = "_dmarc.vote.gov."
