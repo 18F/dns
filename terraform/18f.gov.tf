@@ -595,14 +595,6 @@ resource "aws_route53_record" "18f_gov_files_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_fpki_18f_gov_ns" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "fpki.18f.gov."
-  type = "NS"
-  ttl = 300
-  records = ["ns-521.awsdns-01.net.", "ns-1566.awsdns-03.co.uk.", "ns-1471.awsdns-55.org.", "ns-161.awsdns-20.com."]
-}
-
 resource "aws_route53_record" "18f_gov_frontend_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "frontend.18f.gov."
