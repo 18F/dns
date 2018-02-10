@@ -51,9 +51,7 @@ resource "aws_route53_record" "presidentialinnovationfellows__dmarc_presidential
   name = "_dmarc.presidentialinnovationfellows.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=DMARC1; p=none; pct=10; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
-  ]
+  records = ["${local.dmarc_10}"]
 }
 
 resource "aws_route53_record" "presidentialinnovationfellows_amazonses" {

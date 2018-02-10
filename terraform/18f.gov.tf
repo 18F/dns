@@ -37,9 +37,7 @@ resource "aws_route53_record" "18f_gov__dmarc_18f_gov_txt" {
   name = "_dmarc.18f.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=DMARC1; p=none; pct=10; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
-  ]
+  records = ["${local.dmarc_10}"]
 }
 
 resource "aws_route53_record" "18f_gov_01326251e4e9fc611488dd6bceaeba90_18f_gov_cname" {

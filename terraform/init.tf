@@ -16,4 +16,7 @@ locals {
   cloudfront_zone_id = "Z2FDTNDATAQYW2"
   // https://docs.aws.amazon.com/general/latest/gr/rande.html#elb_region
   elb_zone_id = "Z35SXDOTRQ7X7K"
+
+  dmarc_10 = "v=DMARC1; p=none; pct=10; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
+  dmarc_100 = "v=DMARC1; p=none; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
 }

@@ -60,9 +60,7 @@ resource "aws_route53_record" "everykidinapark_gov__dmarc_everykidinapark_gov_tx
   name = "_dmarc.everykidinapark.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=DMARC1; p=none; pct=10; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
-  ]
+  records = ["${local.dmarc_10}"]
 }
 
 output "everykidinapark_gov_ns" {
