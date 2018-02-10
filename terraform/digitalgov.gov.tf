@@ -317,9 +317,7 @@ resource "aws_route53_record" "digitalgov_gov_dmarc_digitalgov_gov_txt" {
   name = "digitalgov.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=spf1 -all"
-  ]
+  records = ["${local.spf_no_mail}"]
 }
 
 resource "aws_route53_record" "digitalgov_gov__dmarc_digitalgov_gov_txt" {

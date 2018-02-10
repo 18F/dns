@@ -48,9 +48,7 @@ resource "aws_route53_record" "innovation_gov_dmarc_innovation_gov_txt" {
   name = "innovation.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=spf1 -all"
-  ]
+  records = ["${local.spf_no_mail}"]
 }
 
 resource "aws_route53_record" "innovation_gov__dmarc_innovation_gov_txt" {

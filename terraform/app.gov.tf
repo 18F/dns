@@ -32,9 +32,7 @@ resource "aws_route53_record" "app_gov_app_gov_txt" {
   name = "app.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=spf1 -all"
-  ]
+  records = ["${local.spf_no_mail}"]
 }
 
 resource "aws_route53_record" "app_gov__dmarc_app_gov_txt" {

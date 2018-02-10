@@ -50,9 +50,7 @@ resource "aws_route53_record" "everykidinapark_gov_everykidinapark_gov_txt" {
   name = "everykidinapark.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=spf1 -all"
-  ]
+  records = ["${local.spf_no_mail}"]
 }
 
 resource "aws_route53_record" "everykidinapark_gov__dmarc_everykidinapark_gov_txt" {
