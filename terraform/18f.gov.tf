@@ -141,12 +141,23 @@ resource "aws_route53_record" "18f_gov_accessibility_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_ads_18f_gov_a" {
+resource "aws_route53_record" "18f_gov_._18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "ads.18f.gov."
   type = "A"
   alias {
     name = "d1p50apr0w92d2.cloudfront.net."
+    zone_id = "Z2FDTNDATAQYW2"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov_._18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "agile-bpa.18f.gov."
+  type = "A"
+  alias {
+    name = "d1isqls256uotf.cloudfront.net."
     zone_id = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
   }
