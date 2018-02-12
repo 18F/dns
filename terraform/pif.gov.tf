@@ -13,7 +13,7 @@ resource "aws_route53_record" "www" {
 
   alias {
     name = "dgevgiwb7xxpw.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -39,9 +39,7 @@ resource "aws_route53_record" "pif_gov__dmarc_pif_gov_txt" {
   name = "_dmarc.pif.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=DMARC1; p=none; pct=10; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
-  ]
+  records = ["${local.dmarc_10}"]
 }
 
 resource "aws_route53_record" "paygap_slack_cname" {
@@ -147,7 +145,7 @@ resource "aws_route53_record" "www-main" {
 
   alias {
     name = "dgevgiwb7xxpw.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
