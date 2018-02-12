@@ -141,7 +141,7 @@ resource "aws_route53_record" "18f_gov_accessibility_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_agile-bpa-old__18f_gov_a" {
+resource "aws_route53_record" "18f_gov_ads_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "ads.18f.gov."
   type = "A"
