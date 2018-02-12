@@ -13,7 +13,7 @@ resource "aws_route53_record" "presidentialinnovationfellows_www" {
 
   alias {
     name = "d26prp92rpqmzl.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -25,7 +25,7 @@ resource "aws_route53_record" "presidentialinnovationfellows_apex" {
 
   alias {
     name = "d26prp92rpqmzl.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -51,9 +51,7 @@ resource "aws_route53_record" "presidentialinnovationfellows__dmarc_presidential
   name = "_dmarc.presidentialinnovationfellows.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=DMARC1; p=none; pct=10; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
-  ]
+  records = ["${local.dmarc_10}"]
 }
 
 resource "aws_route53_record" "presidentialinnovationfellows_amazonses" {

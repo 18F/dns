@@ -13,7 +13,7 @@ resource "aws_route53_record" "digitalgov_gov_apex" {
 
  alias {
    name = "d2a6ofmg0xhw1g.cloudfront.net."
-   zone_id = "Z2FDTNDATAQYW2"
+   zone_id = "${local.cloud_gov_cloudfront_zone_id}"
    evaluate_target_health = false
  }
 }
@@ -97,7 +97,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   type = "A"
   alias {
     name = "d11og6pgwhrztr.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -107,7 +107,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_mx" {
   name = "openopps.digitalgov.gov."
   type = "MX"
   ttl = 300
-  records = ["10	30288227.in1.mandrillapp.com", "20	30288227.in2.mandrillapp.com"]
+  records = ["${local.mandrill_mx}"]
 }
 
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_txt" {
@@ -115,7 +115,7 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_txt" {
   name = "openopps.digitalgov.gov."
   type = "TXT"
   ttl = 300
-  records = ["v=spf1 include:spf.mandrillapp.com ?all"]
+  records = ["${local.mandrill_spf}"]
 }
 
 resource "aws_route53_record" "digitalgov_gov_mandrill__domainkey_openopps_digitalgov_gov_txt" {
@@ -123,7 +123,7 @@ resource "aws_route53_record" "digitalgov_gov_mandrill__domainkey_openopps_digit
   name = "mandrill._domainkey.openopps.digitalgov.gov."
   type = "TXT"
   ttl = 300
-  records = ["v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB;"]
+  records = ["${local.mandrill_dkim}"]
 }
 
 
@@ -267,9 +267,7 @@ resource "aws_route53_record" "digitalgov_gov_mandrill_domainkey_digitalgov_gov_
   name = "mandrill._domainkey.support.digitalgov.gov."
   type = "TXT"
   ttl = "3600"
-  records = [
-    "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB;"
-  ]
+  records = ["${local.mandrill_dkim}"]
 }
 
 # support.digitalgov.gov - TXT
@@ -313,15 +311,13 @@ resource "aws_route53_record" "support_digitalgov_gov_mx" {
 }
 
 
-# BOD 
+# BOD
 resource "aws_route53_record" "digitalgov_gov_dmarc_digitalgov_gov_txt" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "digitalgov.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=spf1 -all"
-  ]
+  records = ["${local.spf_no_mail}"]
 }
 
 resource "aws_route53_record" "digitalgov_gov__dmarc_digitalgov_gov_txt" {
@@ -329,9 +325,7 @@ resource "aws_route53_record" "digitalgov_gov__dmarc_digitalgov_gov_txt" {
   name = "_dmarc.digitalgov.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=DMARC1; p=none; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
-  ]
+  records = ["${local.dmarc_100}"]
 }
 
 

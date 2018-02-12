@@ -12,7 +12,7 @@ resource "aws_route53_record" "everykidinapark_gov_everykidinapark_gov_a" {
   type = "A"
   alias {
     name = "d356so74a5xncl.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -24,7 +24,7 @@ resource "aws_route53_record" "everykidinapark_gov_www_everykidinapark_gov_a" {
   type = "A"
   alias {
     name = "d356so74a5xncl.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -50,9 +50,7 @@ resource "aws_route53_record" "everykidinapark_gov_everykidinapark_gov_txt" {
   name = "everykidinapark.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=spf1 -all"
-  ]
+  records = ["${local.spf_no_mail}"]
 }
 
 resource "aws_route53_record" "everykidinapark_gov__dmarc_everykidinapark_gov_txt" {
@@ -60,9 +58,7 @@ resource "aws_route53_record" "everykidinapark_gov__dmarc_everykidinapark_gov_tx
   name = "_dmarc.everykidinapark.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=DMARC1; p=none; pct=10; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
-  ]
+  records = ["${local.dmarc_10}"]
 }
 
 output "everykidinapark_gov_ns" {
