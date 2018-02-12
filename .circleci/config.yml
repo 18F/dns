@@ -37,13 +37,12 @@ workflows:
       - deploy_env:
           filters:
             branches:
-              only: deploy
+              only: master
           requires:
-            - validate_terraform        
+            - validate_terraform
 
 experimental:
   notify:
     branches:
       only:
-        - deploy
-
+        - master
