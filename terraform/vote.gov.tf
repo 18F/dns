@@ -11,7 +11,7 @@ resource "aws_route53_record" "vote_gov_vote_gov_a" {
   type = "A"
   alias {
     name = "d2s5gzwyabrtbd.cloudfront.net"
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -21,7 +21,7 @@ resource "aws_route53_record" "vote_gov_vote_gov_txt" {
   name = "vote.gov."
   type = "TXT"
   ttl = 300
-  records = ["v=spf1 -all", "blitz=mu-cbb11232-c5e05a4b-b13f3a3c-060b48f0"]
+  records = ["${local.spf_no_mail}", "blitz=mu-cbb11232-c5e05a4b-b13f3a3c-060b48f0"]
 }
 
 resource "aws_route53_record" "vote_gov_01872332dafeeb93b927e2d9e9b2c53d_vote_gov_cname" {
@@ -37,7 +37,7 @@ resource "aws_route53_record" "vote_gov_www_vote_gov_a" {
   name = "www.vote.gov."
   type = "A"
   ttl = 120
-  records = ["54.85.132.205"]
+  records = ["${local.usa_gov_redirect_server}"]
 }
 
 resource "aws_route53_record" "new_vote_gov_cname" {
@@ -62,9 +62,7 @@ resource "aws_route53_record" "vote_gov__dmarc_vote_gov_txt" {
   name = "_dmarc.vote.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=DMARC1; p=none; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
-  ]
+  records = ["${local.dmarc_100}"]
 }
 
 output "vote_gov_ns" {
