@@ -656,47 +656,6 @@ resource "aws_route53_record" "18f_gov_grafana_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_green_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "green.18f.gov."
-  type = "A"
-  alias {
-    name = "${local.cloud_gov_green_elb}"
-    zone_id = "${local.elb_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "18f_gov_2a8fddd1983327b36b44a57664b8b5d2_green_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "2a8fddd1983327b36b44a57664b8b5d2.green.18f.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["79feafed26b7825cfc2efdb2a43c067b6563d81d.comodoca.com."]
-}
-
-resource "aws_route53_record" "18f_gov_star_green_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "*.green.18f.gov."
-  type = "A"
-  alias {
-    name = "${local.cloud_gov_green_elb}"
-    zone_id = "${local.elb_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "18f_gov_star_apps_green_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "*.apps.green.18f.gov."
-  type = "A"
-  alias {
-    name = "${local.cloud_gov_green_elb}"
-    zone_id = "${local.elb_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_grouplet-playbook_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "grouplet-playbook.18f.gov."
@@ -704,17 +663,6 @@ resource "aws_route53_record" "18f_gov_grouplet-playbook_18f_gov_a" {
   alias {
     name = "d3ry367ji31g0v.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "18f_gov_star_sys_green_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "*.sys.green.18f.gov."
-  type = "A"
-  alias {
-    name = "${local.cloud_gov_green_elb}"
-    zone_id = "${local.elb_zone_id}"
     evaluate_target_health = false
   }
 }
