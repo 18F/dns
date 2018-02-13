@@ -11,7 +11,7 @@ resource "aws_route53_record" "apps_gov_apps_gov_a" {
   type = "A"
   alias {
     name = "d24f99alwtdu0h.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -29,9 +29,7 @@ resource "aws_route53_record" "apps_gov__dmarc_apps_gov_txt" {
   name = "_dmarc.apps.gov."
   type = "TXT"
   ttl = 300
-  records = [
-     "v=DMARC1; p=none; pct=10; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
-  ]
+  records = ["${local.dmarc_10}"]
 }
 
 resource "aws_route53_record" "apps_gov_7020370b93980d607416a29297f68e3b_apps_gov_cname" {
@@ -88,7 +86,7 @@ resource "aws_route53_record" "apps_gov_www_apps_gov_a" {
   type = "A"
   alias {
     name = "d24f99alwtdu0h.cloudfront.net."
-    zone_id = "Z2FDTNDATAQYW2"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
