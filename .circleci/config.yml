@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  validate_terraform:
+  plan:
     docker:
       - image: hashicorp/terraform:light
     steps:
@@ -17,7 +17,7 @@ jobs:
           paths:
             - ./*
 
-  deploy_env:
+  apply:
     docker:
       - image: hashicorp/terraform:light
     steps:
@@ -33,13 +33,13 @@ workflows:
 
   validate_and_deploy:
     jobs:
-      - validate_terraform
-      - deploy_env:
+      - plan
+      - apply:
           filters:
             branches:
               only: master
           requires:
-            - validate_terraform
+            - plan
 
 experimental:
   notify:
