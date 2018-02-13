@@ -10,7 +10,7 @@ jobs:
           command: terraform init -backend-config=terraform/backend.tfvars -input=false terraform
       - run:
           name: Validate Terraform config and create the plan
-          command: terraform plan -out=tfplan -input=false terraform
+          command: terraform plan -input=false terraform
 
       - persist_to_workspace:
           root: .
@@ -26,7 +26,7 @@ jobs:
 
       - run:
           name: Deploy the full environment
-          command: terraform apply -input=false -auto-approve terraform/tfplan
+          command: terraform apply -input=false -auto-approve terraform
 
 workflows:
   version: 2
