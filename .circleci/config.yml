@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  validate_terraform:
+  plan:
     docker:
       - image: hashicorp/terraform:light
     steps:
@@ -9,15 +9,15 @@ jobs:
           name: Set up Terraform
           command: terraform init -backend-config=terraform/backend.tfvars -input=false terraform
       - run:
-          name: Validate Terraform
-          command: terraform validate terraform
+          name: Validate Terraform config and create the plan
+          command: terraform plan -out=tfplan -input=false terraform
 
       - persist_to_workspace:
           root: .
           paths:
             - ./*
 
-  deploy_env:
+  apply:
     docker:
       - image: hashicorp/terraform:light
     steps:
@@ -26,20 +26,20 @@ jobs:
 
       - run:
           name: Deploy the full environment
-          command: terraform apply -input=false -auto-approve terraform
+          command: terraform apply -input=false -auto-approve terraform/tfplan
 
 workflows:
   version: 2
 
   validate_and_deploy:
     jobs:
-      - validate_terraform
-      - deploy_env:
+      - plan
+      - apply:
           filters:
             branches:
               only: master
           requires:
-            - validate_terraform
+            - plan
 
 experimental:
   notify:
