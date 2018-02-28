@@ -885,6 +885,17 @@ resource "aws_route53_record" "18f_gov_e02bc03821dff6c0c958b96ad4476517_munki_18
   records = ["d3a976c8a19db425a0b6fab24f793df8c0341d67.comodoca.com."]
 }
 
+resource "aws_route53_record" "18f_gov_onepagetest_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "onepagetest.18f.gov."
+  type = "A"
+  alias {
+    name = "d9lvxy3j4axe0.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "18f_gov_open-source-guide_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "open-source-guide.18f.gov."
