@@ -64,6 +64,39 @@ resource "aws_route53_record" "dap_validation_digitalgov_gov_a" {
 }
 # ===== End temporary record for validation =====
 
+# required for AWS SES to DKIM-sign emails sent "From" support.digitalgov.gov
+resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "4ixtpnvpubjuxqvnex727otq55y2ew7w._domainkey.support.digitalgov.gov."
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "4ixtpnvpubjuxqvnex727otq55y2ew7w.dkim.amazonses.com"
+  ]
+}
+
+# required for AWS SES to DKIM-sign emails sent "From" support.digitalgov.gov
+resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_b" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "tmoxp5vgftwsmhkukt2z6ayvfj5bw7zo._domainkey.support.digitalgov.gov."
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "tmoxp5vgftwsmhkukt2z6ayvfj5bw7zo.dkim.amazonses.com"
+  ]
+}
+
+# required for AWS SES to DKIM-sign emails sent "From" support.digitalgov.gov
+resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_c" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "5uiojtkg7z5grkldq7ajm3zamtzh3h2s._domainkey.support.digitalgov."
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "5uiojtkg7z5grkldq7ajm3zamtzh3h2s.dkim.amazonses.com"
+  ]
+}
+
 
 # www.digitalgov.gov
 resource "aws_route53_record" "digitalgov_gov_www" {
@@ -277,10 +310,21 @@ resource "aws_route53_record" "digitalgov_gov_support_digitalgov_gov_txt" {
   type = "TXT"
   ttl = "3600"
   records = [
-    "v=spf1 include:spf.mandrillapp.com include:mail.zendesk.com include:emailsrvr.com include:servers.mcsv.net ~all"
+    "v=spf1 include:spf.mandrillapp.com include:mail.zendesk.com include:emailsrvr.com include:servers.mcsv.net include:amazonses.com ~all"
   ]
 }
 
+
+# required by AWS SES to verify control of the support.digitalgov.gov domain
+resource "aws_route53_record" "support_digitalgov_gov_ses_verification" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "_amazonses.support.digitalgov.gov."
+  type = "TXT"
+  ttl = "3600"
+  records = [
+    "T5etn/YylzSUQQWw6HspyK4+2+B9XzE7Kajpz9ogfJI="
+  ]
+}
 
 
 
