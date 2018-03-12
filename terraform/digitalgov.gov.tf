@@ -89,7 +89,7 @@ resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_b" {
 # required for AWS SES to DKIM-sign emails sent "From" support.digitalgov.gov
 resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_c" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "5uiojtkg7z5grkldq7ajm3zamtzh3h2s._domainkey.support.digitalgov."
+  name = "5uiojtkg7z5grkldq7ajm3zamtzh3h2s._domainkey.support.digitalgov.gov."
   type = "CNAME"
   ttl = "300"
   records = [
