@@ -1,1 +1,1 @@
-PRs affecting a Federalist site must receive approval from the Federalist team or their approved designate.
+PRs affecting a Federalist site must receive approval from the Federalist team or their approved designate. (note that the Federalist team doesn't own the dns server and can't lead in resolving DNS deployment issues for a TTS site on Federalist)
