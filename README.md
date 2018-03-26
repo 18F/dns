@@ -1,4 +1,3 @@
-
 # TTS DNS configuration
 
 [![CircleCI](https://circleci.com/gh/18F/dns.svg?branch=master&style-svg)](https://circleci.com/gh/18F/dns)
@@ -8,6 +7,8 @@ This repository holds the source code for configuring DNS for domains managed by
 [![dns-pipeline](https://user-images.githubusercontent.com/20934414/34623560-7dd34d3c-f217-11e7-95fd-1cc8236d4b5b.png)](https://github.com/18F/Infrastructure/wiki/DNS-architecture)
 
 ## Making changes
+
+Assuming you're 18F staff, it's recommended that you make the change in a branch on this repository itself, rather than on a fork. CI builds on forks will fail, because the credentials aren't shared with forks.
 
 1. Is the domain pointing to the right nameservers? In other words, is there a file for the domain under [`terraform/`](terraform) already?
     * **Yes:** Continue to next step.
