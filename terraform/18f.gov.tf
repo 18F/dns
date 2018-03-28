@@ -24,12 +24,28 @@ resource "aws_route53_record" "18f_gov_18f_gov_mx" {
   records = ["${local.mandrill_mx}"]
 }
 
+resource "aws_route53_record" "18f_gov_amazonses_18f_gov_mx" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "amazonses.18f.gov."
+  type = "MX"
+  ttl = 300
+  records = ["10 feedback-smtp.us-east-1.amazonses.com"]
+}
+
 resource "aws_route53_record" "18f_gov_18f_gov_txt" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "18f.gov."
   type = "TXT"
   ttl = 300
   records = ["${local.mandrill_spf}"]
+}
+
+resource "aws_route53_record" "18f_gov_amazonses_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "amazonses.18f.gov."
+  type = "TXT"
+  ttl = 300
+  records = ["v=spf1 include:amazonses.com ~all"]
 }
 
 resource "aws_route53_record" "18f_gov__dmarc_18f_gov_txt" {
