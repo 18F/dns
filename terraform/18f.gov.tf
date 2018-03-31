@@ -88,17 +88,6 @@ resource "aws_route53_record" "18f_gov_89afa0142502f9be9fba3afd80a703e1_18f_gov_
   records = ["11c866ad428c34fc9aa545123e72ef879b0898ef.comodoca.com."]
 }
 
-resource "aws_route53_record" "18f_gov_star_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "*.18f.gov."
-  type = "A"
-  alias {
-    name = "dualstack.cf-elb-elb-155eqjkdtn55i-611685241.us-east-1.elb.amazonaws.com."
-    zone_id = "${local.elb_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov__amazonses_18f_gov_txt" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "_amazonses.18f.gov."
@@ -378,7 +367,7 @@ resource "aws_route53_record" "18f_gov_cap_18f_gov_a" {
   name = "cap.18f.gov."
   type = "A"
   alias {
-    name = "dualstack.production-star-18f-gov-elb-1963420885.us-gov-west-1.elb.amazonaws.com."
+    name = "dualstack.production-cloudfoundry-apps-1374881977.us-gov-west-1.elb.amazonaws.com."
     zone_id = "${local.old_cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -1021,7 +1010,7 @@ resource "aws_route53_record" "18f_gov_requests_18f_gov_a" {
   name = "requests.18f.gov."
   type = "A"
   alias {
-    name = "dualstack.production-star-18f-gov-elb-1963420885.us-gov-west-1.elb.amazonaws.com."
+    name = "dualstack.production-cloudfoundry-apps-1374881977.us-gov-west-1.elb.amazonaws.com."
     zone_id = "${local.old_cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -1086,7 +1075,7 @@ resource "aws_route53_record" "18f_gov_tock_18f_gov_cname" {
   name = "tock.18f.gov."
   type = "CNAME"
   ttl = 300
-  records = ["dualstack.production-star-18f-gov-elb-1963420885.us-gov-west-1.elb.amazonaws.com"]
+  records = ["dualstack.production-cloudfoundry-apps-1374881977.us-gov-west-1.elb.amazonaws.com."]
 }
 
 resource "aws_route53_record" "18f_gov_writing-lab-guide_18f_gov_a" {
