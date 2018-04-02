@@ -56,6 +56,14 @@ resource "aws_route53_record" "18f_gov__dmarc_18f_gov_txt" {
   records = ["${local.dmarc_10}"]
 }
 
+resource "aws_route53_record" "18f_gov__acme-challenge_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.18f.gov."
+  type = "TXT"
+  ttl = 300
+  records = ["pEkgOBDXa7LJqQhnniOe_AIN1tgSObw3kX6y32t34sA"]
+}
+
 resource "aws_route53_record" "18f_gov_01326251e4e9fc611488dd6bceaeba90_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "01326251e4e9fc611488dd6bceaeba90.18f.gov."
