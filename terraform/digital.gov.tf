@@ -6,37 +6,41 @@ resource "aws_route53_zone" "digital_toplevel" {
   }
 }
 
+# digital.gov
 resource "aws_route53_record" "digital_gov_apex" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "digital.gov."
   type = "A"
 
   alias {
-    name = "d2q1i25any8vwy.cloudfront.net."
+    name = "djce1rrjucuix.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
 
+# www.digital.gov
+# redirects to digital.gov via Federalist redirect
 resource "aws_route53_record" "digital_gov_www" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "www.digital.gov."
   type = "A"
 
   alias {
-    name = "d2q1i25any8vwy.cloudfront.net."
+    name = "d1wh5biaq5z7yu.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
 
+# demo.digital.gov
 resource "aws_route53_record" "demo_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "demo.digital.gov."
   type = "A"
 
   alias {
-    name = "d1f2igtqmwwbgm.cloudfront.net."
+    name = "d3oyi0vhjafspr.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
