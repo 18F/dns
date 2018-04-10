@@ -903,7 +903,7 @@ resource "aws_route53_record" "18f_gov_onepagetest_18f_gov_a" {
   name = "onepagetest.18f.gov."
   type = "A"
   alias {
-    name = "d9lvxy3j4axe0.cloudfront.net."
+    name = "d11sjos2lh2ef3.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
