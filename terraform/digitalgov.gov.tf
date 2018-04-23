@@ -227,7 +227,7 @@ resource "aws_route53_record" "summit_digitalgov_gov_a" {
   type = "CNAME"
   ttl = "300"
   records = [
-    "www.usa.gov.edgekey.net."
+    "d1wh5biaq5z7yu.cloudfront.net."
   ]
 }
 
