@@ -246,18 +246,6 @@ resource "aws_route53_record" "find_digitalgov_gov_a" {
   ]
 }
 
-# this record can be removed after 2018-03-31 once the search-gov app is no longer sending emails via Mandrill
-# k1._domainkey.support.digitalgov.gov — CNAME
-resource "aws_route53_record" "k1_domainkey_support_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "k1._domainkey.support.digitalgov.gov."
-  type = "CNAME"
-  ttl = "300"
-  records = [
-    "dkim.mcsv.net."
-  ]
-}
-
 
 # ==========
 # TXT Records
@@ -295,17 +283,7 @@ resource "aws_route53_record" "digitalgov_gov_m1_domainkey_digitalgov_gov_txt" {
   ]
 }
 
-# this record can be removed after 2018-03-31 once the search-gov app is no longer sending emails via Mandrill
-# mandrill._domainkey.support.digitalgov.gov - TXT
-resource "aws_route53_record" "digitalgov_gov_mandrill_domainkey_digitalgov_gov_txt" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "mandrill._domainkey.support.digitalgov.gov."
-  type = "TXT"
-  ttl = "3600"
-  records = ["${local.mandrill_dkim}"]
-}
-
-# the Mandrill-related values in this record can be removed after 2018-03-31 once the search-gov app is no longer sending emails via Mandrill
+# the emailsrvr.com part in this record can be removed once we've safely transitioned incoming email handling from Rackspace to AWS SES
 # support.digitalgov.gov - TXT
 resource "aws_route53_record" "digitalgov_gov_support_digitalgov_gov_txt" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
@@ -313,7 +291,7 @@ resource "aws_route53_record" "digitalgov_gov_support_digitalgov_gov_txt" {
   type = "TXT"
   ttl = "3600"
   records = [
-    "v=spf1 include:spf.mandrillapp.com include:mail.zendesk.com include:emailsrvr.com include:servers.mcsv.net include:amazonses.com ~all"
+    "v=spf1 include:mail.zendesk.com include:emailsrvr.com include:amazonses.com ~all"
   ]
 }
 
@@ -351,7 +329,7 @@ resource "aws_route53_record" "support_digitalgov_gov_mx" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "support.digitalgov.gov."
   type = "MX"
-  ttl = "600"
+  ttl = "60"
   records = [
     "10 mx1.emailsrvr.com."
   ]
