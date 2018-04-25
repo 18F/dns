@@ -8,7 +8,7 @@ This repository holds the source code for configuring DNS for domains managed by
 
 ## Making changes
 
-Assuming you're 18F staff, it's recommended that you make the change in a branch on this repository itself, rather than on a fork. CI builds on forks will fail, because the credentials aren't shared with forks.
+Assuming you're TTS staff, it's recommended that you **make the change in a branch on this repository itself, rather than on a fork**, because the credentials aren't shared with forks.
 
 1. Is the domain pointing to the right nameservers? In other words, is there a file for the domain under [`terraform/`](terraform) already?
     * **Yes:** Continue to next step.
