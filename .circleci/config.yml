@@ -9,8 +9,15 @@ jobs:
           name: Set up Terraform
           command: terraform init -backend-config=terraform/backend.tfvars -input=false terraform
       - run:
-          name: Validate Terraform config and create the plan
-          command: terraform plan -input=false terraform
+          name: Validate Terraform config
+          # https://discuss.circleci.com/t/create-separate-steps-jobs-for-pr-forks-versus-branches/13419/2
+          command: |
+            if [[ ((`echo $CIRCLE_BRANCH | grep -c "pull"` > 0))]]; then
+              echo "This is from a fork."
+              terraform validate terraform
+            else
+              terraform plan -input=false terraform
+            fi
 
       - persist_to_workspace:
           root: .
