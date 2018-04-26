@@ -5,17 +5,45 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
   }
 }
 
-# digitalgov.gov - - - this redirects to www.digitalgov.gov
+# digitalgov.gov
+# redirects to digital.gov via Federalist Redirect
+# See: https://github.com/18F/pages-redirects
 resource "aws_route53_record" "digitalgov_gov_apex" {
  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
  name = "digitalgov.gov."
  type = "A"
 
  alias {
-   name = "d2a6ofmg0xhw1g.cloudfront.net."
+   name = "d1wh5biaq5z7yu.cloudfront.net."
    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
    evaluate_target_health = false
  }
+}
+
+# www.digitalgov.gov
+# redirects to digital.gov via Federalist Redirect
+# See: https://github.com/18F/pages-redirects
+resource "aws_route53_record" "digitalgov_gov_www" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "www.digitalgov.gov."
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "d1wh5biaq5z7yu.cloudfront.net."
+  ]
+}
+
+# demo.digitalgov.gov
+# redirects to demo.digital.gov via Federalist Redirect
+# See: https://github.com/18F/pages-redirects
+resource "aws_route53_record" "demo_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "demo.digitalgov.gov."
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "d1wh5biaq5z7yu.cloudfront.net."
+  ]
 }
 
 # o166.email.digitalgov.gov — A
@@ -98,27 +126,6 @@ resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_c" {
 }
 
 
-# www.digitalgov.gov
-resource "aws_route53_record" "digitalgov_gov_www" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "www.digitalgov.gov."
-  type = "CNAME"
-  ttl = "300"
-  records = [
-    "djce1rrjucuix.cloudfront.net."
-  ]
-}
-
-# demo.digitalgov.gov
-resource "aws_route53_record" "demo_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "demo.digitalgov.gov."
-  type = "CNAME"
-  ttl = "300"
-  records = [
-    "d3oyi0vhjafspr.cloudfront.net."
-  ]
-}
 
 
 
@@ -195,7 +202,7 @@ resource "aws_route53_record" "summit_digitalgov_gov_a" {
   type = "CNAME"
   ttl = "300"
   records = [
-    "www.usa.gov.edgekey.net."
+    "d1wh5biaq5z7yu.cloudfront.net."
   ]
 }
 
