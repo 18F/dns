@@ -135,31 +135,6 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   }
 }
 
-resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_mx" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "openopps.digitalgov.gov."
-  type = "MX"
-  ttl = 300
-  records = ["${local.mandrill_mx}"]
-}
-
-resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_txt" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "openopps.digitalgov.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.mandrill_spf}"]
-}
-
-resource "aws_route53_record" "digitalgov_gov_mandrill__domainkey_openopps_digitalgov_gov_txt" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name = "mandrill._domainkey.openopps.digitalgov.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.mandrill_dkim}"]
-}
-
-
 
 
 # usdigitalregistry -------------------------------------
