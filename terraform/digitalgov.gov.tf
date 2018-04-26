@@ -331,7 +331,7 @@ resource "aws_route53_record" "support_digitalgov_gov_mx" {
   type = "MX"
   ttl = "60"
   records = [
-    "10 mx1.emailsrvr.com."
+    "10 inbound-smtp.us-east-1.amazonaws.com."
   ]
 }
 
