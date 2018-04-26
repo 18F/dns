@@ -803,30 +803,6 @@ resource "aws_route53_record" "18f_gov_micropurchase-staging_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_micropurchase-staging_18f_gov_mx" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "micropurchase-staging.18f.gov."
-  type = "MX"
-  ttl = 300
-  records = ["${local.mandrill_mx}"]
-}
-
-resource "aws_route53_record" "18f_gov_micropurchase-staging_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "micropurchase-staging.18f.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.mandrill_spf}"]
-}
-
-resource "aws_route53_record" "18f_gov_mandrill__domainkey_micropurchase-staging_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "mandrill._domainkey.micropurchase-staging.18f.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.mandrill_dkim}"]
-}
-
 # Configured with CDN Broker
 resource "aws_route53_record" "18f_gov_micropurchase_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
@@ -837,30 +813,6 @@ resource "aws_route53_record" "18f_gov_micropurchase_18f_gov_a" {
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
-}
-
-resource "aws_route53_record" "18f_gov_micropurchase_18f_gov_mx" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "micropurchase.18f.gov."
-  type = "MX"
-  ttl = 300
-  records = ["${local.mandrill_mx}"]
-}
-
-resource "aws_route53_record" "18f_gov_micropurchase_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "micropurchase.18f.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.mandrill_spf}"]
-}
-
-resource "aws_route53_record" "18f_gov_mandrill__domainkey_micropurchase_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "mandrill._domainkey.micropurchase.18f.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.mandrill_dkim}"]
 }
 
 resource "aws_route53_record" "18f_gov_modularcontracting_18f_gov_a" {
