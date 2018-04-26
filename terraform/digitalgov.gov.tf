@@ -116,7 +116,7 @@ resource "aws_route53_record" "demo_digitalgov_gov_a" {
   type = "CNAME"
   ttl = "300"
   records = [
-    "djce1rrjucuix.cloudfront.net."
+    "https://d1wh5biaq5z7yu.cloudfront.net/."
   ]
 }
 
