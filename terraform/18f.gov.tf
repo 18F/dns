@@ -16,28 +16,12 @@ resource "aws_route53_record" "18f_gov_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_18f_gov_mx" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "18f.gov."
-  type = "MX"
-  ttl = 300
-  records = ["${local.mandrill_mx}"]
-}
-
 resource "aws_route53_record" "18f_gov_amazonses_18f_gov_mx" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "amazonses.18f.gov."
   type = "MX"
   ttl = 300
   records = ["10 feedback-smtp.us-east-1.amazonses.com"]
-}
-
-resource "aws_route53_record" "18f_gov_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "18f.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.mandrill_spf}"]
 }
 
 resource "aws_route53_record" "18f_gov_amazonses_18f_gov_txt" {
@@ -110,14 +94,6 @@ resource "aws_route53_record" "18f_gov_jfumetkqthwzknxvlqsi7cnwzxultyek__domaink
   type = "CNAME"
   ttl = 1800
   records = ["jfumetkqthwzknxvlqsi7cnwzxultyek.dkim.amazonses.com"]
-}
-
-resource "aws_route53_record" "18f_gov_mandrill__domainkey_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "mandrill._domainkey.18f.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.mandrill_dkim}"]
 }
 
 resource "aws_route53_record" "18f_gov_qegrzvzekq4wiompgqufe4xwmarm37lh__domainkey_18f_gov_cname" {
@@ -328,30 +304,6 @@ resource "aws_route53_record" "18f_gov_brand_18f_gov_a" {
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
-}
-
-resource "aws_route53_record" "18f_gov_c2_18f_gov_mx" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "c2.18f.gov."
-  type = "MX"
-  ttl = 60
-  records = ["${local.mandrill_mx}"]
-}
-
-resource "aws_route53_record" "18f_gov_c2_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "c2.18f.gov."
-  type = "TXT"
-  ttl = 60
-  records = ["${local.mandrill_spf}"]
-}
-
-resource "aws_route53_record" "18f_gov_mandrill__domainkey_c2_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "mandrill._domainkey.c2.18f.gov."
-  type = "TXT"
-  ttl = 60
-  records = ["${local.mandrill_dkim}"]
 }
 
 resource "aws_route53_record" "18f_gov_c6769c03c29466618a6bd23b158d28a6_18f_gov_cname" {
@@ -966,30 +918,6 @@ resource "aws_route53_record" "18f_gov_requests_18f_gov_a" {
     zone_id = "${local.old_cloudfront_zone_id}"
     evaluate_target_health = false
   }
-}
-
-resource "aws_route53_record" "18f_gov_requests_18f_gov_mx" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "requests.18f.gov."
-  type = "MX"
-  ttl = 300
-  records = ["${local.mandrill_mx}"]
-}
-
-resource "aws_route53_record" "18f_gov_requests_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "requests.18f.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.mandrill_spf}"]
-}
-
-resource "aws_route53_record" "18f_gov_mandrill__domainkey_requests_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "mandrill._domainkey.requests.18f.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.mandrill_dkim}"]
 }
 
 resource "aws_route53_record" "18f_gov_slides_18f_gov_a" {
