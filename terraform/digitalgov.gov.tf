@@ -5,7 +5,7 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
   }
 }
 
-# digitalgov.gov — this redirects to digital.gov
+# digitalgov.gov — redirects to digital.gov through pages_redirect
 resource "aws_route53_record" "digitalgov_gov_apex" {
  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
  name = "digitalgov.gov."
@@ -98,7 +98,7 @@ resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_c" {
 }
 
 
-# www.digitalgov.gov — redirects to digital.gov
+# www.digitalgov.gov — redirects to digital.gov through pages_redirect
 resource "aws_route53_record" "digitalgov_gov_www" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "www.digitalgov.gov."
@@ -109,7 +109,7 @@ resource "aws_route53_record" "digitalgov_gov_www" {
   ]
 }
 
-# demo.digitalgov.gov
+# demo.digitalgov.gov — redirects to demo.digital.gov through pages_redirect
 resource "aws_route53_record" "demo_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "demo.digitalgov.gov."
