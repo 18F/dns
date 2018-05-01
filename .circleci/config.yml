@@ -7,10 +7,16 @@ jobs:
       - checkout
       - run:
           name: Set up Terraform
-          command: terraform init -backend-config=terraform/backend.tfvars -input=false terraform
+          # https://discuss.circleci.com/t/create-separate-steps-jobs-for-pr-forks-versus-branches/13419/2
+          command: |
+            if [[ $(echo "$CIRCLE_BRANCH" | grep -c "pull") -gt 0 ]]; then
+              echo "This is from a fork."
+              terraform init -backend=false -input=false terraform
+            else
+              terraform init -backend-config=terraform/backend.tfvars -input=false terraform
+            fi
       - run:
           name: Validate Terraform config
-          # https://discuss.circleci.com/t/create-separate-steps-jobs-for-pr-forks-versus-branches/13419/2
           command: |
             if [[ $(echo "$CIRCLE_BRANCH" | grep -c "pull") -gt 0 ]]; then
               echo "This is from a fork."
