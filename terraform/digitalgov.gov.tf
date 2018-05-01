@@ -5,14 +5,14 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
   }
 }
 
-# digitalgov.gov - - - this redirects to www.digitalgov.gov
+# digitalgov.gov — redirects to digital.gov through pages_redirect
 resource "aws_route53_record" "digitalgov_gov_apex" {
  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
  name = "digitalgov.gov."
  type = "A"
 
  alias {
-   name = "d2a6ofmg0xhw1g.cloudfront.net."
+   name = "dj62070yqrr60.cloudfront.net."
    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
    evaluate_target_health = false
  }
@@ -98,18 +98,18 @@ resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_c" {
 }
 
 
-# www.digitalgov.gov
+# www.digitalgov.gov — redirects to digital.gov through pages_redirect
 resource "aws_route53_record" "digitalgov_gov_www" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "www.digitalgov.gov."
   type = "CNAME"
   ttl = "300"
   records = [
-    "djce1rrjucuix.cloudfront.net."
+    "d1rrea61xhwc36.cloudfront.net."
   ]
 }
 
-# demo.digitalgov.gov
+# demo.digitalgov.gov — redirects to demo.digital.gov through pages_redirect
 resource "aws_route53_record" "demo_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "demo.digitalgov.gov."
@@ -124,17 +124,17 @@ resource "aws_route53_record" "demo_digitalgov_gov_a" {
 
 # OpenOpps ------------------------------------------
 
+# openopps.digitalgov.gov — redirects to openopps.usajobs.gov through pages_redirect
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "openopps.digitalgov.gov."
   type = "A"
   alias {
-    name = "d11og6pgwhrztr.cloudfront.net."
+    name = "d198punmzgrl9l.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
-
 
 
 # usdigitalregistry -------------------------------------
@@ -188,14 +188,14 @@ resource "aws_route53_record" "search_digitalgov_gov_a" {
   ]
 }
 
-# summit.digitalgov.gov
+# summit.digitalgov.gov — redirects to digital.gov through pages_redirect
 resource "aws_route53_record" "summit_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "summit.digitalgov.gov."
   type = "CNAME"
   ttl = "300"
   records = [
-    "www.usa.gov.edgekey.net."
+    "d3quko6qtudpnl.cloudfront.net."
   ]
 }
 

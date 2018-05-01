@@ -18,13 +18,14 @@ resource "aws_route53_record" "digital_gov_apex" {
   }
 }
 
+# www.digital.gov — redirects to digital.gov through pages_redirect
 resource "aws_route53_record" "digital_gov_www" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "www.digital.gov."
   type = "A"
 
   alias {
-    name = "d2q1i25any8vwy.cloudfront.net."
+    name = "d11gdxqvugzxkr.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
