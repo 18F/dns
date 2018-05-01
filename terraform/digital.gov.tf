@@ -24,7 +24,7 @@ resource "aws_route53_record" "digital_gov_www" {
   type = "A"
 
   alias {
-    name = "d2q1i25any8vwy.cloudfront.net."
+    name = "d11gdxqvugzxkr.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }

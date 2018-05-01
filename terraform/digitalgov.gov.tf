@@ -5,7 +5,7 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
   }
 }
 
-# digitalgov.gov - - - this redirects to www.digitalgov.gov
+# digitalgov.gov — this redirects to www.digitalgov.gov
 resource "aws_route53_record" "digitalgov_gov_apex" {
  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
  name = "digitalgov.gov."
@@ -195,7 +195,7 @@ resource "aws_route53_record" "summit_digitalgov_gov_a" {
   type = "CNAME"
   ttl = "300"
   records = [
-    "www.usa.gov.edgekey.net."
+    "d3quko6qtudpnl.cloudfront.net."
   ]
 }
 
