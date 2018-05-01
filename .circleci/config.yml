@@ -1,5 +1,17 @@
 version: 2
 jobs:
+  validate:
+    docker:
+      - image: hashicorp/terraform:light
+    steps:
+      - checkout
+      - run:
+          name: Set up Terraform
+          command: terraform init -backend=false -input=false terraform
+      - run:
+          name: Validate Terraform config
+          command: terraform validate terraform
+
   plan:
     docker:
       - image: hashicorp/terraform:light
@@ -9,16 +21,8 @@ jobs:
           name: Set up Terraform
           command: terraform init -backend-config=terraform/backend.tfvars -input=false terraform
       - run:
-          name: Validate Terraform config
-          # https://discuss.circleci.com/t/create-separate-steps-jobs-for-pr-forks-versus-branches/13419/2
-          command: |
-            if [[ $(echo "$CIRCLE_BRANCH" | grep -c "pull") -gt 0 ]]; then
-              echo "This is from a fork."
-              terraform validate terraform
-            else
-              terraform plan -input=false terraform
-            fi
-
+          name: Compute changes
+          command: terraform plan -input=false terraform
       - persist_to_workspace:
           root: .
           paths:
@@ -40,7 +44,18 @@ workflows:
 
   validate_and_deploy:
     jobs:
-      - plan
+      # https://discuss.circleci.com/t/create-separate-steps-jobs-for-pr-forks-versus-branches/13419
+      - validate:
+          filters:
+            branches:
+              # only from forks
+              only: /^pull\/.*$/
+      - plan:
+          filters:
+            branches:
+              # only run on branches from canonical repository
+              # https://stackoverflow.com/a/5334825/358804
+              only: /^(?!pull\/).*$/
       - apply:
           filters:
             branches:
