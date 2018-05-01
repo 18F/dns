@@ -5,14 +5,14 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
   }
 }
 
-# digitalgov.gov — this redirects to www.digitalgov.gov
+# digitalgov.gov — this redirects to digital.gov
 resource "aws_route53_record" "digitalgov_gov_apex" {
  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
  name = "digitalgov.gov."
  type = "A"
 
  alias {
-   name = "d2a6ofmg0xhw1g.cloudfront.net."
+   name = "dj62070yqrr60.cloudfront.net."
    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
    evaluate_target_health = false
  }
@@ -98,14 +98,14 @@ resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_c" {
 }
 
 
-# www.digitalgov.gov
+# www.digitalgov.gov — redirects to digital.gov
 resource "aws_route53_record" "digitalgov_gov_www" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "www.digitalgov.gov."
   type = "CNAME"
   ttl = "300"
   records = [
-    "djce1rrjucuix.cloudfront.net."
+    "d1rrea61xhwc36.cloudfront.net."
   ]
 }
 
