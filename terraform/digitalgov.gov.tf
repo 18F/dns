@@ -258,7 +258,6 @@ resource "aws_route53_record" "digitalgov_gov_m1_domainkey_digitalgov_gov_txt" {
   ]
 }
 
-# the emailsrvr.com part in this record can be removed once we've safely transitioned incoming email handling from Rackspace to AWS SES
 # support.digitalgov.gov - TXT
 resource "aws_route53_record" "digitalgov_gov_support_digitalgov_gov_txt" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
@@ -266,7 +265,7 @@ resource "aws_route53_record" "digitalgov_gov_support_digitalgov_gov_txt" {
   type = "TXT"
   ttl = "3600"
   records = [
-    "v=spf1 include:mail.zendesk.com include:emailsrvr.com include:amazonses.com ~all"
+    "v=spf1 include:mail.zendesk.com include:amazonses.com ~all"
   ]
 }
 
@@ -304,7 +303,7 @@ resource "aws_route53_record" "support_digitalgov_gov_mx" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name = "support.digitalgov.gov."
   type = "MX"
-  ttl = "60"
+  ttl = "600"
   records = [
     "10 inbound-smtp.us-east-1.amazonaws.com."
   ]
