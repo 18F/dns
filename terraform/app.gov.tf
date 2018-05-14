@@ -40,7 +40,7 @@ resource "aws_route53_record" "app_gov__dmarc_app_gov_txt" {
   name = "_dmarc.app.gov."
   type = "TXT"
   ttl = 300
-  records = ["${local.dmarc_10}"]
+  records = ["${local.dmarc_reject}"]
 }
 
 output "app_gov_ns" {
