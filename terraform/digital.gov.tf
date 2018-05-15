@@ -118,7 +118,7 @@ resource "aws_route53_record" "digital_gov__dmarc_digital_gov_txt" {
   name = "_dmarc.digital.gov."
   type = "TXT"
   ttl = 300
-  records = ["${local.dmarc_100}"]
+  records = ["${local.dmarc_reject}"]
 }
 
 output "digital_ns" {
