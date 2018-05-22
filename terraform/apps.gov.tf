@@ -26,7 +26,7 @@ resource "aws_route53_record" "apps_gov__dmarc_apps_gov_txt" {
 
 resource "aws_route53_record" "app_gov_app_gov_txt" {
   zone_id = "${aws_route53_zone.app_gov_zone.zone_id}"
-  name = "app.gov."
+  name = "apps.gov."
   type = "TXT"
   ttl = 300
   records = ["${local.spf_no_mail}"]
