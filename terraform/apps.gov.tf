@@ -24,8 +24,8 @@ resource "aws_route53_record" "apps_gov__dmarc_apps_gov_txt" {
   records = ["${local.dmarc_reject}"]
 }
 
-resource "aws_route53_record" "app_gov_app_gov_txt" {
-  zone_id = "${aws_route53_zone.app_gov_zone.zone_id}"
+resource "aws_route53_record" "apps_gov_apps_gov_txt" {
+  zone_id = "${aws_route53_zone.apps_gov_zone.zone_id}"
   name = "apps.gov."
   type = "TXT"
   ttl = 300
