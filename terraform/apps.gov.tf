@@ -24,6 +24,14 @@ resource "aws_route53_record" "apps_gov__dmarc_apps_gov_txt" {
   records = ["${local.dmarc_reject}"]
 }
 
+resource "aws_route53_record" "apps_gov_apps_gov_txt" {
+  zone_id = "${aws_route53_zone.apps_gov_zone.zone_id}"
+  name = "apps.gov."
+  type = "TXT"
+  ttl = 300
+  records = ["${local.spf_no_mail}"]
+}
+
 resource "aws_route53_record" "apps_gov_7020370b93980d607416a29297f68e3b_apps_gov_cname" {
   zone_id = "${aws_route53_zone.apps_gov_zone.zone_id}"
   name = "7020370b93980d607416a29297f68e3b.apps.gov."

@@ -32,6 +32,14 @@ resource "aws_route53_record" "18f_gov_amazonses_18f_gov_txt" {
   records = ["v=spf1 include:amazonses.com ~all"]
 }
 
+resource "aws_route53_record" "18f_gov_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "18f.gov."
+  type = "TXT"
+  ttl = 300
+  records = ["${local.spf_no_mail}"]
+}
+
 resource "aws_route53_record" "18f_gov__dmarc_18f_gov_txt" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "_dmarc.18f.gov."
