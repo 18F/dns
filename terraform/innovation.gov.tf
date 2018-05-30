@@ -56,7 +56,7 @@ resource "aws_route53_record" "innovation_gov__dmarc_innovation_gov_txt" {
   name = "_dmarc.innovation.gov."
   type = "TXT"
   ttl = 300
-  records = ["${local.dmarc_100}"]
+  records = ["${local.dmarc_reject}"]
 }
 
 output "innovation_ns" {

@@ -58,7 +58,7 @@ resource "aws_route53_record" "everykidinapark_gov__dmarc_everykidinapark_gov_tx
   name = "_dmarc.everykidinapark.gov."
   type = "TXT"
   ttl = 300
-  records = ["${local.dmarc_10}"]
+  records = ["${local.dmarc_reject}"]
 }
 
 output "everykidinapark_gov_ns" {

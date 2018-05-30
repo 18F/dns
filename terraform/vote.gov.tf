@@ -62,7 +62,7 @@ resource "aws_route53_record" "vote_gov__dmarc_vote_gov_txt" {
   name = "_dmarc.vote.gov."
   type = "TXT"
   ttl = 300
-  records = ["${local.dmarc_100}"]
+  records = ["${local.dmarc_reject}"]
 }
 
 output "vote_gov_ns" {
