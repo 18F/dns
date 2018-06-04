@@ -13,7 +13,7 @@ resource "aws_route53_record" "cld_epa_gov_cld_epa_gov_a" {
 
   alias {
     name                   = "dualstack.cld-epa-gov-el-elb-1vx5r8b4nx40-1695709490.us-east-1.elb.amazonaws.com."
-    zone_id                = "${local.old_cloudfront_zone_id}"
+    zone_id                = "${local.elb_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -25,7 +25,7 @@ resource "aws_route53_record" "cld_epa_gov_star_cld_epa_gov_a" {
 
   alias {
     name                   = "dualstack.cld-epa-gov-el-elb-1vx5r8b4nx40-1695709490.us-east-1.elb.amazonaws.com."
-    zone_id                = "${local.old_cloudfront_zone_id}"
+    zone_id                = "${local.elb_zone_id}"
     evaluate_target_health = false
   }
 }
