@@ -45,7 +45,7 @@ resource "aws_route53_record" "18f_gov__dmarc_18f_gov_txt" {
   name = "_dmarc.18f.gov."
   type = "TXT"
   ttl = 300
-  records = ["${local.dmarc_10}"]
+  records = ["${local.dmarc_reject}"]
 }
 
 resource "aws_route53_record" "18f_gov__acme-challenge_18f_gov_txt" {
