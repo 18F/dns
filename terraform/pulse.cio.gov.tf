@@ -3,6 +3,7 @@ resource "aws_route53_zone" "pulse_cio_gov_zone" {
 
   tags {
     Project = "dns"
+    client = "OGP-20150420-20150930-01"
   }
 }
 
