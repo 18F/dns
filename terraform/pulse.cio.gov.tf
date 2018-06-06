@@ -1,0 +1,52 @@
+resource "aws_route53_zone" "pulse_cio_gov_zone" {
+  name = "pulse.cio.gov."
+
+  tags {
+    Project = "dns"
+    client = "OGP-20150420-20150930-01"
+  }
+}
+
+resource "aws_route53_record" "pulse_cio_gov_pulse_cio_gov_a" {
+  zone_id = "${aws_route53_zone.pulse_cio_gov_zone.zone_id}"
+  name    = "pulse.cio.gov."
+  type    = "A"
+
+  alias {
+    name                   = "d1molo8p4za8ef.cloudfront.net."
+    zone_id                = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "pulse_cio_gov_pulse_cio_gov_aaaa" {
+  zone_id = "${aws_route53_zone.pulse_cio_gov_zone.zone_id}"
+  name    = "pulse.cio.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d1molo8p4za8ef.cloudfront.net."
+    zone_id                = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "pulse_cio_gov_staging_pulse_cio_gov_cname" {
+  zone_id = "${aws_route53_zone.pulse_cio_gov_zone.zone_id}"
+  name    = "staging.pulse.cio.gov."
+  type    = "CNAME"
+  ttl     = 300
+  records = ["d1991ybttt3nlc.cloudfront.net."]
+}
+
+resource "aws_route53_record" "pulse_cio_gov_pulse_cio_gov_txt" {
+  zone_id = "${aws_route53_zone.pulse_cio_gov_zone.zone_id}"
+  name = "pulse.cio.gov."
+  type = "TXT"
+  ttl = 300
+  records = ["v=spf1 include:mail.zendesk.com ?all"]
+}
+
+output "pulse_cio_gov_ns" {
+  value = "${aws_route53_zone.pulse_cio_gov_zone.name_servers}"
+}
