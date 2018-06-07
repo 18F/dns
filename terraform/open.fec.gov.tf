@@ -34,9 +34,9 @@ resource "aws_route53_record" "open_fec_gov_api_open_fec_gov_cname" {
   records = ["api-open-fec-2086140464.us-east-1.elb.amazonaws.com."]
 }
 
-resource "aws_route53_record" "open_fec_gov_a33103137e39f452e19e75a2bd2ccb02_open_fec_gov_cname" {
+resource "aws_route53_record" "open_fec_gov_a33103137e39f452e19e75a2bd2ccb02_api_open_fec_gov_cname" {
   zone_id = "${aws_route53_zone.open_fec_gov_zone.zone_id}"
-  name    = "a33103137e39f452e19e75a2bd2ccb02.open.fec.gov."
+  name    = "a33103137e39f452e19e75a2bd2ccb02.api.open.fec.gov."
   type    = "CNAME"
   ttl     = 300
   records = ["198e0728a29b521ce35ec20143c475fda6b2c9e2.comodoca.com."]
