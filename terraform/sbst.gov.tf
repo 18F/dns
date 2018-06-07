@@ -54,9 +54,9 @@ resource "aws_route53_record" "sbst_gov_www_sbst_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "sbst_gov_6020162f64c7bb016b2a3de7428839d0_sbst_gov_cname" {
+resource "aws_route53_record" "sbst_gov_6020162f64c7bb016b2a3de7428839d0_www_sbst_gov_cname" {
   zone_id = "${aws_route53_zone.sbst_gov_zone.zone_id}"
-  name    = "6020162f64c7bb016b2a3de7428839d0.sbst.gov."
+  name    = "6020162f64c7bb016b2a3de7428839d0.www.sbst.gov."
   type    = "CNAME"
   ttl     = 300
   records = ["e1eaa443027a9960e21419ecde173b2b8ebdf10b.comodoca.com."]
