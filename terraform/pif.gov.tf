@@ -98,14 +98,6 @@ resource "aws_route53_record" "proposal_cname" {
   records = ["proposal.pif.gov.00du0000000leuxmac.live.siteforce.com"]
 }
 
-resource "aws_route53_record" "beta" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
-  name = "beta.pif.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["presidential-innovation-fellows.github.io"]
-}
-
 resource "aws_route53_record" "recalls_cname" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
   name = "recalls.pif.gov."
