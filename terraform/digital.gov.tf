@@ -31,6 +31,7 @@ resource "aws_route53_record" "digital_gov_www" {
   }
 }
 
+# demo.digital.gov
 resource "aws_route53_record" "demo_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "demo.digital.gov."
@@ -99,6 +100,30 @@ resource "aws_route53_record" "emerging_digital_gov_a" {
   type = "A"
   alias {
     name = "d2b40qcr6kbxp7.cloudfront.net."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+# accessibility.digital.gov — A -------------------------------
+resource "aws_route53_record" "accessibility_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "accessibility.digital.gov."
+  type = "A"
+  alias {
+    name = "XXXXXXXX."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+# demo.accessibility.digital.gov — A -------------------------------
+resource "aws_route53_record" "demo_accessibility_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "demo.accessibility.digital.gov."
+  type = "A"
+  alias {
+    name = "XXXXXXXX."
     zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
