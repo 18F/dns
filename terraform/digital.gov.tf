@@ -111,7 +111,7 @@ resource "aws_route53_record" "accessibility_digital_gov_a" {
   name = "accessibility.digital.gov."
   type = "A"
   alias {
-    name = "XXXXXXXX."
+    name = "d2hlc5rjmtb40x.cloudfront.net."
     zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -123,7 +123,7 @@ resource "aws_route53_record" "demo_accessibility_digital_gov_a" {
   name = "demo.accessibility.digital.gov."
   type = "A"
   alias {
-    name = "XXXXXXXX."
+    name = "d2egeiaihbhrow.cloudfront.net."
     zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
