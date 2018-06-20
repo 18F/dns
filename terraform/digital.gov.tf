@@ -117,6 +117,19 @@ resource "aws_route53_record" "accessibility_digital_gov_a" {
   }
 }
 
+# demo.accessibility.digital.gov — A -------------------------------
+resource "aws_route53_record" "demo_accessibility_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "demo.accessibility.digital.gov."
+  type = "A"
+  alias {
+    name = "dnt48lkpo0ew7.cloudfront.net."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+
 # BOD
 resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
