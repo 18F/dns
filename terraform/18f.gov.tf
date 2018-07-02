@@ -963,7 +963,7 @@ resource "aws_route53_record" "18f_gov_tock_18f_gov_cname" {
   name = "tock.18f.gov."
   type = "CNAME"
   ttl = 300
-  records = ["dualstack.production-cloudfoundry-apps-1374881977.us-gov-west-1.elb.amazonaws.com."]
+  records = ["production-domains-1-884689640.us-gov-west-1.elb.amazonaws.com."]
 }
 
 resource "aws_route53_record" "18f_gov_writing-lab-guide_18f_gov_a" {
