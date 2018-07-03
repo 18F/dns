@@ -322,15 +322,20 @@ resource "aws_route53_record" "18f_gov_c6769c03c29466618a6bd23b158d28a6_18f_gov_
   records = ["25dcca43a0e035f9109366532ca4bea5a552e1ba.comodoca.com."]
 }
 
-resource "aws_route53_record" "18f_gov_cap_18f_gov_a" {
+resource "aws_route53_record" "18f_gov_cap_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "cap.18f.gov."
-  type = "A"
-  alias {
-    name = "dualstack.production-cloudfoundry-apps-1374881977.us-gov-west-1.elb.amazonaws.com."
-    zone_id = "${local.old_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
+  type = "CNAME"
+  ttl = 300
+  records = ["production-domains-0-589438325.us-gov-west-1.elb.amazonaws.com."]
+}
+
+resource "aws_route53_record" "18f_gov_c2_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "c2.18f.gov."
+  type = "CNAME"
+  ttl = 300
+  records = ["production-domains-0-589438325.us-gov-west-1.elb.amazonaws.com."]
 }
 
 resource "aws_route53_record" "18f_gov_chandika_18f_gov_a" {
@@ -917,15 +922,12 @@ resource "aws_route53_record" "18f_gov_product-guide_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_requests_18f_gov_a" {
+resource "aws_route53_record" "18f_gov_requests_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "requests.18f.gov."
-  type = "A"
-  alias {
-    name = "dualstack.production-cloudfoundry-apps-1374881977.us-gov-west-1.elb.amazonaws.com."
-    zone_id = "${local.old_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
+  type = "CNAME"
+  ttl = 300
+  records = ["production-domains-0-589438325.us-gov-west-1.elb.amazonaws.com."]
 }
 
 resource "aws_route53_record" "18f_gov_slides_18f_gov_a" {
