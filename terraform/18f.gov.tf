@@ -275,7 +275,7 @@ resource "aws_route53_record" "18f_gov_blogging-guide_18f_gov_a" {
   name = "blogging-guide.18f.gov."
   type = "A"
   alias {
-    name = "d1g22yqn5yr45v.cloudfront.net."
+    name = "pages-redirects.app.cloud.gov."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
