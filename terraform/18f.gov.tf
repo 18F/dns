@@ -276,7 +276,7 @@ resource "aws_route53_record" "18f_gov_blogging-guide_18f_gov_cname" {
   type = "CNAME"
   ttl = 300
   records = ["pages-redirects.app.cloud.gov"]
-  }
+}
 
 resource "aws_route53_record" "18f_gov_before-you-ship_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
