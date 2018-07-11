@@ -275,7 +275,7 @@ resource "aws_route53_record" "18f_gov_blogging-guide_18f_gov_cname" {
   name = "blogging-guide.18f.gov."
   type = "CNAME"
   ttl = 300
-  records = ["pages-redirects.app.cloud.gov."]
+  records = ["pages-redirects.app.cloud.gov"]
   }
 }
 
