@@ -273,9 +273,12 @@ resource "aws_route53_record" "18f_gov_automated-testing-playbook_18f_gov_a" {
 resource "aws_route53_record" "18f_gov_blogging-guide_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "blogging-guide.18f.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["pages-redirects.app.cloud.gov"]
+  type = "A"
+  alias {
+    name = "d12gmeaikmi2zi.cloudfront.net/."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
 }
 
 resource "aws_route53_record" "18f_gov_before-you-ship_18f_gov_a" {
