@@ -275,7 +275,7 @@ resource "aws_route53_record" "18f_gov_blogging-guide_18f_gov_cname" {
   name = "blogging-guide.18f.gov."
   type = "A"
   alias {
-    name = "d12gmeaikmi2zi.cloudfront.net/."
+    name = "d12gmeaikmi2zi.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
