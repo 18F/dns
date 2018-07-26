@@ -820,6 +820,16 @@ resource "aws_route53_record" "18f_gov_tmate_18f_gov_a" {
   records = ["52.22.14.222"]
 }
 
+resource "aws_route53_record" "18f_gov_guides_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "guides.18f.gov."
+  type = "A"
+  alias {
+    name = "d1n7tjr4lotmf0.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
 
 resource "aws_route53_record" "18f_gov_tock_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
