@@ -570,6 +570,7 @@ resource "aws_route53_record" "18f_gov_fugacious_18f_gov_txt" {
   records = ["d309sw0ah4sgku.cloudfront.net."]
 }
 
+
 resource "aws_route53_record" "18f_gov_govconnect_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "govconnect.18f.gov."
@@ -588,6 +589,17 @@ resource "aws_route53_record" "18f_gov_grafana_18f_gov_a" {
   alias {
     name = "dualstack.18f-grafana-1906882244.us-east-1.elb.amazonaws.com."
     zone_id = "${local.elb_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov_guides_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "guides.18f.gov."
+  type = "A"
+  alias {
+    name = "d1n7tjr4lotmf0.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -820,16 +832,6 @@ resource "aws_route53_record" "18f_gov_tmate_18f_gov_a" {
   records = ["52.22.14.222"]
 }
 
-resource "aws_route53_record" "18f_gov_guides_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "guides.18f.gov."
-  type = "A"
-  alias {
-    name = "d1n7tjr4lotmf0.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
 
 resource "aws_route53_record" "18f_gov_tock_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
