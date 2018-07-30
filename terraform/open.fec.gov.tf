@@ -23,7 +23,7 @@ resource "aws_route53_record" "open_fec_gov_api-stage_open_fec_gov_cname" {
   name    = "api-stage.open.fec.gov."
   type    = "CNAME"
   ttl     = 300
-  records = ["api-open-fec-2086140464.us-east-1.elb.amazonaws.com."]
+  records = ["api-open-fec-gov.domains.api.data.gov."]
 }
 
 resource "aws_route53_record" "open_fec_gov_api_open_fec_gov_cname" {
@@ -31,7 +31,7 @@ resource "aws_route53_record" "open_fec_gov_api_open_fec_gov_cname" {
   name    = "api.open.fec.gov."
   type    = "CNAME"
   ttl     = 300
-  records = ["api-open-fec-2086140464.us-east-1.elb.amazonaws.com."]
+  records = ["api-open-fec-gov.domains.api.data.gov."]
 }
 
 resource "aws_route53_record" "open_fec_gov_a33103137e39f452e19e75a2bd2ccb02_api_open_fec_gov_cname" {
