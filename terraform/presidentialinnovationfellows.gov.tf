@@ -43,15 +43,8 @@ resource "aws_route53_record" "presidentialinnovationfellows_apex_txt" {
   name = "presidentialinnovationfellows.gov."
   type = "TXT"
   ttl = 60
-  records = ["google-site-verification=RBhAMKMQvrHWfxNfosQ9oUrrcwAme78JlrhD3cTQCvY"]
-}
-
-resource "aws_route53_record" "presidentialinnovationfellows_txt" {
-  zone_id = "${aws_route53_zone.presidentialinnovationfellows_toplevel.zone_id}"
-  name = "presidentialinnovationfellows.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.spf_no_mail}"]
+  records = ["${local.spf_no_mail}",
+             "google-site-verification=RBhAMKMQvrHWfxNfosQ9oUrrcwAme78JlrhD3cTQCvY"]
 }
 
 resource "aws_route53_record" "presidentialinnovationfellows__dmarc_presidentialinnovationfellows_txt" {
