@@ -73,8 +73,9 @@ resource "aws_route53_record" "plainlanguage_gov__dmarc_plainlanguage_gov_txt" {
   name = "_dmarc.plainlanguage.gov."
   type = "TXT"
   ttl = 300
-  records = ["${local.dmarc_10}"]
+  records = ["${local.dmarc_reject}"]
 }
+
 
 output "plainlanguage_ns" {
   value="${aws_route53_zone.plainlanguage_toplevel.name_servers}"
