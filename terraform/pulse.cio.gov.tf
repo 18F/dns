@@ -39,14 +39,6 @@ resource "aws_route53_record" "pulse_cio_gov_staging_pulse_cio_gov_cname" {
   records = ["d1991ybttt3nlc.cloudfront.net."]
 }
 
-resource "aws_route53_record" "pulse_cio_gov_pulse_cio_gov_txt" {
-  zone_id = "${aws_route53_zone.pulse_cio_gov_zone.zone_id}"
-  name = "pulse.cio.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["v=spf1 include:mail.zendesk.com ?all"]
-}
-
 output "pulse_cio_gov_ns" {
   value = "${aws_route53_zone.pulse_cio_gov_zone.name_servers}"
 }
