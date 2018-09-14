@@ -810,22 +810,6 @@ resource "aws_route53_record" "18f_gov_f7e29cc5db78cb18f966a29c41c774ea_modularc
   records = ["bad1dc780e23fdab0c6363665d42e888c3edeb6c.comodoca.com."]
 }
 
-resource "aws_route53_record" "18f_gov_munki_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "munki.18f.gov."
-  type = "A"
-  ttl = 300
-  records = ["52.21.64.47"]
-}
-
-resource "aws_route53_record" "18f_gov_e02bc03821dff6c0c958b96ad4476517_munki_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "e02bc03821dff6c0c958b96ad4476517.munki.18f.gov."
-  type = "CNAME"
-  ttl = 5
-  records = ["d3a976c8a19db425a0b6fab24f793df8c0341d67.comodoca.com."]
-}
-
 resource "aws_route53_record" "18f_gov_onepagetest_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "onepagetest.18f.gov."
