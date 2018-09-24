@@ -40,7 +40,7 @@ resource "aws_route53_record" "connect_gov_connect_gov_mx" {
   records = ["1 aspmx.l.google.com", "5 alt2.aspmx.l.google.com", "5 alt1.aspmx.l.google.com", "10 alt3.aspmx.l.google.com", "10 alt4.aspmx.l.google.com"]
 }
 
-resource "aws_route53_record" "connect_gov_txt" {
+resource "aws_route53_record" "connect_gov_connect_gov_txt" {
   zone_id = "${aws_route53_zone.connect_gov_zone.zone_id}"
   name = "connect.gov"
   type = "TXT"
@@ -48,7 +48,7 @@ resource "aws_route53_record" "connect_gov_txt" {
   records = ["v=spf1 ~all", "google-site-verification=j3qyXzcDt_O3t0sdYy6FCQlYJnV5ASd0GYIhicPPzOg"]
 }
 
-resource "aws_route53_record" "connect_gov__dmarc_txt" {
+resource "aws_route53_record" "connect_gov__dmarc_connect_gov_txt" {
   zone_id = "${aws_route53_zone.connect_gov_zone.zone_id}"
   name = "_dmarc.connect.gov"
   ttl = "900"
