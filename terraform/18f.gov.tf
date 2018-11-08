@@ -88,6 +88,14 @@ resource "aws_route53_record" "18f_gov__amazonses_18f_gov_txt" {
   records = ["eLlEp8JypEb+vZk7qRQsdhwf2t1qVLKg9TNbCsdbpVQ="]
 }
 
+resource "aws_route53_record" "_github-challenge-18F_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_github-challenge-18F.18f.gov."
+  type = "TXT"
+  ttl = 1800
+  records = ["50d2b257a8"]
+}
+
 resource "aws_route53_record" "18f_gov_ad4lynrrv5foixysvwm47qbeuj5bbbyr__domainkey_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "ad4lynrrv5foixysvwm47qbeuj5bbbyr._domainkey.18f.gov."
