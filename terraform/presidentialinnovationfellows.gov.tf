@@ -60,7 +60,7 @@ resource "aws_route53_record" "presidentialinnovationfellows_gov__github-challen
   name = "_github-challenge-presidential-innovation-fellows.presidentialinnovationfellows.gov."
   type = "TXT"
   ttl = 60
-  records = ["85a555d306"]
+  records = ["128bd6e5cf"]
 }
 
 resource "aws_route53_record" "presidentialinnovationfellows_amazonses" {
