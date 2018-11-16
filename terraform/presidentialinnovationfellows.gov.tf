@@ -57,7 +57,7 @@ resource "aws_route53_record" "presidentialinnovationfellows__dmarc_presidential
 
 resource "aws_route53_record" "presidentialinnovationfellows_gov__github-challenge-presidential-innovation-fellows_presidentialinnovationfellows_gov_txt" {
   zone_id = "${aws_route53_zone.presidentialinnovationfellows_toplevel.zone_id}"
-  name = "_github-challenge-presidential-innovation-fellows.presidentialinnovationfellows.gov."
+  name = "_github-challenge-presidential-innovation-fellows.pif.gov."
   type = "TXT"
   ttl = 60
   records = ["128bd6e5cf"]
