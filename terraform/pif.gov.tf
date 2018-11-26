@@ -68,6 +68,14 @@ resource "aws_route53_record" "amazonses_txt" {
   records = ["vfTT1hoRSwsfsjE7oHkyOB2+OHk+t2NF3S3l5hL4NA8="]
 }
 
+resource "aws_route53_record" "pif_gov__github-challenge-presidential-innovation-fellows_pif_gov_txt" {
+  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  name = "_github-challenge-presidential-innovation-fellows.pif.gov."
+  type = "TXT"
+  ttl = 60
+  records = ["468cca22d9"]
+}
+
 resource "aws_route53_record" "ses_cname_1" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
   name = "hqxmpb4wvicc7sgousvwutczjusp4sfc._domainkey.pif.gov."
