@@ -506,6 +506,14 @@ resource "aws_route53_record" "18f_gov_federalistapp_18f_gov_cname" {
   records = ["d189ghshxys967.cloudfront.net"]
 }
 
+resource "aws_route53_record" "18f_gov_federalist-staging_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "federalist-staging.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["d1gq90wql59r7i.cloudfront.net"]
+}
+
 resource "aws_route53_record" "18f_gov_federalistapp-staging_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalistapp-staging.18f.gov."
