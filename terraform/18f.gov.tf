@@ -498,7 +498,7 @@ resource "aws_route53_record" "18f_gov_federalist_18f_gov_cname" {
   records = ["d189ghshxys967.cloudfront.net"]
 }
 
-resource "aws_route53_record" "18f_gov_federalist_18f_gov_cname" {
+resource "aws_route53_record" "18f_gov_federalistapp_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalistapp.18f.gov."
   type = "CNAME"
