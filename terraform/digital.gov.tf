@@ -44,6 +44,19 @@ resource "aws_route53_record" "demo_digital_gov_a" {
   }
 }
 
+# workflow.digital.gov
+resource "aws_route53_record" "workflow_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "workflow.digital.gov."
+  type = "A"
+
+  alias {
+    name = "d1m1gatn2ksd43.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 # USWDS -------------------------------
 # designsystem.digital.gov — A
 resource "aws_route53_record" "designsystem_digital_gov_a" {
