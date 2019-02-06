@@ -346,17 +346,6 @@ resource "aws_route53_record" "18f_gov_c2_18f_gov_cname" {
   records = ["production-domains-0-589438325.us-gov-west-1.elb.amazonaws.com."]
 }
 
-resource "aws_route53_record" "18f_gov_chandika_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "chandika.18f.gov."
-  type = "A"
-  alias {
-    name = "d1vqiz8w0x796c.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_charlie_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "charlie.18f.gov."
