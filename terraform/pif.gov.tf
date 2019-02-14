@@ -100,14 +100,6 @@ resource "aws_route53_record" "ses_cname_3" {
   records = ["zozbm3olsvjtarcghhuz2sneknw7ar5t.dkim.amazonses.com"]
 }
 
-resource "aws_route53_record" "apply_cname" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
-  name = "apply.pif.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["apply.pif.gov.00d30000000jvliea4.live.siteforce.com"]
-}
-
 resource "aws_route53_record" "proposal_cname" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
   name = "proposal.pif.gov."
