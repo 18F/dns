@@ -152,6 +152,14 @@ resource "aws_route53_record" "www-main" {
   }
 }
 
+resource "aws_route53_record" "apply_pif_cname" {
+  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  name = "apply.pif.gov."
+  type = "CNAME"
+  ttl = 300
+  records = ["d27fivolvees0i.cloudfront.net"]
+}
+
 output "pif_ns" {
     value="${aws_route53_zone.pif_toplevel.name_servers}"
 }
