@@ -122,17 +122,6 @@ resource "aws_route53_record" "18f_gov_qegrzvzekq4wiompgqufe4xwmarm37lh__domaink
 
 # Individual site records start here, alphabetized by subdomain name
 
-resource "aws_route53_record" "18f_gov_18franklin_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "18franklin.18f.gov."
-  type = "A"
-  alias {
-    name = "d3n4rzfn59k0a9.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_accessibility_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "accessibility.18f.gov."
