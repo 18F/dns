@@ -113,7 +113,7 @@ resource "aws_route53_record" "public_sans_digital_gov_a" {
   type = "A"
   alias {
     name = "d30jruftdogur6.cloudfront.net."
-    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
