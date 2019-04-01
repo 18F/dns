@@ -106,6 +106,18 @@ resource "aws_route53_record" "components_designsystem_digital_gov_aaaa" {
   }
 }
 
+# public-sans.digital.gov — A
+resource "aws_route53_record" "public_sans_digital_gov_aaaa" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "public-sans.digital.gov."
+  type = "A"
+  alias {
+    name = "d30jruftdogur6.cloudfront.net."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 # v2.designsystem.digital.gov — A -------------------------------
 resource "aws_route53_record" "v2_designsystem_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
