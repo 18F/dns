@@ -793,6 +793,25 @@ resource "aws_route53_record" "18f_gov_micropurchase_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "18f_gov_modularcontracting_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "modularcontracting.18f.gov."
+  type = "A"
+  alias {
+    name = "d1iyte5ws3y9f8.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov_f7e29cc5db78cb18f966a29c41c774ea_modularcontracting_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "f7e29cc5db78cb18f966a29c41c774ea.modularcontracting.18f.gov."
+  type = "CNAME"
+  ttl = 300
+  records = ["bad1dc780e23fdab0c6363665d42e888c3edeb6c.comodoca.com."]
+}
+
 resource "aws_route53_record" "18f_gov_onepagetest_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "onepagetest.18f.gov."
