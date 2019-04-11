@@ -987,12 +987,9 @@ resource "aws_route53_record" "18f_gov_e2e080f495caf881194dadb62fb3d5bc_18f_gov_
 resource "aws_route53_record" "18f_gov_modularcontracting_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "modularcontracting.18f.gov."
-  type = "A"
-  alias {
-    name = "d12gmeaikmi2zi.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
+  type = "CNAME"
+  ttl = 300
+  records = ["*.18f.gov."]
 }
 
 output "18f_gov_ns" {
