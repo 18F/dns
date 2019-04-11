@@ -984,6 +984,16 @@ resource "aws_route53_record" "18f_gov_e2e080f495caf881194dadb62fb3d5bc_18f_gov_
   records = ["25aad757d26409f9b764f267283fda0ec6e8e3f1.comodoca.com."]
 }
 
+resource "aws_route53_record" "18f_gov_modularcontracting_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "modularcontracting.18f.gov."
+  type = "A"
+  alias {
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
