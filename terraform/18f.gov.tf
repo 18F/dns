@@ -989,7 +989,7 @@ resource "aws_route53_record" "18f_gov_modularcontracting_18f_gov_a" {
   name = "modularcontracting.18f.gov."
   type = "A"
   alias {
-    name = ""
+    name = "d12gmeaikmi2zi.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
