@@ -97,6 +97,52 @@ resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_c" {
   ]
 }
 
+# required for Zendesk to send support emails on behalf of support.digitalgov.gov
+resource "aws_route53_record" "support_digitalgov_gov_zendesk_email_c1" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "zendesk1"
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "mail1.zendesk.com"
+  ]
+}
+resource "aws_route53_record" "support_digitalgov_gov_zendesk_email_c2" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "zendesk2"
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "mail2.zendesk.com"
+  ]
+}
+resource "aws_route53_record" "support_digitalgov_gov_zendesk_email_c3" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "zendesk3"
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "mail3.zendesk.com"
+  ]
+}
+resource "aws_route53_record" "support_digitalgov_gov_zendesk_email_c4" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "zendesk4"
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "mail4.zendesk.com"
+  ]
+}
+resource "aws_route53_record" "support_digitalgov_gov_zendesk_email_txt" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "zendeskverification"
+  type = "TXT"
+  ttl = "300"
+  records = [
+    "6d8e09d2549be696"
+  ]
+}
 
 # www.digitalgov.gov — redirects to digital.gov through pages_redirect
 resource "aws_route53_record" "digitalgov_gov_www" {
