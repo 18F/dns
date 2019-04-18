@@ -992,6 +992,22 @@ resource "aws_route53_record" "18f_gov_modularcontracting_18f_gov_a" {
   records = ["production-domains-1-884689640.us-gov-west-1.elb.amazonaws.com."]
 }
 
+resource "aws_route53_record" "18f_gov_amir_federalist_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.amir-federalist.18f.gov."
+  type = "TXT"
+  ttl = 300
+  records = ["cngFv6Ey0Vnatpky_lU6M8mj7i3WdFhdUWwwe4E9RSk"]
+}
+
+resource "aws_route53_record" "18f_gov_amir_federalist_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "amir-federalist.18f.gov."
+  type = "CNAME"
+  ttl = 300
+  records = ["d2y7ifdzxlbs3f.cloudfront.net."]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
