@@ -87,9 +87,12 @@ resource "aws_route53_record" "designsystem_digital_gov_aaaa" {
 resource "aws_route53_record" "v1_designsystem_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "v1.designsystem.digital.gov."
-  type = "CNAME"
-  ttl = 120
-  records = ["d5bhevr9bklr9.cloudfront.net"]
+  type = "A"
+  alias {
+    name = "d5bhevr9bklr9.cloudfront.net."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
 }
 
 # components.designsystem.digital.gov — A
