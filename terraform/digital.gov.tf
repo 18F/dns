@@ -57,8 +57,9 @@ resource "aws_route53_record" "workflow_digital_gov_a" {
   }
 }
 
-# USWDS -------------------------------
+# USWDS - U.S. Web Design System -------------------------------
 # designsystem.digital.gov — A
+# (Master site in Federalist)
 resource "aws_route53_record" "designsystem_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "designsystem.digital.gov."
@@ -71,12 +72,39 @@ resource "aws_route53_record" "designsystem_digital_gov_a" {
 }
 
 # designsystem.digital.gov — AAAA
+# (Master site in Federalist)
 resource "aws_route53_record" "designsystem_digital_gov_aaaa" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "designsystem.digital.gov."
   type = "AAAA"
   alias {
     name = "dlu3fkwowya06.cloudfront.net."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+# v2.designsystem.digital.gov — A -------------------------------
+# (Redirects to designsystem.digital.gov via "pages redirect")
+# resource "aws_route53_record" "v2_designsystem_digital_gov_a" {
+#  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+#  name = "v2.designsystem.digital.gov."
+#  type = "A"
+#  alias {
+#    name = "dlu3fkwowya06.cloudfront.net."
+#    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+#    evaluate_target_health = false
+#  }
+#}
+
+# v1.designsystem.digital.gov — A -------------------------------
+# (DEMO site in Federalist)
+resource "aws_route53_record" "v1_designsystem_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "v1.designsystem.digital.gov."
+  type = "A"
+  alias {
+    name = "d5bhevr9bklr9.cloudfront.net."
     zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -118,18 +146,9 @@ resource "aws_route53_record" "public_sans_digital_gov_a" {
   }
 }
 
-# v2.designsystem.digital.gov — A -------------------------------
-resource "aws_route53_record" "v2_designsystem_digital_gov_a" {
-  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-  name = "v2.designsystem.digital.gov."
-  type = "A"
-  alias {
-    name = "d3pcqg083enklv.cloudfront.net."
-    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
 
+
+# Digital.gov Guides -------------------------------
 # emerging.digital.gov — A -------------------------------
 resource "aws_route53_record" "emerging_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
@@ -166,6 +185,7 @@ resource "aws_route53_record" "demo_accessibility_digital_gov_a" {
   }
 }
 
+# Compliance -------------------------------
 
 # BOD
 resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
@@ -175,6 +195,24 @@ resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
   ttl = 300
   records = ["${local.spf_no_mail}"]
 }
+
+#resource "aws_route53_record" "v2_designsystem_digital_gov__acme-challenge_txt" {
+#  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+#  name = "_acme-challenge.v2.designsystem.digital.gov."
+#  type = "TXT"
+#  ttl = 120
+#  records = ["XOXOXOXO"]
+#}
+
+resource "aws_route53_record" "v1_designsystem_digital_gov__acme-challenge_txt" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "_acme-challenge.v1.designsystem.digital.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["wIZIo5wxeXxLDnhBrd7qhaC7QTpU9ko7HsyL226CRkc"]
+}
+
+
 
 resource "aws_route53_record" "digital_gov__dmarc_digital_gov_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
