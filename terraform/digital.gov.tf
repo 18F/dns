@@ -147,7 +147,6 @@ resource "aws_route53_record" "public_sans_digital_gov_a" {
 }
 
 
-
 # Digital.gov Guides -------------------------------
 # emerging.digital.gov — A -------------------------------
 resource "aws_route53_record" "emerging_digital_gov_a" {
