@@ -84,7 +84,7 @@ resource "aws_route53_record" "designsystem_digital_gov_aaaa" {
 
 # USWDS -------------------------------
 # v1.designsystem.digital.gov — A
-resource "aws_route53_record" "v1.designsystem_digital_gov_a" {
+resource "aws_route53_record" "v1_designsystem_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "v1.designsystem.digital.gov."
   type = "CNAME"
