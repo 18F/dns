@@ -95,6 +95,14 @@ resource "aws_route53_record" "v1_designsystem_digital_gov_a" {
   }
 }
 
+resource "aws_route53_record" "v1_designsystem_digital_gov__acme-challenge_txt" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "_acme-challenge.v1.designsystem.digital.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["wIZIo5wxeXxLDnhBrd7qhaC7QTpU9ko7HsyL226CRkc"]
+}
+
 # components.designsystem.digital.gov — A
 resource "aws_route53_record" "components_designsystem_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
