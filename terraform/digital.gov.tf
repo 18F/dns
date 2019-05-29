@@ -212,8 +212,6 @@ resource "aws_route53_record" "v1_designsystem_digital_gov__acme-challenge_txt" 
   records = ["wIZIo5wxeXxLDnhBrd7qhaC7QTpU9ko7HsyL226CRkc"]
 }
 
-
-
 resource "aws_route53_record" "digital_gov__dmarc_digital_gov_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "_dmarc.digital.gov."
