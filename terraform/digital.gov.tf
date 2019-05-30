@@ -166,13 +166,14 @@ resource "aws_route53_record" "demo_accessibility_digital_gov_a" {
   }
 }
 
+# Guide to the Paperwork Reduction Act -------------------------------
 # pra.digital.gov — A -------------------------------
 resource "aws_route53_record" "pra_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "pra.digital.gov."
   type = "A"
   alias {
-    name = "d7n4imxdjt4fm.cloudfront.net."
+    name = "d2ovdsukcnj1d.cloudfront.net."
     zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -184,7 +185,7 @@ resource "aws_route53_record" "_acme-challenge_pra_digital_gov_txt" {
   name = "_acme-challenge.pra.digital.gov."
   type = "TXT"
   ttl = 120
-  records = ["LBRAguTIR_l2DMqL32ZthGtL3pg6NWXxuez4sIDs1HI"]
+  records = ["bFhwTTRb_ry5cUgNJSgmXCQYThroqn2zoPtWJFuZ4zM"]
 }
 
 # demo.pra.digital.gov — A -------------------------------
@@ -193,7 +194,7 @@ resource "aws_route53_record" "demo_pra_digital_gov_a" {
   name = "demo.pra.digital.gov."
   type = "A"
   alias {
-    name = "dicskbm89z5re.cloudfront.net."
+    name = "d1wx8km611x28k.cloudfront.net."
     zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -205,7 +206,7 @@ resource "aws_route53_record" "_acme-challenge_demo_digital_gov_txt" {
   name = "_acme-challenge.demo.pra.digital.gov."
   type = "TXT"
   ttl = 120
-  records = ["rrQ1ZQIA-LEd4UgyFu0u0-zsAu-rbA3pPevTw59prOY"]
+  records = ["hj0pG2JCmDFPXOtesG7jsDh2mW89xCWJ3RgLx-9xk08"]
 }
 
 
