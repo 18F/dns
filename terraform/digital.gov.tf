@@ -86,16 +86,16 @@ resource "aws_route53_record" "designsystem_digital_gov_aaaa" {
 
 # v2.designsystem.digital.gov — A -------------------------------
 # (Redirects to designsystem.digital.gov via "pages redirect")
-# resource "aws_route53_record" "v2_designsystem_digital_gov_a" {
-#  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-#  name = "v2.designsystem.digital.gov."
-#  type = "A"
-#  alias {
-#    name = "dlu3fkwowya06.cloudfront.net."
-#    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
-#    evaluate_target_health = false
-#  }
-# }
+resource "aws_route53_record" "v2_designsystem_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "v2.designsystem.digital.gov."
+  type = "A"
+  alias {
+    name = "dtcqij9p5rrnq.cloudfront.net."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
 
 # v1.designsystem.digital.gov — A -------------------------------
 # (DEMO site in Federalist)
@@ -195,13 +195,13 @@ resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
   records = ["${local.spf_no_mail}"]
 }
 
-# resource "aws_route53_record" "v2_designsystem_digital_gov__acme-challenge_txt" {
-#  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-#  name = "_acme-challenge.v2.designsystem.digital.gov."
-#  type = "TXT"
-#  ttl = 120
-#  records = ["XOXOXOXO"]
-# }
+resource "aws_route53_record" "v2_designsystem_digital_gov__acme-challenge_txt" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "_acme-challenge.v2.designsystem.digital.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["lF9va0hn3B8NE_-7tqnjS_1sGj3_xlnQxEvXNaSjZ2E"]
+}
 
 resource "aws_route53_record" "v1_designsystem_digital_gov__acme-challenge_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
