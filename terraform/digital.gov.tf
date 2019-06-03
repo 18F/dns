@@ -91,7 +91,7 @@ resource "aws_route53_record" "v2_designsystem_digital_gov_a" {
   name = "v2.designsystem.digital.gov."
   type = "A"
   alias {
-    name = "dtcqij9p5rrnq.cloudfront.net."
+    name = "d28cskhpla85uc.cloudfront.net."
     zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -200,7 +200,7 @@ resource "aws_route53_record" "v2_designsystem_digital_gov__acme-challenge_txt" 
   name = "_acme-challenge.v2.designsystem.digital.gov."
   type = "TXT"
   ttl = 120
-  records = ["lF9va0hn3B8NE_-7tqnjS_1sGj3_xlnQxEvXNaSjZ2E"]
+  records = ["b6aZsBn5mvF79YsC4xUtQOSxzCvY5lmjqs4AxUV5Quc"]
 }
 
 resource "aws_route53_record" "v1_designsystem_digital_gov__acme-challenge_txt" {
