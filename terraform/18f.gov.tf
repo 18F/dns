@@ -484,22 +484,6 @@ resource "aws_route53_record" "18f_gov_federalistapp_18f_gov_cname" {
   records = ["d10jlmxd1n7664.cloudfront.net"]
 }
 
-resource "aws_route53_record" "18f_gov_sites_federalistapp_staging_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "*.sites.federalistapp-staging.18f.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["d3fx4dq8e2xvkj.cloudfront.net"]
-}
-
-resource "aws_route53_record" "18f_gov__acme-challenge_sites_federalistapp_staging_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "_acme-challenge.sites.federalistapp-staging.18f.gov."
-  type = "TXT"
-  ttl = 120
-  records = ["f6y1-9z8VMkL5A1ANxtRaglApib943CLA1EcQqYZijA"]
-}
-
 resource "aws_route53_record" "18f_gov_federalist-staging_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalist-staging.18f.gov."

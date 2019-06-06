@@ -91,7 +91,20 @@ resource "aws_route53_record" "v2_designsystem_digital_gov_a" {
   name = "v2.designsystem.digital.gov."
   type = "A"
   alias {
-    name = "d28cskhpla85uc.cloudfront.net."
+    name = "d1w7m7a89ly0cw.cloudfront.net."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+# v2alt.designsystem.digital.gov — A -------------------------------
+# (Redirects to designsystem.digital.gov via "pages redirect")
+resource "aws_route53_record" "v2alt_designsystem_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "v2alt.designsystem.digital.gov."
+  type = "A"
+  alias {
+    name = "d1w7m7a89ly0cw.cloudfront.net."
     zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -184,6 +197,30 @@ resource "aws_route53_record" "demo_accessibility_digital_gov_a" {
   }
 }
 
+# pra.digital.gov — A -------------------------------
+resource "aws_route53_record" "pra_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "pra.digital.gov."
+  type = "A"
+  alias {
+    name = "d3vwm5h0acan67.cloudfront.net."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+# demo.pra.digital.gov — A -------------------------------
+resource "aws_route53_record" "demo_pra_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "demo.pra.digital.gov."
+  type = "A"
+  alias {
+    name = "d18cp08a73t0c1.cloudfront.net."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 # Compliance -------------------------------
 
 # BOD
@@ -195,20 +232,49 @@ resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
   records = ["${local.spf_no_mail}"]
 }
 
+# v2.designsystem.digital.gov TXT
 resource "aws_route53_record" "v2_designsystem_digital_gov__acme-challenge_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "_acme-challenge.v2.designsystem.digital.gov."
   type = "TXT"
   ttl = 120
-  records = ["b6aZsBn5mvF79YsC4xUtQOSxzCvY5lmjqs4AxUV5Quc"]
+  records = ["bvOg0Ymz76YopI5rRn0Z_a77TLTKIW58mb0hHPBY_Rs"]
 }
 
+# v2alt.designsystem.digital.gov TXT (TEMPORARY)
+resource "aws_route53_record" "v2alt_designsystem_digital_gov__acme-challenge_txt" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "_acme-challenge.v2alt.designsystem.digital.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["4kIMhG7RfNmvTFFwadOCHlfSCWhhIIGiyWwArqWPQ3E"]
+}
+
+# v1.designsystem.digital.gov TXT
 resource "aws_route53_record" "v1_designsystem_digital_gov__acme-challenge_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "_acme-challenge.v1.designsystem.digital.gov."
   type = "TXT"
   ttl = 120
   records = ["wIZIo5wxeXxLDnhBrd7qhaC7QTpU9ko7HsyL226CRkc"]
+}
+
+# pra.digital.gov TXT
+resource "aws_route53_record" "pra_digital_gov__acme-challenge_txt" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "_acme-challenge.pra.digital.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["0VxlpUbA2CXBDx1GKUlr-SujwU0ep9KvGrM0BvE6o4E"]
+}
+
+# demo.pra.digital.gov TXT
+resource "aws_route53_record" "demo_pra_digital_gov__acme-challenge_txt" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "_acme-challenge.demo.pra.digital.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["qzIXA_qU7a3io8b_FRxFVbPBUKZ83XtglufzS7qKnlg"]
 }
 
 resource "aws_route53_record" "digital_gov__dmarc_digital_gov_txt" {
