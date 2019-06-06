@@ -6,12 +6,6 @@ resource "aws_route53_zone" "open_fec_gov_zone" {
   }
 }
 
-resource "aws_route53_record" "open_fec_gov_open_fec_gov_a" {	
-  zone_id = "${aws_route53_zone.open_fec_gov_zone.zone_id}"	
-  name    = "open.fec.gov."	
-  type    = "A"
-}
-
 resource "aws_route53_record" "open_fec_gov_api-stage_open_fec_gov_cname" {
   zone_id = "${aws_route53_zone.open_fec_gov_zone.zone_id}"
   name    = "api-stage.open.fec.gov."
