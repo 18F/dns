@@ -992,6 +992,25 @@ resource "aws_route53_record" "18f_gov_modularcontracting_18f_gov_a" {
   records = ["production-domains-1-884689640.us-gov-west-1.elb.amazonaws.com."]
 }
 
+resource "aws_route53_record" "18f_gov_findtreatmentbeta_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "findtreatmentbeta.18f.gov."
+  type = "A"
+  alias {
+    name = "d1rqxq1vpfgb5j.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_findtreatmentbeta_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.findtreatmentbeta.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["jIiZy_Q59VgWUzh-I85h4e4GixOinz9wVk5-4Lwdo7Q"]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
