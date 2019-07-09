@@ -1003,6 +1003,14 @@ resource "aws_route53_record" "18f_gov_findtreatmentbeta_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "18f_gov__acme-challenge_findtreatmentbeta_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.findtreatmentbeta.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["jIiZy_Q59VgWUzh-I85h4e4GixOinz9wVk5-4Lwdo7Q"]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
