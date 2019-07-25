@@ -66,7 +66,7 @@ resource "aws_route53_record" "staging_vote_gov_cname" {
 
 resource "aws_route53_record" "staging_vote_gov_txt" {
   zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
-  name: _acme-challenge.staging.vote.gov.
+  name: "_acme-challenge.staging.vote.gov."
   type = "TXT"
   ttl = 120
   records = ["P64l_3BEaTCcJ7ZbM2a2H2tMwmGclssoqTiW4RmHPTY"]
