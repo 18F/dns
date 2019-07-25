@@ -56,6 +56,22 @@ resource "aws_route53_record" "beta_vote_gov_cname" {
   records = ["di5gyq0wmd14q.cloudfront.net."]
 }
 
+resource "aws_route53_record" "staging_vote_gov_cname" {
+  zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
+  name = "staging.vote.gov."
+  type = "CNAME"
+  ttl = 120
+  records = ["d2xt5jilh64q5c.cloudfront.net."]
+}
+
+resource "aws_route53_record" "staging_vote_gov_txt" {
+  zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
+  name: _acme-challenge.staging.vote.gov.
+  type = "TXT"
+  ttl = 120
+  records = ["P64l_3BEaTCcJ7ZbM2a2H2tMwmGclssoqTiW4RmHPTY"]
+}
+
 # BOD / DMARC
 resource "aws_route53_record" "vote_gov__dmarc_vote_gov_txt" {
   zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
