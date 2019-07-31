@@ -185,17 +185,6 @@ resource "aws_route53_record" "18f_gov_api_18f_gov_cname" {
   records = ["18f.domains.api.data.gov"]
 }
 
-resource "aws_route53_record" "18f_gov_acqstack-journeymap_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "acqstack-journeymap.18f.gov."
-  type = "A"
-  alias {
-    name = "d283vwqoe38bia.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_api-all-the-x_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "api-all-the-x.18f.gov."
@@ -284,17 +273,6 @@ resource "aws_route53_record" "18f_gov_before-you-ship_18f_gov_a" {
   type = "A"
   alias {
     name = "daap61vtgsw76.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "18f_gov_boise_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "boise.18f.gov."
-  type = "A"
-  alias {
-    name = "d3va9woazp7hye.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -538,14 +516,6 @@ resource "aws_route53_record" "18f_gov_federalist-landing-template_18f_gov_cname
   records = ["d2lwrtx2u5nmdw.cloudfront.net"]
 }
 
-resource "aws_route53_record" "18f_gov_federalist-modern-team-template_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "federalist-modern-team-template.18f.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["d2xyasfn4889hb.cloudfront.net"]
-}
-
 resource "aws_route53_record" "18f_gov_federalist-report-template_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalist-report-template.18f.gov."
@@ -770,29 +740,7 @@ resource "aws_route53_record" "18f_gov_methods_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_micropurchase-staging_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "micropurchase-staging.18f.gov."
-  type = "A"
-  alias {
-    name = "d148p0zbwe5pp7.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 # Configured with CDN Broker
-resource "aws_route53_record" "18f_gov_micropurchase_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "micropurchase.18f.gov."
-  type = "A"
-  alias {
-    name = "d2x6i02wsoxhfc.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_onepagetest_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "onepagetest.18f.gov."
@@ -832,17 +780,6 @@ resource "aws_route53_record" "18f_gov_pages_18f_gov_cname" {
   type = "CNAME"
   ttl = 300
   records = ["dvtze1xj8nrwl.cloudfront.net"]
-}
-
-resource "aws_route53_record" "18f_gov_paid-leave-prototype_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "paid-leave-prototype.18f.gov."
-  type = "A"
-  alias {
-    name = "d36xmdc11fynpu.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
 }
 
 resource "aws_route53_record" "18f_gov_partnership-playbook_18f_gov_a" {
