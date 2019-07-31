@@ -741,17 +741,6 @@ resource "aws_route53_record" "18f_gov_methods_18f_gov_a" {
 }
 
 # Configured with CDN Broker
-resource "aws_route53_record" "18f_gov_micropurchase_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "micropurchase.18f.gov."
-  type = "A"
-  alias {
-    name = "d2x6i02wsoxhfc.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_onepagetest_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "onepagetest.18f.gov."
