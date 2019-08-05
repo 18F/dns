@@ -61,7 +61,7 @@ resource "aws_route53_record" "staging_vote_gov_cname" {
   name = "staging.vote.gov."
   type = "CNAME"
   ttl = 120
-  records = ["d2xt5jilh64q5c.cloudfront.net."]
+  records = ["d3rjcr7wk6cbst.cloudfront.net."]
 }
 
 resource "aws_route53_record" "staging_vote_gov_txt" {
@@ -69,7 +69,7 @@ resource "aws_route53_record" "staging_vote_gov_txt" {
   name = "_acme-challenge.staging.vote.gov."
   type = "TXT"
   ttl = 120
-  records = ["P64l_3BEaTCcJ7ZbM2a2H2tMwmGclssoqTiW4RmHPTY"]
+  records = ["-IQdOpZZcQmMfAedslZpwYCbAsFPC92MLVyVzh53uqc"]
 }
 
 # BOD / DMARC
