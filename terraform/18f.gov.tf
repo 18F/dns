@@ -190,10 +190,18 @@ resource "aws_route53_record" "18f_gov_acqstack-journeymap_18f_gov_a" {
   name = "acqstack-journeymap.18f.gov."
   type = "A"
   alias {
-    name = "d283vwqoe38bia.cloudfront.net."
+    name = "douocfsg4z7b4.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_acqstack_journeymap_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.acqstack-journeymap.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["m6cdUen5P3H9ESqtXwatoTxbGf4klo6aSddvoF8Cc_A"]
 }
 
 resource "aws_route53_record" "18f_gov_api-all-the-x_18f_gov_a" {
@@ -294,10 +302,18 @@ resource "aws_route53_record" "18f_gov_boise_18f_gov_a" {
   name = "boise.18f.gov."
   type = "A"
   alias {
-    name = "d3va9woazp7hye.cloudfront.net."
+    name = "d2swak4c9i5bze.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_boise_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.boise.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["wtVQL98OnnahVdqneIGLrHfMAD30e7JWDOFouTenqaM"]
 }
 
 resource "aws_route53_record" "18f_gov_brand_18f_gov_a" {
@@ -543,7 +559,15 @@ resource "aws_route53_record" "18f_gov_federalist-modern-team-template_18f_gov_c
   name = "federalist-modern-team-template.18f.gov."
   type = "CNAME"
   ttl = 60
-  records = ["d2xyasfn4889hb.cloudfront.net"]
+  records = ["dfxc0mkp0730u.cloudfront.net"]
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_federalist_modern_team_template_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.federalist-modern-team-template.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["SmZkuaawMryDcWKFj5YkAUPubPPkeoU8B3JbnZ62YMA"]
 }
 
 resource "aws_route53_record" "18f_gov_federalist-report-template_18f_gov_cname" {
@@ -770,27 +794,24 @@ resource "aws_route53_record" "18f_gov_methods_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_micropurchase-staging_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "micropurchase-staging.18f.gov."
-  type = "A"
-  alias {
-    name = "d148p0zbwe5pp7.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 # Configured with CDN Broker
 resource "aws_route53_record" "18f_gov_micropurchase_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "micropurchase.18f.gov."
   type = "A"
   alias {
-    name = "d2x6i02wsoxhfc.cloudfront.net."
+    name = "dh692qtc0b17x.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_micropurchase_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.micropurchase.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["_aw_jMfmFuXZEje_N7_iPC25eqymsMzE9fQ5l7dN1o0"]
 }
 
 resource "aws_route53_record" "18f_gov_onepagetest_18f_gov_a" {
@@ -839,10 +860,18 @@ resource "aws_route53_record" "18f_gov_paid-leave-prototype_18f_gov_a" {
   name = "paid-leave-prototype.18f.gov."
   type = "A"
   alias {
-    name = "d36xmdc11fynpu.cloudfront.net."
+    name = "d1q8sm9645uona.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_paid_leave_prototype_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.paid-leave-prototype.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["Ve3MXquH0qU3GKUTzKJWWq0vC-HnJyyO6pYpRwgCso4"]
 }
 
 resource "aws_route53_record" "18f_gov_partnership-playbook_18f_gov_a" {
