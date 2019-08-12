@@ -9,7 +9,7 @@ This repository holds the source code for configuring DNS for domains managed by
 
 ## Making changes
 
-Assuming you're TTS staff, it's recommended that you **make the change in a branch on this repository itself, rather than on a fork**, because the credentials aren't shared with forks. (The `master` branch is [protected](https://help.github.com/articles/about-protected-branches/) to limit write access only to certain staff, and to ensure history doesn't get overwritten, etc.)
+Assuming you're TTS staff, it's recommended that you **make the change in a branch on this repository itself, rather than on a fork**, because the credentials aren't shared with forks. (The `master` branch is [protected](https://help.github.com/articles/about-protected-branches/) to limit write access only to certain staff, and to ensure history doesn't get overwritten, etc.) For major changes, it is recommended to keep the TTL value low just before and during the change period in order to make it easier to verify the changes went through as expected.
 
 1. Is the domain pointing to the right nameservers? In other words, is there a file for the domain under [`terraform/`](terraform) already?
     * **Yes:** Continue to next step.

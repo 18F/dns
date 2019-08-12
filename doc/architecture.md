@@ -103,6 +103,8 @@ Deployment is handled as a workflow in [CircleCI](https://circleci.com/gh/18F/dn
 
 Output from the job, typically just the nameservers configured for each zone, is visible in CircleCI builds view (see the "output" section in the sample config above). Notification regarding the success or failure of the job is also sent to Slack (see below).
 
+DNS zones that are delegated to us live in the 18F Enterprise AWS account.
+
 ## Slack
 
 Infrastructure has its own Slack channel for DNS requests, questions and automated job notifications, **#admins-dns**. When CircleCI runs a DNS job, the channel receives a notification regarding the success or failure of jobs. The Slack integration can be found in CircleCI's configuration [hooks](https://circleci.com/gh/18F/dns/edit#hooks).
