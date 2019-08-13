@@ -5,7 +5,7 @@
 This repository holds the source code for configuring DNS for domains managed by GSA TTS, including 18F and the Presidential Innovation Fellows. See also:
 
 - [Blog post](https://18f.gsa.gov/2018/08/15/shared-infrastructure-as-code/) written about this repository and its benefit to government
-- [Technical details about this repository](docs/architecture.md)
+- [Technical details about this repository](doc/architecture.md)
 
 ## Making changes
 
