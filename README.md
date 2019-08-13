@@ -2,13 +2,14 @@
 
 [![CircleCI](https://circleci.com/gh/18F/dns.svg?branch=master&style-svg)](https://circleci.com/gh/18F/dns)
 
-This repository holds the source code for configuring DNS for domains managed by GSA TTS, including 18F and the Presidential Innovation Fellows. Please also see the [blog post](https://18f.gsa.gov/2018/08/15/shared-infrastructure-as-code/) written about this repository and its benefit to government.
+This repository holds the source code for configuring DNS for domains managed by GSA TTS, including 18F and the Presidential Innovation Fellows. See also:
 
-[![dns-pipeline](https://user-images.githubusercontent.com/20934414/34623560-7dd34d3c-f217-11e7-95fd-1cc8236d4b5b.png)](https://github.com/18F/Infrastructure/wiki/DNS-architecture)
+- [Blog post](https://18f.gsa.gov/2018/08/15/shared-infrastructure-as-code/) written about this repository and its benefit to government
+- [Technical details about this repository](docs/architecture.md)
 
 ## Making changes
 
-Assuming you're TTS staff, it's recommended that you **make the change in a branch on this repository itself, rather than on a fork**, because the credentials aren't shared with forks. (The `master` branch is [protected](https://help.github.com/articles/about-protected-branches/) to limit write access only to certain staff, and to ensure history doesn't get overwritten, etc.)
+Assuming you're TTS staff, it's recommended that you **make the change in a branch on this repository itself, rather than on a fork**, because the credentials aren't shared with forks. (The `master` branch is [protected](https://help.github.com/articles/about-protected-branches/) to limit write access only to certain staff, and to ensure history doesn't get overwritten, etc.) For major changes, it is recommended to keep the TTL value low just before and during the change period in order to make it easier to verify the changes went through as expected.
 
 1. Is the domain pointing to the right nameservers? In other words, is there a file for the domain under [`terraform/`](terraform) already?
     * **Yes:** Continue to next step.
