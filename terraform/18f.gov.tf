@@ -1029,6 +1029,25 @@ resource "aws_route53_record" "18f_gov__acme-challenge_findtreatmentbeta_18f_gov
   records = ["jIiZy_Q59VgWUzh-I85h4e4GixOinz9wVk5-4Lwdo7Q"]
 }
 
+resource "aws_route53_record" "18f_gov_agile-bpa_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "agile-bpa.18f.gov."
+  type = "A"
+  alias {
+    name = "d2f0yvhrnh42o8.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_agile_bpa_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.agile-bpa.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["z29hjtu22N5Ex-cDx8kAwKgP6tDrxdobanSPUtlkZo4"]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
