@@ -849,7 +849,7 @@ resource "aws_route53_record" "18f_gov_paid-leave-prototype_18f_gov_a" {
   name = "paid-leave-prototype.18f.gov."
   type = "A"
   alias {
-    name = "d1q8sm9645uona.cloudfront.net."
+    name = "d1tgknd7unaxw4.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -860,7 +860,7 @@ resource "aws_route53_record" "18f_gov__acme-challenge_paid_leave_prototype_18f_
   name = "_acme-challenge.paid-leave-prototype.18f.gov."
   type = "TXT"
   ttl = 120
-  records = ["Ve3MXquH0qU3GKUTzKJWWq0vC-HnJyyO6pYpRwgCso4"]
+  records = ["PP01ymh2DTBj32M5vQLIIwwY0Nr6CVK12yu3oAnFcwg"]
 }
 
 resource "aws_route53_record" "18f_gov_partnership-playbook_18f_gov_a" {
