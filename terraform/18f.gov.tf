@@ -1015,6 +1015,44 @@ resource "aws_route53_record" "18f_gov__acme-challenge_agile_bpa_18f_gov_txt" {
   records = ["z29hjtu22N5Ex-cDx8kAwKgP6tDrxdobanSPUtlkZo4"]
 }
 
+resource "aws_route53_record" "18f_gov_fedspendingtransparency_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "fedspendingtransparency.18f.gov."
+  type = "A"
+  alias {
+    name = "d3fi39fc24yqlx.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_fedspendingtransparency_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.fedspendingtransparency.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["66CqBe0jeCgcnThiCHQi4r2HB9Kv0ucrvifGeWV_jhs"]
+}
+
+resource "aws_route53_record" "18f_gov_slides_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "slides.18f.gov."
+  type = "A"
+  alias {
+    name = "d1g4r1oppplum4.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_slides_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.slides.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["Ij5FclXKU_n8jvVITVWMnBJsMfpVLTaiaV2xi54x31o"]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
