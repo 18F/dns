@@ -586,17 +586,6 @@ resource "aws_route53_record" "18f_gov_85333a5c6cd71f56532894c3c64666ca_federali
   records = ["2f82c52f5ec6d2673b02122f6a68f819422b2d2a.comodoca.com."]
 }
 
-resource "aws_route53_record" "18f_gov_fedspendingtransparency_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "fedspendingtransparency.18f.gov."
-  type = "A"
-  alias {
-    name = "dbdhg5alj9dxm.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_files_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "files.18f.gov."
@@ -803,17 +792,6 @@ resource "aws_route53_record" "18f_gov__acme-challenge_micropurchase_18f_gov_txt
   records = ["_aw_jMfmFuXZEje_N7_iPC25eqymsMzE9fQ5l7dN1o0"]
 }
 
-resource "aws_route53_record" "18f_gov_onepagetest_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "onepagetest.18f.gov."
-  type = "A"
-  alias {
-    name = "d11sjos2lh2ef3.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_open-source-guide_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "open-source-guide.18f.gov."
@@ -924,17 +902,6 @@ resource "aws_route53_record" "18f_gov_requests_18f_gov_cname" {
   type = "CNAME"
   ttl = 300
   records = ["production-domains-0-589438325.us-gov-west-1.elb.amazonaws.com."]
-}
-
-resource "aws_route53_record" "18f_gov_slides_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "slides.18f.gov."
-  type = "A"
-  alias {
-    name = "d1mbkqkl20dkuc.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
 }
 
 resource "aws_route53_record" "18f_gov_tmate_18f_gov_a" {
