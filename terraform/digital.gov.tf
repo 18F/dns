@@ -1,3 +1,9 @@
+# ------------------------------------------
+# WELCOME to the DNS records for Digital.gov
+# Before making edits, please reach out to #digitalgov (in TTS Slack) or email digitalgov@gsa.gov
+# ------------------------------------------
+
+
 resource "aws_route53_zone" "digital_toplevel" {
   name = "digital.gov"
 
@@ -221,7 +227,38 @@ resource "aws_route53_record" "demo_pra_digital_gov_a" {
   }
 }
 
-# Compliance -------------------------------
+
+# Touchpoints -------------------------------
+# A customer service tool for federal agencies that helps them improve the quality of service they deliver to their customers
+# Contact feedback-analytics@gsa.gov or digitalgov@gsa.gov
+
+# DEMO Touchpoints Site / Federalist / demo.touchpoints.digital.gov — A
+resource "aws_route53_record" "demo_touchpoints_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name =  "demo.touchpoints.digital.gov."
+  type = "A"
+  alias {
+    name = "dcxk3q3d8gzx7.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+# Touchpoints Site / Federalist / touchpoints.digital.gov — A
+resource "aws_route53_record" "touchpoints_digital_gov_a" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "touchpoints.digital.gov."
+  type = "A"
+  alias {
+    name = "d5n0pmq4ueiac.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+
+
+# Compliance and ACME records -------------------------------
 
 # BOD
 resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
@@ -232,7 +269,7 @@ resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
   records = ["${local.spf_no_mail}"]
 }
 
-# v2.designsystem.digital.gov TXT
+# v2.designsystem.digital.gov TXT / ACME Challenge
 resource "aws_route53_record" "v2_designsystem_digital_gov__acme-challenge_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "_acme-challenge.v2.designsystem.digital.gov."
@@ -250,7 +287,7 @@ resource "aws_route53_record" "v2alt_designsystem_digital_gov__acme-challenge_tx
   records = ["4kIMhG7RfNmvTFFwadOCHlfSCWhhIIGiyWwArqWPQ3E"]
 }
 
-# v1.designsystem.digital.gov TXT
+# v1.designsystem.digital.gov TXT / ACME Challenge
 resource "aws_route53_record" "v1_designsystem_digital_gov__acme-challenge_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "_acme-challenge.v1.designsystem.digital.gov."
@@ -259,7 +296,7 @@ resource "aws_route53_record" "v1_designsystem_digital_gov__acme-challenge_txt" 
   records = ["wIZIo5wxeXxLDnhBrd7qhaC7QTpU9ko7HsyL226CRkc"]
 }
 
-# pra.digital.gov TXT
+# pra.digital.gov TXT / ACME Challenge
 resource "aws_route53_record" "pra_digital_gov__acme-challenge_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "_acme-challenge.pra.digital.gov."
@@ -268,7 +305,7 @@ resource "aws_route53_record" "pra_digital_gov__acme-challenge_txt" {
   records = ["0VxlpUbA2CXBDx1GKUlr-SujwU0ep9KvGrM0BvE6o4E"]
 }
 
-# demo.pra.digital.gov TXT
+# demo.pra.digital.gov TXT / ACME Challenge
 resource "aws_route53_record" "demo_pra_digital_gov__acme-challenge_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name = "_acme-challenge.demo.pra.digital.gov."
@@ -283,6 +320,24 @@ resource "aws_route53_record" "digital_gov__dmarc_digital_gov_txt" {
   type = "TXT"
   ttl = 300
   records = ["${local.dmarc_reject}"]
+}
+
+# demo.touchpoints.digital.gov TXT / ACME Challenge
+resource "aws_route53_record" "demo_touchpoints_digital_gov__acme-challenge_txt" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "_acme-challenge.demo.touchpoints.digital.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["n77f2RwJfGyS0NuSm-qIaf0FZEEURhqEACLML32hV0Y"]
+}
+
+# touchpoints.digital.gov TXT / ACME Challenge
+resource "aws_route53_record" "touchpoints_digital_gov__acme-challenge_txt" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "_acme-challenge.touchpoints.digital.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["Ho5lFIaJK7J44nLyBWGpfMBRNc96eL7-QnMuBII-4Uc"]
 }
 
 output "digital_ns" {
