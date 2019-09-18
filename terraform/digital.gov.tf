@@ -334,7 +334,7 @@ resource "aws_route53_record" "demo_touchpoints_digital_gov__acme-challenge_txt"
 # touchpoints.digital.gov TXT / ACME Challenge
 resource "aws_route53_record" "touchpoints_digital_gov__acme-challenge_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-  name = "_acme-challenge.demo.touchpoints.digital.gov."
+  name = "_acme-challenge.touchpoints.digital.gov."
   type = "TXT"
   ttl = 120
   records = ["Ho5lFIaJK7J44nLyBWGpfMBRNc96eL7-QnMuBII-4Uc"]
