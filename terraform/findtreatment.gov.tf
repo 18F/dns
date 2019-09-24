@@ -38,7 +38,7 @@ resource "aws_route53_record" "findtreatment_gov__acme-challenge_findtreatment_g
   records = ["7mbRC9tnaT3n20pIjnpFZ0WKcQJHxi6Rt7tdJjQaCvc"]
 }
 
-resource "aws_route53_record" "findtreatment_gov__acme-challenge_findtreatment_gov_txt" {
+resource "aws_route53_record" "findtreatment_www_gov__acme-challenge_findtreatment_gov_txt" {
   zone_id = "${aws_route53_zone.findtreatment_toplevel.zone_id}"
   name = "_acme-challenge.www.findtreatment.gov."
   type = "TXT"
