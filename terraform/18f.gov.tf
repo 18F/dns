@@ -329,7 +329,7 @@ resource "aws_route53_record" "18f_gov_cap_18f_gov_cname" {
   name = "cap.18f.gov."
   type = "CNAME"
   ttl = 300
-  records = ["production-domains-0-589438325.us-gov-west-1.elb.amazonaws.com."]
+  records = ["d2xzdqyn2qvwoo.cloudfront.net."]
 }
 
 resource "aws_route53_record" "18f_gov_c2_18f_gov_cname" {
@@ -901,7 +901,7 @@ resource "aws_route53_record" "18f_gov_requests_18f_gov_cname" {
   name = "requests.18f.gov."
   type = "CNAME"
   ttl = 300
-  records = ["production-domains-0-589438325.us-gov-west-1.elb.amazonaws.com."]
+  records = ["d2ukxgg8kqcdx6.cloudfront.net."]
 }
 
 resource "aws_route53_record" "18f_gov_tmate_18f_gov_a" {
