@@ -1053,6 +1053,22 @@ resource "aws_route53_record" "18f_gov__acme-challenge_slides_18f_gov_txt" {
   records = ["Ij5FclXKU_n8jvVITVWMnBJsMfpVLTaiaV2xi54x31o"]
 }
 
+resource "aws_route53_record" "18f_gov__cap_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.cap.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["8aYF3jbkX9y2KaYu1YVTlymVdPKLf0BLHkc6S03R3BM"]
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_requests_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.requests.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["xqrLG7YoUqvFzGYv8KCSr3nPZadqdu9PMcLh8yfhp0c"]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
