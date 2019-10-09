@@ -228,7 +228,7 @@ resource "aws_route53_record" "demo_pra_digital_gov_a" {
 }
 
 
-# Touchpoints -------------------------------
+# Touchpoints DEMO -------------------------------
 # A customer service tool for federal agencies that helps them improve the quality of service they deliver to their customers
 # Contact feedback-analytics@gsa.gov or digitalgov@gsa.gov
 
@@ -244,6 +244,65 @@ resource "aws_route53_record" "demo_touchpoints_digital_gov_a" {
   }
 }
 
+# DEMO Touchpoints APP / Amazon SES Verification TXT Record
+# demo.touchpoints.digital.gov
+resource "aws_route53_record"  "demo_touchpoints_digital_gov_verification_txt" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "_amazonses.demo-app.touchpoints.digital.gov"
+  type = "TXT"
+  ttl = "300"
+  records = [
+    "hzTUt6Q3kaLSAw5VleJgk8Rt7kikHwGMLeZd+QMHSEY="
+  ]
+}
+
+# DEMO Touchpoints APP / Amazon SES CNAME
+# demo-app.touchpoints.digital.gov — CNAME + DKIM 1 of 3
+# Proof of ownership over the domain
+resource "aws_route53_record" "demo_app_touchpoints_digital_gov_ses_cname_1" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "hg7wfopagu3tgfjnqijxrx7gs34ihjo5._domainkey.demo-app.touchpoints.digital.gov"
+  type = "CNAME"
+  ttl = 1800
+  records = ["hg7wfopagu3tgfjnqijxrx7gs34ihjo5.dkim.amazonses.com"]
+}
+
+# DEMO Touchpoints APP / Amazon SES CNAME
+# demo-app.touchpoints.digital.gov — CNAME + DKIM 2 of 3
+# Proof of ownership over the domain
+resource "aws_route53_record" "demo_app_touchpoints_digital_gov_ses_cname_2" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "6k4bacuvswoo77zsfpgg22c456xkcm2d._domainkey.demo-app.touchpoints.digital.gov"
+  type = "CNAME"
+  ttl = 1800
+  records = ["6k4bacuvswoo77zsfpgg22c456xkcm2d.dkim.amazonses.com"]
+}
+
+# DEMO Touchpoints APP / Amazon SES CNAME
+# demo-app.touchpoints.digital.gov — CNAME + DKIM 3 of 3
+# Proof of ownership over the domain
+resource "aws_route53_record" "demo_app_touchpoints_digital_gov_ses_cname_3" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "frvj7kknqxwqaoypz5w5l54yirxtqeue._domainkey.demo-app.touchpoints.digital.gov"
+  type = "CNAME"
+  ttl = 1800
+  records = ["frvj7kknqxwqaoypz5w5l54yirxtqeue.dkim.amazonses.com"]
+}
+
+# DEMO Touchpoints APP / MX Records
+# demo.app.touchpoints.digital.gov
+resource "aws_route53_record" "demo_app_touchpoints_digital_gov_mx" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name =  "demo-app.touchpoints.digital.gov."
+  type = "MX"
+  ttl = "600"
+  records = [
+    "inbound-smtp.us-east-1.amazonaws.com"
+  ]
+}
+
+# Touchpoints -------------------------------
+
 # Touchpoints Site / Federalist / touchpoints.digital.gov — A
 resource "aws_route53_record" "touchpoints_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
@@ -256,7 +315,62 @@ resource "aws_route53_record" "touchpoints_digital_gov_a" {
   }
 }
 
+# Touchpoints APP / Amazon SES Verification TXT Record
+# touchpoints.digital.gov
+resource "aws_route53_record" "touchpoints_digital_gov_verification_txt" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "_amazonses.app.touchpoints.digital.gov"
+  type = "TXT"
+  ttl = "300"
+  records = [
+    "r3nlrOyTmleqQm6yXXyHqEffx6FC3vtWnv9UPMhkADw"
+  ]
+}
 
+# Touchpoints APP / Amazon SES CNAME
+# touchpoints.app.digital.gov — CNAME + DKIM #1 of 3
+# Proof of ownership over the domain
+resource "aws_route53_record" "touchpoints_digital_gov_ses_cname_1" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "qqtoqzlc5a24irzufsu4lbdpoc3mvr3n._domainkey.app.touchpoints.digital.gov"
+  type = "CNAME"
+  ttl = 1800
+  records = ["qqtoqzlc5a24irzufsu4lbdpoc3mvr3n.dkim.amazonses.com"]
+}
+
+# Touchpoints APP / Amazon SES CNAME
+# touchpoints.app.digital.gov — CNAME + DKIM #2 of 3
+# Proof of ownership over the domain
+resource "aws_route53_record" "touchpoints_digital_gov_ses_cname_2" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "4dh5jgv5chdo2q3axkftnini7j7xkdjx._domainkey.app.touchpoints.digital.gov"
+  type = "CNAME"
+  ttl = 1800
+  records = ["4dh5jgv5chdo2q3axkftnini7j7xkdjx.dkim.amazonses.com"]
+}
+
+# Touchpoints APP / Amazon SES CNAME
+# touchpoints.app.digital.gov — CNAME + DKIM #3 of 3
+# Proof of ownership over the domain
+resource "aws_route53_record" "touchpoints_digital_gov_ses_cname_3" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "pwa5cvp3cde3aghrojag7ketcjaeytp2._domainkey.app.touchpoints.digital.gov"
+  type = "CNAME"
+  ttl = 1800
+  records = ["pwa5cvp3cde3aghrojag7ketcjaeytp2.dkim.amazonses.com"]
+}
+
+# Touchpoints APP / MX Records
+# app.touchpoints.digital.gov
+resource "aws_route53_record" "touchpoints_digital_gov_mx" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name = "app.touchpoints.digital.gov."
+  type = "MX"
+  ttl = "600"
+  records = [
+    "inbound-smtp.us-east-1.amazonaws.com"
+  ]
+}
 
 # Compliance and ACME records -------------------------------
 
