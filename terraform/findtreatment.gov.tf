@@ -24,7 +24,7 @@ resource "aws_route53_record" "findtreatment_www" {
   type = "A"
 
   alias {
-    name = "dvigm3e7repj.cloudfront.net."
+    name = "d3qgag0313dgk2.cloudfront.net."
     zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -43,7 +43,7 @@ resource "aws_route53_record" "findtreatment_www_gov__acme-challenge_findtreatme
   name = "_acme-challenge.www.findtreatment.gov."
   type = "TXT"
   ttl = 120
-  records = ["8EwRpC20W1tEMWzLlx6YWLmIff5SMCOzoa_KjNSthec"]
+  records = ["D0rV3DqJMU-UoUnr2ijbLAWmVScbnnPCPCDj-_5B970"]
 }
 
 # BOD
