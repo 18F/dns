@@ -297,7 +297,7 @@ resource "aws_route53_record" "demo_app_touchpoints_digital_gov_mx" {
   type = "MX"
   ttl = "600"
   records = [
-    "inbound-smtp.us-east-1.amazonaws.com"
+    "10 inbound-smtp.us-east-1.amazonaws.com"
   ]
 }
 
@@ -368,7 +368,7 @@ resource "aws_route53_record" "touchpoints_digital_gov_mx" {
   type = "MX"
   ttl = "600"
   records = [
-    "inbound-smtp.us-east-1.amazonaws.com"
+    "10 inbound-smtp.us-east-1.amazonaws.com"
   ]
 }
 
