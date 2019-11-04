@@ -52,7 +52,7 @@ resource "aws_route53_record" "findtreatment_gov__dmarc_findtreatment_gov_txt" {
   name = "_dmarc.findtreatment.gov."
   type = "TXT"
   ttl = 300
-  records = ["${local.dmarc_reject}"]
+  records = ["v=DMARC1; p=reject; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov,mailto:hhs@rua.agari.com; ruf=mailto:dmarcfailures@gsa.gov,mailto:hhs@ruf.agari.com"]
 }
 
 # SPF
