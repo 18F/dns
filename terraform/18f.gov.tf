@@ -16,22 +16,6 @@ resource "aws_route53_record" "18f_gov_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_amazonses_18f_gov_mx" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "amazonses.18f.gov."
-  type = "MX"
-  ttl = 300
-  records = ["10 feedback-smtp.us-east-1.amazonses.com"]
-}
-
-resource "aws_route53_record" "18f_gov_amazonses_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "amazonses.18f.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["v=spf1 include:amazonses.com ~all"]
-}
-
 resource "aws_route53_record" "18f_gov_github_18f_gov_txt" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "_github-challenge-18F.18f.gov"
@@ -86,38 +70,6 @@ resource "aws_route53_record" "18f_gov_89afa0142502f9be9fba3afd80a703e1_18f_gov_
   type = "CNAME"
   ttl = 300
   records = ["11c866ad428c34fc9aa545123e72ef879b0898ef.comodoca.com."]
-}
-
-resource "aws_route53_record" "18f_gov__amazonses_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "_amazonses.18f.gov."
-  type = "TXT"
-  ttl = 1800
-  records = ["eLlEp8JypEb+vZk7qRQsdhwf2t1qVLKg9TNbCsdbpVQ="]
-}
-
-resource "aws_route53_record" "18f_gov_ad4lynrrv5foixysvwm47qbeuj5bbbyr__domainkey_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "ad4lynrrv5foixysvwm47qbeuj5bbbyr._domainkey.18f.gov."
-  type = "CNAME"
-  ttl = 1800
-  records = ["ad4lynrrv5foixysvwm47qbeuj5bbbyr.dkim.amazonses.com"]
-}
-
-resource "aws_route53_record" "18f_gov_jfumetkqthwzknxvlqsi7cnwzxultyek__domainkey_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "jfumetkqthwzknxvlqsi7cnwzxultyek._domainkey.18f.gov."
-  type = "CNAME"
-  ttl = 1800
-  records = ["jfumetkqthwzknxvlqsi7cnwzxultyek.dkim.amazonses.com"]
-}
-
-resource "aws_route53_record" "18f_gov_qegrzvzekq4wiompgqufe4xwmarm37lh__domainkey_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "qegrzvzekq4wiompgqufe4xwmarm37lh._domainkey.18f.gov."
-  type = "CNAME"
-  ttl = 1800
-  records = ["qegrzvzekq4wiompgqufe4xwmarm37lh.dkim.amazonses.com"]
 }
 
 # Individual site records start here, alphabetized by subdomain name
