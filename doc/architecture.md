@@ -1,4 +1,4 @@
-# DNS archtiecture
+# DNS architecture
 
 This page attempts to describe the overall architecture of how 18F manages DNS and the associated components that make up the architecture. If you are looking for a refresher on DNS you can check [here](https://docs.google.com/presentation/d/11_bu_a1W2jw57jRT2mteo16TZmSWLOeoVtdf-Flskcg/). The DNS zones that 18F hosts at AWS Route 53 are managed by a set of Terraform configurations stored in a GitHub repository, tested with continuous integration, and deployed and changed in a deployment pipeline, with Slack notifications.
 
