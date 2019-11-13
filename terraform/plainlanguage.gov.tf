@@ -6,13 +6,18 @@ resource "aws_route53_zone" "plainlanguage_toplevel" {
   }
 }
 
+locals {
+  plainlanguage_cloudfront = "d1qy5q7pncs690.cloudfront.net."
+}
+
+
 resource "aws_route53_record" "plainlanguage_apex" {
   zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
   name    = "plainlanguage.gov."
   type    = "A"
 
   alias {
-    name                   = "d1qy5q7pncs690.cloudfront.net."
+    name                   = "${local.plainlanguage_cloudfront}"
     zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -24,7 +29,7 @@ resource "aws_route53_record" "plainlanguage_www" {
   type    = "A"
 
   alias {
-    name                   = "d1qy5q7pncs690.cloudfront.net."
+    name                   = "${local.plainlanguage_cloudfront}"
     zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }

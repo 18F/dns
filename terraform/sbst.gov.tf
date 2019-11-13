@@ -67,7 +67,7 @@ resource "aws_route53_record" "sbst_gov__dmarc_sbst_gov_txt" {
   name    = "_dmarc.sbst.gov."
   type    = "TXT"
   ttl     = 300
-  records = ["v=DMARC1; p=reject; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"]
+  records = ["${local.dmarc_reject}"]
 }
 
 resource "aws_route53_record" "sbst_gov_sbst_gov_txt" {

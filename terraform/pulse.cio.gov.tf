@@ -7,13 +7,17 @@ resource "aws_route53_zone" "pulse_cio_gov_zone" {
   }
 }
 
+locals {
+  pulse_cloudfront = "d1molo8p4za8ef.cloudfront.net."
+}
+
 resource "aws_route53_record" "pulse_cio_gov_pulse_cio_gov_a" {
   zone_id = "${aws_route53_zone.pulse_cio_gov_zone.zone_id}"
   name    = "pulse.cio.gov."
   type    = "A"
 
   alias {
-    name                   = "d1molo8p4za8ef.cloudfront.net."
+    name                   = "${local.pulse_cloudfront}"
     zone_id                = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -25,7 +29,7 @@ resource "aws_route53_record" "pulse_cio_gov_pulse_cio_gov_aaaa" {
   type    = "AAAA"
 
   alias {
-    name                   = "d1molo8p4za8ef.cloudfront.net."
+    name                   = "${local.pulse_cloudfront}"
     zone_id                = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
