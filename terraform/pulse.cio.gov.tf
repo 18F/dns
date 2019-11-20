@@ -3,8 +3,12 @@ resource "aws_route53_zone" "pulse_cio_gov_zone" {
 
   tags {
     Project = "dns"
-    client = "OGP-20150420-20150930-01"
+    client  = "OGP-20150420-20150930-01"
   }
+}
+
+locals {
+  pulse_cloudfront = "d1molo8p4za8ef.cloudfront.net."
 }
 
 resource "aws_route53_record" "pulse_cio_gov_pulse_cio_gov_a" {
@@ -13,7 +17,7 @@ resource "aws_route53_record" "pulse_cio_gov_pulse_cio_gov_a" {
   type    = "A"
 
   alias {
-    name                   = "d1molo8p4za8ef.cloudfront.net."
+    name                   = "${local.pulse_cloudfront}"
     zone_id                = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -25,7 +29,7 @@ resource "aws_route53_record" "pulse_cio_gov_pulse_cio_gov_aaaa" {
   type    = "AAAA"
 
   alias {
-    name                   = "d1molo8p4za8ef.cloudfront.net."
+    name                   = "${local.pulse_cloudfront}"
     zone_id                = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
