@@ -36,9 +36,9 @@ resource "aws_route53_record" "calc_gsa_gov_ea1c6bc2bcfeca68fa3da9697e2b980d_cal
 
 resource "aws_route53_record" "calc_gsa_gov_calc_gsa_gov_txt" {
   zone_id = "${aws_route53_zone.calc_gsa_gov_zone.zone_id}"
-  name = "calc.gsa.gov."
-  type = "TXT"
-  ttl = 300
+  name    = "calc.gsa.gov."
+  type    = "TXT"
+  ttl     = 300
   records = ["v=spf1 include:amazonses.com ~all"]
 }
 
