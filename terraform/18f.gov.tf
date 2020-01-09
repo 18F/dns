@@ -1007,7 +1007,7 @@ resource "aws_route53_record" "18f_gov__acme-challenge_engineering_18f_gov_txt" 
   name = "_acme-challenge.engineering.18f.gov."
   type = "TXT"
   ttl = 120
-  records = ["OoBKf_lWlA93PhrvY067jVttIZbTBy5oSpdE2I04tKQ"]
+  records = ["oI10GrfMLy5l2eczdrgMGsCHAooCAvbsq8yQA2Dhvbs"]
 }
 
 output "18f_gov_ns" {
