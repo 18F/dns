@@ -1002,6 +1002,14 @@ resource "aws_route53_record" "18f_gov__acme-challenge_requests_18f_gov_txt" {
   records = ["xqrLG7YoUqvFzGYv8KCSr3nPZadqdu9PMcLh8yfhp0c"]
 }
 
+resource "aws_route53_record" "18f_gov__acme-challenge_engineering_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.engineering.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["OoBKf_lWlA93PhrvY067jVttIZbTBy5oSpdE2I04tKQ"]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
