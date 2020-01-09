@@ -1010,6 +1010,17 @@ resource "aws_route53_record" "18f_gov__acme-challenge_engineering_18f_gov_txt" 
   records = ["oI10GrfMLy5l2eczdrgMGsCHAooCAvbsq8yQA2Dhvbs"]
 }
 
+resource "aws_route53_record" "18f_gov_engineering_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "engineering.18f.gov."
+  type = "A"
+  alias {
+    name = "d1ah19wbgikahf.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
