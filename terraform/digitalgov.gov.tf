@@ -171,38 +171,14 @@ resource "aws_route53_record" "dap_validation_digitalgov_gov_a" {
 
 # =================================
 
-# EMAIL and SUPPORT SERVICES
-
-
-# o166.email.digitalgov.gov — A
-# Unclear what this is for.
-resource "aws_route53_record" "o166_email_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "o166.email.digitalgov.gov."
-  type    = "A"
-  ttl     = "300"
-  records = [
-    "167.89.86.190"
-  ]
-}
-
-# admin.digitalgov.gov — A
-# Unclear what this is for.
-resource "aws_route53_record" "admin_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "admin.digitalgov.gov."
-  type    = "A"
-  ttl     = "600"
-  records = [
-    "173.203.40.168"
-  ]
-}
-
-# support.digitalgov.gov — A
-# used a number of teams across TTS in conjunction with Zendesk
+# SUPPORT SERVICES (support.digitalgov.gov)
+# Used a number of teams across TTS in conjunction with Zendesk
 # - USWDS
 # - Search.gov
 # - DAP
+
+
+# support.digitalgov.gov — A
 resource "aws_route53_record" "support_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name    = "support.digitalgov.gov."
@@ -214,6 +190,7 @@ resource "aws_route53_record" "support_digitalgov_gov_a" {
   ]
 }
 
+# support.digitalgov.gov — CNAME
 # required for AWS SES to DKIM-sign emails sent "From" support.digitalgov.gov
 resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
@@ -225,6 +202,7 @@ resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_a" {
   ]
 }
 
+# support.digitalgov.gov — CNAME
 # required for AWS SES to DKIM-sign emails sent "From" support.digitalgov.gov
 resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_b" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
@@ -236,6 +214,7 @@ resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_b" {
   ]
 }
 
+# support.digitalgov.gov — CNAME
 # required for AWS SES to DKIM-sign emails sent "From" support.digitalgov.gov
 resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_c" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
@@ -247,6 +226,7 @@ resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_c" {
   ]
 }
 
+# support.digitalgov.gov — CNAME
 # required by AWS SES to verify control of the support.digitalgov.gov domain
 resource "aws_route53_record" "support_digitalgov_gov_ses_verification" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
@@ -280,31 +260,67 @@ resource "aws_route53_record" "support_digitalgov_gov_mx" {
   ]
 }
 
-# email.digitalgov.gov — MX
-# unclear what this is for
-resource "aws_route53_record" "email_digitalgov_gov_mx" {
+# support.digitalgov.gov — CNAME
+# required by Zendesk to send support using the support.digitalgov.gov email domain (managed by the search.gov team)
+resource "aws_route53_record" "support_digitalgov_gov_zendesk_email_c1" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "email.digitalgov.gov."
-  type    = "MX"
-  ttl     = "3600"
+  name = "zendesk1"
+  type = "CNAME"
+  ttl = "300"
   records = [
-    "10 mx.sendgrid.net."
+    "mail1.zendesk.com"
   ]
 }
 
-# email.digitalgov.gov - TXT
-resource "aws_route53_record" "digitalgov_gov_email_digitalgov_gov_txt" {
+# support.digitalgov.gov — CNAME
+# required by Zendesk to send support using the support.digitalgov.gov email domain (managed by the search.gov team)
+resource "aws_route53_record" "support_digitalgov_gov_zendesk_email_c2" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "email.digitalgov.gov."
-  type    = "TXT"
-  ttl     = "3600"
+  name = "zendesk2"
+  type = "CNAME"
+  ttl = "300"
   records = [
-    "v=spf1 ip4:167.89.86.190 -all"
+    "mail2.zendesk.com"
   ]
 }
 
+# support.digitalgov.gov — CNAME
+# required by Zendesk to send support using the support.digitalgov.gov email domain (managed by the search.gov team)
+resource "aws_route53_record" "support_digitalgov_gov_zendesk_email_c3" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "zendesk3"
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "mail3.zendesk.com"
+  ]
+}
 
-# END EMAIL and SUPPORT SERVICES
+# support.digitalgov.gov — CNAME
+# required by Zendesk to send support using the support.digitalgov.gov email domain (managed by the search.gov team)
+resource "aws_route53_record" "support_digitalgov_gov_zendesk_email_c4" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "zendesk4"
+  type = "CNAME"
+  ttl = "300"
+  records = [
+    "mail4.zendesk.com"
+  ]
+}
+
+# support.digitalgov.gov — TXT
+# required by Zendesk to send support using the support.digitalgov.gov email domain (managed by the search.gov team)
+resource "aws_route53_record" "support_digitalgov_gov_zendesk_email_txt" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name = "zendeskverification"
+  type = "TXT"
+  ttl = "300"
+  records = [
+    "6d8e09d2549be696"
+  ]
+}
+
+# END SUPPORT SERVICES
 
 # =================================
 
@@ -324,8 +340,63 @@ resource "aws_route53_record" "connect_digitalgov_gov_a" {
   ]
 }
 
+# END EMAIL NEWSLETTER (HubSpot)
 
-# EMAIL NEWSLETTER (HubSpot)
+# =================================
+
+# UNUSED and UNCLEAR RECORDS
+
+
+# o166.email.digitalgov.gov — A
+# Unclear what this is for.
+resource "aws_route53_record" "o166_email_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "o166.email.digitalgov.gov."
+  type    = "A"
+  ttl     = "300"
+  records = [
+    "167.89.86.190"
+  ]
+}
+
+# admin.digitalgov.gov — A
+# Unclear what this is for.
+resource "aws_route53_record" "admin_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "admin.digitalgov.gov."
+  type    = "A"
+  ttl     = "600"
+  records = [
+    "173.203.40.168"
+  ]
+}
+
+# email.digitalgov.gov — MX
+# No longer needed or used. Needs to be redirected and moved
+resource "aws_route53_record" "email_digitalgov_gov_mx" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "email.digitalgov.gov."
+  type    = "MX"
+  ttl     = "3600"
+  records = [
+    "10 mx.sendgrid.net."
+  ]
+}
+
+# email.digitalgov.gov - TXT
+# No longer needed or used. Needs to be redirected and moved
+resource "aws_route53_record" "digitalgov_gov_email_digitalgov_gov_txt" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "email.digitalgov.gov."
+  type    = "TXT"
+  ttl     = "3600"
+  records = [
+    "v=spf1 ip4:167.89.86.190 -all"
+  ]
+}
+
+
+# UNUSED and UNCLEAR RECORDS
 
 # =================================
 
