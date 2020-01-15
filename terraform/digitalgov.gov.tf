@@ -1,12 +1,20 @@
-# digitalgov.gov is a legacy domain that is still hooked up to a number of services in TTS
-#
+# These DNS records are hosted out of Route53, and managed by Digital.gov and the Infrastructure team at Technology Transformation Services (TTS).
+# More information on editing: https://github.com/18F/dns/blob/master/README.md
+# To request a change, file an issue: https://github.com/18F/dns
+# Question? email digitalgov@gsa.gov or reach us in #digitalgov in Slack
+
+# =================================
+
 # For each record, please leave:
 # - primary contact information
 # - comments explaining what the record is used for, or where it redirects
 
-# Question? email digitalgov@gsa.gov or reach us in #digitalgov in Slack
+# NOTE: digitalgov.gov is a legacy domain that is still hooked up to a number of services in TTS. See the Digital.gov file for more additional records https://github.com/18F/dns/blob/master/terraform/digital.gov.tf
+
 
 # =================================
+
+# INIT
 
 resource "aws_route53_zone" "digitalgov_gov_zone" {
   name = "digitalgov.gov."
@@ -16,7 +24,9 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
 }
 
 # =================================
+
 # REDIRECTS
+
 # Most of our redirects go through an app called pages_redirect, managed by the Federalist team
 # To file a new redirect, create an issue at https://github.com/18F/pages-redirects
 
@@ -155,8 +165,6 @@ resource "aws_route53_record" "dap_validation_digitalgov_gov_a" {
     "_3f7fd3397174324e46798283045cd3e7.acm-validations.aws"
   ]
 }
-# End temporary record for validation
-
 
 
 # END SERVICES
@@ -189,7 +197,6 @@ resource "aws_route53_record" "admin_digitalgov_gov_a" {
     "173.203.40.168"
   ]
 }
-
 
 # support.digitalgov.gov — A
 # supports a number of customer support services across TTS
