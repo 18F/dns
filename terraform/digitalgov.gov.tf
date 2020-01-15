@@ -199,7 +199,10 @@ resource "aws_route53_record" "admin_digitalgov_gov_a" {
 }
 
 # support.digitalgov.gov — A
-# supports a number of customer support services across TTS
+# used a number of teams across TTS in conjunction with Zendesk
+# - USWDS
+# - Search.gov
+# - DAP
 resource "aws_route53_record" "support_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name    = "support.digitalgov.gov."
