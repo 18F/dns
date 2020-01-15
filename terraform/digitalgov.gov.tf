@@ -321,14 +321,61 @@ resource "aws_route53_record" "connect_digitalgov_gov_a" {
   ]
 }
 
+# Hubspot records for sending email from the digitalgov.gov domain
+# See https://knowledge.hubspot.com/email/can-i-use-a-dmarc-policy-with-hubspot#troubleshoot-issues-with-dmarc-authentication
+resource "aws_route53_record" "hubspot1_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "hs1._domainkey.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "digitalgov-gov.hs01a.dkim.hubspotemail.net."
+  ]
+}
 
-# EMAIL NEWSLETTER (HubSpot)
+# Hubspot records for sending email from the digitalgov.gov domain
+# See https://knowledge.hubspot.com/email/can-i-use-a-dmarc-policy-with-hubspot#troubleshoot-issues-with-dmarc-authentication
+resource "aws_route53_record" "hubspot2_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "hs2._domainkey.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "digitalgov-gov.hs01a.dkim.hubspotemail.net."
+  ]
+}
+
+# OLD Hubspot TXT records for sending email from the digitalgov.gov domain
+# Need to verify with Hubspot that this can be removed
+# m1._domainkey.digitalgov.gov - TXT
+resource "aws_route53_record" "digitalgov_gov_m1_domainkey_digitalgov_gov_txt" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "m1._domainkey.digitalgov.gov."
+  type    = "TXT"
+  ttl     = "300"
+  records = [
+    "k=rsa; t=s; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4CvMOSVFOQDIJ+HkjdfAmKuBkkiqTwV982PCFBocVGHY07N2uvkleqT+XrySENYYzFrdnk2U1I7HUYkA0tpEZNzU7G67l7u1qWcd5QMBzVDsAg2vJf4fAkAWmdQCyWboeVXCoMnswz5LZK/t0+Z37smv9k2nDK3XNdsYTVu8D8wIDAQAB"
+  ]
+}
+
+# NEW Hubspot TXT records for sending email from the digitalgov.gov domain
+resource "aws_route53_record" "hubspot_digitalgov_gov_txt" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "smtpapi._domainkey.digitalgov.gov."
+  type    = "TXT"
+  ttl     = "300"
+  records = [
+    "k=rsa; t=s; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPtW5iwpXVPiH5FzJ7Nrl8USzuY9zqqzjE0D1r04xDN6qwziDnmgcFNNfMewVKN2D1O+2J9N14hRprzByFwfQW76yojh54Xu3uSbQ3JP0A7k8o8GutRF8zbFUA8n0ZH2y0cIEjMliXY4W4LwPA7m4q0ObmvSjhd63O9d8z1XkUBwIDAQAB"
+  ]
+}
+
+
+# END EMAIL NEWSLETTER (HubSpot)
 
 # =================================
 
 # TXT RECORDS
 # Unclear what these are connected to, or if they are needed any more
-
 
 # dzc.digitalgov.gov - TXT
 resource "aws_route53_record" "digitalgov_gov_dzc_digitalgov_gov_txt" {
@@ -338,17 +385,6 @@ resource "aws_route53_record" "digitalgov_gov_dzc_digitalgov_gov_txt" {
   ttl     = "300"
   records = [
     "8wtx7v9M"
-  ]
-}
-
-# m1._domainkey.digitalgov.gov - TXT
-resource "aws_route53_record" "digitalgov_gov_m1_domainkey_digitalgov_gov_txt" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "m1._domainkey.digitalgov.gov."
-  type    = "TXT"
-  ttl     = "300"
-  records = [
-    "k=rsa; t=s; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4CvMOSVFOQDIJ+HkjdfAmKuBkkiqTwV982PCFBocVGHY07N2uvkleqT+XrySENYYzFrdnk2U1I7HUYkA0tpEZNzU7G67l7u1qWcd5QMBzVDsAg2vJf4fAkAWmdQCyWboeVXCoMnswz5LZK/t0+Z37smv9k2nDK3XNdsYTVu8D8wIDAQAB"
   ]
 }
 
