@@ -1,3 +1,21 @@
+# These DNS records are hosted out of Route53, and managed by Digital.gov and the Infrastructure team at Technology Transformation Services (TTS).
+# More information on editing: https://github.com/18F/dns/blob/master/README.md
+# To request a change, file an issue: https://github.com/18F/dns
+# Question? email digitalgov@gsa.gov or reach us in #digitalgov in Slack
+
+# =================================
+
+# For each record, please leave:
+# - primary contact information
+# - comments explaining what the record is used for, or where it redirects
+
+# NOTE: digitalgov.gov is a legacy domain that is still hooked up to a number of services in TTS. See the Digital.gov file for more additional records https://github.com/18F/dns/blob/master/terraform/digital.gov.tf
+
+
+# =================================
+
+# INIT
+
 resource "aws_route53_zone" "digitalgov_gov_zone" {
   name = "digitalgov.gov."
   tags {
@@ -5,12 +23,19 @@ resource "aws_route53_zone" "digitalgov_gov_zone" {
   }
 }
 
-# digitalgov.gov — redirects to digital.gov through pages_redirect
+# =================================
+
+# REDIRECTS
+
+# Most of our redirects go through an app called pages_redirect, managed by the Federalist team
+# To file a new redirect, create an issue at https://github.com/18F/pages-redirects
+
+# digitalgov.gov
+# Redirects to digital.gov through pages_redirect
 resource "aws_route53_record" "digitalgov_gov_apex" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name    = "digitalgov.gov."
   type    = "A"
-
   alias {
     name                   = "dj62070yqrr60.cloudfront.net."
     zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
@@ -18,7 +43,139 @@ resource "aws_route53_record" "digitalgov_gov_apex" {
   }
 }
 
+# www.digitalgov.gov — redirects to digital.gov through pages_redirect
+resource "aws_route53_record" "digitalgov_gov_www" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "www.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "d1rrea61xhwc36.cloudfront.net."
+  ]
+}
+
+# demo.digitalgov.gov — redirects to demo.digital.gov through pages_redirect
+resource "aws_route53_record" "demo_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "demo.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "d1wh5biaq5z7yu.cloudfront.net."
+  ]
+}
+
+# OpenOpps
+# openopps.digitalgov.gov — redirects to openopps.usajobs.gov through pages_redirect
+resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "openopps.digitalgov.gov."
+  type    = "A"
+  alias {
+    name                   = "d198punmzgrl9l.cloudfront.net."
+    zone_id                = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+# search.digitalgov.gov
+resource "aws_route53_record" "search_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "search.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "600"
+  records = [
+    "dgsearchsite.infr.search.usa.gov."
+  ]
+}
+
+# summit.digitalgov.gov — redirects to digital.gov through pages_redirect
+resource "aws_route53_record" "summit_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "summit.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "d3quko6qtudpnl.cloudfront.net."
+  ]
+}
+
+# find.digitalgov.gov
+# redirects to digital.gov — though unclear where the redirect is happening
+resource "aws_route53_record" "find_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "find.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "digitalgov.sites.infr.search.usa.gov."
+  ]
+}
+
+# END REDIRECTS
+
+# =================================
+
+# SERVICES
+
+# U.S. Digital Registry
+# usdigitalregistry.digitalgov.gov
+resource "aws_route53_record" "usdigitalregistry_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "usdigitalregistry.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "alb-scmdrg-prod-digitalgov-pub-1-1069371853.us-east-1.elb.amazonaws.com."
+  ]
+}
+
+# U.S. Digital Registry / Staging
+# stage-socialmobileregistry.digitalgov.gov
+resource "aws_route53_record" "stage-socialmobileregistry_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "stage-socialmobileregistry.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "alb-scmdrg-stg-digitalgov-pub-1-286604225.us-east-1.elb.amazonaws.com."
+  ]
+}
+
+# Digital Analytics Program (DAP) —
+# dap.digitalgov.gov
+# reach out to dap@support.digitalgov.gov before making any changes
+resource "aws_route53_record" "dap_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "dap.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "d27f3qgc9anoq2.cloudfront.net."
+  ]
+}
+
+# DAP Temporary record for validation
+resource "aws_route53_record" "dap_validation_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "_c80f04313e7e2fadb177e34e2dedf0d6.dap.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "_3f7fd3397174324e46798283045cd3e7.acm-validations.aws"
+  ]
+}
+
+
+# END SERVICES
+
+# =================================
+
+# EMAIL and SUPPORT SERVICES
+
+
 # o166.email.digitalgov.gov — A
+# Unclear what this is for.
 resource "aws_route53_record" "o166_email_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name    = "o166.email.digitalgov.gov."
@@ -30,6 +187,7 @@ resource "aws_route53_record" "o166_email_digitalgov_gov_a" {
 }
 
 # admin.digitalgov.gov — A
+# Unclear what this is for.
 resource "aws_route53_record" "admin_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name    = "admin.digitalgov.gov."
@@ -41,6 +199,10 @@ resource "aws_route53_record" "admin_digitalgov_gov_a" {
 }
 
 # support.digitalgov.gov — A
+# used a number of teams across TTS in conjunction with Zendesk
+# - USWDS
+# - Search.gov
+# - DAP
 resource "aws_route53_record" "support_digitalgov_gov_a" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name    = "support.digitalgov.gov."
@@ -51,18 +213,6 @@ resource "aws_route53_record" "support_digitalgov_gov_a" {
     "173.252.148.104",
   ]
 }
-
-# ===== Temporary record for validation =====
-resource "aws_route53_record" "dap_validation_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "_c80f04313e7e2fadb177e34e2dedf0d6.dap.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "_3f7fd3397174324e46798283045cd3e7.acm-validations.aws"
-  ]
-}
-# ===== End temporary record for validation =====
 
 # required for AWS SES to DKIM-sign emails sent "From" support.digitalgov.gov
 resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_a" {
@@ -97,164 +247,14 @@ resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_c" {
   ]
 }
 
-
-# www.digitalgov.gov — redirects to digital.gov through pages_redirect
-resource "aws_route53_record" "digitalgov_gov_www" {
+# required by AWS SES to verify control of the support.digitalgov.gov domain
+resource "aws_route53_record" "support_digitalgov_gov_ses_verification" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "www.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "d1rrea61xhwc36.cloudfront.net."
-  ]
-}
-
-# demo.digitalgov.gov — redirects to demo.digital.gov through pages_redirect
-resource "aws_route53_record" "demo_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "demo.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "d1wh5biaq5z7yu.cloudfront.net."
-  ]
-}
-
-
-
-# OpenOpps ------------------------------------------
-
-# openopps.digitalgov.gov — redirects to openopps.usajobs.gov through pages_redirect
-resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "openopps.digitalgov.gov."
-  type    = "A"
-  alias {
-    name                   = "d198punmzgrl9l.cloudfront.net."
-    zone_id                = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
-
-# usdigitalregistry -------------------------------------
-
-# usdigitalregistry.digitalgov.gov
-resource "aws_route53_record" "usdigitalregistry_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "usdigitalregistry.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "alb-scmdrg-prod-digitalgov-pub-1-1069371853.us-east-1.elb.amazonaws.com."
-  ]
-}
-
-# stage-socialmobileregistry.digitalgov.gov
-resource "aws_route53_record" "stage-socialmobileregistry_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "stage-socialmobileregistry.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "alb-scmdrg-stg-digitalgov-pub-1-286604225.us-east-1.elb.amazonaws.com."
-  ]
-}
-
-
-# DAP -------------------------------------
-
-# dap.digitalgov.gov
-resource "aws_route53_record" "dap_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "dap.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "d27f3qgc9anoq2.cloudfront.net."
-  ]
-}
-
-
-
-# search.digitalgov.gov
-resource "aws_route53_record" "search_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "search.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "600"
-  records = [
-    "dgsearchsite.infr.search.usa.gov."
-  ]
-}
-
-# summit.digitalgov.gov — redirects to digital.gov through pages_redirect
-resource "aws_route53_record" "summit_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "summit.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "d3quko6qtudpnl.cloudfront.net."
-  ]
-}
-
-# connect.digitalgov.gov
-resource "aws_route53_record" "connect_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "connect.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "1962994g44.secure0082.hubspot.net."
-  ]
-}
-
-# find.digitalgov.gov
-resource "aws_route53_record" "find_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "find.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "digitalgov.sites.infr.search.usa.gov."
-  ]
-}
-
-
-# ==========
-# TXT Records
-
-# dzc.digitalgov.gov - TXT
-resource "aws_route53_record" "digitalgov_gov_dzc_digitalgov_gov_txt" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "dzc.digitalgov.gov."
-  type    = "TXT"
-  ttl     = "300"
-  records = [
-    "8wtx7v9M"
-  ]
-}
-
-# email.digitalgov.gov - TXT
-resource "aws_route53_record" "digitalgov_gov_email_digitalgov_gov_txt" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "email.digitalgov.gov."
+  name    = "_amazonses.support.digitalgov.gov."
   type    = "TXT"
   ttl     = "3600"
   records = [
-    "v=spf1 ip4:167.89.86.190 -all"
-  ]
-}
-
-# m1._domainkey.digitalgov.gov - TXT
-resource "aws_route53_record" "digitalgov_gov_m1_domainkey_digitalgov_gov_txt" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "m1._domainkey.digitalgov.gov."
-  type    = "TXT"
-  ttl     = "300"
-  records = [
-    "k=rsa; t=s; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4CvMOSVFOQDIJ+HkjdfAmKuBkkiqTwV982PCFBocVGHY07N2uvkleqT+XrySENYYzFrdnk2U1I7HUYkA0tpEZNzU7G67l7u1qWcd5QMBzVDsAg2vJf4fAkAWmdQCyWboeVXCoMnswz5LZK/t0+Z37smv9k2nDK3XNdsYTVu8D8wIDAQAB"
+    "T5etn/YylzSUQQWw6HspyK4+2+B9XzE7Kajpz9ogfJI="
   ]
 }
 
@@ -269,35 +269,6 @@ resource "aws_route53_record" "digitalgov_gov_support_digitalgov_gov_txt" {
   ]
 }
 
-
-# required by AWS SES to verify control of the support.digitalgov.gov domain
-resource "aws_route53_record" "support_digitalgov_gov_ses_verification" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "_amazonses.support.digitalgov.gov."
-  type    = "TXT"
-  ttl     = "3600"
-  records = [
-    "T5etn/YylzSUQQWw6HspyK4+2+B9XzE7Kajpz9ogfJI="
-  ]
-}
-
-
-
-# ==========
-# MX Records
-
-
-# email.digitalgov.gov — MX
-resource "aws_route53_record" "email_digitalgov_gov_mx" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "email.digitalgov.gov."
-  type    = "MX"
-  ttl     = "3600"
-  records = [
-    "10 mx.sendgrid.net."
-  ]
-}
-
 # support.digitalgov.gov — MX
 resource "aws_route53_record" "support_digitalgov_gov_mx" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
@@ -309,8 +280,89 @@ resource "aws_route53_record" "support_digitalgov_gov_mx" {
   ]
 }
 
+# email.digitalgov.gov — MX
+# unclear what this is for
+resource "aws_route53_record" "email_digitalgov_gov_mx" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "email.digitalgov.gov."
+  type    = "MX"
+  ttl     = "3600"
+  records = [
+    "10 mx.sendgrid.net."
+  ]
+}
 
-# BOD
+# email.digitalgov.gov - TXT
+resource "aws_route53_record" "digitalgov_gov_email_digitalgov_gov_txt" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "email.digitalgov.gov."
+  type    = "TXT"
+  ttl     = "3600"
+  records = [
+    "v=spf1 ip4:167.89.86.190 -all"
+  ]
+}
+
+
+# END EMAIL and SUPPORT SERVICES
+
+# =================================
+
+# EMAIL NEWSLETTER (HubSpot)
+
+
+# connect.digitalgov.gov
+# A former landing page for signing up for the HubSpot newsletter
+# Needs to be removed and redirected to https://digital.gov
+resource "aws_route53_record" "connect_digitalgov_gov_a" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "connect.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "1962994g44.secure0082.hubspot.net."
+  ]
+}
+
+
+# EMAIL NEWSLETTER (HubSpot)
+
+# =================================
+
+# TXT RECORDS
+# Unclear what these are connected to, or if they are needed any more
+
+
+# dzc.digitalgov.gov - TXT
+resource "aws_route53_record" "digitalgov_gov_dzc_digitalgov_gov_txt" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "dzc.digitalgov.gov."
+  type    = "TXT"
+  ttl     = "300"
+  records = [
+    "8wtx7v9M"
+  ]
+}
+
+# m1._domainkey.digitalgov.gov - TXT
+resource "aws_route53_record" "digitalgov_gov_m1_domainkey_digitalgov_gov_txt" {
+  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
+  name    = "m1._domainkey.digitalgov.gov."
+  type    = "TXT"
+  ttl     = "300"
+  records = [
+    "k=rsa; t=s; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4CvMOSVFOQDIJ+HkjdfAmKuBkkiqTwV982PCFBocVGHY07N2uvkleqT+XrySENYYzFrdnk2U1I7HUYkA0tpEZNzU7G67l7u1qWcd5QMBzVDsAg2vJf4fAkAWmdQCyWboeVXCoMnswz5LZK/t0+Z37smv9k2nDK3XNdsYTVu8D8wIDAQAB"
+  ]
+}
+
+# END TXT RECORDS
+
+# =================================
+
+# BOD / SECURITY RECORDS (DMARC, SPF, etc...)
+# NOTE: the variables included these records `${local.spf_no_mail}` are set in https://github.com/18F/dns/blob/master/terraform/init.tf
+
+
 resource "aws_route53_record" "digitalgov_gov_dmarc_digitalgov_gov_txt" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
   name    = "digitalgov.gov."
@@ -327,7 +379,11 @@ resource "aws_route53_record" "digitalgov_gov__dmarc_digitalgov_gov_txt" {
   records = ["${local.dmarc_reject}"]
 }
 
+# END BOD / SECURITY RECORDS (DMARC, SPF, etc...)
 
+# =================================
+
+# Output to Route53
 output "digitalgov_gov_ns" {
   value = "${aws_route53_zone.digitalgov_gov_zone.name_servers}"
 }
