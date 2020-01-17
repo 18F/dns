@@ -470,10 +470,18 @@ resource "aws_route53_record" "18f_gov_federalist-docs_18f_gov_a" {
   name = "federalist-docs.18f.gov."
   type = "A"
   alias {
-    name = "dryn1azf9y010.cloudfront.net."
+    name = "d5s9igq4dqiuh.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_federalist_docs_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.federalist-docs.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["TEXnUePMuwLfltObFna_JRSieCvOnlPQuM9rQ1_fV1c"]
 }
 
 resource "aws_route53_record" "18f_gov_federalist-docs-staging_18f_gov_a" {
