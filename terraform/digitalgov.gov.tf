@@ -344,7 +344,7 @@ resource "aws_route53_record" "hubspot2_digitalgov_gov_a" {
   type    = "CNAME"
   ttl     = "300"
   records = [
-    "digitalgov-gov.hs01a.dkim.hubspotemail.net."
+    "digitalgov-gov.hs01b.dkim.hubspotemail.net."
   ]
 }
 
