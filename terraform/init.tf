@@ -22,4 +22,5 @@ locals {
   dmarc_reject = "v=DMARC1; p=reject; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov"
 
   spf_no_mail = "v=spf1 -all"
+  spf_hubspot = "v=spf1 include:1962994.spf05.hubspotemail.net ~all"
 }
