@@ -375,12 +375,15 @@ resource "aws_route53_record" "touchpoints_digital_gov_mx" {
 # Compliance and ACME records -------------------------------
 
 # BOD
+
 resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name    = "digital.gov."
   type    = "TXT"
   ttl     = 300
-  records = ["${local.spf_no_mail}"]
+  records = [
+    "v=spf1 include:1962994m.challenge.gov ~all"
+  ]
 }
 
 # v2.designsystem.digital.gov TXT / ACME Challenge
@@ -459,7 +462,6 @@ resource "aws_route53_record" "touchpoints_digital_gov__acme-challenge_txt" {
 # EMAIL NEWSLETTER (HubSpot)
 
 # Hubspot records for sending email from the digital.gov domain
-# See https://knowledge.hubspot.com/email/can-i-use-a-dmarc-policy-with-hubspot#troubleshoot-issues-with-dmarc-authentication
 resource "aws_route53_record" "hubspot1_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name    = "hs1._domainkey.digital.gov."
@@ -471,7 +473,6 @@ resource "aws_route53_record" "hubspot1_digital_gov_a" {
 }
 
 # Hubspot records for sending email from the digital.gov domain
-# See https://knowledge.hubspot.com/email/can-i-use-a-dmarc-policy-with-hubspot#troubleshoot-issues-with-dmarc-authentication
 resource "aws_route53_record" "hubspot2_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name    = "hs2._domainkey.digital.gov."
