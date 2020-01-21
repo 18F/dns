@@ -382,7 +382,7 @@ resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
   type    = "TXT"
   ttl     = 300
   records = [
-    "v=spf1 include:1962994m.challenge.gov ~all"
+    "v=spf1 include:1962994.spf05.hubspotemail.net ~all"
   ]
 }
 
