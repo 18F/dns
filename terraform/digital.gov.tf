@@ -381,7 +381,10 @@ resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
   name    = "digital.gov."
   type    = "TXT"
   ttl     = 300
-  records = ["${local.spf_hubspot}"]
+  records = [
+    "google-site-verification=Mi2rwVMxdp3eSbZughKvN0M_dwi6WLxMrRSsnLOWyVI",
+    "${local.spf_hubspot}"
+  ]
 }
 
 # v2.designsystem.digital.gov TXT / ACME Challenge
