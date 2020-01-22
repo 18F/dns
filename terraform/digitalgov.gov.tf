@@ -404,7 +404,10 @@ resource "aws_route53_record" "digitalgov_gov_dmarc_digitalgov_gov_txt" {
   name    = "digitalgov.gov."
   type    = "TXT"
   ttl     = 300
-  records = ["${local.spf_hubspot}"]
+  records = [
+    "google-site-verification=WRPUo6XC7m4X-8jJFvXPVs-W4uiqfEbF-pQYcD1-MOU",
+    "${local.spf_hubspot}"
+  ]
 }
 
 resource "aws_route53_record" "digitalgov_gov__dmarc_digitalgov_gov_txt" {
