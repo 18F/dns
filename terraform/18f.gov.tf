@@ -642,14 +642,6 @@ resource "aws_route53_record" "18f_gov_guides-template_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_handbook_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "handbook.18f.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["dtj4n4imxei9y.cloudfront.net"]
-}
-
 resource "aws_route53_record" "18f_gov_iaa-forms_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "iaa-forms.18f.gov."
@@ -1024,6 +1016,25 @@ resource "aws_route53_record" "18f_gov_engineering_18f_gov_a" {
   type = "A"
   alias {
     name = "d1ah19wbgikahf.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_handbook_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.handbook.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["OH0DsfnJBEZTUlRZ-Gie1zLnHN-gPD5RLKYOdrDfFd4"]
+}
+
+resource "aws_route53_record" "18f_gov_handbook_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "handbook.18f.gov."
+  type = "A"
+  alias {
+    name = "d3bxe02ezqs8zq.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
