@@ -1029,25 +1029,6 @@ resource "aws_route53_record" "18f_gov_engineering_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov__acme-challenge_amirbey_test_cdn_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "_acme-challenge.amirbey-test-cdn.18f.gov."
-  type = "TXT"
-  ttl = 120
-  records = ["vZe0Wj6AkK6_SG5KR-0kxxU_FXo0LGxeR38Yhv8TKII"]
-}
-
-resource "aws_route53_record" "18f_gov_amirbey_test_cdn_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "amirbey-test-cdn.18f.gov."
-  type = "A"
-  alias {
-    name = "d8gd0ctgst754.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
