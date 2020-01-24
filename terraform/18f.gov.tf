@@ -1026,7 +1026,7 @@ resource "aws_route53_record" "18f_gov__acme-challenge_handbook_18f_gov_txt" {
   name = "_acme-challenge.handbook.18f.gov."
   type = "TXT"
   ttl = 120
-  records = ["OH0DsfnJBEZTUlRZ-Gie1zLnHN-gPD5RLKYOdrDfFd4"]
+  records = ["dU_dWOd6UpMwVotr9Ef-mm-R_mtyq27a3_So8aVVaKU"]
 }
 
 resource "aws_route53_record" "18f_gov_handbook_18f_gov_a" {
@@ -1034,7 +1034,26 @@ resource "aws_route53_record" "18f_gov_handbook_18f_gov_a" {
   name = "handbook.18f.gov."
   type = "A"
   alias {
-    name = "d3bxe02ezqs8zq.cloudfront.net."
+    name = "ddgi2ma69789.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_www_handbook_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.www.handbook.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["E6AWBbDiRbZVBHig24s-9Uw9RCFekQav_0BcVL8HcsU"]
+}
+
+resource "aws_route53_record" "18f_gov_www_handbook_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "www.handbook.18f.gov."
+  type = "A"
+  alias {
+    name = "ddgi2ma69789.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
