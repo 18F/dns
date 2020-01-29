@@ -642,14 +642,6 @@ resource "aws_route53_record" "18f_gov_guides-template_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_handbook_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "handbook.18f.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["dtj4n4imxei9y.cloudfront.net"]
-}
-
 resource "aws_route53_record" "18f_gov_iaa-forms_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "iaa-forms.18f.gov."
@@ -1029,20 +1021,39 @@ resource "aws_route53_record" "18f_gov_engineering_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov__acme-challenge_amirbey_test_cdn_18f_gov_txt" {
+resource "aws_route53_record" "18f_gov__acme-challenge_handbook_18f_gov_txt" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "_acme-challenge.amirbey-test-cdn.18f.gov."
+  name = "_acme-challenge.handbook.18f.gov."
   type = "TXT"
   ttl = 120
-  records = ["vZe0Wj6AkK6_SG5KR-0kxxU_FXo0LGxeR38Yhv8TKII"]
+  records = ["s46pliXZ9r51lmz421nYM5EJqhkz32iC45lCxtKxQVQ"]
 }
 
-resource "aws_route53_record" "18f_gov_amirbey_test_cdn_18f_gov_a" {
+resource "aws_route53_record" "18f_gov_handbook_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "amirbey-test-cdn.18f.gov."
+  name = "handbook.18f.gov."
   type = "A"
   alias {
-    name = "d8gd0ctgst754.cloudfront.net."
+    name = "d36dwgrf0cle4t.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_www_handbook_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.wwwhandbook.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["BPOzEydsDN3vaYvzfta3AgTm2kqSxB0xBqwYYwfK-pA"]
+}
+
+resource "aws_route53_record" "18f_gov_www_handbook_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "www.handbook.18f.gov."
+  type = "A"
+  alias {
+    name = "d36dwgrf0cle4t.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
