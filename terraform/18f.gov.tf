@@ -1067,6 +1067,25 @@ resource "aws_route53_record" "18f_gov_sites-dev_federalist_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "18f_gov_frontend_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "frontend.18f.gov."
+  type = "A"
+  alias {
+    name = "degmwhx2dki4o.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_frontend_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.frontend.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["z3yABv7AvSVzev3bjUOCViDXGmeVLrrr2dMdzODOJk8"]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
