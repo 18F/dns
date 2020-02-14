@@ -1067,6 +1067,17 @@ resource "aws_route53_record" "18f_gov_sites-dev_federalist_18f_gov_cname" {
   records = ["_a517f5fecb20a88a900a6a3b5be2c48f.vhzmpjdqfx.acm-validations.aws."]
 }
 
+resource "aws_route53_record" "18f_gov_sites-dev_federalist_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "*.sites-dev.federalist.18f.gov."
+  type = "A"
+  alias {
+    name = "d30ymbll7op0r1.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
