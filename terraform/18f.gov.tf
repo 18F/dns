@@ -470,10 +470,18 @@ resource "aws_route53_record" "18f_gov_federalist-docs_18f_gov_a" {
   name = "federalist-docs.18f.gov."
   type = "A"
   alias {
-    name = "dryn1azf9y010.cloudfront.net."
+    name = "d5s9igq4dqiuh.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_federalist_docs_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.federalist-docs.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["TEXnUePMuwLfltObFna_JRSieCvOnlPQuM9rQ1_fV1c"]
 }
 
 resource "aws_route53_record" "18f_gov_federalist-docs-staging_18f_gov_a" {
@@ -544,17 +552,6 @@ resource "aws_route53_record" "18f_gov_files_18f_gov_a" {
   type = "A"
   alias {
     name = "d3gawctq7ecsbu.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "18f_gov_frontend_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "frontend.18f.gov."
-  type = "A"
-  alias {
-    name = "d2dhxnk13yje6c.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -632,14 +629,6 @@ resource "aws_route53_record" "18f_gov_guides-template_18f_gov_a" {
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
-}
-
-resource "aws_route53_record" "18f_gov_handbook_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "handbook.18f.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["dtj4n4imxei9y.cloudfront.net"]
 }
 
 resource "aws_route53_record" "18f_gov_iaa-forms_18f_gov_a" {
@@ -1019,6 +1008,82 @@ resource "aws_route53_record" "18f_gov_engineering_18f_gov_a" {
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_handbook_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.handbook.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["s46pliXZ9r51lmz421nYM5EJqhkz32iC45lCxtKxQVQ"]
+}
+
+resource "aws_route53_record" "18f_gov_handbook_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "handbook.18f.gov."
+  type = "A"
+  alias {
+    name = "d36dwgrf0cle4t.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_www_handbook_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.wwwhandbook.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["BPOzEydsDN3vaYvzfta3AgTm2kqSxB0xBqwYYwfK-pA"]
+}
+
+resource "aws_route53_record" "18f_gov_www_handbook_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "www.handbook.18f.gov."
+  type = "A"
+  alias {
+    name = "d36dwgrf0cle4t.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov_sites-dev_federalist_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_e0ba007caed3d8773bc499dca747f9b3.sites-dev.federalist.18f.gov."
+  type = "CNAME"
+  ttl = 300
+  records = ["_a517f5fecb20a88a900a6a3b5be2c48f.vhzmpjdqfx.acm-validations.aws."]
+}
+
+resource "aws_route53_record" "18f_gov_sites-dev_federalist_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "*.sites-dev.federalist.18f.gov."
+  type = "A"
+  alias {
+    name = "d30ymbll7op0r1.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov_frontend_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "frontend.18f.gov."
+  type = "A"
+  alias {
+    name = "degmwhx2dki4o.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_frontend_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.frontend.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["z3yABv7AvSVzev3bjUOCViDXGmeVLrrr2dMdzODOJk8"]
 }
 
 output "18f_gov_ns" {
