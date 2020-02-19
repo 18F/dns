@@ -104,8 +104,16 @@ resource "aws_route53_record" "proposal_cname" {
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
   name    = "proposal.pif.gov."
   type    = "CNAME"
-  ttl     = 60
-  records = ["proposal.pif.gov.00du0000000leuxmac.live.siteforce.com"]
+  ttl     = 120
+  records = ["dr7mtwxvpp8vf.cloudfront.net"]
+}
+
+resource "aws_route53_record" "proposal_txt" {
+  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  name = "_acme-challenge.proposal.pif.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["1dHcUZofJi9on3jRwR4I0o-2fGKbMV0OtmF140lvKmU"]
 }
 
 resource "aws_route53_record" "fellows_in_innovation_pif_cname" {
