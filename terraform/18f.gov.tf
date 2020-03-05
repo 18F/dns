@@ -1061,7 +1061,7 @@ resource "aws_route53_record" "18f_gov_sites-dev_federalist_18f_gov_a" {
   name = "*.sites-dev.federalist.18f.gov."
   type = "A"
   alias {
-    name = "d30ymbll7op0r1.cloudfront.net."
+    name = "d2engtqzi489lh.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
