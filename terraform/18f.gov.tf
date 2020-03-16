@@ -519,17 +519,6 @@ resource "aws_route53_record" "18f_gov__acme-challenge_federalist_modern_team_te
   records = ["SmZkuaawMryDcWKFj5YkAUPubPPkeoU8B3JbnZ62YMA"]
 }
 
-resource "aws_route53_record" "18f_gov_federalist-uswds-template_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "federalist-uswds-template.18f.gov."
-  type = "A"
-  alias {
-    name = "d14safpqycg0pm.cloudfront.net."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_85333a5c6cd71f56532894c3c64666ca_federalist-docs_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "85333a5c6cd71f56532894c3c64666ca.federalist-docs.18f.gov."
