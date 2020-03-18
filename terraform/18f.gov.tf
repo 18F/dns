@@ -1086,6 +1086,25 @@ resource "aws_route53_record" "18f_gov__acme-challenge_federalist_report_templat
   records = ["P--Ckv0OyZoQsclY3Y7uS74s-UNHg-ImLHnbnAEjeQs"]
 }
 
+resource "aws_route53_record" "18f_gov_demo-er2epz2vb_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "demo-er2epz2vb.18f.gov."
+  type = "A"
+  alias {
+    name = "djut57wuzit2q.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_demo-er2epz2vb_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.demo-er2epz2vb.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["AyKIGRjcXOlJjt6A8rRDYAxLp9YPw4B-7nnBiuLKZkg"]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
