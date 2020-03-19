@@ -127,7 +127,7 @@ resource "aws_route53_record" "usdigitalregistry_digitalgov_gov_a" {
   type    = "CNAME"
   ttl     = "300"
   records = [
-    "alb-scmdrg-prod-digitalgov-pub-1-1069371853.us-east-1.elb.amazonaws.com."
+    "alb-smr-prod-pub-2-970074805.us-east-1.elb.amazonaws.com."
   ]
 }
 
