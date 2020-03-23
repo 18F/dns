@@ -12,21 +12,21 @@ This repository holds the source code for configuring DNS for domains managed by
 Assuming you're TTS staff, it's recommended that you **make the change in a branch on this repository itself, rather than on a fork**, because the credentials aren't shared with forks. (The `master` branch is [protected](https://help.github.com/articles/about-protected-branches/) to limit write access only to certain staff, and to ensure history doesn't get overwritten, etc.) For major changes, it is recommended to keep the TTL value low just before and during the change period in order to make it easier to verify the changes went through as expected.
 
 1. Is the domain pointing to the right nameservers? In other words, is there a file for the domain under [`terraform/`](terraform) already?
-    * **Yes:** Continue to next step.
-    * **No:**
-        1. Add a file for the domain (or subdomain, if the second-level domain isn't being added), to create the [public hosted zone](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html).
-            * [`18f.us`](terraform/18f.us.tf) is a good example to copy from.
-            * You'll be using Terraform's [`aws_route53_zone`](https://www.terraform.io/docs/providers/aws/d/route53_zone.html).
-        1. After the pull request is merged, to get the name servers for your domain check the output for your build in [CircleCI](https://circleci.com/gh/18F/dns).  If you need further assistance, check with [#admins-dns](https://gsa-tts.slack.com/messages/C4L58EQ5T).
-        1. Change the nameservers for the domain to point to AWS.
-            * For `.gov` domains, this will be done by the "domain manager" in [dotgov.gov](https://www.dotgov.gov/). The domain manager is likely someone in the respective agency's IT department.
+   - **Yes:** Continue to next step.
+   - **No:**
+     1. Add a file for the domain (or subdomain, if the second-level domain isn't being added), to create the [public hosted zone](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html).
+        - [`18f.us`](terraform/18f.us.tf) is a good example to copy from.
+        - You'll be using Terraform's [`aws_route53_zone`](https://www.terraform.io/docs/providers/aws/d/route53_zone.html).
+     1. After the pull request is merged, to get the name servers for your domain check the output for your build in [CircleCI](https://circleci.com/gh/18F/dns). If you need further assistance, check with [#admins-dns](https://gsa-tts.slack.com/messages/C4L58EQ5T).
+     1. Change the nameservers for the domain to point to AWS.
+        - For `.gov` domains, this will be done by the "domain manager" in [dotgov.gov](https://www.dotgov.gov/). The domain manager is likely someone in the respective agency's IT department.
 1. Add the relevant additional [record sets](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/rrsets-working-with.html). In Terraform, these are known as [`aws_route53_record`](https://www.terraform.io/docs/providers/aws/r/route53_record.html)s. Generally speaking, the required arguments are:
-    * `zone_id`
-    * `name`
-    * `type`
-    * Either `alias` or `records`
-    * If `alias`, then `evaluate_target_health` is also required and `ttl` is not allowed.
-    * If `records`, then `ttl` is also required and `evaluate_target_health` is not allowed.
+   - `zone_id`
+   - `name`
+   - `type`
+   - Either `alias` or `records`
+   - If `alias`, then `evaluate_target_health` is also required and `ttl` is not allowed.
+   - If `records`, then `ttl` is also required and `evaluate_target_health` is not allowed.
 
 It's worth noting that if you are pointing to a CloudFront distro, you should use Route 53's own `alias` and not a CNAME record. In fact, CNAMEing a top-level domain (or the top level of a delegated subdomain) is not allowed in DNS. See the various examples in the repo, such as [this one](https://github.com/18F/dns/blob/deploy/terraform/usa.gov.tf#L8-L17).
 
