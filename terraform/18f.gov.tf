@@ -647,7 +647,7 @@ resource "aws_route53_record" "18f_gov_innovation-toolkit-prototype_18f_gov_a" {
 
 module "18f_gov__join_18f_gov_redirect" {
   source = "mediapop/redirect/aws"
-  version = "~> 1.2.0"
+  version = "1.2.0"
 
   domains = {
     "18f.gov." = ["jobs.18f.gov", "join.18f.gov"]
