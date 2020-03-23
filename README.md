@@ -36,7 +36,7 @@ On merge, changes are deployed to an AWS account hosting the Route53 records aut
 
 ### Redirects
 
-We are [moving](https://github.com/18F/pages-redirects/issues/149) from [pages-redirects](https://github.com/18F/pages-redirects#domain-redirects) to fully configuring them in this repository. See the [`18f_gov__join_18f_gov_redirect`](terraform/18f.gov.tf) example.
+We are [moving](https://github.com/18F/pages-redirects/issues/149) from [pages-redirects](https://github.com/18F/pages-redirects#domain-redirects) to fully configuring them in this repository. See the [`18f_gov__join_18f_gov_redirect`](https://github.com/18F/dns/search?q=18f_gov__join_18f_gov_redirect) example.
 
 ## Public domain
 
