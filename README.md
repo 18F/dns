@@ -34,6 +34,10 @@ On merge, changes are deployed to an AWS account hosting the Route53 records aut
 
 **Please note: only production systems with an ATO that are [categorized](https://before-you-ship.18f.gov/ato/levels/) as Low impact should have their DNS configuration here. If you wish to create DNS records for pre-production systems, please use the domain `sandbox.gov` which is available in the [TTS Sandbox account](https://before-you-ship.18f.gov/infrastructure/sandbox/).**
 
+### Redirects
+
+We are [moving](https://github.com/18F/pages-redirects/issues/149) from [pages-redirects](https://github.com/18F/pages-redirects#domain-redirects) to fully configuring them in this repository. See the [`18f_gov__join_18f_gov_redirect`](terraform/18f.gov.tf) example.
+
 ## Public domain
 
 This project is in the worldwide [public domain](LICENSE.md). As stated in the [license](LICENSE.md):
