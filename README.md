@@ -38,6 +38,10 @@ On merge, changes are deployed to an AWS account hosting the Route53 records aut
 
 We are [moving](https://github.com/18F/pages-redirects/issues/149) from [pages-redirects](https://github.com/18F/pages-redirects#domain-redirects) to fully configuring them in this repository. See the [`18f_gov__join_18f_gov_redirect`](https://github.com/18F/dns/search?q=18f_gov__join_18f_gov_redirect) example.
 
+Leave the trailing slash off the destination domain.
+
+If the redirecting domain is assigned to any CloudFront distribution in any AWS account, it will need to be unassociated before the module above can be successfully deployed.
+
 ## Public domain
 
 This project is in the worldwide [public domain](LICENSE.md). As stated in the [license](LICENSE.md):
