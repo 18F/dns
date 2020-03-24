@@ -645,20 +645,15 @@ resource "aws_route53_record" "18f_gov_innovation-toolkit-prototype_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_jobs_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "jobs.18f.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["d2o3l1lqmcr15h.cloudfront.net."]
-}
+module "18f_gov__join_18f_gov_redirect" {
+  source = "mediapop/redirect/aws"
+  version = "1.2.0"
 
-resource "aws_route53_record" "18f_gov_join_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "join.18f.gov."
-  type = "CNAME"
-  ttl = 300
-  records = ["dpjnqahvua4qy.cloudfront.net"]
+  domains = {
+    "18f.gov." = ["jobs.18f.gov", "join.18f.gov"]
+  }
+
+  redirect_to = "https://18f.gsa.gov/join/"
 }
 
 resource "aws_route53_record" "18f_gov_lean-product-design_18f_gov_a" {
