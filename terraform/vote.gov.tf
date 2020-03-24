@@ -32,12 +32,15 @@ resource "aws_route53_record" "vote_gov_01872332dafeeb93b927e2d9e9b2c53d_vote_go
   records = ["799928229b505d839d0482696552a70fb9c456e0.comodoca.com."]
 }
 
-resource "aws_route53_record" "vote_gov_www_vote_gov_a" {
-  zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
-  name    = "www.vote.gov."
-  type    = "A"
-  ttl     = 120
-  records = ["${local.usa_gov_redirect_server}"]
+module "vote_gov__www_vote_gov_redirect" {
+  source = "mediapop/redirect/aws"
+  version = "1.2.0"
+
+  domains = {
+    "vote.gov." = ["www.vote.gov"]
+  }
+
+  redirect_to = "https://vote.gov/"
 }
 
 resource "aws_route53_record" "new_vote_gov_cname" {

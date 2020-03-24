@@ -1,7 +1,3 @@
-locals {
-  usa_gov_redirect_server = "54.85.132.205"
-}
-
 resource "aws_route53_zone" "usa_gov_zone" {
   name = "usa.gov."
   tags {
@@ -32,20 +28,27 @@ resource "aws_route53_record" "usa_gov_analytics_usa_gov_aaaa" {
 }
 
 # USWDS ------------------------------------------------
-resource "aws_route53_record" "usa_gov_components_standards_usa_gov_a" {
-  zone_id = "${aws_route53_zone.usa_gov_zone.zone_id}"
-  name    = "components.standards.usa.gov."
-  type    = "A"
-  ttl     = "300"
-  records = ["${local.usa_gov_redirect_server}"]
+
+module "usa_gov__components_standards_usa_gov_redirect" {
+  # https://github.com/mediapop/terraform-aws-redirect/pull/2
+  source = "github.com/afeld/terraform-aws-redirect?ref=ba44014"
+
+  domains = {
+    "usa.gov." = ["components.standards.usa.gov"]
+  }
+
+  redirect_to = "https://components.designsystem.digital.gov/"
 }
 
-resource "aws_route53_record" "usa_gov_standards_usa_gov_a" {
-  zone_id = "${aws_route53_zone.usa_gov_zone.zone_id}"
-  name    = "standards.usa.gov."
-  type    = "A"
-  ttl     = "300"
-  records = ["${local.usa_gov_redirect_server}"]
+module "usa_gov__standards_usa_gov_redirect" {
+  source = "mediapop/redirect/aws"
+  version = "1.2.0"
+
+  domains = {
+    "usa.gov." = ["standards.usa.gov"]
+  }
+
+  redirect_to = "https://designsystem.digital.gov/"
 }
 
 output "usa_gov_ns" {
