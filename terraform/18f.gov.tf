@@ -653,7 +653,7 @@ module "18f_gov__join_18f_gov_redirect" {
     "18f.gov." = ["jobs.18f.gov", "join.18f.gov"]
   }
 
-  redirect_to = "https://18f.gsa.gov/join/"
+  redirect_to = "https://18f.gsa.gov/join"
 }
 
 resource "aws_route53_record" "18f_gov_lean-product-design_18f_gov_a" {
