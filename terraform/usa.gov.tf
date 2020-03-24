@@ -30,8 +30,8 @@ resource "aws_route53_record" "usa_gov_analytics_usa_gov_aaaa" {
 # USWDS ------------------------------------------------
 
 module "usa_gov__components_standards_usa_gov_redirect" {
-  # https://github.com/mediapop/terraform-aws-redirect/pull/2
-  source = "github.com/afeld/terraform-aws-redirect?ref=ba44014"
+  source = "mediapop/redirect/aws"
+  version = "1.2.1"
 
   domains = {
     "usa.gov." = ["components.standards.usa.gov"]
@@ -42,7 +42,7 @@ module "usa_gov__components_standards_usa_gov_redirect" {
 
 module "usa_gov__standards_usa_gov_redirect" {
   source = "mediapop/redirect/aws"
-  version = "1.2.0"
+  version = "1.2.1"
 
   domains = {
     "usa.gov." = ["standards.usa.gov"]

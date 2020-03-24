@@ -34,7 +34,7 @@ resource "aws_route53_record" "vote_gov_01872332dafeeb93b927e2d9e9b2c53d_vote_go
 
 module "vote_gov__www_vote_gov_redirect" {
   source = "mediapop/redirect/aws"
-  version = "1.2.0"
+  version = "1.2.1"
 
   domains = {
     "vote.gov." = ["www.vote.gov"]
