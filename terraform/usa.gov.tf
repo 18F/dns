@@ -37,7 +37,7 @@ module "usa_gov__components_standards_usa_gov_redirect" {
     "usa.gov." = ["components.standards.usa.gov"]
   }
 
-  redirect_to = "https://components.designsystem.digital.gov/"
+  redirect_to = "components.designsystem.digital.gov"
 }
 
 module "usa_gov__standards_usa_gov_redirect" {
@@ -48,7 +48,7 @@ module "usa_gov__standards_usa_gov_redirect" {
     "usa.gov." = ["standards.usa.gov"]
   }
 
-  redirect_to = "https://designsystem.digital.gov/"
+  redirect_to = "designsystem.digital.gov"
 }
 
 output "usa_gov_ns" {

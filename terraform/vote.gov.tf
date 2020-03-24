@@ -40,7 +40,7 @@ module "vote_gov__www_vote_gov_redirect" {
     "vote.gov." = ["www.vote.gov"]
   }
 
-  redirect_to = "https://vote.gov/"
+  redirect_to = "vote.gov"
 }
 
 resource "aws_route53_record" "new_vote_gov_cname" {
