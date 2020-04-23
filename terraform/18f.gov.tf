@@ -1100,6 +1100,25 @@ resource "aws_route53_record" "18f_gov__acme-challenge_demo-er2epz2vb_18f_gov_tx
   records = ["AyKIGRjcXOlJjt6A8rRDYAxLp9YPw4B-7nnBiuLKZkg"]
 }
 
+resource "aws_route53_record" "18f_gov_federalist-proxysite-test_18f_gov_a" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "federalist-proxysite-test.18f.gov."
+  type = "A"
+  alias {
+    name = "d1p5ay1q619hg3.cloudfront.net."
+    zone_id = "${local.cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_federalist-proxysite-test_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.federalist-proxysite-test.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["qiz18V0W9mHROFHTHqE4_Bn8NIByqMhoLvkKQ3h4Zxg"]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
