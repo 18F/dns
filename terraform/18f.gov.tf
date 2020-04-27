@@ -1015,7 +1015,7 @@ resource "aws_route53_record" "18f_gov__acme-challenge_www_handbook_18f_gov_txt"
 
 resource "aws_route53_record" "18f_gov_www_handbook_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "www.handbook.18f.gov."
+  name = "wwwhandbook.18f.gov."
   type = "A"
   alias {
     name = "d36dwgrf0cle4t.cloudfront.net."
