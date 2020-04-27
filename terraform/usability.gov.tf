@@ -62,7 +62,6 @@ resource "aws_route53_record" "usability_gov__dmarc_usability_gov_txt" {
 }
 
 
-
 # ACME Challenge records
 
 # usability.gov TXT / ACME Challenge
@@ -71,7 +70,7 @@ resource "aws_route53_record" "usability_gov__acme-challenge_txt" {
   name    = "_acme-challenge.usability.gov."
   type    = "TXT"
   ttl     = 120
-  records = ["XOXOXOXOXOXOXO"]
+  records = ["ABABABABABABAB"]
 }
 
 # demo.usability.gov TXT / ACME Challenge
@@ -80,7 +79,7 @@ resource "aws_route53_record" "demo_usability_gov__acme-challenge_txt" {
   name    = "_acme-challenge.demo.usability.gov."
   type    = "TXT"
   ttl     = 120
-  records = ["XOXOXOXOXOXOXO"]
+  records = ["ABABABABABABAB"]
 }
 
 
