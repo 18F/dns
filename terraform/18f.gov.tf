@@ -90,10 +90,18 @@ resource "aws_route53_record" "18f_gov_ads_18f_gov_a" {
   name = "ads.18f.gov."
   type = "A"
   alias {
-    name = "d1p50apr0w92d2.cloudfront.net."
+    name = "d22116wmhcds2y.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
+}
+
+resource "aws_route53_record" "18f_gov__acme-challenge_ads_18f_gov_txt" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.ads.18f.gov."
+  type = "TXT"
+  ttl = 120
+  records = ["fXfES1KVPHxh87Y9iMVwl_ezEGRpKagAL7EzQpuYaBI"]
 }
 
 resource "aws_route53_record" "18f_gov_agile_18f_gov_a" {
@@ -744,7 +752,7 @@ resource "aws_route53_record" "18f_gov_paid-leave-prototype_18f_gov_a" {
   name = "paid-leave-prototype.18f.gov."
   type = "A"
   alias {
-    name = "d1tgknd7unaxw4.cloudfront.net."
+    name = "d3p6d6b3zaatqv.cloudfront.net."
     zone_id = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -755,7 +763,7 @@ resource "aws_route53_record" "18f_gov__acme-challenge_paid_leave_prototype_18f_
   name = "_acme-challenge.paid-leave-prototype.18f.gov."
   type = "TXT"
   ttl = 120
-  records = ["PP01ymh2DTBj32M5vQLIIwwY0Nr6CVK12yu3oAnFcwg"]
+  records = ["Rll4MS51zYr9CmfUEjs-0G5HExXnuQiyM_8MBjskIuw"]
 }
 
 resource "aws_route53_record" "18f_gov_partnership-playbook_18f_gov_a" {
