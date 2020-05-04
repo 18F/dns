@@ -398,14 +398,6 @@ resource "aws_route53_record" "18f_gov_digitalaccelerator_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_dnssec_18f_gov_ns" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "dnssec.18f.gov."
-  type = "NS"
-  ttl = 300
-  records = ["hope.ns.cloudflare.com", "phil.ns.cloudflare.com"]
-}
-
 resource "aws_route53_record" "18f_gov_dolores_app_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "dolores-app.18f.gov."
