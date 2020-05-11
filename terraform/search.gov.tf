@@ -35,13 +35,9 @@ resource "aws_route53_record" "search_gov_www" {
 resource "aws_route53_record" "search_gov_find" {
   zone_id = "${aws_route53_zone.search_toplevel.zone_id}"
   name = "find.search.gov."
-  type = "A"
-
-  alias {
-    name = "proxy-east-lb-234082388.us-east-1.elb.amazonaws.com."
-    zone_id = "${local.cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
+  type = "CNAME"
+  ttl = 5
+  records = ["search.usa.gov."]
 }
 
 # admin-center-downtime.search.gov
