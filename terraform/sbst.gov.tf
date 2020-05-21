@@ -13,7 +13,7 @@ resource "aws_route53_record" "sbst_gov_sbst_gov_a" {
 
   alias {
     name                   = "d277n30llb5z4h.cloudfront.net."
-    zone_id                = "${local.cloudfront_zone_id}"
+    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -25,7 +25,7 @@ resource "aws_route53_record" "sbst_gov_sbst_gov_aaaa" {
 
   alias {
     name                   = "d277n30llb5z4h.cloudfront.net."
-    zone_id                = "${local.cloudfront_zone_id}"
+    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -37,7 +37,7 @@ resource "aws_route53_record" "sbst_gov_www_sbst_gov_a" {
 
   alias {
     name                   = "d277n30llb5z4h.cloudfront.net."
-    zone_id                = "${local.cloudfront_zone_id}"
+    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -49,7 +49,7 @@ resource "aws_route53_record" "sbst_gov_www_sbst_gov_aaaa" {
 
   alias {
     name                   = "d277n30llb5z4h.cloudfront.net."
-    zone_id                = "${local.cloudfront_zone_id}"
+    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
