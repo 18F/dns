@@ -18,7 +18,7 @@ resource "aws_route53_record" "usability_gov_apex" {
 
   alias {
     name                   = " d3882ehkypc0dh.cloudfront.net."
-    zone_id                = "${local.cloudfront_zone_id}"
+    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -31,7 +31,7 @@ resource "aws_route53_record" "usability_gov_www" {
 
   alias {
     name                   = " d3882ehkypc0dh.cloudfront.net."
-    zone_id                = "${local.cloudfront_zone_id}"
+    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -44,7 +44,7 @@ resource "aws_route53_record" "demo_usability_gov_a" {
 
   alias {
     name                   = " d3882ehkypc0dh.cloudfront.net."
-    zone_id                = "${local.cloudfront_zone_id}"
+    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
