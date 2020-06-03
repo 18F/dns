@@ -17,7 +17,7 @@ resource "aws_route53_record" "usability_gov_apex" {
   type    = "A"
 
   alias {
-    name                   = "XOXOXOXOXOXOXO.cloudfront.net."
+    name                   = " d3882ehkypc0dh.cloudfront.net."
     zone_id                = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -30,7 +30,7 @@ resource "aws_route53_record" "usability_gov_www" {
   type    = "A"
 
   alias {
-    name                   = "XOXOXOXOXOXOXO.cloudfront.net."
+    name                   = " d3882ehkypc0dh.cloudfront.net."
     zone_id                = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -43,7 +43,7 @@ resource "aws_route53_record" "demo_usability_gov_a" {
   type    = "A"
 
   alias {
-    name                   = "XOXOXOXOXOXOXO.cloudfront.net."
+    name                   = " d3882ehkypc0dh.cloudfront.net."
     zone_id                = "${local.cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -70,7 +70,7 @@ resource "aws_route53_record" "usability_gov__acme-challenge_txt" {
   name    = "_acme-challenge.usability.gov."
   type    = "TXT"
   ttl     = 120
-  records = ["ABABABABABABAB"]
+  records = ["9F_gDwJzeGpnWpbGphx1dLYa2GE9EYZuKCEH-qTck-8"]
 }
 
 # demo.usability.gov TXT / ACME Challenge
@@ -79,7 +79,7 @@ resource "aws_route53_record" "demo_usability_gov__acme-challenge_txt" {
   name    = "_acme-challenge.demo.usability.gov."
   type    = "TXT"
   ttl     = 120
-  records = ["ABABABABABABAB"]
+  records = ["9F_gDwJzeGpnWpbGphx1dLYa2GE9EYZuKCEH-qTck-8"]
 }
 
 
