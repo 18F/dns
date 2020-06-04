@@ -13,12 +13,12 @@ resource "aws_route53_zone" "usability_toplevel" {
 
 resource "aws_route53_record" "usability_gov_apex" {
   zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
-  name    = "usability.gov."
-  type    = "A"
+  name = "usability.gov."
+  type = "A"
 
   alias {
-    name                   = "d2yghjaoiuwpg5.cloudfront.net."
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
+    name = "d2yghjaoiuwpg5.cloudfront.net."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -26,14 +26,10 @@ resource "aws_route53_record" "usability_gov_apex" {
 # www.usability.gov — redirects to usability.gov through pages_redirect
 resource "aws_route53_record" "usability_gov_www" {
   zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
-  name    = "www.usability.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d3882ehkypc0dh.cloudfront.net."
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
+  name = "www.usability.gov."
+  type = "CNAME"
+  ttl = 120
+  records = ["d3882ehkypc0dh.cloudfront.net."]
 }
 
 # Compliance and ACME records -------------------------------
