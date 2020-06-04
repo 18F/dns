@@ -24,7 +24,7 @@ resource "aws_route53_record" "usability_gov_apex" {
 }
 
 # www.usability.gov — redirects to usability.gov through pages_redirect
-resource "aws_route53_record" "usability_gov_www_cname" {
+resource "aws_route53_record" "usability_gov_www" {
   zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
   name = "www.usability.gov."
   type = "CNAME"
