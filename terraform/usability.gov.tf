@@ -24,12 +24,12 @@ resource "aws_route53_record" "usability_gov_apex" {
 }
 
 # www.usability.gov — redirects to usability.gov through pages_redirect
-resource "aws_route53_record" "usability_gov_www" {
+resource "aws_route53_record" "usability_gov_www_cname" {
   zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
   name = "www.usability.gov."
   type = "CNAME"
   ttl = 120
-  records = [d3882ehkypc0dh.cloudfront.net."]
+  records = ["d3882ehkypc0dh.cloudfront.net."]
 }
 
 # Compliance and ACME records -------------------------------
