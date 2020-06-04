@@ -13,8 +13,8 @@ resource "aws_route53_zone" "usability_toplevel" {
 
 resource "aws_route53_record" "usability_gov_apex" {
   zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
-  name    = "usability.gov."
-  type    = "A"
+  name = "usability.gov."
+  type = "A"
 
   alias {
     name = "d2yghjaoiuwpg5.cloudfront.net."
@@ -26,8 +26,8 @@ resource "aws_route53_record" "usability_gov_apex" {
 # www.usability.gov — redirects to usability.gov through pages_redirect
 resource "aws_route53_record" "usability_gov_www" {
   zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
-  name    = "www.usability.gov."
-  type    = "A"
+  name = "www.usability.gov."
+  type = "A"
 
   alias {
     name = "d3882ehkypc0dh.cloudfront.net."
