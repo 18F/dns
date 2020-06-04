@@ -17,8 +17,8 @@ resource "aws_route53_record" "usability_gov_apex" {
   type    = "A"
 
   alias {
-    name                   = "d2yghjaoiuwpg5.cloudfront.net."
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
+    name = "d2yghjaoiuwpg5.cloudfront.net."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
@@ -30,8 +30,8 @@ resource "aws_route53_record" "usability_gov_www" {
   type    = "A"
 
   alias {
-    name                   = "d3882ehkypc0dh.cloudfront.net."
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
+    name = "d3882ehkypc0dh.cloudfront.net."
+    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
