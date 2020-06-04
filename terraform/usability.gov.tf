@@ -27,13 +27,9 @@ resource "aws_route53_record" "usability_gov_apex" {
 resource "aws_route53_record" "usability_gov_www" {
   zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
   name = "www.usability.gov."
-  type = "A"
-
-  alias {
-    name = "d3882ehkypc0dh.cloudfront.net."
-    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
+  type = "CNAME"
+  ttl = 120
+  records = [d3882ehkypc0dh.cloudfront.net."]
 }
 
 # Compliance and ACME records -------------------------------
