@@ -46,7 +46,7 @@ resource "aws_route53_record" "usability_gov__dmarc_usability_gov_txt" {
 
 # ACME Challenge records
 
-# usability.gov TXT / ACME Challenge
+# www.usability.gov TXT / ACME Challenge
 resource "aws_route53_record" "www_usability_gov__acme-challenge_txt" {
   zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
   name = "_acme-challenge.www.usability.gov."
@@ -55,7 +55,7 @@ resource "aws_route53_record" "www_usability_gov__acme-challenge_txt" {
   records = ["9F_gDwJzeGpnWpbGphx1dLYa2GE9EYZuKCEH-qTck-8"]
 }
 
-# demo.usability.gov TXT / ACME Challenge
+# usability.gov TXT / ACME Challenge
 resource "aws_route53_record" "usability_gov__acme-challenge_txt" {
   zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
   name = "_acme-challenge.usability.gov."
