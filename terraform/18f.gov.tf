@@ -1024,24 +1024,24 @@ resource "aws_route53_record" "18f_gov_www_handbook_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_sites-dev_federalist_18f_gov_cname" {
+resource "aws_route53_record" "18f_gov_sites-staging_federalist_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "_e0ba007caed3d8773bc499dca747f9b3.sites-dev.federalist.18f.gov."
+  name = "_a97eaf263ff636e68fe4c2f55cc71a5b.sites-staging.federalist.18f.gov."
   type = "CNAME"
   ttl = 300
-  records = ["_a517f5fecb20a88a900a6a3b5be2c48f.vhzmpjdqfx.acm-validations.aws."]
+  records = ["_d3b212a2d4fdd3f6f9abae5a0a185575.tfmgdnztqk.acm-validations.aws."]
 }
 
-resource "aws_route53_record" "18f_gov_sites-dev_federalist_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "*.sites-dev.federalist.18f.gov."
-  type = "A"
-  alias {
-    name = "d2engtqzi489lh.cloudfront.net."
-    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
+# resource "aws_route53_record" "18f_gov_sites-dev_federalist_18f_gov_a" {
+#   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+#   name = "*.sites-dev.federalist.18f.gov."
+#   type = "A"
+#   alias {
+#     name = "d2engtqzi489lh.cloudfront.net."
+#     zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+#     evaluate_target_health = false
+#   }
+# }
 
 resource "aws_route53_record" "18f_gov_frontend_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
