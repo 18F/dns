@@ -1037,7 +1037,7 @@ resource "aws_route53_record" "18f_gov_sites-staging_federalist_18f_gov_a" {
   name = "*.sites-staging.federalist.18f.gov."
   type = "A"
   alias {
-    name = "dsannsivxzxhh.cloudfront.net."
+    name = "d2826r6t5bqji9.cloudfront.net."
     zone_id = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
