@@ -1138,7 +1138,7 @@ resource "aws_route53_record" "18f_gov__acme-challenge_ux-guide_18f_gov_txt" {
   records = ["cMHSS7E7SJghSFKvmy-K8Cp78eZ8ihZjzESAuyEi5eY"]
 }
 
-resource "aws_route53_record" "18f_gov_acme_challenge_federalist-broker-test_18f_gov_cname" {
+resource "aws_route53_record" "18f_gov_federalist-broker-test_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "_acme-challenge.federalist-broker-test.18f.gov."
   type = "CNAME"
@@ -1146,7 +1146,7 @@ resource "aws_route53_record" "18f_gov_acme_challenge_federalist-broker-test_18f
   records = ["_acme-challenge.federalist-broker-test.18f.gov.external-domains-production.cloud.gov"]
 }
 
-resource "aws_route53_record" "18f_gov_federalist-broker-test_18f_gov_cname" {
+resource "aws_route53_record" "18f_gov_domain_federalist-broker-test_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalist-broker-test.18f.gov."
   type = "CNAME"
