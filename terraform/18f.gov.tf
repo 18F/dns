@@ -1146,6 +1146,14 @@ resource "aws_route53_record" "18f_gov_federalist-broker-test_18f_gov_cname" {
   records = ["_acme-challenge.federalist-broker-test.18f.gov.external-domains-production.cloud.gov."]
 }
 
+resource "aws_route53_record" "18f_gov_domain_federalist-broker-test_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "federalist-broker-test.18f.gov."
+  type = "CNAME"
+  ttl = 300
+  records = ["federalist-broker-test.18f.gov.external-domains-production.cloud.gov."]
+}
+
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
