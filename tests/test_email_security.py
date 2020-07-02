@@ -25,8 +25,17 @@ def test_is_second_level_domain():
     assert not is_second_level_domain("foo.bar.baz.")
 
 
+# all second-level domains must have SPF and DMARC
+# https://cyber.dhs.gov/bod/18-01/#compliance-guide
 @pytest.mark.parametrize("domain", second_level_domains())
 def test_has_email_security_records(domain):
     result = checkdmarc.check_domains([domain])
+
     assert result["spf"]["valid"], f"{domain} has missing/invalid SPF record"
     assert result["dmarc"]["valid"], f"{domain} has missing/invalid DMARC record"
+
+    # https://cyber.dhs.gov/bod/18-01/#where-should-dmarc-reports-be-sent
+    reporting_addrs = [
+        val["address"] for val in result["dmarc"]["tags"]["rua"]["value"]
+    ]
+    assert any(addr == "reports@dmarc.cyber.dhs.gov" for addr in reporting_addrs)
