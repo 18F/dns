@@ -2,8 +2,6 @@ data "aws_route53_zone" "zone" {
   zone_id = "${var.zone_id}"
 }
 
-# https://cyber.dhs.gov/bod/18-01/
-
 locals {
   # https://cyber.dhs.gov/bod/18-01/#dhs-dmarc-reporting-location
   dhs_dmarc_reporting_location = "mailto:reports@dmarc.cyber.dhs.gov"

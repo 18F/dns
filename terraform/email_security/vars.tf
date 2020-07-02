@@ -24,4 +24,5 @@ variable "txt_records" {
 
 variable "zone_id" {
   type = "string"
+  description = "Amazon Route 53 hosted zone ID. Records will be applied to the corresponding domain name."
 }
