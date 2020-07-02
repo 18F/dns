@@ -413,7 +413,7 @@ module "digitalgov_gov__email_security" {
   source = "./email_security"
 
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  spf_records = [
+  txt_records = [
     "google-site-verification=WRPUo6XC7m4X-8jJFvXPVs-W4uiqfEbF-pQYcD1-MOU",
     "${local.spf_hubspot}"
   ]

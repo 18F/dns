@@ -16,14 +16,6 @@ resource "aws_route53_record" "vote_gov_vote_gov_a" {
   }
 }
 
-resource "aws_route53_record" "vote_gov_vote_gov_txt" {
-  zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
-  name    = "vote.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["blitz=mu-cbb11232-c5e05a4b-b13f3a3c-060b48f0"]
-}
-
 resource "aws_route53_record" "vote_gov_01872332dafeeb93b927e2d9e9b2c53d_vote_gov_cname" {
   zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
   name    = "01872332dafeeb93b927e2d9e9b2c53d.vote.gov."
@@ -77,7 +69,12 @@ resource "aws_route53_record" "staging_vote_gov_txt" {
 
 module "vote_gov__email_security" {
   source = "./email_security"
+
   zone_id = "${aws_route53_zone.vote_gov_zone.zone_id}"
+  txt_records = [
+    "${local.spf_no_mail}",
+    "blitz=mu-cbb11232-c5e05a4b-b13f3a3c-060b48f0"
+  ]
 }
 
 output "vote_gov_ns" {

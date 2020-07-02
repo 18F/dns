@@ -17,7 +17,7 @@ variable "dmarc_ruf" {
   default = "mailto:dmarcfailures@gsa.gov"
 }
 
-variable "spf_records" {
+variable "txt_records" {
   default     = ["v=spf1 -all"]
   description = "Defaults to blocking all mail"
 }

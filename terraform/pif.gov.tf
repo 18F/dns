@@ -26,12 +26,11 @@ resource "aws_route53_record" "mx" {
   records = ["10 alt3.aspmx.l.google.com.", "10 alt4.aspmx.l.google.com.", "1 aspmx.l.google.com.", "5 alt1.aspmx.l.google.com.", "5 alt2.aspmx.l.google.com."]
 }
 
-resource "aws_route53_record" "txt" {
+module "pif_gov__email_security" {
+  source = "./email_security"
+
   zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
-  name    = "pif.gov."
-  type    = "TXT"
-  ttl     = 60
-  records = ["v=spf1 include:gsa.gov ~all"]
+  txt_records = ["v=spf1 include:gsa.gov ~all"]
 }
 
 resource "aws_route53_record" "pif_gov_domainkey_pif_gov_txt" {
@@ -42,14 +41,6 @@ resource "aws_route53_record" "pif_gov_domainkey_pif_gov_txt" {
   records = [
     "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsaAjhxSW+z1C0s3e+t1ieRB0VrUGKHMTcENFdoVs6hnUMgMNXpX3EGo61TXHRBghX6bP1aoNN8TjouUB1/HNUqA7i0gCEQwN12O67+gKl5qy6poLroTs9pBVsKr\"\"iDHbCR0y9hzE8zuboOVerR+J7cnpwvm/GhNf3TBDU8MojtwM4DEzHYrpe/qMNYAnQp7G5kfTpqq2pyZMzu+O7c1/E8WF/PjEyeAm1dtqnLeCmCcXP3Z3YMRe5VC8++GPdUsnxxggDgh8WQ6TBKWMLx0FZbKswIphIo/Xq3CNsscqhC7rTUljiZzbEKEs17NRPjO70p44k5q1lJE686f4eZ9X6pwIDAQAB"
   ]
-}
-
-resource "aws_route53_record" "pif_gov__dmarc_pif_gov_txt" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
-  name    = "_dmarc.pif.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["${local.dmarc_reject}"]
 }
 
 resource "aws_route53_record" "paygap_slack_cname" {

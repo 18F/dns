@@ -61,26 +61,15 @@ resource "aws_route53_record" "plainlanguage_google_mx" {
   ]
 }
 
-resource "aws_route53_record" "plainlanguage_google_txt" {
+module "plainlanguage_gov__email_security" {
+  source = "./email_security"
+
   zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
-  name    = "plainlanguage.gov."
-  type    = "TXT"
-  ttl     = 600
-  records = [
+  txt_records = [
     "google-site-verification=dgYaMRA2hd9PDUV1zEcRyWmTOVZCbkbP3vXd4isEZLI",
     "v=spf1 include:_spf.google.com include:spf_sa.gsa.gov ~all"
   ]
 }
-
-# BOD
-resource "aws_route53_record" "plainlanguage_gov__dmarc_plainlanguage_gov_txt" {
-  zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
-  name    = "_dmarc.plainlanguage.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["${local.dmarc_reject}"]
-}
-
 
 output "plainlanguage_ns" {
   value = "${aws_route53_zone.plainlanguage_toplevel.name_servers}"

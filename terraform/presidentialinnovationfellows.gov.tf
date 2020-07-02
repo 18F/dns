@@ -40,7 +40,12 @@ resource "aws_route53_record" "presidentialinnovationfellows_mx" {
 
 module "presidentialinnovationfellows_gov__email_security" {
   source = "./email_security"
+
   zone_id = "${aws_route53_zone.presidentialinnovationfellows_toplevel.zone_id}"
+  txt_records = [
+    "${local.spf_no_mail}",
+    "google-site-verification=RBhAMKMQvrHWfxNfosQ9oUrrcwAme78JlrhD3cTQCvY"
+  ]
 }
 
 resource "aws_route53_record" "presidentialinnovationfellows_gov__github-challenge-presidential-innovation-fellows_presidentialinnovationfellows_gov_txt" {

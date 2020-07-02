@@ -34,12 +34,11 @@ resource "aws_route53_record" "calc_gsa_gov_ea1c6bc2bcfeca68fa3da9697e2b980d_cal
   records = ["88e8ce2c97c3ea10aa4ee2c7d26442a6141d7e53.comodoca.com."]
 }
 
-resource "aws_route53_record" "calc_gsa_gov_calc_gsa_gov_txt" {
+module "calc_gov__email_security" {
+  source = "./email_security"
+
   zone_id = "${aws_route53_zone.calc_gsa_gov_zone.zone_id}"
-  name    = "calc.gsa.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["v=spf1 include:amazonses.com ~all"]
+  txt_records = ["v=spf1 include:amazonses.com ~all"]
 }
 
 output "calc_gsa_gov_ns" {

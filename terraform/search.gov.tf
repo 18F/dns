@@ -66,21 +66,11 @@ resource "aws_route53_record" "search_gov__amazonses_search_gov_txt" {
   records = ["bhZh0ZXP7e8vJ1zeTFVBUn/n1rE5NHWBzOIgVG71swI="]
 }
 
-# BOD
-resource "aws_route53_record" "search_gov_dmarc_search_gov_txt" {
-  zone_id = "${aws_route53_zone.search_toplevel.zone_id}"
-  name = "search.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["v=spf1 include:amazonses.com include:mail.zendesk.com include:_spf.google.com -all"]
-}
+module "search_gov__email_security" {
+  source = "./email_security"
 
-resource "aws_route53_record" "search_gov__dmarc_search_gov_txt" {
   zone_id = "${aws_route53_zone.search_toplevel.zone_id}"
-  name = "_dmarc.search.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["v=DMARC1; p=reject; pct=100; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov; fo=1; ri=86400"]
+  txt_records = ["v=spf1 include:amazonses.com include:mail.zendesk.com include:_spf.google.com -all"]
 }
 
 output "search_ns" {

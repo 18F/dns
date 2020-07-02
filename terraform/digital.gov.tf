@@ -367,14 +367,11 @@ resource "aws_route53_record" "touchpoints_digital_gov_mx" {
 
 # Compliance and ACME records -------------------------------
 
-# BOD
+module "digital_gov__email_security" {
+  source = "./email_security"
 
-resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-  name    = "digital.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = [
+  txt_records = [
     "google-site-verification=Mi2rwVMxdp3eSbZughKvN0M_dwi6WLxMrRSsnLOWyVI",
     "${local.spf_hubspot}"
   ]
@@ -396,14 +393,6 @@ resource "aws_route53_record" "demo_pra_digital_gov__acme-challenge_txt" {
   type    = "TXT"
   ttl     = 120
   records = ["qzIXA_qU7a3io8b_FRxFVbPBUKZ83XtglufzS7qKnlg"]
-}
-
-resource "aws_route53_record" "digital_gov__dmarc_digital_gov_txt" {
-  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-  name    = "_dmarc.digital.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["${local.dmarc_reject}"]
 }
 
 # demo.touchpoints.digital.gov TXT / ACME Challenge
