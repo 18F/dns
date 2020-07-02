@@ -1,11 +1,11 @@
 import boto3
 import checkdmarc
 import pytest
-import re
 
 
 def is_second_level_domain(zone_name):
-    return len(re.findall(r"\.", zone_name)) == 2
+    levels = zone_name.rstrip(".").split(".")
+    return len(levels) == 2
 
 
 def second_level_domains():
@@ -20,6 +20,7 @@ def second_level_domains():
 
 
 def test_is_second_level_domain():
+    assert is_second_level_domain("foo.bar")
     assert is_second_level_domain("foo.bar.")
     assert not is_second_level_domain("foo.bar.baz.")
 
