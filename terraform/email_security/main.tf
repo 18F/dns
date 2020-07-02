@@ -2,7 +2,12 @@ data "aws_route53_zone" "zone" {
   zone_id = "${var.zone_id}"
 }
 
-# https://cyber.dhs.gov/bod/18-01/#what-should-be-done-with-domains-that-do-not-send-mail
+# https://cyber.dhs.gov/bod/18-01/
+
+locals {
+  # https://cyber.dhs.gov/bod/18-01/#dhs-dmarc-reporting-location
+  dhs_dmarc_reporting_location = "mailto:reports@dmarc.cyber.dhs.gov"
+}
 
 resource "aws_route53_record" "txt" {
   zone_id = "${var.zone_id}"
@@ -18,6 +23,5 @@ resource "aws_route53_record" "dmarc" {
   type    = "TXT"
   ttl     = 300
 
-  # https://cyber.dhs.gov/bod/18-01/#dhs-dmarc-reporting-location
-  records = ["v=DMARC1; p=${var.dmarc_policy}; pct=${var.dmarc_pct}; fo=1; ri=86400; rua=${var.dmarc_rua},mailto:reports@dmarc.cyber.dhs.gov; ruf=${var.dmarc_ruf}"]
+  records = ["v=DMARC1; p=${var.dmarc_policy}; pct=${var.dmarc_pct}; fo=1; ri=86400; rua=${var.dmarc_rua},${local.dhs_dmarc_reporting_location}; ruf=${var.dmarc_ruf}"]
 }
