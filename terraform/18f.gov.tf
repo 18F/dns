@@ -24,20 +24,9 @@ resource "aws_route53_record" "18f_gov_github_18f_gov_txt" {
   records = ["606c521d44"]
 }
 
-resource "aws_route53_record" "18f_gov_18f_gov_txt" {
+module "18f_gov__email_security" {
+  source = "./email_security"
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "18f.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.spf_no_mail}"]
-}
-
-resource "aws_route53_record" "18f_gov__dmarc_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "_dmarc.18f.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.dmarc_reject}"]
 }
 
 resource "aws_route53_record" "18f_gov__acme-challenge_18f_gov_txt" {

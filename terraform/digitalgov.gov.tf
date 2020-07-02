@@ -408,26 +408,15 @@ resource "aws_route53_record" "digitalgov_gov_dzc_digitalgov_gov_txt" {
 # =================================
 
 # BOD / SECURITY RECORDS (DMARC, SPF, etc...)
-# NOTE: the variables included these records `${local.spf_no_mail}` are set in https://github.com/18F/dns/blob/master/terraform/init.tf
 
+module "digitalgov_gov__email_security" {
+  source = "./email_security"
 
-resource "aws_route53_record" "digitalgov_gov_dmarc_digitalgov_gov_txt" {
   zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "digitalgov.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = [
+  spf_records = [
     "google-site-verification=WRPUo6XC7m4X-8jJFvXPVs-W4uiqfEbF-pQYcD1-MOU",
     "${local.spf_hubspot}"
   ]
-}
-
-resource "aws_route53_record" "digitalgov_gov__dmarc_digitalgov_gov_txt" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "_dmarc.digitalgov.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["${local.dmarc_reject}"]
 }
 
 # END BOD / SECURITY RECORDS (DMARC, SPF, etc...)

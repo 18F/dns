@@ -34,23 +34,10 @@ resource "aws_route53_record" "usability_gov_www" {
 
 # Compliance and ACME records -------------------------------
 
-resource "aws_route53_record" "usability_gov__spf" {
+module "usability_gov__email_security" {
+  source = "./email_security"
   zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
-  name = "usability.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.spf_no_mail}"]
 }
-
-# BOD / DMARC
-resource "aws_route53_record" "usability_gov__dmarc_usability_gov_txt" {
-  zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
-  name = "_dmarc.usability.gov."
-  type = "TXT"
-  ttl = 300
-  records = ["${local.dmarc_reject}"]
-}
-
 
 # ACME Challenge records
 

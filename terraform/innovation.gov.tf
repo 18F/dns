@@ -42,21 +42,9 @@ resource "aws_route53_record" "demo_innovation_gov_a" {
   }
 }
 
-# BOD
-resource "aws_route53_record" "innovation_gov_dmarc_innovation_gov_txt" {
+module "innovation_gov__email_security" {
+  source = "./email_security"
   zone_id = "${aws_route53_zone.innovation_toplevel.zone_id}"
-  name    = "innovation.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["${local.spf_no_mail}"]
-}
-
-resource "aws_route53_record" "innovation_gov__dmarc_innovation_gov_txt" {
-  zone_id = "${aws_route53_zone.innovation_toplevel.zone_id}"
-  name    = "_dmarc.innovation.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["${local.dmarc_reject}"]
 }
 
 output "innovation_ns" {

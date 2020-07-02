@@ -38,21 +38,9 @@ resource "aws_route53_record" "presidentialinnovationfellows_mx" {
   records = ["10 alt3.aspmx.l.google.com.", "10 alt4.aspmx.l.google.com.", "1 aspmx.l.google.com.", "5 alt1.aspmx.l.google.com.", "5 alt2.aspmx.l.google.com."]
 }
 
-resource "aws_route53_record" "presidentialinnovationfellows_apex_txt" {
+module "presidentialinnovationfellows_gov__email_security" {
+  source = "./email_security"
   zone_id = "${aws_route53_zone.presidentialinnovationfellows_toplevel.zone_id}"
-  name    = "presidentialinnovationfellows.gov."
-  type    = "TXT"
-  ttl     = 60
-  records = ["${local.spf_no_mail}",
-  "google-site-verification=RBhAMKMQvrHWfxNfosQ9oUrrcwAme78JlrhD3cTQCvY"]
-}
-
-resource "aws_route53_record" "presidentialinnovationfellows__dmarc_presidentialinnovationfellows_txt" {
-  zone_id = "${aws_route53_zone.presidentialinnovationfellows_toplevel.zone_id}"
-  name    = "_dmarc.presidentialinnovationfellows.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["${local.dmarc_reject}"]
 }
 
 resource "aws_route53_record" "presidentialinnovationfellows_gov__github-challenge-presidential-innovation-fellows_presidentialinnovationfellows_gov_txt" {
