@@ -41,6 +41,18 @@ jobs:
           name: Deploy the full environment
           command: terraform apply -input=false -auto-approve terraform
 
+  validate:
+    docker:
+      - image: python:3-alpine
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: pip install -r requirements.txt
+      - run:
+          name: Run validations
+          command: pytest tests
+
 workflows:
   version: 2
 
@@ -53,6 +65,12 @@ workflows:
               only: master
           requires:
             - plan
+      - validate:
+          filters:
+            branches:
+              only: master
+          requires:
+            - apply
 
 experimental:
   notify:
