@@ -1,22 +1,27 @@
 import boto3
 import checkdmarc
 import pytest
+import re
 
 
-def second_level_domain(zone_name):
-    parts = zone_name.rstrip(".").split(".")[-2:]
-    return ".".join(parts)
+def is_second_level_domain(zone_name):
+    return len(re.findall(r"\.", zone_name)) == 2
 
 
 def second_level_domains():
+    """Returns the set of second-level domains we control."""
     route53 = boto3.client("route53")
     response = route53.list_hosted_zones()
-    return set(second_level_domain(zone["Name"]) for zone in response["HostedZones"])
+    return set(
+        zone["Name"].rstrip(".")
+        for zone in response["HostedZones"]
+        if is_second_level_domain(zone["Name"])
+    )
 
 
-def test_second_level_domain():
-    assert second_level_domain("foo.bar.baz.") == "bar.baz"
-    assert second_level_domain("foo.bar.") == "foo.bar"
+def test_is_second_level_domain():
+    assert is_second_level_domain("foo.bar.")
+    assert not is_second_level_domain("foo.bar.baz.")
 
 
 @pytest.mark.parametrize("domain", second_level_domains())
