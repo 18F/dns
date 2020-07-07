@@ -97,20 +97,19 @@ resource "aws_route53_record" "v2_designsystem_digital_gov_a" {
   name    = "v2.designsystem.digital.gov."
   type    = "A"
   alias {
-    name                   = "d1w7m7a89ly0cw.cloudfront.net."
+    name                   = "v2.designsystem.digital.gov.external-domains-production.cloud.gov."
     zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
 }
 
-# v2alt.designsystem.digital.gov — A -------------------------------
-# (Redirects to designsystem.digital.gov via "pages redirect")
-resource "aws_route53_record" "v2alt_designsystem_digital_gov_a" {
+# v2.designsystem.digital.gov acme challenge — A -------------------------------
+resource "aws_route53_record" "acme_challenge_v2_designsystem_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-  name    = "v2alt.designsystem.digital.gov."
+  name    = "_acme-challenge.v2.designsystem.digital.gov."
   type    = "A"
   alias {
-    name                   = "d1w7m7a89ly0cw.cloudfront.net."
+    name                   = "_acme-challenge.v2.designsystem.digital.gov.external-domains-production.cloud.gov."
     zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
     evaluate_target_health = false
   }
@@ -394,24 +393,6 @@ resource "aws_route53_record" "v2_designsystem_digital_gov__acme-challenge_txt" 
   type    = "TXT"
   ttl     = 120
   records = ["bvOg0Ymz76YopI5rRn0Z_a77TLTKIW58mb0hHPBY_Rs"]
-}
-
-# v2alt.designsystem.digital.gov TXT (TEMPORARY)
-resource "aws_route53_record" "v2alt_designsystem_digital_gov__acme-challenge_txt" {
-  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-  name    = "_acme-challenge.v2alt.designsystem.digital.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["4kIMhG7RfNmvTFFwadOCHlfSCWhhIIGiyWwArqWPQ3E"]
-}
-
-# v1.designsystem.digital.gov TXT / ACME Challenge
-resource "aws_route53_record" "v1_designsystem_digital_gov__acme-challenge_txt" {
-  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-  name    = "_acme-challenge.v1.designsystem.digital.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["wIZIo5wxeXxLDnhBrd7qhaC7QTpU9ko7HsyL226CRkc"]
 }
 
 # pra.digital.gov TXT / ACME Challenge
