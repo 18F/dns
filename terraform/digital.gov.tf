@@ -90,29 +90,23 @@ resource "aws_route53_record" "designsystem_digital_gov_aaaa" {
   }
 }
 
-# v2.designsystem.digital.gov — A -------------------------------
+# v2.designsystem.digital.gov — CNAME -------------------------------
 # (Redirects to designsystem.digital.gov via "pages redirect")
-resource "aws_route53_record" "v2_designsystem_digital_gov_a" {
+resource "aws_route53_record" "v2_designsystem_digital_gov_cname" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
   name    = "v2.designsystem.digital.gov."
-  type    = "A"
-  alias {
-    name                   = "v2.designsystem.digital.gov.external-domains-production.cloud.gov."
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
+  type = "CNAME"
+  ttl = 120
+  records = ["v2.designsystem.digital.gov.external-domains-production.cloud.gov."]
 }
 
-# v2.designsystem.digital.gov acme challenge — A -------------------------------
-resource "aws_route53_record" "acme_challenge_v2_designsystem_digital_gov_a" {
+# v2.designsystem.digital.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "acme_challenge_v2_designsystem_digital_gov_cname" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-  name    = "_acme-challenge.v2.designsystem.digital.gov."
-  type    = "A"
-  alias {
-    name                   = "_acme-challenge.v2.designsystem.digital.gov.external-domains-production.cloud.gov."
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
+  name    = "v2.designsystem.digital.gov."
+  type = "CNAME"
+  ttl = 120
+  records = ["_acme-challenge.v2.designsystem.digital.gov.external-domains-production.cloud.gov."]
 }
 
 # v1.designsystem.digital.gov — A -------------------------------
@@ -384,15 +378,6 @@ resource "aws_route53_record" "digital_gov_dmarc_digital_gov_txt" {
     "google-site-verification=Mi2rwVMxdp3eSbZughKvN0M_dwi6WLxMrRSsnLOWyVI",
     "${local.spf_hubspot}"
   ]
-}
-
-# v2.designsystem.digital.gov TXT / ACME Challenge
-resource "aws_route53_record" "v2_designsystem_digital_gov__acme-challenge_txt" {
-  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-  name    = "_acme-challenge.v2.designsystem.digital.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["bvOg0Ymz76YopI5rRn0Z_a77TLTKIW58mb0hHPBY_Rs"]
 }
 
 # pra.digital.gov TXT / ACME Challenge
