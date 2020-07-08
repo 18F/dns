@@ -92,22 +92,22 @@ resource "aws_route53_record" "designsystem_digital_gov_aaaa" {
 
 # v2.designsystem.digital.gov — CNAME -------------------------------
 # (Redirects to designsystem.digital.gov via "pages redirect")
-# resource "aws_route53_record" "v2_designsystem_digital_gov_cname" {
-#   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-#   name    = "v2.designsystem.digital.gov."
-#   type = "CNAME"
-#   ttl = 120
-#   records = ["v2.designsystem.digital.gov.external-domains-production.cloud.gov."]
-# }
+resource "aws_route53_record" "v2_designsystem_digital_gov_cname" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name    = "v2.designsystem.digital.gov."
+  type = "CNAME"
+  ttl = 120
+  records = ["v2.designsystem.digital.gov.external-domains-production.cloud.gov."]
+}
 
 # v2.designsystem.digital.gov acme challenge — CNAME -------------------------------
-# resource "aws_route53_record" "acme_challenge_v2_designsystem_digital_gov_cname" {
-#   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-#   name    = "_acme-challenge.v2.designsystem.digital.gov."
-#   type = "CNAME"
-#   ttl = 120
-#   records = ["_acme-challenge.v2.designsystem.digital.gov.external-domains-production.cloud.gov."]
-# }
+resource "aws_route53_record" "acme_challenge_v2_designsystem_digital_gov_cname" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name    = "_acme-challenge.v2.designsystem.digital.gov."
+  type = "CNAME"
+  ttl = 120
+  records = ["_acme-challenge.v2.designsystem.digital.gov.external-domains-production.cloud.gov."]
+}
 
 # v1.designsystem.digital.gov — A -------------------------------
 # (DEMO site in Federalist)
