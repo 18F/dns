@@ -42,14 +42,6 @@ resource "aws_route53_record" "usability_gov__spf" {
   records = ["${local.spf_no_mail}"]
 }
 
-# resource "aws_route53_record" "usability_gov__www_spf" {
-#   zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
-#   name = "www.usability.gov."
-#   type = "TXT"
-#   ttl = 300
-#   records = ["${local.spf_no_mail}"]
-# }
-
 # BOD / DMARC
 resource "aws_route53_record" "usability_gov__dmarc_usability_gov_txt" {
   zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
