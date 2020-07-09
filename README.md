@@ -15,7 +15,7 @@ Assuming you're TTS staff, it's recommended that you **make the change in a bran
    - **Yes:** Continue to next step.
    - **No:**
      1. Add a file for the domain (or subdomain, if the second-level domain isn't being added), to create the [public hosted zone](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html).
-        - [`18f.us`](terraform/18f.us.tf) is a good example to copy from.
+        - [`analytics.usa.gov`](terraform/analytics.usa.gov.tf) is a good example to copy from.
         - You'll be using Terraform's [`aws_route53_zone`](https://www.terraform.io/docs/providers/aws/d/route53_zone.html).
      1. After the pull request is merged, to get the name servers for your domain check the output for your build in [CircleCI](https://circleci.com/gh/18F/dns). If you need further assistance, check with [#admins-dns](https://gsa-tts.slack.com/messages/C4L58EQ5T).
      1. Change the nameservers for the domain to point to AWS.
