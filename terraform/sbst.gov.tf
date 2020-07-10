@@ -62,20 +62,9 @@ resource "aws_route53_record" "sbst_gov_6020162f64c7bb016b2a3de7428839d0_www_sbs
   records = ["e1eaa443027a9960e21419ecde173b2b8ebdf10b.comodoca.com."]
 }
 
-resource "aws_route53_record" "sbst_gov__dmarc_sbst_gov_txt" {
+module "sbst_gov__email_security" {
+  source = "./email_security"
   zone_id = "${aws_route53_zone.sbst_gov_zone.zone_id}"
-  name    = "_dmarc.sbst.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["${local.dmarc_reject}"]
-}
-
-resource "aws_route53_record" "sbst_gov_sbst_gov_txt" {
-  zone_id = "${aws_route53_zone.sbst_gov_zone.zone_id}"
-  name    = "sbst.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["v=spf1 -all"]
 }
 
 output "sbst_gov_ns" {

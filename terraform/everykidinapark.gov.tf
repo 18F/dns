@@ -45,20 +45,9 @@ resource "aws_route53_record" "everykidinapark_gov_398a1a6f10083c7a093fc5988ea19
   records = ["9bbc15d353b32d96be120d1cb2af1b89e0763167.comodoca.com."]
 }
 
-resource "aws_route53_record" "everykidinapark_gov_everykidinapark_gov_txt" {
+module "everykidinapark_gov__email_security" {
+  source = "./email_security"
   zone_id = "${aws_route53_zone.everykidinapark_gov_zone.zone_id}"
-  name    = "everykidinapark.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["${local.spf_no_mail}"]
-}
-
-resource "aws_route53_record" "everykidinapark_gov__dmarc_everykidinapark_gov_txt" {
-  zone_id = "${aws_route53_zone.everykidinapark_gov_zone.zone_id}"
-  name    = "_dmarc.everykidinapark.gov."
-  type    = "TXT"
-  ttl     = 300
-  records = ["${local.dmarc_reject}"]
 }
 
 output "everykidinapark_gov_ns" {
