@@ -1127,6 +1127,26 @@ resource "aws_route53_record" "18f_gov__acme-challenge_ux-guide_18f_gov_txt" {
   records = ["cMHSS7E7SJghSFKvmy-K8Cp78eZ8ihZjzESAuyEi5eY"]
 }
 
+# portfolios.18f.gov — CNAME -------------------------------
+# step 1 of https://cloud.gov/docs/services/external-domain-service/#how-to-create-an-instance-of-this-service
+resource "aws_route53_record" "18f_gov_portfolios_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name    = "portfolios.18f.gov."
+  type = "CNAME"
+  ttl = 120
+  records = ["portfolios.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# portfolios.18f.gov acme challenge — CNAME -------------------------------
+# step 2 of https://cloud.gov/docs/services/external-domain-service/#how-to-create-an-instance-of-this-service
+resource "aws_route53_record" "18f_gov__acme_challenge_portfolios_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name    = "_acme-challenge.portfolios.18f.gov."
+  type = "CNAME"
+  ttl = 120
+  records = ["_acme-challenge.portfolios.18f.gov.external-domains-production.cloud.gov."]
+}
+  
 output "18f_gov_ns" {
   value="${aws_route53_zone.18f_gov_zone.name_servers}"
 }
