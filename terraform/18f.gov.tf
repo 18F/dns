@@ -1129,7 +1129,7 @@ resource "aws_route53_record" "18f_gov__acme-challenge_ux-guide_18f_gov_txt" {
 
 # portfolios.18f.gov — CNAME -------------------------------
 # step 1 of https://cloud.gov/docs/services/external-domain-service/#how-to-create-an-instance-of-this-service
-resource "aws_route53_record" "portfolios_18f_gov_cname" {
+resource "aws_route53_record" "18f_gov_portfolios_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name    = "portfolios.18f.gov."
   type = "CNAME"
