@@ -446,6 +446,22 @@ resource "aws_route53_record" "18f_gov_federalistapp-staging_18f_gov_cname" {
   records = ["d1oay2nhnkj8ov.cloudfront.net"]
 }
 
+resource "aws_route53_record" "18f_gov_admin_federalistapp-staging_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "admin.federalistapp-staging.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["admin.federalistapp-staging.18f.gov.external-domains-production.cloud.gov"]
+}
+
+resource "aws_route53_record" "18f_gov_acme_challenge_admin_federalistapp-staging_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.admin.federalistapp-staging.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["_acme-challenge.admin.federalistapp-staging.18f.gov.external-domains-production.cloud.gov"]
+}
+
 resource "aws_route53_record" "18f_gov_federalist-builder_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalist-builder.18f.gov."
