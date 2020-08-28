@@ -66,6 +66,31 @@ resource "aws_route53_record" "search_gov__amazonses_search_gov_txt" {
   records = ["bhZh0ZXP7e8vJ1zeTFVBUn/n1rE5NHWBzOIgVG71swI="]
 }
 
+# Proof of ownership over the domain for DKIM
+resource "aws_route53_record" "search_gov_ses_cname_1" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name    = "xwqqkvd3oiguazj5xtri4l2quk2slsjr._domainkey.search.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["xwqqkvd3oiguazj5xtri4l2quk2slsjr.dkim.amazonses.com"]
+}
+
+resource "aws_route53_record" "search_gov_ses_cname_2" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name    = "e6bt5rkriehhccrznsjdtdftttuzacn7._domainkey.search.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["e6bt5rkriehhccrznsjdtdftttuzacn7.dkim.amazonses.com"]
+}
+
+resource "aws_route53_record" "search_gov_ses_cname_3" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name    = "476wutugvn6kvv42jtwtgaggzogsyvje._domainkey.search.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["476wutugvn6kvv42jtwtgaggzogsyvje.dkim.amazonses.com"]
+}
+
 module "search_gov__email_security" {
   source = "./email_security"
 
