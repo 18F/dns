@@ -68,7 +68,7 @@ resource "aws_route53_record" "search_gov__amazonses_search_gov_txt" {
 
 # Proof of ownership over the domain for DKIM
 resource "aws_route53_record" "search_gov_ses_cname_1" {
-  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  zone_id = "${aws_route53_zone.search_toplevel.zone_id}"
   name    = "xwqqkvd3oiguazj5xtri4l2quk2slsjr._domainkey.search.gov"
   type    = "CNAME"
   ttl     = 1800
@@ -76,7 +76,7 @@ resource "aws_route53_record" "search_gov_ses_cname_1" {
 }
 
 resource "aws_route53_record" "search_gov_ses_cname_2" {
-  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  zone_id = "${aws_route53_zone.search_toplevel.zone_id}"
   name    = "e6bt5rkriehhccrznsjdtdftttuzacn7._domainkey.search.gov"
   type    = "CNAME"
   ttl     = 1800
@@ -84,7 +84,7 @@ resource "aws_route53_record" "search_gov_ses_cname_2" {
 }
 
 resource "aws_route53_record" "search_gov_ses_cname_3" {
-  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  zone_id = "${aws_route53_zone.search_toplevel.zone_id}"
   name    = "476wutugvn6kvv42jtwtgaggzogsyvje._domainkey.search.gov"
   type    = "CNAME"
   ttl     = 1800
