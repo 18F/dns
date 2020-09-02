@@ -430,14 +430,6 @@ resource "aws_route53_record" "18f_gov_federalistapp_18f_gov_cname" {
   records = ["d10jlmxd1n7664.cloudfront.net"]
 }
 
-resource "aws_route53_record" "18f_gov_federalist-staging_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "federalist-staging.18f.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["d1gq90wql59r7i.cloudfront.net"]
-}
-
 resource "aws_route53_record" "18f_gov_federalistapp-staging_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalistapp-staging.18f.gov."
@@ -487,17 +479,6 @@ resource "aws_route53_record" "18f_gov__acme-challenge_federalist_docs_18f_gov_t
   type = "TXT"
   ttl = 120
   records = ["TEXnUePMuwLfltObFna_JRSieCvOnlPQuM9rQ1_fV1c"]
-}
-
-resource "aws_route53_record" "18f_gov_federalist-docs-staging_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "federalist-docs-staging.18f.gov."
-  type = "A"
-  alias {
-    name = "d32ywxpmz9thx7.cloudfront.net."
-    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
 }
 
 resource "aws_route53_record" "18f_gov_federalist-modern-team-template_18f_gov_cname" {
