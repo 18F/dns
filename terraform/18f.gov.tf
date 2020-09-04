@@ -430,20 +430,28 @@ resource "aws_route53_record" "18f_gov_federalistapp_18f_gov_cname" {
   records = ["d10jlmxd1n7664.cloudfront.net"]
 }
 
-resource "aws_route53_record" "18f_gov_federalist-staging_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "federalist-staging.18f.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["d1gq90wql59r7i.cloudfront.net"]
-}
-
 resource "aws_route53_record" "18f_gov_federalistapp-staging_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name = "federalistapp-staging.18f.gov."
   type = "CNAME"
   ttl = 60
   records = ["d1oay2nhnkj8ov.cloudfront.net"]
+}
+
+resource "aws_route53_record" "18f_gov_admin_federalistapp-staging_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "admin.federalistapp-staging.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["admin.federalistapp-staging.18f.gov.external-domains-production.cloud.gov"]
+}
+
+resource "aws_route53_record" "18f_gov_acme_challenge_admin_federalistapp-staging_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name = "_acme-challenge.admin.federalistapp-staging.18f.gov."
+  type = "CNAME"
+  ttl = 60
+  records = ["_acme-challenge.admin.federalistapp-staging.18f.gov.external-domains-production.cloud.gov"]
 }
 
 resource "aws_route53_record" "18f_gov_federalist-builder_18f_gov_cname" {
@@ -471,41 +479,6 @@ resource "aws_route53_record" "18f_gov__acme-challenge_federalist_docs_18f_gov_t
   type = "TXT"
   ttl = 120
   records = ["TEXnUePMuwLfltObFna_JRSieCvOnlPQuM9rQ1_fV1c"]
-}
-
-resource "aws_route53_record" "18f_gov_federalist-docs-staging_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "federalist-docs-staging.18f.gov."
-  type = "A"
-  alias {
-    name = "d32ywxpmz9thx7.cloudfront.net."
-    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "18f_gov_federalist-landing-template_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "federalist-landing-template.18f.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["d2lwrtx2u5nmdw.cloudfront.net"]
-}
-
-resource "aws_route53_record" "18f_gov_federalist-modern-team-template_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "federalist-modern-team-template.18f.gov."
-  type = "CNAME"
-  ttl = 60
-  records = ["dfxc0mkp0730u.cloudfront.net"]
-}
-
-resource "aws_route53_record" "18f_gov__acme-challenge_federalist_modern_team_template_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "_acme-challenge.federalist-modern-team-template.18f.gov."
-  type = "TXT"
-  ttl = 120
-  records = ["SmZkuaawMryDcWKFj5YkAUPubPPkeoU8B3JbnZ62YMA"]
 }
 
 resource "aws_route53_record" "18f_gov_85333a5c6cd71f56532894c3c64666ca_federalist-docs_18f_gov_cname" {
@@ -1049,25 +1022,6 @@ resource "aws_route53_record" "18f_gov__acme-challenge_frontend_18f_gov_txt" {
   type = "TXT"
   ttl = 120
   records = ["z3yABv7AvSVzev3bjUOCViDXGmeVLrrr2dMdzODOJk8"]
-}
-
-resource "aws_route53_record" "18f_gov_federalist_report_template_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "federalist-report-template.18f.gov."
-  type = "A"
-  alias {
-    name = "d25aquneuwyx3x.cloudfront.net."
-    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "18f_gov__acme-challenge_federalist_report_template_18f_gov_txt" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name = "_acme-challenge.federalist-report-template.18f.gov."
-  type = "TXT"
-  ttl = 120
-  records = ["P--Ckv0OyZoQsclY3Y7uS74s-UNHg-ImLHnbnAEjeQs"]
 }
 
 resource "aws_route53_record" "18f_gov_demo-er2epz2vb_18f_gov_a" {
