@@ -63,6 +63,19 @@ resource "aws_route53_record" "workflow_digital_gov_a" {
   }
 }
 
+# workflow.digitalgov.gov
+# redirects to digital.gov/workflow
+module "digital_gov__workflow_digital_gov_redirect" {
+  source = "mediapop/redirect/aws"
+  version = "1.2.1"
+
+  domains = {
+    "digital.gov." = ["workflow.digital.gov"]
+  }
+
+  redirect_to = "https://digital.gov/workflow"
+}
+
 # USWDS - U.S. Web Design System -------------------------------
 # designsystem.digital.gov — A
 # (Master site in Federalist)
