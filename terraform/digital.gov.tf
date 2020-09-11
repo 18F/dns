@@ -60,7 +60,7 @@ module "digital_gov__workflow_digital_gov_redirect" {
     "digital.gov." = ["workflow.digital.gov"]
   }
 
-  redirect_to = "https://digital.gov/workflow"
+  redirect_to = "https://digital.gov/workflow/"
 }
 
 # USWDS - U.S. Web Design System -------------------------------
