@@ -50,17 +50,17 @@ resource "aws_route53_record" "demo_digital_gov_a" {
   }
 }
 
-# workflow.digital.gov
-resource "aws_route53_record" "workflow_digital_gov_a" {
-  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-  name    = "workflow.digital.gov."
-  type    = "A"
+# workflow.digitalgov.gov
+# redirects to digital.gov/workflow
+module "digital_gov__workflow_digital_gov_redirect" {
+  source = "mediapop/redirect/aws"
+  version = "1.2.1"
 
-  alias {
-    name                   = "d1m1gatn2ksd43.cloudfront.net."
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
+  domains = {
+    "digital.gov." = ["workflow.digital.gov"]
   }
+
+  redirect_to = "https://digital.gov/workflow/"
 }
 
 # USWDS - U.S. Web Design System -------------------------------
