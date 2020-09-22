@@ -158,20 +158,6 @@ resource "aws_route53_record" "public_sans_digital_gov_a" {
   }
 }
 
-
-# Digital.gov Guides -------------------------------
-# emerging.digital.gov — A -------------------------------
-resource "aws_route53_record" "emerging_digital_gov_a" {
-  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
-  name    = "emerging.digital.gov."
-  type    = "A"
-  alias {
-    name                   = "d2b40qcr6kbxp7.cloudfront.net."
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 # accessibility.digital.gov — A -------------------------------
 resource "aws_route53_record" "accessibility_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
