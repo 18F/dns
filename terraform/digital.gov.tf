@@ -182,6 +182,25 @@ resource "aws_route53_record" "demo_accessibility_digital_gov_a" {
   }
 }
 
+# emerging.digital.gov — CNAME -------------------------------
+resource "aws_route53_record" "emerging_digital_gov_cname" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name    = "emerging.digital.gov."
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["emerging.digital.gov.external-domains-production.cloud.gov."]
+}
+
+
+# _acme-challenge.emerging.digital.gov — CNAME -------------------------------
+resource "aws_route53_record" "_acme-challenge_emerging_digital_gov_cname" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name    = "_acme-challenge.emerging.digital.gov."
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["_acme-challenge.emerging.digital.gov.external-domains-production.cloud.gov."]
+}  
+
 # pra.digital.gov — A -------------------------------
 resource "aws_route53_record" "pra_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
