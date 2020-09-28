@@ -350,6 +350,28 @@ resource "aws_route53_record" "touchpoints_digital_gov_verification_txt" {
   ]
 }
 
+# Touchpoints Staging APP / Amazon SES CNAME
+# touchpoints-staging.app.cloud.gov — CNAME + DKIM #1 of 2
+# Proof of ownership over the domain
+resource "aws_route53_record" "touchpoints_staging_digital_gov_ses_cname_1" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name    = "26hqif4fsgvtyuqksytfsw5pjb22xoxj._domainkey.touchpoints-staging.app.cloud.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["26hqif4fsgvtyuqksytfsw5pjb22xoxj.dkim.amazonses.com"]
+}
+
+# Touchpoints Staging APP / Amazon SES CNAME
+# touchpoints-staging.app.cloud.gov — CNAME + DKIM #1 of 2
+# Proof of ownership over the domain
+resource "aws_route53_record" "touchpoints_staging_digital_gov_ses_cname_2" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name    = "vceeiyemjswgbeegriak3wci7gnvxg2v._domainkey.touchpoints-staging.app.cloud.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["vceeiyemjswgbeegriak3wci7gnvxg2v.dkim.amazonses.com"]
+}
+
 # Touchpoints APP / Amazon SES CNAME
 # touchpoints.app.digital.gov — CNAME + DKIM #1 of 3
 # Proof of ownership over the domain
