@@ -23,18 +23,6 @@ resource "aws_route53_record" "plainlanguage_apex" {
   }
 }
 
-resource "aws_route53_record" "plainlanguage_www" {
-  zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
-  name    = "www.plainlanguage.gov."
-  type    = "A"
-
-  alias {
-    name                   = "${local.plainlanguage_cloudfront}"
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "demo_plainlanguage_a" {
   zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
   name    = "demo.plainlanguage.gov."
