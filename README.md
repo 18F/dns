@@ -32,7 +32,7 @@ It's worth noting that if you are pointing to a CloudFront distro, you should us
 
 On merge, changes are deployed to an AWS account hosting the Route53 records automatically by a [CircleCI](https://circleci.com/gh/18F/dns) job.
 
-**Please note: only production systems with an ATO that are [categorized](https://before-you-ship.18f.gov/ato/levels/) as Low impact should have their DNS configuration here. If you wish to create DNS records for pre-production systems, please use the domain `sandbox.gov` which is available in the [TTS Sandbox account](https://before-you-ship.18f.gov/infrastructure/sandbox/).**
+**Please note: only production systems with an ATO that are [categorized](https://before-you-ship.18f.gov/ato/levels/) as Low impact should have their DNS configuration here.**
 
 ### Redirects
 
@@ -41,6 +41,10 @@ We are [moving](https://github.com/18F/pages-redirects/issues/149) from [pages-r
 Leave the trailing slash off the destination domain.
 
 If the redirecting domain is assigned to any CloudFront distribution in any AWS account, it will need to be unassociated before the module above can be successfully deployed.
+
+## Stubbing files
+
+We keep a Terraform file for every TTS domain, even if it's just a comment referencing DNS managed elsewhere.
 
 ## Public domain
 
