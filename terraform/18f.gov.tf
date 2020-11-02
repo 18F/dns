@@ -409,22 +409,6 @@ resource "aws_route53_record" "18f_gov_digitalaccelerator_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_dolores_app_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name    = "dolores-app.18f.gov."
-  type    = "CNAME"
-  ttl     = 60
-  records = ["dfyuicm8edxex.cloudfront.net"]
-}
-
-resource "aws_route53_record" "18f_gov_dolores_staging_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name    = "dolores-staging.18f.gov."
-  type    = "CNAME"
-  ttl     = 60
-  records = ["d9d5ti9w8z48u.cloudfront.net"]
-}
-
 resource "aws_route53_record" "18f_gov_eng-hiring_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name    = "eng-hiring.18f.gov."
