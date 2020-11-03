@@ -10,10 +10,9 @@ locals {
   plainlanguage_cloudfront = "d1qy5q7pncs690.cloudfront.net."
 }
 
-
-resource "aws_route53_record" "plainlanguage_apex" {
+resource "aws_route53_record" "plainlanguage_www" {
   zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
-  name    = "plainlanguage.gov."
+  name    = "www.plainlanguage.gov."
   type    = "A"
 
   alias {
