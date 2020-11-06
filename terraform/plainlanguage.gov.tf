@@ -6,14 +6,6 @@ resource "aws_route53_zone" "plainlanguage_toplevel" {
   }
 }
 
-resource "aws_route53_record" "plainlanguage_apex_cname" {
-  zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
-  name    = "plainlanguage.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["plainlanguage.gov.external-domains-production.cloud.gov."]
-}
-
 resource "aws_route53_record" "plainlanguage_acme_challenge_cname" {
   zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
   name    = "_acme-challenge.plainlanguage.gov."
