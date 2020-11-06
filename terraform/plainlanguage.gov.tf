@@ -6,6 +6,46 @@ resource "aws_route53_zone" "plainlanguage_toplevel" {
   }
 }
 
+resource "aws_route53_record" "plainlanguage_apex" {
+  zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
+  name    = "plainlanguage.gov."
+  type    = "A"
+
+  alias {
+    name                   = "plainlanguage.gov.external-domains-production.cloud.gov."
+    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "plainlanguage_acme_challenge_cname" {
+  zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
+  name    = "_acme-challenge.plainlanguage.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.plainlanguage.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "plainlanguage_www" {
+  zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
+  name    = "www.plainlanguage.gov."
+  type    = "A"
+
+  alias {
+    name                   = "www.plainlanguage.gov.external-domains-production.cloud.gov."
+    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "plainlanguage_www_acme_challenge_cname" {
+  zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
+  name    = "_acme-challenge.www.plainlanguage.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.www.plainlanguage.gov.external-domains-production.cloud.gov."]
+}
+
 resource "aws_route53_record" "demo_plainlanguage_a" {
   zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
   name    = "demo.plainlanguage.gov."
