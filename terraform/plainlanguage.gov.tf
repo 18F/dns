@@ -6,7 +6,7 @@ resource "aws_route53_zone" "plainlanguage_toplevel" {
   }
 }
 
-variable "cloud_gov_external_domin_zone_id" {
+variable "cloud_gov_external_domain_zone_id" {
   type        = "string"
   description = "zone for cloud.gov external domains"
 }
