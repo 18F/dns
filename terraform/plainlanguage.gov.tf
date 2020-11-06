@@ -6,6 +6,11 @@ resource "aws_route53_zone" "plainlanguage_toplevel" {
   }
 }
 
+variable "cloud_gov_external_domin_zone_id" {
+  type        = "string"
+  description = "zone for cloud.gov external domains"
+}
+
 resource "aws_route53_record" "plainlanguage_apex_alias" {
   zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
   name    = "plainlanguage.gov."
