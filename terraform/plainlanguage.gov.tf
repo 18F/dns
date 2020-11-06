@@ -13,7 +13,7 @@ resource "aws_route53_record" "plainlanguage_apex_alias" {
 
   alias {
     name                   = "plainlanguage.gov.external-domains-production.cloud.gov."
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
+    zone_id                = "${var.cloud_gov_external_domin_zone_id}"
     evaluate_target_health = false
   }
 }
