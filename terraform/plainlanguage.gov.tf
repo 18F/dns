@@ -6,6 +6,18 @@ resource "aws_route53_zone" "plainlanguage_toplevel" {
   }
 }
 
+resource "aws_route53_record" "plainlanguage_apex_alias" {
+  zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
+  name    = "plainlanguage.gov."
+  type    = "A"
+
+  alias {
+    name                   = "plainlanguage.gov.external-domains-production.cloud.gov."
+    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "plainlanguage_acme_challenge_cname" {
   zone_id = "${aws_route53_zone.plainlanguage_toplevel.zone_id}"
   name    = "_acme-challenge.plainlanguage.gov."
