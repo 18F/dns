@@ -122,6 +122,25 @@ resource "aws_route53_record" "v1_designsystem_digital_gov_a" {
   }
 }
 
+# components.designsystem.digital.gov — CNAME -------------------------------
+resource "aws_route53_record" "components_designsystem_digital_gov_cname" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name    = "components.designsystem.digital.gov."
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["components.designsystem.digital.gov.external-domains-production.cloud.gov."]
+}
+
+
+# _acme-challenge.components.designsystem.digital.gov — CNAME -------------------------------
+resource "aws_route53_record" "_acme-challenge_components_designsystem_digital_gov_cname" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name    = "_acme-challenge.components.designsystem.digital.gov."
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["_acme-challenge.components.designsystem.digital.gov.external-domains-production.cloud.gov."]
+}
+
 # public-sans.digital.gov — A
 resource "aws_route53_record" "public_sans_digital_gov_a" {
   zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
