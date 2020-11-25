@@ -773,18 +773,6 @@ resource "aws_route53_record" "18f_gov_partnership-playbook_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "18f_gov_performance-gov-research_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name    = "performance-gov-research.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d3csg01izjywi2.cloudfront.net."
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_plain-language-tutorial_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name    = "plain-language-tutorial.18f.gov."
