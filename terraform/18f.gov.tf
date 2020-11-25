@@ -1185,6 +1185,24 @@ resource "aws_route53_record" "18f_gov__acme_challenge_federalist_test_site_18f_
   records = ["_acme-challenge.federalist-test-site.18f.gov.external-domains-production.cloud.gov."]
 }
 
+# climate-data-user-study.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "18f_gov_climate_data_user_study_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name    = "climate-data-user-study.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["climate-data-user-study.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# climate-data-user-study.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "18f_gov__acme_challenge_climate_data_user_study_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name    = "_acme-challenge.climate-data-user-study.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.climate-data-user-study.18f.gov.external-domains-production.cloud.gov."]
+}
+
 output "18f_gov_ns" {
   value = "${aws_route53_zone.18f_gov_zone.name_servers}"
 }
