@@ -321,18 +321,6 @@ resource "aws_route53_record" "18f_gov_chat_18f_gov_a" {
   records = ["d2yc8l40kkdvr0.cloudfront.net"]
 }
 
-resource "aws_route53_record" "18f_gov_climate-data-user-study_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name    = "climate-data-user-study.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d28r76t17zvn4f.cloudfront.net."
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_compliance-viewer_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name    = "compliance-viewer.18f.gov."
