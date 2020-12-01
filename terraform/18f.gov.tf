@@ -321,18 +321,6 @@ resource "aws_route53_record" "18f_gov_chat_18f_gov_a" {
   records = ["d2yc8l40kkdvr0.cloudfront.net"]
 }
 
-resource "aws_route53_record" "18f_gov_climate-data-user-study_18f_gov_a" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name    = "climate-data-user-study.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d28r76t17zvn4f.cloudfront.net."
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "18f_gov_compliance-viewer_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name    = "compliance-viewer.18f.gov."
@@ -1183,6 +1171,24 @@ resource "aws_route53_record" "18f_gov__acme_challenge_federalist_test_site_18f_
   type    = "CNAME"
   ttl     = 120
   records = ["_acme-challenge.federalist-test-site.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# climate-data-user-study.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "18f_gov_climate_data_user_study_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name    = "climate-data-user-study.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["climate-data-user-study.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# climate-data-user-study.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "18f_gov__acme_challenge_climate_data_user_study_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name    = "_acme-challenge.climate-data-user-study.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.climate-data-user-study.18f.gov.external-domains-production.cloud.gov."]
 }
 
 output "18f_gov_ns" {
