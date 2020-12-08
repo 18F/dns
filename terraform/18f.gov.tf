@@ -297,14 +297,6 @@ resource "aws_route53_record" "18f_gov_cap_18f_gov_cname" {
   records = ["d2xzdqyn2qvwoo.cloudfront.net."]
 }
 
-resource "aws_route53_record" "18f_gov_c2_18f_gov_cname" {
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
-  name    = "c2.18f.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["production-domains-0-589438325.us-gov-west-1.elb.amazonaws.com."]
-}
-
 resource "aws_route53_record" "18f_gov_charlie_18f_gov_cname" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name    = "charlie.18f.gov."
