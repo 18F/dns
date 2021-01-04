@@ -1,36 +1,36 @@
 resource "aws_route53_zone" "everykidinapark_gov_zone" {
   name = "everykidinapark.gov."
-  tags {
+  tags = {
     Project = "dns"
   }
 }
 
 # Configured with CDN Broker
 resource "aws_route53_record" "everykidinapark_gov_everykidinapark_gov_a" {
-  zone_id = "${aws_route53_zone.everykidinapark_gov_zone.zone_id}"
+  zone_id = aws_route53_zone.everykidinapark_gov_zone.zone_id
   name    = "everykidinapark.gov."
   type    = "A"
   alias {
     name                   = "d356so74a5xncl.cloudfront.net"
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
     evaluate_target_health = false
   }
 }
 
 # Configured with CDN Broker
 resource "aws_route53_record" "everykidinapark_gov_www_everykidinapark_gov_a" {
-  zone_id = "${aws_route53_zone.everykidinapark_gov_zone.zone_id}"
+  zone_id = aws_route53_zone.everykidinapark_gov_zone.zone_id
   name    = "www.everykidinapark.gov."
   type    = "A"
   alias {
     name                   = "d356so74a5xncl.cloudfront.net"
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
     evaluate_target_health = false
   }
 }
 
 resource "aws_route53_record" "everykidinapark_gov_faf32864d6063003a2c9b208e74ab021_www_everykidinapark_gov_cname" {
-  zone_id = "${aws_route53_zone.everykidinapark_gov_zone.zone_id}"
+  zone_id = aws_route53_zone.everykidinapark_gov_zone.zone_id
   name    = "faf32864d6063003a2c9b208e74ab021.www.everykidinapark.gov."
   type    = "CNAME"
   ttl     = 5
@@ -38,7 +38,7 @@ resource "aws_route53_record" "everykidinapark_gov_faf32864d6063003a2c9b208e74ab
 }
 
 resource "aws_route53_record" "everykidinapark_gov_398a1a6f10083c7a093fc5988ea1977b_www_everykidinapark_gov_cname" {
-  zone_id = "${aws_route53_zone.everykidinapark_gov_zone.zone_id}"
+  zone_id = aws_route53_zone.everykidinapark_gov_zone.zone_id
   name    = "398a1a6f10083c7a093fc5988ea1977b.www.everykidinapark.gov."
   type    = "CNAME"
   ttl     = 5
@@ -47,9 +47,9 @@ resource "aws_route53_record" "everykidinapark_gov_398a1a6f10083c7a093fc5988ea19
 
 module "everykidinapark_gov__email_security" {
   source = "./email_security"
-  zone_id = "${aws_route53_zone.everykidinapark_gov_zone.zone_id}"
+  zone_id = aws_route53_zone.everykidinapark_gov_zone.zone_id
 }
 
 output "everykidinapark_gov_ns" {
-  value = "${aws_route53_zone.everykidinapark_gov_zone.name_servers}"
+  value = aws_route53_zone.everykidinapark_gov_zone.name_servers
 }
