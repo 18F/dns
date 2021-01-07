@@ -28,7 +28,11 @@ resource "aws_route53_record" "18f_gov_github_18f_gov_txt" {
 
 module "18f_gov__email_security" {
   source  = "./email_security"
-  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}",
+  txt_records = [
+    "${local.spf_no_mail}",
+    "google-site-verification=HwR6BJFZpjma0wYRYRejCxvOSDuE_tycmgV2_h6y_TA"
+  ]
 }
 
 resource "aws_route53_record" "18f_gov__acme-challenge_18f_gov_txt" {
