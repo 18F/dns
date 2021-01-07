@@ -54,17 +54,6 @@ resource "aws_route53_record" "digitalgov_gov_www" {
   ]
 }
 
-# demo.digitalgov.gov — redirects to demo.digital.gov through pages_redirect
-resource "aws_route53_record" "demo_digitalgov_gov_a" {
-  zone_id = "${aws_route53_zone.digitalgov_gov_zone.zone_id}"
-  name    = "demo.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "d1wh5biaq5z7yu.cloudfront.net."
-  ]
-}
-
 # OpenOpps
 # openopps.digitalgov.gov — redirects to openopps.usajobs.gov through pages_redirect
 resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
