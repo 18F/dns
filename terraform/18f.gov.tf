@@ -529,13 +529,16 @@ resource "aws_route53_record" "18f_gov_fugacious_18f_gov_txt" {
   records = ["d309sw0ah4sgku.cloudfront.net."]
 }
 
-# govconnect.18f.gov — CNAME -------------------------------
-resource "aws_route53_record" "18f_gov_govconnect_18f_gov_cname" {
+resource "aws_route53_record" "18f_gov_govconnect_18f_gov_a" {
   zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
   name    = "govconnect.18f.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["govconnect.18f.gov.external-domains-production.cloud.gov."]
+  type    = "A"
+
+  alias {
+    name                   = "d1pr8zgciesx6n.cloudfront.net."
+    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
+    evaluate_target_health = false
+  }
 }
 
 # govconnect.18f.gov acme challenge — CNAME -------------------------------
