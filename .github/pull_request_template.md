@@ -1,1 +1,2 @@
-<!-- Is this a new public-facing site? If so, please provide some context and assign to @18F/osc for review. -->
+- [ ] This is a new public-facing site <!-- If so, please provide some context and assign to @18F/osc for review. -->
+- [ ] Commented with an update to [the inventory](https://docs.google.com/spreadsheets/d/1OBO6g7_OsVBv0vG8WSCI6L2FD_iRh3A7a_6eQWj2zLE/edit?ts=6025575d#gid=2013137748) (if applicable)
