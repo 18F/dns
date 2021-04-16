@@ -208,8 +208,8 @@ resource "aws_route53_record" "demo_pra_digital_gov_a" {
 }
 
 
-# Touchpoints DEMO -------------------------------
-# A customer service tool for federal agencies that helps them improve the quality of service they deliver to their customers
+# Touchpoints ------------------------------------------------------------------
+# A simple, flexible, and convenient way to collect customer feedback.
 # Contact feedback-analytics@gsa.gov or digitalgov@gsa.gov
 
 # DEMO Touchpoints Site / Federalist / demo.touchpoints.digital.gov — A
@@ -306,8 +306,6 @@ resource "aws_route53_record" "demo_app_touchpoints_digital_gov_mx" {
   ]
 }
 
-# Touchpoints -------------------------------
-
 # Touchpoints Site / Federalist / touchpoints.digital.gov — A
 resource "aws_route53_record" "touchpoints_digital_gov_a" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
@@ -328,13 +326,23 @@ resource "aws_route53_record" "touchpoints_digital_gov_verification_txt" {
   type    = "TXT"
   ttl     = "300"
   records = [
-    "r3nlrOyTmleqQm6yXXyHqEffx6FC3vtWnv9UPMhkADw"
+    "r3nlrOyTmleqQm6yXXyHqEffx6FC3vtWnv9UPMhkADw="
   ]
 }
 
-# Touchpoints Staging APP / Amazon SES CNAME
-# touchpoints-staging.app.cloud.gov — CNAME + DKIM #1 of 2
-# Proof of ownership over the domain
+# Touchpoints Staging APP / Amazon SES Verification TXT Record
+resource "aws_route53_record" "touchpoints_staging_aws_ses" {
+  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  name    = "_amazonses.touchpoints-staging.app.cloud.gov"
+  type    = "TXT"
+  ttl     = 120
+  records = [
+    "FCYaHGmDC96KOetecQ23s3gKA6Z7TJ6PNQATBQmLPM8="
+  ]
+}
+
+# Touchpoints Staging APP / 3 cnames to enable DKIM for Amazon SES -------------
+# DKIM 1 of 3
 resource "aws_route53_record" "touchpoints_staging_digital_gov_ses_cname_1" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "26hqif4fsgvtyuqksytfsw5pjb22xoxj._domainkey.touchpoints-staging.app.cloud.gov"
@@ -343,9 +351,7 @@ resource "aws_route53_record" "touchpoints_staging_digital_gov_ses_cname_1" {
   records = ["26hqif4fsgvtyuqksytfsw5pjb22xoxj.dkim.amazonses.com"]
 }
 
-# Touchpoints Staging APP / Amazon SES CNAME
-# touchpoints-staging.app.cloud.gov — CNAME + DKIM #1 of 2
-# Proof of ownership over the domain
+# DKIM 2 of 3
 resource "aws_route53_record" "touchpoints_staging_digital_gov_ses_cname_2" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "vceeiyemjswgbeegriak3wci7gnvxg2v._domainkey.touchpoints-staging.app.cloud.gov"
@@ -354,9 +360,17 @@ resource "aws_route53_record" "touchpoints_staging_digital_gov_ses_cname_2" {
   records = ["vceeiyemjswgbeegriak3wci7gnvxg2v.dkim.amazonses.com"]
 }
 
-# Touchpoints APP / Amazon SES CNAME
-# touchpoints.app.digital.gov — CNAME + DKIM #1 of 3
-# Proof of ownership over the domain
+# DKIM 3 of 3
+resource "aws_route53_record" "touchpoints_staging_digital_gov_ses_cname_3" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "w5yzy55zindfay2hlzgzj7znigctbpyb._domainkey.touchpoints-staging.app.cloud.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["w5yzy55zindfay2hlzgzj7znigctbpyb.dkim.amazonses.com"]
+}
+
+# Touchpoints APP / 3 cnames to enable DKIM for Amazon SES ---------------------
+# DKIM 1 of 3
 resource "aws_route53_record" "touchpoints_digital_gov_ses_cname_1" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "qqtoqzlc5a24irzufsu4lbdpoc3mvr3n._domainkey.app.touchpoints.digital.gov"
@@ -366,8 +380,7 @@ resource "aws_route53_record" "touchpoints_digital_gov_ses_cname_1" {
 }
 
 # Touchpoints APP / Amazon SES CNAME
-# touchpoints.app.digital.gov — CNAME + DKIM #2 of 3
-# Proof of ownership over the domain
+# DKIM 2 of 3
 resource "aws_route53_record" "touchpoints_digital_gov_ses_cname_2" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "4dh5jgv5chdo2q3axkftnini7j7xkdjx._domainkey.app.touchpoints.digital.gov"
@@ -377,8 +390,7 @@ resource "aws_route53_record" "touchpoints_digital_gov_ses_cname_2" {
 }
 
 # Touchpoints APP / Amazon SES CNAME
-# touchpoints.app.digital.gov — CNAME + DKIM #3 of 3
-# Proof of ownership over the domain
+# DKIM 3 of 3
 resource "aws_route53_record" "touchpoints_digital_gov_ses_cname_3" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "pwa5cvp3cde3aghrojag7ketcjaeytp2._domainkey.app.touchpoints.digital.gov"
