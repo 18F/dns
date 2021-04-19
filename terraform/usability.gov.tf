@@ -6,26 +6,26 @@
 
 resource "aws_route53_zone" "usability_toplevel" {
   name = "usability.gov"
-  tags {
+  tags = {
     Project = "dns"
   }
 }
 
 resource "aws_route53_record" "usability_gov_apex" {
-  zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
+  zone_id = aws_route53_zone.usability_toplevel.zone_id
   name = "usability.gov."
   type = "A"
 
   alias {
     name = "d2yghjaoiuwpg5.cloudfront.net."
-    zone_id = "${local.cloud_gov_cloudfront_zone_id}"
+    zone_id = local.cloud_gov_cloudfront_zone_id
     evaluate_target_health = false
   }
 }
 
 # www.usability.gov — redirects to usability.gov through pages_redirect
 resource "aws_route53_record" "usability_gov_www" {
-  zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
+  zone_id = aws_route53_zone.usability_toplevel.zone_id
   name = "www.usability.gov."
   type = "CNAME"
   ttl = 120
@@ -36,14 +36,14 @@ resource "aws_route53_record" "usability_gov_www" {
 
 module "usability_gov__email_security" {
   source = "./email_security"
-  zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
+  zone_id = aws_route53_zone.usability_toplevel.zone_id
 }
 
 # ACME Challenge records
 
 # www.usability.gov TXT / ACME Challenge
 resource "aws_route53_record" "www_usability_gov__acme-challenge_txt" {
-  zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
+  zone_id = aws_route53_zone.usability_toplevel.zone_id
   name = "_acme-challenge.www.usability.gov."
   type = "TXT"
   ttl = 120
@@ -52,7 +52,7 @@ resource "aws_route53_record" "www_usability_gov__acme-challenge_txt" {
 
 # usability.gov TXT / ACME Challenge
 resource "aws_route53_record" "usability_gov__acme-challenge_txt" {
-  zone_id = "${aws_route53_zone.usability_toplevel.zone_id}"
+  zone_id = aws_route53_zone.usability_toplevel.zone_id
   name = "_acme-challenge.usability.gov."
   type = "TXT"
   ttl = 120
@@ -61,5 +61,5 @@ resource "aws_route53_record" "usability_gov__acme-challenge_txt" {
 
 
 output "usability_ns" {
-  value = "${aws_route53_zone.usability_toplevel.name_servers}"
+  value = aws_route53_zone.usability_toplevel.name_servers
 }

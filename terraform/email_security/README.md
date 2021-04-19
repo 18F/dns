@@ -1,1 +1,0 @@
-This module is meant to help implement Department of Homeland Security (DHS) [Binding Operational Directive (BOD) 18-01: _Enhance Email and Web Security_](https://cyber.dhs.gov/bod/18-01/). By default, the module assumes you do not send mail from the domain and will [have messages blocked](https://cyber.dhs.gov/bod/18-01/#what-should-be-done-with-domains-that-do-not-send-mail).

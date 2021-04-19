@@ -1,25 +1,25 @@
 resource "aws_route53_zone" "pif_toplevel" {
   name = "pif.gov"
 
-  tags {
+  tags = {
     Project = "dns"
   }
 }
 
 resource "aws_route53_record" "www" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "pif.gov."
   type    = "A"
 
   alias {
     name                   = "dgevgiwb7xxpw.cloudfront.net"
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
     evaluate_target_health = false
   }
 }
 
 resource "aws_route53_record" "mx" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "pif.gov."
   type    = "MX"
   ttl     = 60
@@ -29,12 +29,12 @@ resource "aws_route53_record" "mx" {
 module "pif_gov__email_security" {
   source = "./email_security"
 
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   txt_records = ["v=spf1 include:gsa.gov ~all"]
 }
 
 resource "aws_route53_record" "pif_gov_domainkey_pif_gov_txt" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "google._domainkey.pif.gov"
   type    = "TXT"
   ttl     = "300"
@@ -44,7 +44,7 @@ resource "aws_route53_record" "pif_gov_domainkey_pif_gov_txt" {
 }
 
 resource "aws_route53_record" "paygap_slack_cname" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "paygap-slack.pif.gov."
   type    = "CNAME"
   ttl     = 300
@@ -52,7 +52,7 @@ resource "aws_route53_record" "paygap_slack_cname" {
 }
 
 resource "aws_route53_record" "amazonses_txt" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "_amazonses.pif.gov."
   type    = "TXT"
   ttl     = 60
@@ -60,7 +60,7 @@ resource "aws_route53_record" "amazonses_txt" {
 }
 
 resource "aws_route53_record" "pif_gov__github-challenge-presidential-innovation-fellows_pif_gov_txt" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "_github-challenge-presidential-innovation-fellows.pif.gov."
   type    = "TXT"
   ttl     = 60
@@ -68,7 +68,7 @@ resource "aws_route53_record" "pif_gov__github-challenge-presidential-innovation
 }
 
 resource "aws_route53_record" "ses_cname_1" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "hqxmpb4wvicc7sgousvwutczjusp4sfc._domainkey.pif.gov."
   type    = "CNAME"
   ttl     = 1800
@@ -76,7 +76,7 @@ resource "aws_route53_record" "ses_cname_1" {
 }
 
 resource "aws_route53_record" "ses_cname_2" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "nv3r33tblbqana3lj5a5x4bzq4gxcetz._domainkey.pif.gov."
   type    = "CNAME"
   ttl     = 1800
@@ -84,7 +84,7 @@ resource "aws_route53_record" "ses_cname_2" {
 }
 
 resource "aws_route53_record" "ses_cname_3" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "zozbm3olsvjtarcghhuz2sneknw7ar5t._domainkey.pif.gov."
   type    = "CNAME"
   ttl     = 1800
@@ -92,7 +92,7 @@ resource "aws_route53_record" "ses_cname_3" {
 }
 
 resource "aws_route53_record" "proposal_cname" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "proposal.pif.gov."
   type    = "CNAME"
   ttl     = 120
@@ -100,7 +100,7 @@ resource "aws_route53_record" "proposal_cname" {
 }
 
 resource "aws_route53_record" "proposal_txt" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name = "_acme-challenge.proposal.pif.gov."
   type = "TXT"
   ttl = 120
@@ -108,7 +108,7 @@ resource "aws_route53_record" "proposal_txt" {
 }
 
 resource "aws_route53_record" "fellows_in_innovation_pif_cname" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "fellows-in-innovation.pif.gov."
   type    = "CNAME"
   ttl     = 300
@@ -116,7 +116,7 @@ resource "aws_route53_record" "fellows_in_innovation_pif_cname" {
 }
 
 resource "aws_route53_record" "paygap_pif_cname" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "paygap.pif.gov."
   type    = "CNAME"
   ttl     = 300
@@ -124,7 +124,7 @@ resource "aws_route53_record" "paygap_pif_cname" {
 }
 
 resource "aws_route53_record" "tophealth_pif_cname" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "tophealth.pif.gov."
   type    = "CNAME"
   ttl     = 300
@@ -132,7 +132,7 @@ resource "aws_route53_record" "tophealth_pif_cname" {
 }
 
 resource "aws_route53_record" "review_cname" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "review.pif.gov."
   type    = "CNAME"
   ttl     = 60
@@ -140,19 +140,19 @@ resource "aws_route53_record" "review_cname" {
 }
 
 resource "aws_route53_record" "www-main" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "www.pif.gov."
   type    = "A"
 
   alias {
     name                   = "dgevgiwb7xxpw.cloudfront.net"
-    zone_id                = "${local.cloud_gov_cloudfront_zone_id}"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
     evaluate_target_health = false
   }
 }
 
 resource "aws_route53_record" "apply_pif_cname" {
-  zone_id = "${aws_route53_zone.pif_toplevel.zone_id}"
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "apply.pif.gov."
   type    = "CNAME"
   ttl     = 300
@@ -160,5 +160,5 @@ resource "aws_route53_record" "apply_pif_cname" {
 }
 
 output "pif_ns" {
-  value = "${aws_route53_zone.pif_toplevel.name_servers}"
+  value = aws_route53_zone.pif_toplevel.name_servers
 }
