@@ -74,7 +74,8 @@ module "plainlanguage_gov__email_security" {
   zone_id = aws_route53_zone.plainlanguage_toplevel.zone_id
   txt_records = [
     "google-site-verification=dgYaMRA2hd9PDUV1zEcRyWmTOVZCbkbP3vXd4isEZLI",
-    "v=spf1 include:_spf.google.com include:spf_sa.gsa.gov ~all"
+    "v=spf1 include:_spf.google.com include:spf_sa.gsa.gov ~all",
+    "google-site-verification=c2d7btaIGhlOnqXV6qkYGIhGX7fCIQepnpuDhmjbfkw"
   ]
 }
 
