@@ -266,7 +266,7 @@ resource "aws_route53_record" "digitalgov_gov_support_digitalgov_gov_txt" {
   type    = "TXT"
   ttl     = "3600"
   records = [
-    "v=spf1 include:mail.zendesk.com include:amazonses.com ~all"
+    "v=spf1 include:mail.zendesk.com include:amazonses.com include:1962994.spf05.hubspotemail.net ~all"
   ]
 }
 
@@ -346,6 +346,30 @@ resource "aws_route53_record" "hubspot2_digitalgov_gov_a" {
   ttl     = "300"
   records = [
     "digitalgov-gov.hs01b.dkim.hubspotemail.net."
+  ]
+}
+
+# Hubspot records for sending email from the digitalgov.gov domain
+# See https://knowledge.hubspot.com/email/can-i-use-a-dmarc-policy-with-hubspot#troubleshoot-issues-with-dmarc-authentication
+resource "aws_route53_record" "hubspot3_digitalgov_gov_a" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "hs1-1962994._domainkey.support.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "support-digitalgov-gov.hs11a.dkim.hubspotemail.net."
+  ]
+}
+
+# Hubspot records for sending email from the digitalgov.gov domain
+# See https://knowledge.hubspot.com/email/can-i-use-a-dmarc-policy-with-hubspot#troubleshoot-issues-with-dmarc-authentication
+resource "aws_route53_record" "hubspot4_digitalgov_gov_a" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "hs2-1962994._domainkey.support.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "support-digitalgov-gov.hs11b.dkim.hubspotemail.net."
   ]
 }
 
