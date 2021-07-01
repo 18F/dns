@@ -10,9 +10,9 @@ Note that AWS Route 53 does **not** support [DNSSEC](http://docs.aws.amazon.com/
 
 ## GitHub
 
-The DNS terraform configs and testing and deployment configuration live in this repository. The main and active branch is the `master` branch, which is what is deployed to the live Route53 host. This repo is managed by 18F Infrastructure, and both the cloud.gov and Federalist teams have write access to the repo. The 18F org as a whole has read access.
+The DNS terraform configs and testing and deployment configuration live in this repository. The main and active branch is the `main` branch, which is what is deployed to the live Route53 host. This repo is managed by 18F Infrastructure, and both the cloud.gov and Federalist teams have write access to the repo. The 18F org as a whole has read access.
 
-To make [changes](https://github.com/18F/Infrastructure/wiki/Making-DNS-changes) to the repository, one files a [pull request](https://github.com/18F/dns/pulls) against the `master` branch. The [README](../README.md#making-changes) also provides details on making changes.
+To make [changes](https://github.com/18F/Infrastructure/wiki/Making-DNS-changes) to the repository, one files a [pull request](https://github.com/18F/dns/pulls) against the `main` branch. The [README](../README.md#making-changes) also provides details on making changes.
 
 ## Terraform
 
@@ -93,7 +93,7 @@ output "example_com_ns" {
 
 Validation is handled by a continuous integration (CI) process implemented as a [CircleCI job](https://circleci.com/gh/18F/dns). The convention for the job name is to base it off of the appropriate description of the actions being performed in that phase. For example, a job that is named validate would correspond to the command _terraform [validate](https://www.terraform.io/docs/commands/validate.html)_ which performs a linting step. Note that the scope of this validate command is very limited at the time of this writing -- this command does not do deep syntax checking, nor does it discover any problems running against existing resources.
 
-As a result, we require a peer review of the changes. GitHub won't merge the change to the `master` branch until a reviewer approves. (As mentioned above, other groups such as federalist reviews its own DNS changes.)
+As a result, we require a peer review of the changes. GitHub won't merge the change to the `main` branch until a reviewer approves. (As mentioned above, other groups such as federalist reviews its own DNS changes.)
 
 Note that deeper linting of terraform files, along the lines of a dry run, is on [Hashicorp's radar](https://github.com/hashicorp/terraform/issues/11427).
 

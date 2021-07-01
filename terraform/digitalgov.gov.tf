@@ -1,5 +1,5 @@
 # These DNS records are hosted out of Route53, and managed by Digital.gov and the Infrastructure team at Technology Transformation Services (TTS).
-# More information on editing: https://github.com/18F/dns/blob/master/README.md
+# More information on editing: https://github.com/18F/dns/blob/main/README.md
 # To request a change, file an issue: https://github.com/18F/dns
 # Question? email digitalgov@gsa.gov or reach us in #digitalgov in Slack
 
@@ -9,7 +9,7 @@
 # - primary contact information
 # - comments explaining what the record is used for, or where it redirects
 
-# NOTE: digitalgov.gov is a legacy domain that is still hooked up to a number of services in TTS. See the Digital.gov file for more additional records https://github.com/18F/dns/blob/master/terraform/digital.gov.tf
+# NOTE: digitalgov.gov is a legacy domain that is still hooked up to a number of services in TTS. See the Digital.gov file for more additional records https://github.com/18F/dns/blob/main/terraform/digital.gov.tf
 
 
 # =================================
