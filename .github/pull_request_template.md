@@ -1,2 +1,5 @@
-- [ ] This is a new public-facing site <!-- If so, please provide some context and assign to @18F/osc for review. -->
-- [ ] Commented with an update to [the inventory](https://docs.google.com/spreadsheets/d/1OBO6g7_OsVBv0vG8WSCI6L2FD_iRh3A7a_6eQWj2zLE/edit?ts=6025575d#gid=2013137748) (if applicable)
+- [ ] This is a new public-facing site _(if so, please follow the additional instructions below)_
+   - [ ] Provide context
+   - [ ] Assign to `@18F/osc` for review
+   - [ ] [TTS Digital Council's new site review process](https://docs.google.com/document/d/1j6eieL3oop0rxCAldVVh7uGdOCG-ajafrog_BZ-u470/edit) completed
+   - [ ] Update [the inventory](https://docs.google.com/spreadsheets/d/1OBO6g7_OsVBv0vG8WSCI6L2FD_iRh3A7a_6eQWj2zLE/edit?ts=6025575d#gid=2013137748) with new site information
