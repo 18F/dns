@@ -11,7 +11,6 @@
 
 # NOTE: digitalgov.gov is a legacy domain that is still hooked up to a number of services in TTS. See the Digital.gov file for more additional records https://github.com/18F/dns/blob/main/terraform/digital.gov.tf
 
-
 # =================================
 
 # INIT
@@ -43,6 +42,17 @@ resource "aws_route53_record" "digitalgov_gov_apex" {
   }
 }
 
+resource "aws_route53_record" "digitalgov_gov_apex_aaaa" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "digitalgov.gov."
+  type    = "AAAA"
+  alias {
+    name                   = "dj62070yqrr60.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 # www.digitalgov.gov — redirects to digital.gov through pages_redirect
 resource "aws_route53_record" "digitalgov_gov_www" {
   zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
@@ -60,6 +70,17 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_a" {
   zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
   name    = "openopps.digitalgov.gov."
   type    = "A"
+  alias {
+    name                   = "d198punmzgrl9l.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_aaaa" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "openopps.digitalgov.gov."
+  type    = "AAAA"
   alias {
     name                   = "d198punmzgrl9l.cloudfront.net."
     zone_id                = local.cloud_gov_cloudfront_zone_id
@@ -100,7 +121,6 @@ resource "aws_route53_record" "find_digitalgov_gov_a" {
     "digitalgov.sites.infr.search.usa.gov."
   ]
 }
-
 
 # END REDIRECTS
 
@@ -167,13 +187,11 @@ resource "aws_route53_record" "dap_validation_digitalgov_gov_a" {
   ]
 }
 
-
 # END SERVICES
 
 # =================================
 
 # EMAIL and SUPPORT SERVICES
-
 
 # o166.email.digitalgov.gov — A
 # Unclear what this is for.
@@ -304,13 +322,11 @@ resource "aws_route53_record" "digitalgov_gov_email_digitalgov_gov_txt" {
   ]
 }
 
-
 # END EMAIL and SUPPORT SERVICES
 
 # =================================
 
 # EMAIL NEWSLETTER (HubSpot)
-
 
 # connect.digitalgov.gov
 # A former landing page for signing up for the HubSpot newsletter
@@ -396,7 +412,6 @@ resource "aws_route53_record" "hubspot_digitalgov_gov_txt" {
     "k=rsa; t=s; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPtW5iwpXVPiH5FzJ7Nrl8USzuY9zqqzjE0D1r04xDN6qwziDnmgcFNNfMewVKN2D1O+2J9N14hRprzByFwfQW76yojh54Xu3uSbQ3JP0A7k8o8GutRF8zbFUA8n0ZH2y0cIEjMliXY4W4LwPA7m4q0ObmvSjhd63O9d8z1XkUBwIDAQAB"
   ]
 }
-
 
 # END EMAIL NEWSLETTER (HubSpot)
 

@@ -18,6 +18,18 @@ resource "aws_route53_record" "plainlanguage_apex_alias" {
   }
 }
 
+resource "aws_route53_record" "plainlanguage_apex_alias_aaaa" {
+  zone_id = aws_route53_zone.plainlanguage_toplevel.zone_id
+  name    = "plainlanguage.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d2uz68wjkv6tls.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "plainlanguage_acme_challenge_cname" {
   zone_id = aws_route53_zone.plainlanguage_toplevel.zone_id
   name    = "_acme-challenge.plainlanguage.gov."
@@ -46,6 +58,18 @@ resource "aws_route53_record" "demo_plainlanguage_a" {
   zone_id = aws_route53_zone.plainlanguage_toplevel.zone_id
   name    = "demo.plainlanguage.gov."
   type    = "A"
+
+  alias {
+    name                   = "d18mn70cbq9e90.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "demo_plainlanguage_aaaa" {
+  zone_id = aws_route53_zone.plainlanguage_toplevel.zone_id
+  name    = "demo.plainlanguage.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d18mn70cbq9e90.cloudfront.net."

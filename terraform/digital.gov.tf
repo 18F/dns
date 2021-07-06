@@ -24,11 +24,35 @@ resource "aws_route53_record" "digital_gov_apex" {
   }
 }
 
+resource "aws_route53_record" "digital_gov_apex_aaaa" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "digital.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d2q1i25any8vwy.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 # www.digital.gov — redirects to digital.gov through pages_redirect
 resource "aws_route53_record" "digital_gov_www" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "www.digital.gov."
   type    = "A"
+
+  alias {
+    name                   = "d11gdxqvugzxkr.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "digital_gov_www_aaaa" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "www.digital.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d11gdxqvugzxkr.cloudfront.net."
@@ -82,8 +106,8 @@ resource "aws_route53_record" "designsystem_digital_gov_aaaa" {
 resource "aws_route53_record" "v2_designsystem_digital_gov_cname" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "v2.designsystem.digital.gov."
-  type = "CNAME"
-  ttl = 120
+  type    = "CNAME"
+  ttl     = 120
   records = ["v2.designsystem.digital.gov.external-domains-production.cloud.gov."]
 }
 
@@ -91,8 +115,8 @@ resource "aws_route53_record" "v2_designsystem_digital_gov_cname" {
 resource "aws_route53_record" "acme_challenge_v2_designsystem_digital_gov_cname" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "_acme-challenge.v2.designsystem.digital.gov."
-  type = "CNAME"
-  ttl = 120
+  type    = "CNAME"
+  ttl     = 120
   records = ["_acme-challenge.v2.designsystem.digital.gov.external-domains-production.cloud.gov."]
 }
 
@@ -109,6 +133,17 @@ resource "aws_route53_record" "v1_designsystem_digital_gov_a" {
   }
 }
 
+resource "aws_route53_record" "v1_designsystem_digital_gov_aaaa" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "v1.designsystem.digital.gov."
+  type    = "AAAA"
+  alias {
+    name                   = "d5bhevr9bklr9.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 # components.designsystem.digital.gov — CNAME -------------------------------
 resource "aws_route53_record" "components_designsystem_digital_gov_cname" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
@@ -117,7 +152,6 @@ resource "aws_route53_record" "components_designsystem_digital_gov_cname" {
   ttl     = 1800
   records = ["components.designsystem.digital.gov.external-domains-production.cloud.gov."]
 }
-
 
 # _acme-challenge.components.designsystem.digital.gov — CNAME -------------------------------
 resource "aws_route53_record" "_acme-challenge_components_designsystem_digital_gov_cname" {
@@ -140,11 +174,33 @@ resource "aws_route53_record" "public_sans_digital_gov_a" {
   }
 }
 
+resource "aws_route53_record" "public_sans_digital_gov_aaaa" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "public-sans.digital.gov."
+  type    = "AAAA"
+  alias {
+    name                   = "d30jruftdogur6.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 # accessibility.digital.gov — A -------------------------------
 resource "aws_route53_record" "accessibility_digital_gov_a" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "accessibility.digital.gov."
   type    = "A"
+  alias {
+    name                   = "d2hlc5rjmtb40x.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "accessibility_digital_gov_aaaa" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "accessibility.digital.gov."
+  type    = "AAAA"
   alias {
     name                   = "d2hlc5rjmtb40x.cloudfront.net."
     zone_id                = local.cloud_gov_cloudfront_zone_id
@@ -164,6 +220,17 @@ resource "aws_route53_record" "demo_accessibility_digital_gov_a" {
   }
 }
 
+resource "aws_route53_record" "demo_accessibility_digital_gov_aaaa" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "demo.accessibility.digital.gov."
+  type    = "AAAA"
+  alias {
+    name                   = "dnt48lkpo0ew7.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 # emerging.digital.gov — CNAME -------------------------------
 resource "aws_route53_record" "emerging_digital_gov_cname" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
@@ -172,7 +239,6 @@ resource "aws_route53_record" "emerging_digital_gov_cname" {
   ttl     = 1800
   records = ["emerging.digital.gov.external-domains-production.cloud.gov."]
 }
-
 
 # _acme-challenge.emerging.digital.gov — CNAME -------------------------------
 resource "aws_route53_record" "_acme-challenge_emerging_digital_gov_cname" {
@@ -195,6 +261,17 @@ resource "aws_route53_record" "pra_digital_gov_a" {
   }
 }
 
+resource "aws_route53_record" "pra_digital_gov_aaaa" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "pra.digital.gov."
+  type    = "AAAA"
+  alias {
+    name                   = "d3vwm5h0acan67.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 # demo.pra.digital.gov — A -------------------------------
 resource "aws_route53_record" "demo_pra_digital_gov_a" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
@@ -207,6 +284,16 @@ resource "aws_route53_record" "demo_pra_digital_gov_a" {
   }
 }
 
+resource "aws_route53_record" "demo_pra_digital_gov_aaaa" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "demo.pra.digital.gov."
+  type    = "AAAA"
+  alias {
+    name                   = "d18cp08a73t0c1.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
 
 # Touchpoints ------------------------------------------------------------------
 # A simple, flexible, and convenient way to collect customer feedback.
@@ -217,6 +304,17 @@ resource "aws_route53_record" "demo_touchpoints_digital_gov_a" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "demo.touchpoints.digital.gov."
   type    = "A"
+  alias {
+    name                   = "dcxk3q3d8gzx7.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "demo_touchpoints_digital_gov_aaaa" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "demo.touchpoints.digital.gov."
+  type    = "AAAA"
   alias {
     name                   = "dcxk3q3d8gzx7.cloudfront.net."
     zone_id                = local.cloud_gov_cloudfront_zone_id
@@ -311,6 +409,17 @@ resource "aws_route53_record" "touchpoints_digital_gov_a" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "touchpoints.digital.gov."
   type    = "A"
+  alias {
+    name                   = "d5n0pmq4ueiac.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "touchpoints_digital_gov_aaaa" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "touchpoints.digital.gov."
+  type    = "AAAA"
   alias {
     name                   = "d5n0pmq4ueiac.cloudfront.net."
     zone_id                = local.cloud_gov_cloudfront_zone_id
@@ -495,7 +604,6 @@ resource "aws_route53_record" "hubspot_digital_gov_txt" {
     "k=rsa; t=s; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPtW5iwpXVPiH5FzJ7Nrl8USzuY9zqqzjE0D1r04xDN6qwziDnmgcFNNfMewVKN2D1O+2J9N14hRprzByFwfQW76yojh54Xu3uSbQ3JP0A7k8o8GutRF8zbFUA8n0ZH2y0cIEjMliXY4W4LwPA7m4q0ObmvSjhd63O9d8z1XkUBwIDAQAB"
   ]
 }
-
 
 # END EMAIL NEWSLETTER (HubSpot)
 

@@ -18,10 +18,34 @@ resource "aws_route53_record" "code_gov_apex" {
   }
 }
 
+resource "aws_route53_record" "code_gov_apex_aaaa" {
+  zone_id = aws_route53_zone.code_toplevel.zone_id
+  name    = "code.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "dqziuvpgrykcy.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "code_gov_www" {
   zone_id = aws_route53_zone.code_toplevel.zone_id
   name    = "www.code.gov."
   type    = "A"
+
+  alias {
+    name                   = "dqziuvpgrykcy.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "code_gov_www_aaaa" {
+  zone_id = aws_route53_zone.code_toplevel.zone_id
+  name    = "www.code.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "dqziuvpgrykcy.cloudfront.net."
@@ -51,7 +75,7 @@ resource "aws_route53_record" "code_gov_api_cname" {
 }
 
 module "code_gov__email_security" {
-  source = "./email_security"
+  source  = "./email_security"
   zone_id = aws_route53_zone.code_toplevel.zone_id
 }
 
