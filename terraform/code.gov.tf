@@ -42,18 +42,6 @@ resource "aws_route53_record" "staging_code_gov_a" {
   }
 }
 
-resource "aws_route53_record" "code_gov_developers_code_gov_a" {
-  zone_id = aws_route53_zone.code_toplevel.zone_id
-  name    = "developers.code.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d3jsj3d37agtw.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "code_gov_api_cname" {
   zone_id = aws_route53_zone.code_toplevel.zone_id
   name    = "api.code.gov."
