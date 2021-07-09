@@ -1015,26 +1015,6 @@ resource "aws_route53_record" "d_18f_gov_handbook_18f_gov_a" {
   }
 }
 
-resource "aws_route53_record" "d_18f_gov__acme-challenge_www_handbook_18f_gov_txt" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "_acme-challenge.wwwhandbook.18f.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["BPOzEydsDN3vaYvzfta3AgTm2kqSxB0xBqwYYwfK-pA"]
-}
-
-resource "aws_route53_record" "d_18f_gov_www_handbook_18f_gov_a" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "wwwhandbook.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d36dwgrf0cle4t.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "d_18f_gov_sites-staging_federalist_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "_a97eaf263ff636e68fe4c2f55cc71a5b.sites-staging.federalist.18f.gov."
