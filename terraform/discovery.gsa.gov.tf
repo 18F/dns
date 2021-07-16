@@ -18,6 +18,18 @@ resource "aws_route53_record" "discovery_gsa_gov_discovery_gsa_gov_a" {
   }
 }
 
+resource "aws_route53_record" "discovery_gsa_gov_discovery_gsa_gov_aaaa" {
+  zone_id = aws_route53_zone.discovery_gsa_gov_zone.zone_id
+  name    = "discovery.gsa.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d11du9vova78yj.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "discovery_gsa_gov_3507f28574ed43c4bd2a644f46b397c0_discovery_gsa_gov_cname" {
   zone_id = aws_route53_zone.discovery_gsa_gov_zone.zone_id
   name    = "3507f28574ed43c4bd2a644f46b397c0.discovery.gsa.gov."

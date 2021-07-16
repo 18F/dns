@@ -18,6 +18,18 @@ resource "aws_route53_record" "www" {
   }
 }
 
+resource "aws_route53_record" "www_aaaa" {
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
+  name    = "pif.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "dgevgiwb7xxpw.cloudfront.net"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "mx" {
   zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "pif.gov."
@@ -29,7 +41,7 @@ resource "aws_route53_record" "mx" {
 module "pif_gov__email_security" {
   source = "./email_security"
 
-  zone_id = aws_route53_zone.pif_toplevel.zone_id
+  zone_id     = aws_route53_zone.pif_toplevel.zone_id
   txt_records = ["v=spf1 include:gsa.gov ~all"]
 }
 
@@ -101,9 +113,9 @@ resource "aws_route53_record" "proposal_cname" {
 
 resource "aws_route53_record" "proposal_txt" {
   zone_id = aws_route53_zone.pif_toplevel.zone_id
-  name = "_acme-challenge.proposal.pif.gov."
-  type = "TXT"
-  ttl = 120
+  name    = "_acme-challenge.proposal.pif.gov."
+  type    = "TXT"
+  ttl     = 120
   records = ["1dHcUZofJi9on3jRwR4I0o-2fGKbMV0OtmF140lvKmU"]
 }
 
@@ -143,6 +155,18 @@ resource "aws_route53_record" "www-main" {
   zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "www.pif.gov."
   type    = "A"
+
+  alias {
+    name                   = "dgevgiwb7xxpw.cloudfront.net"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "www-main_aaaa" {
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
+  name    = "www.pif.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "dgevgiwb7xxpw.cloudfront.net"

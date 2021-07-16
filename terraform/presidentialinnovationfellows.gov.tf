@@ -18,6 +18,19 @@ resource "aws_route53_record" "presidentialinnovationfellows_www" {
   }
 }
 
+resource "aws_route53_record" "presidentialinnovationfellows_www_aaaa" {
+  zone_id = aws_route53_zone.presidentialinnovationfellows_toplevel.zone_id
+  name    = "www.presidentialinnovationfellows.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d26prp92rpqmzl.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+
 resource "aws_route53_record" "presidentialinnovationfellows_apex" {
   zone_id = aws_route53_zone.presidentialinnovationfellows_toplevel.zone_id
   name    = "presidentialinnovationfellows.gov."
@@ -29,6 +42,19 @@ resource "aws_route53_record" "presidentialinnovationfellows_apex" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "presidentialinnovationfellows_apex_aaaa" {
+  zone_id = aws_route53_zone.presidentialinnovationfellows_toplevel.zone_id
+  name    = "presidentialinnovationfellows.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d26prp92rpqmzl.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 
 resource "aws_route53_record" "presidentialinnovationfellows_mx" {
   zone_id = aws_route53_zone.presidentialinnovationfellows_toplevel.zone_id

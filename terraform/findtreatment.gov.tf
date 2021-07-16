@@ -18,6 +18,19 @@ resource "aws_route53_record" "findtreatment_apex" {
   }
 }
 
+resource "aws_route53_record" "findtreatment_apex_aaaa" {
+  zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
+  name    = "findtreatment.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d3qgag0313dgk2.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+
 resource "aws_route53_record" "findtreatment_www" {
   zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
   name    = "www.findtreatment.gov."
@@ -29,6 +42,19 @@ resource "aws_route53_record" "findtreatment_www" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "findtreatment_www_aaaa" {
+  zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
+  name    = "www.findtreatment.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d3qgag0313dgk2.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 
 resource "aws_route53_record" "findtreatment_gov__acme-challenge_findtreatment_gov_txt" {
   zone_id = aws_route53_zone.findtreatment_toplevel.zone_id

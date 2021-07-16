@@ -16,6 +16,17 @@ resource "aws_route53_record" "vote_gov_vote_gov_a" {
   }
 }
 
+resource "aws_route53_record" "vote_gov_vote_gov_aaaa" {
+  zone_id = aws_route53_zone.vote_gov_zone.zone_id
+  name    = "vote.gov."
+  type    = "AAAA"
+  alias {
+    name                   = "d2s5gzwyabrtbd.cloudfront.net"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "vote_gov_01872332dafeeb93b927e2d9e9b2c53d_vote_gov_cname" {
   zone_id = aws_route53_zone.vote_gov_zone.zone_id
   name    = "01872332dafeeb93b927e2d9e9b2c53d.vote.gov."
