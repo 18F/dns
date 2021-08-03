@@ -18,6 +18,19 @@ resource "aws_route53_record" "open_foia_gov_open_foia_gov_a" {
   }
 }
 
+resource "aws_route53_record" "open_foia_gov_open_foia_gov_aaaa" {
+  zone_id = aws_route53_zone.open_foia_gov_zone.zone_id
+  name    = "open.foia.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d23kapr45ru7n0.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+
 resource "aws_route53_record" "open_foia_gov_17fdb56b3309467b9d43ad74888c07e2_open_foia_gov_cname" {
   zone_id = aws_route53_zone.open_foia_gov_zone.zone_id
   name    = "17fdb56b3309467b9d43ad74888c07e2.open.foia.gov."

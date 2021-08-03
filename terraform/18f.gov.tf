@@ -18,6 +18,18 @@ resource "aws_route53_record" "d_18f_gov_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d1undivnru8ry9.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_github_18f_gov_txt" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "_github-challenge-18F.18f.gov"
@@ -81,10 +93,34 @@ resource "aws_route53_record" "d_18f_gov_accessibility_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_accessibility_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "accessibility.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d3gg23ftaba0j8.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_ads_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "ads.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d22116wmhcds2y.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_ads_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "ads.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d22116wmhcds2y.cloudfront.net."
@@ -113,10 +149,34 @@ resource "aws_route53_record" "d_18f_gov_agile_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_agile_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "agile.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d2zsago6kfzgka.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_agile-labor-categories_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "agile-labor-categories.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d1p2fryyhm3d02.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_agile-labor-categories_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "agile-labor-categories.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d1p2fryyhm3d02.cloudfront.net."
@@ -145,6 +205,18 @@ resource "aws_route53_record" "d_18f_gov_acqstack-journeymap_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_acqstack-journeymap_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "acqstack-journeymap.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "douocfsg4z7b4.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov__acme-challenge_acqstack_journeymap_18f_gov_txt" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "_acme-challenge.acqstack-journeymap.18f.gov."
@@ -165,6 +237,18 @@ resource "aws_route53_record" "d_18f_gov_api-all-the-x_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_api-all-the-x_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "api-all-the-x.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d2y8d8116udf0m.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_api-program_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "api-program.18f.gov."
@@ -177,10 +261,34 @@ resource "aws_route53_record" "d_18f_gov_api-program_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_api-program_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "api-program.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d1evjsspb8gisi.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_api-usability-testing_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "api-usability-testing.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d1lsalt1zbpjfm.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_api-usability-testing_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "api-usability-testing.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d1lsalt1zbpjfm.cloudfront.net."
@@ -229,10 +337,34 @@ resource "aws_route53_record" "d_18f_gov_automated-testing-playbook_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_automated-testing-playbook_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "automated-testing-playbook.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "dieiwe9bk9l6.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_blogging-guide_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "blogging-guide.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d12gmeaikmi2zi.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_blogging-guide_18f_gov_cname_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "blogging-guide.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d12gmeaikmi2zi.cloudfront.net."
@@ -253,10 +385,34 @@ resource "aws_route53_record" "d_18f_gov_before-you-ship_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_before-you-ship_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "before-you-ship.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "daap61vtgsw76.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_boise_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "boise.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d2swak4c9i5bze.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_boise_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "boise.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d2swak4c9i5bze.cloudfront.net."
@@ -277,6 +433,18 @@ resource "aws_route53_record" "d_18f_gov_brand_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "brand.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d19y688vepyspr.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_brand_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "brand.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d19y688vepyspr.cloudfront.net."
@@ -337,10 +505,34 @@ resource "aws_route53_record" "d_18f_gov_content-guide_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_content-guide_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "content-guide.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "dv941ubd2f1ex.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_contracting-cookbook_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "contracting-cookbook.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d20pvyni7jlo89.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_contracting-cookbook_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "contracting-cookbook.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d20pvyni7jlo89.cloudfront.net."
@@ -369,10 +561,34 @@ resource "aws_route53_record" "d_18f_gov_design-principles-guide_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_design-principles-guide_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "design-principles-guide.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d3g58t13quzfbr.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_digital-acquisition-playbook_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "digital-acquisition-playbook.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d3f32ju5qz0fej.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_digital-acquisition-playbook_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "digital-acquisition-playbook.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d3f32ju5qz0fej.cloudfront.net."
@@ -393,10 +609,34 @@ resource "aws_route53_record" "d_18f_gov_digitalaccelerator_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_digitalaccelerator_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "digitalaccelerator.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "dmsaspwnb8oe8.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_eng-hiring_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "eng-hiring.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d1ju28lhpbkq84.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_eng-hiring_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "eng-hiring.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d1ju28lhpbkq84.cloudfront.net."
@@ -497,6 +737,18 @@ resource "aws_route53_record" "d_18f_gov_federalist-docs_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_federalist-docs_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "federalist-docs.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d5s9igq4dqiuh.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov__acme-challenge_federalist_docs_18f_gov_txt" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "_acme-challenge.federalist-docs.18f.gov."
@@ -587,10 +839,34 @@ resource "aws_route53_record" "d_18f_gov_grouplet-playbook_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_grouplet-playbook_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "grouplet-playbook.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "duek7xmosg5g1.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_guides_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "guides.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d10jxiv8e4xcp7.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_guides_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "guides.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d10jxiv8e4xcp7.cloudfront.net."
@@ -611,10 +887,34 @@ resource "aws_route53_record" "d_18f_gov_guides-template_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_guides-template_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "guides-template.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d2qsfvvx1xjk0n.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_iaa-forms_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "iaa-forms.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d25t6p0vmr5bdy.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_iaa-forms_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "iaa-forms.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d25t6p0vmr5bdy.cloudfront.net."
@@ -647,6 +947,18 @@ resource "aws_route53_record" "d_18f_gov_innovation-toolkit-prototype_18f_gov_a"
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_innovation-toolkit-prototype_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "innovation-toolkit-prototype.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d1n516riijd335.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 #module "d_18f_gov__join_18f_gov_redirect" {
 #  source  = "mediapop/redirect/aws"
 #  version = "1.2.1"
@@ -670,10 +982,34 @@ resource "aws_route53_record" "d_18f_gov_lean-product-design_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_lean-product-design_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "lean-product-design.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d3am6kz2e8wzjv.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_markdown-helper_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "markdown-helper.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "doj9msj2touhw.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_markdown-helper_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "markdown-helper.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "doj9msj2touhw.cloudfront.net."
@@ -694,11 +1030,35 @@ resource "aws_route53_record" "d_18f_gov_methods_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_methods_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "methods.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d2z1u02mjhp26x.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 # Configured with CDN Broker
 resource "aws_route53_record" "d_18f_gov_micropurchase_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "micropurchase.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "dh692qtc0b17x.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_micropurchase_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "micropurchase.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "dh692qtc0b17x.cloudfront.net."
@@ -727,10 +1087,34 @@ resource "aws_route53_record" "d_18f_gov_open-source-guide_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_open-source-guide_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "open-source-guide.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d1lphbkymflb0f.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_open-source-program_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "open-source-program.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d3nhr6mr0xvquu.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_open-source-program_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "open-source-program.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d3nhr6mr0xvquu.cloudfront.net."
@@ -759,6 +1143,18 @@ resource "aws_route53_record" "d_18f_gov_paid-leave-prototype_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_paid-leave-prototype_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "paid-leave-prototype.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d3p6d6b3zaatqv.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov__acme-challenge_paid_leave_prototype_18f_gov_txt" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "_acme-challenge.paid-leave-prototype.18f.gov."
@@ -779,10 +1175,34 @@ resource "aws_route53_record" "d_18f_gov_partnership-playbook_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_partnership-playbook_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "partnership-playbook.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d19eih1husc7rz.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_plain-language-tutorial_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "plain-language-tutorial.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d1cr44lbvuvjia.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_plain-language-tutorial_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "plain-language-tutorial.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d1cr44lbvuvjia.cloudfront.net."
@@ -803,10 +1223,34 @@ resource "aws_route53_record" "d_18f_gov_private-eye_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_private-eye_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "private-eye.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d3asgf5hc4zmll.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_product-guide_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "product-guide.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d2ys0ic6txy8sy.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_product-guide_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "product-guide.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d2ys0ic6txy8sy.cloudfront.net."
@@ -843,6 +1287,18 @@ resource "aws_route53_record" "d_18f_gov_testing-cookbook_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_testing-cookbook_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "testing-cookbook.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d3r30wgm96hxdb.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_tock_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "tock.18f.gov."
@@ -863,10 +1319,34 @@ resource "aws_route53_record" "d_18f_gov_writing-lab-guide_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_writing-lab-guide_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "writing-lab-guide.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d1pjk83agbp9qr.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_www_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "www.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d1undivnru8ry9.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_www_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "www.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d1undivnru8ry9.cloudfront.net."
@@ -911,6 +1391,18 @@ resource "aws_route53_record" "d_18f_gov_agile-bpa_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_agile-bpa_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "agile-bpa.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d2f0yvhrnh42o8.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov__acme-challenge_agile_bpa_18f_gov_txt" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "_acme-challenge.agile-bpa.18f.gov."
@@ -931,6 +1423,18 @@ resource "aws_route53_record" "d_18f_gov_fedspendingtransparency_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_fedspendingtransparency_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "fedspendingtransparency.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d3fi39fc24yqlx.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov__acme-challenge_fedspendingtransparency_18f_gov_txt" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "_acme-challenge.fedspendingtransparency.18f.gov."
@@ -943,6 +1447,18 @@ resource "aws_route53_record" "d_18f_gov_slides_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "slides.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d1g4r1oppplum4.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_slides_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "slides.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d1g4r1oppplum4.cloudfront.net."
@@ -995,6 +1511,18 @@ resource "aws_route53_record" "d_18f_gov_engineering_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_engineering_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "engineering.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d1ah19wbgikahf.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov__acme-challenge_handbook_18f_gov_txt" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "_acme-challenge.handbook.18f.gov."
@@ -1035,10 +1563,34 @@ resource "aws_route53_record" "d_18f_gov_sites-staging_federalist_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_sites-staging_federalist_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "*.sites-staging.federalist.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d2826r6t5bqji9.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_frontend_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "frontend.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "degmwhx2dki4o.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_frontend_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "frontend.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "degmwhx2dki4o.cloudfront.net."
@@ -1059,6 +1611,18 @@ resource "aws_route53_record" "d_18f_gov_demo-er2epz2vb_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "demo-er2epz2vb.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "djut57wuzit2q.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_demo-er2epz2vb_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "demo-er2epz2vb.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "djut57wuzit2q.cloudfront.net."
@@ -1099,6 +1663,18 @@ resource "aws_route53_record" "d_18f_gov_ux-guide_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "ux-guide.18f.gov."
   type    = "A"
+
+  alias {
+    name                   = "d2mhwjcivqpysk.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov_ux-guide_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "ux-guide.18f.gov."
+  type    = "AAAA"
 
   alias {
     name                   = "d2mhwjcivqpysk.cloudfront.net."
