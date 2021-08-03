@@ -441,7 +441,7 @@ resource "aws_route53_record" "touchpoints_digital_gov_verification_txt" {
 
 # Touchpoints Staging APP / Amazon SES Verification TXT Record
 resource "aws_route53_record" "touchpoints_staging_aws_ses" {
-  zone_id = "${aws_route53_zone.digital_toplevel.zone_id}"
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "_amazonses.touchpoints-staging.app.cloud.gov"
   type    = "TXT"
   ttl     = 120
