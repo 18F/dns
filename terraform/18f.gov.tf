@@ -815,18 +815,6 @@ resource "aws_route53_record" "d_18f_gov__acme_challenge_govconnect_18f_gov_cnam
   records = ["_acme-challenge.govconnect.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_grafana_18f_gov_a" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "grafana.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "dualstack.18f-grafana-1906882244.us-east-1.elb.amazonaws.com."
-    zone_id                = local.elb_zone_id
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "d_18f_gov_grouplet-playbook_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "grouplet-playbook.18f.gov."
