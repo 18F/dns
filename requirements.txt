@@ -1,4 +1,4 @@
 boto3~=1.14.5
-checkdmarc~=4.2.4
+checkdmarc~=4.4.1
 pytest~=5.4.3
 dnspython~=2.1.0
