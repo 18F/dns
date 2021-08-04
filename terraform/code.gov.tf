@@ -66,6 +66,18 @@ resource "aws_route53_record" "staging_code_gov_a" {
   }
 }
 
+resource "aws_route53_record" "staging_code_gov_aaaa" {
+  zone_id = aws_route53_zone.code_toplevel.zone_id
+  name    = "staging.code.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d3g0jy911fqt1l.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "code_gov_api_cname" {
   zone_id = aws_route53_zone.code_toplevel.zone_id
   name    = "api.code.gov."
