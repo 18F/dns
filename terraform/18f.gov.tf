@@ -1531,6 +1531,18 @@ resource "aws_route53_record" "d_18f_gov_handbook_18f_gov_a" {
   }
 }
 
+resource "aws_route53_record" "d_18f_gov_handbook_18f_gov_aaaa" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "handbook.18f.gov."
+  type    = "AAAA"
+
+  alias {
+    name                   = "d36dwgrf0cle4t.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "d_18f_gov_sites-staging_federalist_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "_a97eaf263ff636e68fe4c2f55cc71a5b.sites-staging.federalist.18f.gov."
