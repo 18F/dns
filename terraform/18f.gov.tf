@@ -1511,21 +1511,6 @@ resource "aws_route53_record" "d_18f_gov_engineering_18f_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "d_18f_gov__acme-challenge_handbook_18f_gov_txt" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "_acme-challenge.handbook.18f.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["s46pliXZ9r51lmz421nYM5EJqhkz32iC45lCxtKxQVQ"]
-}
-
-resource "aws_route53_record" "d_18f_gov__acme_challenge_handbook_18f_gov_cname" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "_acme-challenge.handbook.18f.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["_acme-challenge.handbook.18f.gov.external-domains-production.cloud.gov."]
-}
 
 resource "aws_route53_record" "d_18f_gov_handbook_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
