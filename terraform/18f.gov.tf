@@ -1519,6 +1519,14 @@ resource "aws_route53_record" "d_18f_gov__acme-challenge_handbook_18f_gov_txt" {
   records = ["s46pliXZ9r51lmz421nYM5EJqhkz32iC45lCxtKxQVQ"]
 }
 
+resource "aws_route53_record" "d_18f_gov__acme_challenge_handbook_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.handbook.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.handbook.18f.gov.external-domains-production.cloud.gov."]
+}
+
 resource "aws_route53_record" "d_18f_gov_handbook_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "handbook.18f.gov."
@@ -1535,6 +1543,26 @@ resource "aws_route53_record" "d_18f_gov_handbook_18f_gov_aaaa" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "handbook.18f.gov."
   type    = "AAAA"
+
+  alias {
+    name                   = "d36dwgrf0cle4t.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "d_18f_gov__acme_challenge_wwwhandbook_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.wwwhandbook.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.wwwhandbook.18f.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "d_18f_gov_wwwhandbook_18f_gov_a" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "wwwhandbook.18f.gov."
+  type    = "A"
 
   alias {
     name                   = "d36dwgrf0cle4t.cloudfront.net."
