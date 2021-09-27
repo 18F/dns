@@ -53,18 +53,6 @@ jobs:
           name: Run validations
           command: pytest tests
 
-  monitor:
-    docker:
-      - image: python:3-alpine
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: pip install -r requirements.txt
-      - run:
-          name: Run monitors
-          command: pytest monitors
-
 workflows:
   version: 2
 
@@ -83,17 +71,6 @@ workflows:
               only: main
           requires:
             - apply
-
-  monitor:
-    triggers:
-      - schedule:
-          cron: "5 12 * * *"
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - monitor
 
 experimental:
   notify:
