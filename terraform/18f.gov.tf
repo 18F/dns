@@ -911,18 +911,6 @@ resource "aws_route53_record" "d_18f_gov_iaa-forms_18f_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "d_18f_gov_identity-dev-docs_18f_gov_a" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "identity-dev-docs.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d35rhrbvrsocmo.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "d_18f_gov_innovation-toolkit-prototype_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "innovation-toolkit-prototype.18f.gov."
