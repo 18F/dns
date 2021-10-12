@@ -161,30 +161,6 @@ resource "aws_route53_record" "d_18f_gov_agile_18f_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "d_18f_gov_agile-labor-categories_18f_gov_a" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "agile-labor-categories.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d1p2fryyhm3d02.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "d_18f_gov_agile-labor-categories_18f_gov_aaaa" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "agile-labor-categories.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d1p2fryyhm3d02.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "d_18f_gov_api_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "api.18f.gov."
