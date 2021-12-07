@@ -33,13 +33,13 @@ resource "aws_route53_record" "findtreatment_apex_aaaa" {
   }
 }
 
-# resource "aws_route53_record" "findtreatment_apex_acme_challenge" {
-#   zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
-#   name    = "_acme-challenge.findtreatment.gov."
-#   type    = "CNAME"
-#   ttl     = 60
-#   records = ["_acme-challenge.findtreatment.gov.external-domains-production.cloud.gov"]
-# }
+resource "aws_route53_record" "findtreatment_apex_acme_challenge" {
+  zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
+  name    = "_acme-challenge.findtreatment.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["_acme-challenge.findtreatment.gov.external-domains-production.cloud.gov"]
+}
 
 #########################
 # www.findtreatment.gov #
@@ -68,13 +68,13 @@ resource "aws_route53_record" "findtreatment_www_aaaa" {
   }
 }
 
-# resource "aws_route53_record" "findtreatment_www_acme_challenge" {
-#   zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
-#   name    = "_acme-challenge.www.findtreatment.gov."
-#   type    = "CNAME"
-#   ttl     = 60
-#   records = ["_acme-challenge.www.findtreatment.gov.external-domains-production.cloud.gov"]
-# }
+resource "aws_route53_record" "findtreatment_www_acme_challenge" {
+  zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
+  name    = "_acme-challenge.www.findtreatment.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["_acme-challenge.www.findtreatment.gov.external-domains-production.cloud.gov"]
+}
 
 #########
 # DMARC #
