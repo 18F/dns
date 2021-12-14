@@ -6,6 +6,9 @@ resource "aws_route53_zone" "findtreatment_toplevel" {
   }
 }
 
+#####################
+# findtreatment.gov #
+#####################
 resource "aws_route53_record" "findtreatment_apex" {
   zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
   name    = "findtreatment.gov."
@@ -30,7 +33,17 @@ resource "aws_route53_record" "findtreatment_apex_aaaa" {
   }
 }
 
+resource "aws_route53_record" "findtreatment_apex_acme_challenge" {
+  zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
+  name    = "_acme-challenge.findtreatment.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["_acme-challenge.findtreatment.gov.external-domains-production.cloud.gov"]
+}
 
+#########################
+# www.findtreatment.gov #
+#########################
 resource "aws_route53_record" "findtreatment_www" {
   zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
   name    = "www.findtreatment.gov."
@@ -55,23 +68,17 @@ resource "aws_route53_record" "findtreatment_www_aaaa" {
   }
 }
 
-
-resource "aws_route53_record" "findtreatment_gov__acme-challenge_findtreatment_gov_txt" {
-  zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
-  name    = "_acme-challenge.findtreatment.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["7mbRC9tnaT3n20pIjnpFZ0WKcQJHxi6Rt7tdJjQaCvc"]
-}
-
-resource "aws_route53_record" "findtreatment_www_gov__acme-challenge_findtreatment_gov_txt" {
+resource "aws_route53_record" "findtreatment_www_acme_challenge" {
   zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
   name    = "_acme-challenge.www.findtreatment.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["D0rV3DqJMU-UoUnr2ijbLAWmVScbnnPCPCDj-_5B970"]
+  type    = "CNAME"
+  ttl     = 60
+  records = ["_acme-challenge.www.findtreatment.gov.external-domains-production.cloud.gov"]
 }
 
+#########
+# DMARC #
+#########
 module "findtreatment_gov__email_security" {
   source = "./email_security"
 
@@ -80,6 +87,9 @@ module "findtreatment_gov__email_security" {
   dmarc_ruf = "mailto:hhs@ruf.agari.com"
 }
 
+#######
+# PKI #
+#######
 resource "aws_route53_record" "findtreatment_gov__entrust-challenge_findtreatment_gov_txt" {
   zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
   name    = "_pki-validation.FINDTREATMENT.GOV."

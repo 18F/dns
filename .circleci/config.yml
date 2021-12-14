@@ -43,7 +43,7 @@ jobs:
 
   validate:
     docker:
-      - image: python:3-alpine
+      - image: python:3.9-alpine
     steps:
       - checkout
       - run:
