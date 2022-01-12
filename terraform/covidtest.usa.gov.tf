@@ -6,14 +6,6 @@ resource "aws_route53_zone" "covidtest_usa_gov_zone" {
   }
 }
 
-resource "aws_route53_zone" "staging_covidtest_usa_gov_zone" {
-  name = "staging-covidtest.usa.gov."
-
-  tags = {
-    Project = "dns"
-  }
-}
-
 resource "aws_route53_record" "covidtest_usa_gov_cname" {
   zone_id = aws_route53_zone.covidtest_usa_gov_zone.zone_id
   name    = "covidtest.usa.gov."
@@ -22,8 +14,16 @@ resource "aws_route53_record" "covidtest_usa_gov_cname" {
   records = ["www.usa.gov"]
 }
 
+resource "aws_route53_zone" "staging_covidtest_usa_gov_zone" {
+  name = "staging-covidtest.usa.gov."
+
+  tags = {
+    Project = "dns"
+  }
+}
+
 resource "aws_route53_record" "staging_covidtest_usa_gov_cname" {
-  zone_id = aws_route53_zone.covidtest_usa_gov_zone.zone_id
+  zone_id = aws_route53_zone.staging_covidtest_usa_gov_zone.zone_id
   name    = "staging-covidtest.usa.gov."
   type    = "CNAME"
   ttl     = "60"
