@@ -46,7 +46,7 @@ resource "aws_route53_record" "acme_challenge_westb_stagingcovidtest_usa_gov_cna
 * 1) staging-covidtest.usa.gov -> ALIAS -> cloud front
 * 2) 50/50 weighted routing from west.staging... aliased to westb and westc ALBs with evaluate_target_health = true
 * 3) 50/50 weighted routing from east.staging... aliased to easta and eastb ALBs with evaluate_target_health = true
-* 4) latency_routing_policy for route.staging... within us-gov-west-1 and us-gov-east-1
+* 4) latency_routing_policy for route.staging... within us-west-1 and us-east-1
 */
 
 resource "aws_route53_record" "stagingcovidtest_usa_gov_a" {
@@ -96,7 +96,7 @@ resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_west" {
   type           = "A"
   set_identifier = "west"
   latency_routing_policy {
-    region = "us-gov-west-1"
+    region = "us-west-1"
   }
   alias {
     name                   = "west.staging-covidtest.usa.gov."
@@ -142,7 +142,7 @@ resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_east" {
   type           = "A"
   set_identifier = "east"
   latency_routing_policy {
-    region = "us-gov-east-1"
+    region = "us-east-1"
   }
   alias {
     name                   = "east.staging-covidtest.usa.gov."
