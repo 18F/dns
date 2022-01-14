@@ -48,8 +48,8 @@ resource "aws_route53_record" "stagingcovidtest_usa_gov_a" {
   name    = "staging-covidtest.usa.gov."
   type    = "A"
   alias {
-    name                   = "TKTK"
-    zone_id                = local.cloud_gov_cloudfront_zone_id // TKTK is this correct, or do we need a new one
+    name                   = "d1i9kn699lecaj.cloudfront.net"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
     evaluate_target_health = false
   }
 }
@@ -63,8 +63,8 @@ resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_westb" {
     region = "us-gov-west-1"
   }
   alias {
-    name                   = "TKTK-westb-alb"
-    zone_id                = local.cloud_gov_cloudfront_zone_id
+    name                   = "westb-domains-0-1443414084.us-gov-west-1.elb.amazonaws.com"
+    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = true
   }
 }
@@ -78,8 +78,8 @@ resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_westc" {
     region = "us-gov-west-1"
   }
   alias {
-    name                   = "TKTK-westc-alb"
-    zone_id                = local.cloud_gov_cloudfront_zone_id
+    name                   = "westc-domains-0-1827115415.us-gov-west-1.elb.amazonaws.com"
+    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = true
   }
 }
@@ -93,8 +93,8 @@ resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_easta" {
     region = "us-gov-east-1"
   }
   alias {
-    name                   = "TKTK-easta-alb"
-    zone_id                = local.cloud_gov_cloudfront_zone_id
+    name                   = "easta-domains-0-830640397.us-gov-east-1.elb.amazonaws.com"
+    zone_id                = "Z166TLBEWOO7G0"
     evaluate_target_health = true
   }
 }
@@ -108,8 +108,8 @@ resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_eastb" {
     region = "us-gov-east-1"
   }
   alias {
-    name                   = "TKTK-eastb-alb"
-    zone_id                = local.cloud_gov_cloudfront_zone_id
+    name                   = "eastb-domains-0-930753903.us-gov-east-1.elb.amazonaws.com"
+    zone_id                = "Z166TLBEWOO7G0"
     evaluate_target_health = true
   }
 }
