@@ -105,20 +105,21 @@ resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_west" {
   }
 }
 
-resource "aws_route53_record" "east_route_stagingcovidtest_usa_gov_a_a" {
-  zone_id        = aws_route53_zone.usa_gov_zone.zone_id
-  name           = "east.staging-covidtest.usa.gov."
-  type           = "A"
-  set_identifier = "a"
-  weighted_routing_policy {
-    weight = 50
-  }
-  alias {
-    name                   = "easta-domains-0-830640397.us-gov-east-1.elb.amazonaws.com"
-    zone_id                = "Z166TLBEWOO7G0"
-    evaluate_target_health = true
-  }
-}
+# disable this route for now
+# resource "aws_route53_record" "east_route_stagingcovidtest_usa_gov_a_a" {
+#   zone_id        = aws_route53_zone.usa_gov_zone.zone_id
+#   name           = "east.staging-covidtest.usa.gov."
+#   type           = "A"
+#   set_identifier = "a"
+#   weighted_routing_policy {
+#     weight = 50
+#   }
+#   alias {
+#     name                   = "easta-domains-0-830640397.us-gov-east-1.elb.amazonaws.com"
+#     zone_id                = "Z166TLBEWOO7G0"
+#     evaluate_target_health = true
+#   }
+# }
 
 resource "aws_route53_record" "east_stagingcovidtest_usa_gov_a_b" {
   zone_id        = aws_route53_zone.usa_gov_zone.zone_id
