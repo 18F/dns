@@ -25,6 +25,14 @@ resource "aws_route53_record" "acme_challenge_route_stagingcovidtest_usa_gov_cna
   records = ["_acme-challenge.route.staging-covidtest.usa.gov.external-domains-production.cloud.gov."]
 }
 
+resource "aws_route53_record" "acme_challenge_west_stagingcovidtest_usa_gov_cname" {
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
+  name    = "_acme-challenge.west.staging-covidtest.usa.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.west.staging-covidtest.usa.gov.external-domains-production.cloud.gov."]
+}
+
 resource "aws_route53_record" "acme_challenge_westb_stagingcovidtest_usa_gov_cname" {
   zone_id = aws_route53_zone.usa_gov_zone.zone_id
   name    = "_acme-challenge.westb.staging-covidtest.usa.gov."
