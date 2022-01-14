@@ -54,35 +54,84 @@ resource "aws_route53_record" "stagingcovidtest_usa_gov_a" {
   }
 }
 
-resource "aws_route53_record" "stagingcovidtest_usa_gov_aaaa" {
-  zone_id = aws_route53_zone.usa_gov_zone.zone_id
-  name    = "staging-covidtest.usa.gov."
-  type    = "AAAA"
-  alias {
-    name                   = "TKTK"
-    zone_id                = local.cloud_gov_cloudfront_zone_id // TKTK is this correct
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "route_stagingcovidtest_usa_gov_cname_west" {
+resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_westb" {
   zone_id        = aws_route53_zone.usa_gov_zone.zone_id
   name           = "route.staging-covidtest.usa.gov."
-  type           = "CNAME"
-  set_identifier = "stage"
-  records        = ["west.staging-covidtest.usa.gov."]
+  type           = "A"
+  set_identifier = "west-b"
   latency_routing_policy {
     region = "us-gov-west-1"
   }
+  alias {
+    name                   = "TKTK-westb-alb"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = true
+  }
 }
 
-resource "aws_route53_record" "route_stagingcovidtest_usa_gov_cname_east" {
+resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_westc" {
   zone_id        = aws_route53_zone.usa_gov_zone.zone_id
   name           = "route.staging-covidtest.usa.gov."
-  type           = "CNAME"
-  set_identifier = "stage"
-  records        = ["east.staging-covidtest.usa.gov."]
+  type           = "A"
+  set_identifier = "west-c"
+  latency_routing_policy {
+    region = "us-gov-west-1"
+  }
+  alias {
+    name                   = "TKTK-westc-alb"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = true
+  }
+}
+
+resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_easta" {
+  zone_id        = aws_route53_zone.usa_gov_zone.zone_id
+  name           = "route.staging-covidtest.usa.gov."
+  type           = "A"
+  set_identifier = "east-a"
   latency_routing_policy {
     region = "us-gov-east-1"
   }
+  alias {
+    name                   = "TKTK-easta-alb"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = true
+  }
 }
+
+resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_eastb" {
+  zone_id        = aws_route53_zone.usa_gov_zone.zone_id
+  name           = "route.staging-covidtest.usa.gov."
+  type           = "A"
+  set_identifier = "east-b"
+  latency_routing_policy {
+    region = "us-gov-east-1"
+  }
+  alias {
+    name                   = "TKTK-eastb-alb"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = true
+  }
+}
+
+# resource "aws_route53_record" "westb_stagingcovidtest_usa_gov_a" {
+#   zone_id = aws_route53_zone.usa_gov_zone.zone_id
+#   name = "westb.staging-covidtest.usa.gov."
+#   type = "A"
+#   alias {
+#     name = "TKTK ALB"
+#     zone_id = local.cloud_gov_cloudfront_zone_id
+#     evaluate_target_health = true
+#   }
+# }
+#
+# resource "aws_route53_record" "westb_stagingcovidtest_usa_gov_aaaa" {
+#   zone_id = aws_route53_zone.usa_gov_zone.zone_id
+#   name = "westb.staging-covidtest.usa.gov."
+#   type = "AAAA"
+#   alias {
+#     name = "TKTK ALB"
+#     zone_id = local.cloud_gov_cloudfront_zone_id
+#     evaluate_target_health = true
+#   }
+# }
