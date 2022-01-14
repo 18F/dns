@@ -42,7 +42,3 @@ resource "aws_route53_record" "acme_challenge_westb_stagingcovidtest_usa_gov_cna
 * 3) west.staging-covidtest.usa.gov  -> round-robin + health check -> westb and westc
 * 4) westb.staging-covidtest.usa.gov -> ALIAS -> westb ALB
 */
-
-output "stagingcovidtest_usa_gov_ns" {
-  value = aws_route53_zone.stagingcovidtest_usa_gov_zone.name_servers
-}
