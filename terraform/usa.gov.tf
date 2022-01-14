@@ -51,6 +51,26 @@ resource "aws_route53_record" "usa_gov_analytics_usa_gov_aaaa" {
 #  redirect_to = "designsystem.digital.gov"
 #}
 
+# CTUSA -------------------------------------------
+#
+# records defined in staging-covidtest.usa.gov.tf & covidtest.usa.gov.tf
+# but need to delegate the zone there to the usa.gov zone here
+
+
+data "aws_route53_zone" "staging_ctusa_zone" {
+  name = "staging-covidtest.usa.gov"
+}
+
+resource "aws_route53_record" "staging-ctusa-ns" {
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
+  name    = "staging-covidtest.usa.gov"
+  type    = "NS"
+  ttl     = "30"
+  records = data.aws_route53_zone.staging_ctusa_zone.name_servers
+}
+
+# -------------------------------------------------
+
 output "usa_gov_ns" {
   value = aws_route53_zone.usa_gov_zone.name_servers
 }

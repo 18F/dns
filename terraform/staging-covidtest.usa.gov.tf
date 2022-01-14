@@ -1,5 +1,5 @@
 resource "aws_route53_zone" "stagingcovidtest_usa_gov_zone" {
-  name = "staging-covidtest.usa.gov."
+  name = "staging-covidtest.usa.gov"
 
   tags = {
     Project = "dns"
