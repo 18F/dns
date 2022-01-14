@@ -1,9 +1,17 @@
 resource "aws_route53_zone" "stagingcovidtest_usa_gov_zone" {
-  name = "staging-covidtest.usa.gov."
+  name = "staging-covidtest.usa.gov"
 
   tags = {
     Project = "dns"
   }
+}
+
+resource "aws_route53_record" "staging-ctusa-ns" {
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
+  name    = "staging-covidtest.usa.gov"
+  type    = "NS"
+  ttl     = "30"
+  records = aws_route53_zone.stagingcovidtest_usa_gov_zone.name_servers
 }
 
 /*
