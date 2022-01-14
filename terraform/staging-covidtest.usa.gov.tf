@@ -6,6 +6,14 @@ resource "aws_route53_zone" "stagingcovidtest_usa_gov_zone" {
   }
 }
 
+resource "aws_route53_record" "staging-ctusa-ns" {
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
+  name    = "staging-covidtest.usa.gov"
+  type    = "NS"
+  ttl     = "30"
+  records = aws_route53_zone.stagingcovidtest_usa_gov_zone.name_servers
+}
+
 /*
 * routes needed, round 1, just ACME records
 *
