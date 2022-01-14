@@ -1,19 +1,3 @@
-resource "aws_route53_zone" "stagingcovidtest_usa_gov_zone" {
-  name = "staging-covidtest.usa.gov"
-
-  tags = {
-    Project = "dns"
-  }
-}
-
-resource "aws_route53_record" "staging-ctusa-ns" {
-  zone_id = aws_route53_zone.usa_gov_zone.zone_id
-  name    = "staging-covidtest.usa.gov"
-  type    = "NS"
-  ttl     = "30"
-  records = aws_route53_zone.stagingcovidtest_usa_gov_zone.name_servers
-}
-
 /*
 * routes needed, round 1, just ACME records
 *
@@ -26,7 +10,7 @@ resource "aws_route53_record" "staging-ctusa-ns" {
 */
 
 resource "aws_route53_record" "acme_challenge_stagingcovidtest_usa_gov_cname" {
-  zone_id = aws_route53_zone.stagingcovidtest_usa_gov_zone.zone_id
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
   name    = "_acme-challenge.staging-covidtest.usa.gov."
   type    = "CNAME"
   ttl     = 120
@@ -34,7 +18,7 @@ resource "aws_route53_record" "acme_challenge_stagingcovidtest_usa_gov_cname" {
 }
 
 resource "aws_route53_record" "acme_challenge_route_stagingcovidtest_usa_gov_cname" {
-  zone_id = aws_route53_zone.stagingcovidtest_usa_gov_zone.zone_id
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
   name    = "_acme-challenge.route.staging-covidtest.usa.gov."
   type    = "CNAME"
   ttl     = 120
@@ -42,7 +26,7 @@ resource "aws_route53_record" "acme_challenge_route_stagingcovidtest_usa_gov_cna
 }
 
 resource "aws_route53_record" "acme_challenge_westb_stagingcovidtest_usa_gov_cname" {
-  zone_id = aws_route53_zone.stagingcovidtest_usa_gov_zone.zone_id
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
   name    = "_acme-challenge.westb.staging-covidtest.usa.gov."
   type    = "CNAME"
   ttl     = 120
@@ -58,7 +42,3 @@ resource "aws_route53_record" "acme_challenge_westb_stagingcovidtest_usa_gov_cna
 * 3) west.staging-covidtest.usa.gov  -> round-robin + health check -> westb and westc
 * 4) westb.staging-covidtest.usa.gov -> ALIAS -> westb ALB
 */
-
-output "stagingcovidtest_usa_gov_ns" {
-  value = aws_route53_zone.stagingcovidtest_usa_gov_zone.name_servers
-}
