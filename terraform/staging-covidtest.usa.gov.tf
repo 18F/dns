@@ -42,3 +42,47 @@ resource "aws_route53_record" "acme_challenge_westb_stagingcovidtest_usa_gov_cna
 * 3) west.staging-covidtest.usa.gov  -> round-robin + health check -> westb and westc
 * 4) westb.staging-covidtest.usa.gov -> ALIAS -> westb ALB
 */
+
+resource "aws_route53_record" "stagingcovidtest_usa_gov_a" {
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
+  name    = "staging-covidtest.usa.gov."
+  type    = "A"
+  alias {
+    name                   = "TKTK"
+    zone_id                = local.cloud_gov_cloudfront_zone_id // TKTK is this correct, or do we need a new one
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "stagingcovidtest_usa_gov_aaaa" {
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
+  name    = "staging-covidtest.usa.gov."
+  type    = "AAAA"
+  alias {
+    name                   = "TKTK"
+    zone_id                = local.cloud_gov_cloudfront_zone_id // TKTK is this correct
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "route_stagingcovidtest_usa_gov_cname_west" {
+  zone_id        = aws_route53_zone.usa_gov_zone.zone_id
+  name           = "route.staging-covidtest.usa.gov."
+  type           = "CNAME"
+  set_identifier = "stage"
+  records        = ["west.staging-covidtest.usa.gov."]
+  latency_routing_policy {
+    region = "us-gov-west-1"
+  }
+}
+
+resource "aws_route53_record" "route_stagingcovidtest_usa_gov_cname_east" {
+  zone_id        = aws_route53_zone.usa_gov_zone.zone_id
+  name           = "route.staging-covidtest.usa.gov."
+  type           = "CNAME"
+  set_identifier = "stage"
+  records        = ["east.staging-covidtest.usa.gov."]
+  latency_routing_policy {
+    region = "us-gov-east-1"
+  }
+}
