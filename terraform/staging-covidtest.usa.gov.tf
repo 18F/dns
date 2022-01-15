@@ -68,6 +68,18 @@ resource "aws_route53_record" "stagingcovidtest_usa_gov_a" {
   }
 }
 
+resource "aws_route53_record" "westb_stagingcovidtest_usa_gov_a" {
+  zone_id        = aws_route53_zone.usa_gov_zone.zone_id
+  name           = "westb.staging-covidtest.usa.gov."
+  type           = "A"
+
+  alias {
+    name                   = "westb-domains-0-1443414084.us-gov-west-1.elb.amazonaws.com"
+    zone_id                = "Z33AYJ8TM3BH4J"
+    evaluate_target_health = true
+  }
+}
+
 resource "aws_route53_record" "west_stagingcovidtest_usa_gov_a_b" {
   zone_id        = aws_route53_zone.usa_gov_zone.zone_id
   name           = "west.staging-covidtest.usa.gov."
