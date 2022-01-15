@@ -260,7 +260,7 @@ resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_east" {
   latency_routing_policy {
     region = "us-east-1"
   }
-  health_check_id = aws_route53_health_check.east_stagingcovidtest_usa_gov_health.id
+  health_check_id = aws_route53_health_check.eastb_stagingcovidtest_usa_gov_health.id
   alias {
     name                   = "east.staging-covidtest.usa.gov."
     zone_id                = aws_route53_zone.usa_gov_zone.zone_id
