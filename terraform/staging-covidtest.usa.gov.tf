@@ -41,6 +41,38 @@ resource "aws_route53_record" "acme_challenge_westb_stagingcovidtest_usa_gov_cna
   records = ["_acme-challenge.westb.staging-covidtest.usa.gov.external-domains-production.cloud.gov."]
 }
 
+resource "aws_route53_record" "acme_challenge_westc_stagingcovidtest_usa_gov_cname" {
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
+  name    = "_acme-challenge.westc.staging-covidtest.usa.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.westc.staging-covidtest.usa.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "acme_challenge_east_stagingcovidtest_usa_gov_cname" {
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
+  name    = "_acme-challenge.east.staging-covidtest.usa.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.east.staging-covidtest.usa.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "acme_challenge_easta_stagingcovidtest_usa_gov_cname" {
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
+  name    = "_acme-challenge.easta.staging-covidtest.usa.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.easta.staging-covidtest.usa.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "acme_challenge_eastb_stagingcovidtest_usa_gov_cname" {
+  zone_id = aws_route53_zone.usa_gov_zone.zone_id
+  name    = "_acme-challenge.eastb.staging-covidtest.usa.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.eastb.staging-covidtest.usa.gov.external-domains-production.cloud.gov."]
+}
+
 /*
 * routes needed, route 2, real live routes
 *
@@ -112,7 +144,7 @@ resource "aws_route53_record" "east_stagingcovidtest_usa_gov_a_wb" {
   type           = "A"
   set_identifier = "wb"
   weighted_routing_policy {
-    weight = 1
+    weight = 10
   }
   health_check_id = aws_route53_health_check.westb_stagingcovidtest_usa_gov_health.id
   alias {
@@ -166,7 +198,7 @@ resource "aws_route53_record" "east_stagingcovidtest_usa_gov_a_wc" {
   type           = "A"
   set_identifier = "wc"
   weighted_routing_policy {
-    weight = 1
+    weight = 10
   }
   health_check_id = aws_route53_health_check.westc_stagingcovidtest_usa_gov_health.id
   alias {
@@ -235,7 +267,7 @@ resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_west" {
 #   type           = "A"
 #   set_identifier = "ea"
 #   weighted_routing_policy {
-#     weight = 1
+#     weight = 10
 #   }
 #   health_check_id = aws_route53_health_check.easta_stagingcovidtest_usa_gov_health.id
 #   alias {
@@ -290,7 +322,7 @@ resource "aws_route53_record" "west_stagingcovidtest_usa_gov_a_eb" {
   type           = "A"
   set_identifier = "eb"
   weighted_routing_policy {
-    weight = 1
+    weight = 10
   }
   health_check_id = aws_route53_health_check.eastb_stagingcovidtest_usa_gov_health.id
   alias {
