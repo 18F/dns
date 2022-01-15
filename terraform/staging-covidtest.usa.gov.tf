@@ -83,8 +83,9 @@ resource "aws_route53_record" "westb_stagingcovidtest_usa_gov_a" {
 resource "aws_route53_health_check" "westb_stagingcovidtest_usa_gov_health" {
   fqdn              = "westb.staging-covidtest.usa.gov"
   port              = 443
-  type              = "HTTPS"
+  type              = "HTTPS_STR_MATCH"
   resource_path     = "/"
+  search_string = "Place"
   failure_threshold = "2"
   request_interval  = "30"
 }
@@ -101,7 +102,7 @@ resource "aws_route53_record" "west_stagingcovidtest_usa_gov_a_b" {
   alias {
     name                   = "westb-domains-0-1443414084.us-gov-west-1.elb.amazonaws.com"
     zone_id                = "Z33AYJ8TM3BH4J"
-    evaluate_target_health = true
+    evaluate_target_health = false
   }
 }
 
@@ -120,8 +121,9 @@ resource "aws_route53_record" "westc_stagingcovidtest_usa_gov_a" {
 resource "aws_route53_health_check" "westc_stagingcovidtest_usa_gov_health" {
   fqdn              = "westc.staging-covidtest.usa.gov"
   port              = 443
-  type              = "HTTPS"
+  type              = "HTTPS_STR_MATCH"
   resource_path     = "/"
+  search_string = "Place"
   failure_threshold = "2"
   request_interval  = "30"
 }
@@ -138,17 +140,8 @@ resource "aws_route53_record" "west_stagingcovidtest_usa_gov_a_c" {
   alias {
     name                   = "westc-domains-0-1827115415.us-gov-west-1.elb.amazonaws.com"
     zone_id                = "Z33AYJ8TM3BH4J"
-    evaluate_target_health = true
+    evaluate_target_health = false
   }
-}
-
-resource "aws_route53_health_check" "west_stagingcovidtest_usa_gov_health" {
-  type                   = "CALCULATED"
-  child_health_threshold = 1
-  child_healthchecks = [
-    aws_route53_health_check.westb_stagingcovidtest_usa_gov_health.id,
-    aws_route53_health_check.westc_stagingcovidtest_usa_gov_health.id
-  ]
 }
 
 resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_west" {
@@ -159,7 +152,6 @@ resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_west" {
   latency_routing_policy {
     region = "us-west-1"
   }
-  health_check_id = aws_route53_health_check.west_stagingcovidtest_usa_gov_health.id
   alias {
     name                   = "west.staging-covidtest.usa.gov."
     zone_id                = aws_route53_zone.usa_gov_zone.zone_id
@@ -221,8 +213,9 @@ resource "aws_route53_record" "eastb_stagingcovidtest_usa_gov_a" {
 resource "aws_route53_health_check" "eastb_stagingcovidtest_usa_gov_health" {
   fqdn              = "eastb.staging-covidtest.usa.gov"
   port              = 443
-  type              = "HTTPS"
+  type              = "HTTPS_STR_MATCH"
   resource_path     = "/"
+  search_string = "Place"
   failure_threshold = "2"
   request_interval  = "30"
 }
@@ -239,17 +232,8 @@ resource "aws_route53_record" "east_stagingcovidtest_usa_gov_a_b" {
   alias {
     name                   = "eastb-domains-0-930753903.us-gov-east-1.elb.amazonaws.com"
     zone_id                = "Z166TLBEWOO7G0"
-    evaluate_target_health = true
+    evaluate_target_health = false
   }
-}
-
-resource "aws_route53_health_check" "east_stagingcovidtest_usa_gov_health" {
-  type                   = "CALCULATED"
-  child_health_threshold = 1
-  child_healthchecks = [
-    # aws_route53_health_check.easta_stagingcovidtest_usa_gov_health.id,
-    aws_route53_health_check.eastb_stagingcovidtest_usa_gov_health.id
-  ]
 }
 
 resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_east" {
@@ -260,7 +244,6 @@ resource "aws_route53_record" "route_stagingcovidtest_usa_gov_a_east" {
   latency_routing_policy {
     region = "us-east-1"
   }
-  health_check_id = aws_route53_health_check.eastb_stagingcovidtest_usa_gov_health.id
   alias {
     name                   = "east.staging-covidtest.usa.gov."
     zone_id                = aws_route53_zone.usa_gov_zone.zone_id
