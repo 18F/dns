@@ -84,8 +84,8 @@ resource "aws_route53_record" "acme_challenge_eastb_stagingcovidtest_usa_gov_cna
 *
 * Domains (current idea):
 * 1) staging-covidtest.usa.gov -> ALIAS -> cloud front
-* 2) 50/50 weighted routing from west.staging... aliased to westb and westc ALBs with evaluate_target_health = true
-* 3) 50/50 weighted routing from east.staging... aliased to easta and eastb ALBs with evaluate_target_health = true
+* 2) 100/100/10/10 weighted routing from west.staging... to westb/westc/easta/eastb with configured health checks
+* 3) 100/100/10/10 weighted routing from east.staging... to easta/eastb/westb/westc with configured health checks
 * 4) latency_routing_policy for route.staging... within us-west-1 and us-east-1
 */
 
@@ -117,7 +117,7 @@ resource "aws_route53_health_check" "westb_stagingcovidtest_usa_gov_health" {
   port              = 443
   type              = "HTTPS_STR_MATCH"
   resource_path     = "/"
-  search_string     = "Place"
+  search_string     = "COVIDtests.gov"
   failure_threshold = "2"
   request_interval  = "30"
 }
@@ -171,7 +171,7 @@ resource "aws_route53_health_check" "westc_stagingcovidtest_usa_gov_health" {
   port              = 443
   type              = "HTTPS_STR_MATCH"
   resource_path     = "/"
-  search_string     = "Place"
+  search_string     = "COVIDtests.gov"
   failure_threshold = "2"
   request_interval  = "30"
 }
@@ -295,7 +295,7 @@ resource "aws_route53_health_check" "eastb_stagingcovidtest_usa_gov_health" {
   port              = 443
   type              = "HTTPS_STR_MATCH"
   resource_path     = "/"
-  search_string     = "Place"
+  search_string     = "COVIDtests.gov"
   failure_threshold = "2"
   request_interval  = "30"
 }
