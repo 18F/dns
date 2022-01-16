@@ -6,7 +6,8 @@
 * Domains:
 * 1) staging-covidtest.usa.gov
 * 2) route.staging-covidtest.usa.gov
-* 3) westb.staging-covidtest.usa.gov
+* 3) (east|west).staging-covidtest.usa.gov
+* 4) (west(b|c)|east(a|b)).staging-covidtest.usa.gov
 */
 
 resource "aws_route53_record" "acme_challenge_stagingcovidtest_usa_gov_cname" {
