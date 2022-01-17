@@ -127,9 +127,8 @@ resource "aws_route53_record" "westb_covidtest_usa_gov_aaaa" {
 resource "aws_route53_health_check" "westb_covidtest_usa_gov_health" {
   fqdn              = "westb.covidtest.usa.gov"
   port              = 443
-  type              = "HTTPS_STR_MATCH"
-  resource_path     = "/"
-  search_string     = "COVIDtests.gov"
+  type              = "HTTPS"
+  resource_path     = "/robots.txt"
   failure_threshold = "2"
   request_interval  = "30"
 }
@@ -190,9 +189,8 @@ resource "aws_route53_record" "westc_covidtest_usa_gov_aaaa" {
 resource "aws_route53_health_check" "westc_covidtest_usa_gov_health" {
   fqdn              = "westc.covidtest.usa.gov"
   port              = 443
-  type              = "HTTPS_STR_MATCH"
-  resource_path     = "/"
-  search_string     = "COVIDtests.gov"
+  type              = "HTTPS"
+  resource_path     = "/robots.txt"
   failure_threshold = "2"
   request_interval  = "30"
 }
@@ -253,9 +251,8 @@ resource "aws_route53_record" "easta_covidtest_usa_gov_aaaa" {
 resource "aws_route53_health_check" "easta_covidtest_usa_gov_health" {
   fqdn              = "easta.covidtest.usa.gov"
   port              = 443
-  type              = "HTTPS_STR_MATCH"
-  resource_path     = "/"
-  search_string     = "COVIDtests.gov"
+  type              = "HTTPS"
+  resource_path     = "/robots.txt"
   failure_threshold = "2"
   request_interval  = "30"
 }
@@ -316,9 +313,8 @@ resource "aws_route53_record" "eastb_covidtest_usa_gov_aaaa" {
 resource "aws_route53_health_check" "eastb_covidtest_usa_gov_health" {
   fqdn              = "eastb.covidtest.usa.gov"
   port              = 443
-  type              = "HTTPS_STR_MATCH"
-  resource_path     = "/"
-  search_string     = "COVIDtests.gov"
+  type              = "HTTPS"
+  resource_path     = "/robots.txt"
   failure_threshold = "2"
   request_interval  = "30"
 }
