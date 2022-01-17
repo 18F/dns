@@ -253,7 +253,7 @@ resource "aws_route53_record" "easta_covidtest_usa_gov_aaaa" {
 resource "aws_route53_health_check" "easta_covidtest_usa_gov_health" {
   fqdn              = "easta.covidtest.usa.gov"
   port              = 443
-  type              = "HTTPS"
+  type              = "HTTPS_STR_MATCH"
   resource_path     = "/"
   search_string     = "COVIDtests.gov"
   failure_threshold = "2"
