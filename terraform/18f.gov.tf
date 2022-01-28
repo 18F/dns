@@ -1205,3 +1205,21 @@ resource "aws_route53_record" "18f_gov__acme_challenge_c2_18f_gov_cname" {
 output "18f_gov_ns" {
   value = "${aws_route53_zone.18f_gov_zone.name_servers}"
 }
+
+# queues.federalistapp.18f.gov - CNAME -----------------
+resource "aws_route53_record" "18f_gov_queues_federalistapp_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name    = "queues.federalistapp.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["queues.federalistapp.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# _acme-challenge.queues.federalistapp.18f.gov acme challenge — CNAME -
+resource "aws_route53_record" "18f_gov__acme_challenge_queues_federalistapp_18f_gov_cname" {
+  zone_id = "${aws_route53_zone.18f_gov_zone.zone_id}"
+  name    = "_acme-challenge.queues.federalistapp.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.queues.federalistapp.18f.gov.external-domains-production.cloud.gov."]
+}
