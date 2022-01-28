@@ -1,5 +1,5 @@
 data "aws_route53_zone" "zone" {
-  zone_id = "${var.zone_id}"
+  zone_id = var.zone_id
 }
 
 locals {
@@ -8,15 +8,15 @@ locals {
 }
 
 resource "aws_route53_record" "txt" {
-  zone_id = "${var.zone_id}"
-  name    = "${data.aws_route53_zone.zone.name}"
+  zone_id = var.zone_id
+  name    = data.aws_route53_zone.zone.name
   type    = "TXT"
   ttl     = 300
-  records = ["${var.txt_records}"]
+  records = var.txt_records
 }
 
 resource "aws_route53_record" "dmarc" {
-  zone_id = "${var.zone_id}"
+  zone_id = var.zone_id
   name    = "_dmarc.${data.aws_route53_zone.zone.name}"
   type    = "TXT"
   ttl     = 300

@@ -2,7 +2,7 @@ version: "2.1"
 jobs:
   plan:
     docker:
-      - image: hashicorp/terraform:0.11.14
+      - image: hashicorp/terraform:0.14.7
     steps:
       - checkout
       - run:
@@ -32,7 +32,7 @@ jobs:
 
   apply:
     docker:
-      - image: hashicorp/terraform:0.11.14
+      - image: hashicorp/terraform:0.14.7
     steps:
       - attach_workspace:
           at: .
@@ -43,7 +43,7 @@ jobs:
 
   validate:
     docker:
-      - image: python:3-alpine
+      - image: python:3.9-alpine
     steps:
       - checkout
       - run:
@@ -62,13 +62,13 @@ workflows:
       - apply:
           filters:
             branches:
-              only: master
+              only: main
           requires:
             - plan
       - validate:
           filters:
             branches:
-              only: master
+              only: main
           requires:
             - apply
 
@@ -76,4 +76,4 @@ experimental:
   notify:
     branches:
       only:
-        - master
+        - main
