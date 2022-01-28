@@ -54,30 +54,6 @@ resource "aws_route53_record" "plainlanguage_www_acme_challenge_cname" {
   records = ["_acme-challenge.www.plainlanguage.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "demo_plainlanguage_a" {
-  zone_id = aws_route53_zone.plainlanguage_toplevel.zone_id
-  name    = "demo.plainlanguage.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d18mn70cbq9e90.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "demo_plainlanguage_aaaa" {
-  zone_id = aws_route53_zone.plainlanguage_toplevel.zone_id
-  name    = "demo.plainlanguage.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d18mn70cbq9e90.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
 resource "aws_route53_record" "plainlanguage_google_mx" {
   zone_id = aws_route53_zone.plainlanguage_toplevel.zone_id
   name    = "plainlanguage.gov."
