@@ -1,14 +1,92 @@
 # managed by Corporate IT - request changes through
 # https://gsa.servicenowservices.com/sp/?id=kb_article&sys_id=075cd185db26578058c2fd721f96193b
 
-
+# If we're to manage the DNS, create a Route53 zone and set up DNSSEC on it.
 resource "aws_route53_zone" "datagov_zone" {
-  name = "data.gov."
+  count = var.manage_zone ? 1 : 0
+  name  = var.broker_zone
 
   tags = {
     Project = "dns"
   }
 }
+
+# Create a KMS key for DNSSEC signing
+resource "aws_kms_key" "datagov_zone" {
+  count = var.manage_zone ? 1 : 0
+
+  # See Route53 key requirements here: 
+  # https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec-cmk-requirements.html
+  provider                 = aws.dnssec-key-provider # Only us-east-1 is supported
+  customer_master_key_spec = "ECC_NIST_P256"
+  deletion_window_in_days  = 7
+  key_usage                = "SIGN_VERIFY"
+  policy = jsonencode({
+    Statement = [
+      {
+        Action = [
+          "kms:DescribeKey",
+          "kms:GetPublicKey",
+          "kms:Sign",
+        ],
+        Effect = "Allow"
+        Principal = {
+          Service = "dnssec-route53.amazonaws.com"
+        }
+        Sid      = "Allow Route 53 DNSSEC Service",
+        Resource = "*"
+      },
+      {
+        Action = "kms:CreateGrant",
+        Effect = "Allow"
+        Principal = {
+          Service = "dnssec-route53.amazonaws.com"
+        }
+        Sid      = "Allow Route 53 DNSSEC Service to CreateGrant",
+        Resource = "*"
+        Condition = {
+          Bool = {
+            "kms:GrantIsForAWSResource" = "true"
+          }
+        }
+      },
+      {
+        Action = "kms:*"
+        Effect = "Allow"
+        Principal = {
+          AWS = "*"
+        }
+        Resource = "*"
+        Sid      = "IAM User Permissions"
+      },
+    ]
+    Version = "2012-10-17"
+  })
+}
+
+# Make it easier for admins to identify the key in the KMS console
+resource "aws_kms_alias" "zondatagov_zone" {
+  count         = var.manage_zone ? 1 : 0
+  provider      = aws.dnssec-key-provider
+  name          = "alias/DNSSEC-${split(".", var.broker_zone)[0]}"
+  target_key_id = aws_kms_key.zone[count.index].key_id
+}
+
+resource "aws_route53_key_signing_key" "datagov_zone" {
+  count                      = var.manage_zone ? 1 : 0
+  hosted_zone_id             = aws_route53_zone.zone[count.index].id
+  key_management_service_arn = aws_kms_key.zone[count.index].arn
+  name                       = var.broker_zone
+}
+
+resource "aws_route53_hosted_zone_dnssec" "datagov_zone" {
+  count = var.manage_zone ? 1 : 0
+  depends_on = [
+    aws_route53_key_signing_key.zone[0]
+  ]
+  hosted_zone_id = aws_route53_key_signing_key.zone[count.index].hosted_zone_id
+}
+
 
 resource "aws_route53_record" "datagov_34193244109_a" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
