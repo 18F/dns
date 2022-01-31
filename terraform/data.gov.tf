@@ -99,7 +99,7 @@ output "datagov_ns_record" {
     ]
 }
 
-output "datagov_ns_record" {
+output "datagov_instructions" {
     value = local.datagov_instructions
 }
 
