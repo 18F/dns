@@ -80,27 +80,27 @@ resource "aws_route53_hosted_zone_dnssec" "datagov_zone" {
   hosted_zone_id = aws_route53_key_signing_key.datagov_zone.hosted_zone_id
 }
 locals {
-  datagov_ns_record = tolist(["NS", "data.gov", "[ ${join(", \n", [for s in aws_route53_zone.datagov_zone.name_servers : format("%q", s)])} ]"])
-  datagov_ds_record = tolist(["DS", "data.gov", aws_route53_key_signing_key.datagov_zone.ds_record])
+  datagov_ns_record    = tolist(["NS", "data.gov", "[ ${join(", \n", [for s in aws_route53_zone.datagov_zone.name_servers : format("%q", s)])} ]"])
+  datagov_ds_record    = tolist(["DS", "data.gov", aws_route53_key_signing_key.datagov_zone.ds_record])
   datagov_instructions = "Create NS and DS records in the .gov zone with the values indicated."
 }
 output "datagov_ds_record" {
-    depends_on = [
-        aws_route53_hosted_zone_dnssec.datagov_zone
-    ]
-    value = [
-        local.datagov_ds_record
-    ]
+  depends_on = [
+    aws_route53_hosted_zone_dnssec.datagov_zone
+  ]
+  value = [
+    local.datagov_ds_record
+  ]
 }
 
 output "datagov_ns_record" {
-    value = [
-        local.datagov_ns_record
-    ]
+  value = [
+    local.datagov_ns_record
+  ]
 }
 
 output "datagov_instructions" {
-    value = local.datagov_instructions
+  value = local.datagov_instructions
 }
 
 
