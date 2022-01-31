@@ -3,9 +3,8 @@
 
 # If we're to manage the DNS, create a Route53 zone and set up DNSSEC on it.
 resource "aws_route53_zone" "datagov_zone" {
-  count = var.manage_zone ? 1 : 0
-  name  = var.broker_zone
 
+  name = "data.gov"
   tags = {
     Project = "dns"
   }
@@ -13,11 +12,9 @@ resource "aws_route53_zone" "datagov_zone" {
 
 # Create a KMS key for DNSSEC signing
 resource "aws_kms_key" "datagov_zone" {
-  count = var.manage_zone ? 1 : 0
 
   # See Route53 key requirements here: 
   # https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec-cmk-requirements.html
-  provider                 = aws.dnssec-key-provider # Only us-east-1 is supported
   customer_master_key_spec = "ECC_NIST_P256"
   deletion_window_in_days  = 7
   key_usage                = "SIGN_VERIFY"
@@ -65,32 +62,53 @@ resource "aws_kms_key" "datagov_zone" {
 }
 
 # Make it easier for admins to identify the key in the KMS console
-resource "aws_kms_alias" "zondatagov_zone" {
-  count         = var.manage_zone ? 1 : 0
-  provider      = aws.dnssec-key-provider
-  name          = "alias/DNSSEC-${split(".", var.broker_zone)[0]}"
-  target_key_id = aws_kms_key.zone[count.index].key_id
+resource "aws_kms_alias" "datagov_zone" {
+  name          = "alias/DNSSEC-${aws_route53_zone.datagov_zone.name}"
+  target_key_id = aws_kms_key.datagov_zone.key_id
 }
 
 resource "aws_route53_key_signing_key" "datagov_zone" {
-  count                      = var.manage_zone ? 1 : 0
-  hosted_zone_id             = aws_route53_zone.zone[count.index].id
-  key_management_service_arn = aws_kms_key.zone[count.index].arn
-  name                       = var.broker_zone
+  hosted_zone_id             = aws_route53_zone.datagov_zone.id
+  key_management_service_arn = aws_kms_key.datagov_zone.arn
+  name                       = "data.gov"
 }
 
 resource "aws_route53_hosted_zone_dnssec" "datagov_zone" {
-  count = var.manage_zone ? 1 : 0
   depends_on = [
-    aws_route53_key_signing_key.zone[0]
+    aws_route53_key_signing_key.datagov_zone
   ]
-  hosted_zone_id = aws_route53_key_signing_key.zone[count.index].hosted_zone_id
+  hosted_zone_id = aws_route53_key_signing_key.datagov_zone.hosted_zone_id
 }
+locals {
+  datagov_ns_record = tolist(["NS", "data.gov", "[ ${join(", \n", [for s in aws_route53_zone.datagov_zone.name_servers : format("%q", s)])} ]"])
+  datagov_ds_record = tolist(["DS", "data.gov", aws_route53_key_signing_key.datagov_zone.ds_record])
+  datagov_instructions = "Create NS and DS records in the .gov zone with the values indicated."
+}
+output "datagov_ds_record" {
+    depends_on = [
+        aws_route53_hosted_zone_dnssec.datagov_zone
+    ]
+    value = [
+        local.datagov_ds_record
+    ]
+}
+
+output "datagov_ns_record" {
+    value = [
+        local.datagov_ns_record
+    ]
+}
+
+output "datagov_ns_record" {
+    value = local.datagov_instructions
+}
+
+
 
 
 resource "aws_route53_record" "datagov_34193244109_a" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = ""
+  name    = "data.gov"
   type    = "A"
 
   ttl     = 0
@@ -933,40 +951,6 @@ resource "aws_route53_record" "datagov_wwwd36thseoamvwaacloudfrontnet_cname" {
   records = ["d36thseoamvwaa.cloudfront.net"]
 
 }
-
-# TODO what do we do for the DS records?
-#resource "aws_route53_record" "datagov_ssb4862132F9C2CD8A4F6AF7EFE48A630EE4AD53431636310D1306A7608D27C7B011CA20B9_ds" {
-#  zone_id = aws_route53_zone.datagov_zone.zone_id
-#  name    = "ssb"
-#  type    = "DS"
-#
-#  ttl     = 0
-#  records = ["4862 13 2 F9C2CD8A4F6AF7EFE48A630EE4AD53431636310D1306A7608D27C7B011CA20B9"]
-#
-#}
-#
-#
-#resource "aws_route53_record" "datagov_ssbdev46864132B834DCEE0727D7864D11E31276F3BDE5B35F7D9744F3BEFF042F21B9FF864E1D_ds" {
-#  zone_id = aws_route53_zone.datagov_zone.zone_id
-#  name    = "ssb-dev"
-#  type    = "DS"
-#
-#  ttl     = 0
-#  records = ["46864 13 2 B834DCEE0727D7864D11E31276F3BDE5B35F7D9744F3BEFF042F21B9FF864E1D"]
-#
-#}
-#
-#
-#resource "aws_route53_record" "datagov_ssbstaging283581327D70709ECEEA84A93A19277C126F2747AB5655A285731F7D31F39E24F4DD5040_ds" {
-#  zone_id = aws_route53_zone.datagov_zone.zone_id
-#  name    = "ssb-staging"
-#  type    = "DS"
-#
-#  ttl     = 0
-#  records = ["28358 13 2 7D70709ECEEA84A93A19277C126F2747AB5655A285731F7D31F39E24F4DD5040"]
-#
-#}
-
 
 resource "aws_route53_record" "datagov_apins738awsdns28net_ns" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
