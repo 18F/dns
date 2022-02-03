@@ -63,7 +63,7 @@ resource "aws_kms_key" "datagov_zone" {
 
 # Make it easier for admins to identify the key in the KMS console
 resource "aws_kms_alias" "datagov_zone" {
-  name          = "alias/DNSSEC-${aws_route53_zone.datagov_zone.name}"
+  name          = "alias/DNSSEC-${replace(aws_route53_zone.datagov_zone.name, "/[^a-zA-Z0-9:/_-]/", "-")}"
   target_key_id = aws_kms_key.datagov_zone.key_id
 }
 
