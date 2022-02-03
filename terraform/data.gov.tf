@@ -145,7 +145,7 @@ resource "aws_route53_record" "datagov_0issueawstrustcom_caa" {
   type    = "CAA"
 
   ttl    = 300
-  records = ["0 issue awstrust.com"]
+  records = ["0 issue \"awstrust.com\""]
 
 }
 
@@ -156,7 +156,7 @@ resource "aws_route53_record" "datagov_0issueletsencryptorg_caa" {
   type    = "CAA"
 
   ttl    = 300
-  records = ["0 issue letsencrypt.org"]
+  records = ["0 issue \"letsencrypt.org\""]
 
 }
 
@@ -167,7 +167,7 @@ resource "aws_route53_record" "datagov_0issueamazonawscom_caa" {
   type    = "CAA"
 
   ttl    = 300
-  records = ["0 issue amazonaws.com"]
+  records = ["0 issue \"amazonaws.com\""]
 
 }
 
@@ -178,7 +178,7 @@ resource "aws_route53_record" "datagov_0issueamazontrustcom_caa" {
   type    = "CAA"
 
   ttl    = 300
-  records = ["0 issue amazontrust.com"]
+  records = ["0 issue \"amazontrust.com\""]
 
 }
 
@@ -189,7 +189,7 @@ resource "aws_route53_record" "datagov_0issuedigicertcom_caa" {
   type    = "CAA"
 
   ttl    = 300
-  records = ["0 issue digicert.com"]
+  records = ["0 issue \"digicert.com\""]
 
 }
 
@@ -200,7 +200,7 @@ resource "aws_route53_record" "datagov_0issueamazoncom_caa" {
   type    = "CAA"
 
   ttl    = 300
-  records = ["0 issue amazon.com"]
+  records = ["0 issue \"amazon.com\""]
 
 }
 
@@ -952,214 +952,74 @@ resource "aws_route53_record" "datagov_wwwd36thseoamvwaacloudfrontnet_cname" {
 
 }
 
-resource "aws_route53_record" "datagov_apins738awsdns28net_ns" {
+resource "aws_route53_record" "datagov_api_ns" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "api"
   type    = "NS"
 
   ttl    = 300
-  records = ["ns-738.awsdns-28.net."]
-
+  records = [
+  "ns-738.awsdns-28.net.",
+  "ns-1612.awsdns-09.co.uk.",
+  "ns-468.awsdns-58.com.",
+  "ns-1281.awsdns-32.org."
+  ]
 }
 
-
-resource "aws_route53_record" "datagov_apins1612awsdns09couk_ns" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "api"
-  type    = "NS"
-
-  ttl    = 300
-  records = ["ns-1612.awsdns-09.co.uk."]
-
-}
-
-
-resource "aws_route53_record" "datagov_apins468awsdns58com_ns" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "api"
-  type    = "NS"
-
-  ttl    = 300
-  records = ["ns-468.awsdns-58.com."]
-
-}
-
-
-resource "aws_route53_record" "datagov_apins1281awsdns32org_ns" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "api"
-  type    = "NS"
-
-  ttl    = 300
-  records = ["ns-1281.awsdns-32.org."]
-
-}
-
-
-resource "aws_route53_record" "datagov_ssbns658awsdns18net_ns" {
+resource "aws_route53_record" "datagov_ssb_ns" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "ssb"
   type    = "NS"
 
   ttl    = 300
-  records = ["ns-658.awsdns-18.net."]
-
+  records = [
+    "ns-658.awsdns-18.net.",
+    "ns-146.awsdns-18.com.",
+    "ns-1439.awsdns-51.org.",
+    "ns-1688.awsdns-19.co.uk."
+  ]
 }
 
-
-resource "aws_route53_record" "datagov_ssbns146awsdns18com_ns" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ssb"
-  type    = "NS"
-
-  ttl    = 300
-  records = ["ns-146.awsdns-18.com."]
-
-}
-
-
-resource "aws_route53_record" "datagov_ssbns1439awsdns51org_ns" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ssb"
-  type    = "NS"
-
-  ttl    = 300
-  records = ["ns-1439.awsdns-51.org."]
-
-}
-
-
-resource "aws_route53_record" "datagov_ssbns1688awsdns19couk_ns" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ssb"
-  type    = "NS"
-
-  ttl    = 300
-  records = ["ns-1688.awsdns-19.co.uk."]
-
-}
-
-
-resource "aws_route53_record" "datagov_ssbdevns1839awsdns37couk_ns" {
+resource "aws_route53_record" "datagov_ssbdev_ns" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "ssb-dev"
   type    = "NS"
 
   ttl    = 300
-  records = ["ns-1839.awsdns-37.co.uk."]
-
+  records = [
+    "ns-1839.awsdns-37.co.uk.",
+    "ns-1422.awsdns-49.org.",
+    "ns-673.awsdns-20.net.",
+    "ns-297.awsdns-37.com."
+  ]
 }
 
-
-resource "aws_route53_record" "datagov_ssbdevns1422awsdns49org_ns" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ssb-dev"
-  type    = "NS"
-
-  ttl    = 300
-  records = ["ns-1422.awsdns-49.org."]
-
-}
-
-
-resource "aws_route53_record" "datagov_ssbdevns673awsdns20net_ns" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ssb-dev"
-  type    = "NS"
-
-  ttl    = 300
-  records = ["ns-673.awsdns-20.net."]
-
-}
-
-
-resource "aws_route53_record" "datagov_ssbdevns297awsdns37com_ns" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ssb-dev"
-  type    = "NS"
-
-  ttl    = 300
-  records = ["ns-297.awsdns-37.com."]
-
-}
-
-
-resource "aws_route53_record" "datagov_ssbstagingns1903awsdns45couk_ns" {
+resource "aws_route53_record" "datagov_ssbstaging_ns" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "ssb-staging"
   type    = "NS"
 
   ttl    = 300
-  records = ["ns-1903.awsdns-45.co.uk."]
-
+  records = [
+    "ns-1903.awsdns-45.co.uk.",
+    "ns-510.awsdns-63.com.",
+    "ns-890.awsdns-47.net.",
+    "ns-1056.awsdns-04.org."
+  ]
 }
 
-
-resource "aws_route53_record" "datagov_ssbstagingns510awsdns63com_ns" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ssb-staging"
-  type    = "NS"
-
-  ttl    = 300
-  records = ["ns-510.awsdns-63.com."]
-
-}
-
-
-resource "aws_route53_record" "datagov_ssbstagingns890awsdns47net_ns" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ssb-staging"
-  type    = "NS"
-
-  ttl    = 300
-  records = ["ns-890.awsdns-47.net."]
-
-}
-
-
-resource "aws_route53_record" "datagov_ssbstagingns1056awsdns04org_ns" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ssb-staging"
-  type    = "NS"
-
-  ttl    = 300
-  records = ["ns-1056.awsdns-04.org."]
-
-}
-
-
-resource "aws_route53_record" "datagov_621df521f1e44ac69a670f325dc86889_txt" {
+resource "aws_route53_record" "datagov__txt" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = ""
   type    = "TXT"
 
   ttl    = 300
-  records = ["621df521f1e44ac69a670f325dc86889"]
-
+  records = [
+    "621df521f1e44ac69a670f325dc86889",
+    "v=spf1 ip4:34.193.244.109 include:gsa.gov ~all",
+    "n6fgn8dyh1hhqsmghskdplss7zp7yt7q"
+  ]
 }
-
-
-resource "aws_route53_record" "datagov_vspf1ip434193244109includegsagovall_txt" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = ""
-  type    = "TXT"
-
-  ttl    = 300
-  records = ["v=spf1 ip4:34.193.244.109 include:gsa.gov ~all"]
-
-}
-
-
-resource "aws_route53_record" "datagov_n6fgn8dyh1hhqsmghskdplss7zp7yt7q_txt" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = ""
-  type    = "TXT"
-
-  ttl    = 300
-  records = ["n6fgn8dyh1hhqsmghskdplss7zp7yt7q"]
-
-}
-
 
 resource "aws_route53_record" "datagov_mloj922e44u1o54qmtbqbi4k6r_txt" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
