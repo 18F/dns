@@ -63,7 +63,7 @@ resource "aws_route53_record" "sbst_gov_6020162f64c7bb016b2a3de7428839d0_www_sbs
 }
 
 module "sbst_gov__email_security" {
-  source = "./email_security"
+  source  = "./email_security"
   zone_id = aws_route53_zone.sbst_gov_zone.zone_id
 }
 
