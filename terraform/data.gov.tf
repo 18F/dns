@@ -145,7 +145,7 @@ resource "aws_route53_record" "datagov_0issueawstrustcom_caa" {
   type    = "CAA"
 
   ttl    = 300
-  records = ["0 issue awstrust.com"]
+  records = ["0 issue \"awstrust.com\""]
 
 }
 
@@ -156,7 +156,7 @@ resource "aws_route53_record" "datagov_0issueletsencryptorg_caa" {
   type    = "CAA"
 
   ttl    = 300
-  records = ["0 issue letsencrypt.org"]
+  records = ["0 issue \"letsencrypt.org\""]
 
 }
 
@@ -167,7 +167,7 @@ resource "aws_route53_record" "datagov_0issueamazonawscom_caa" {
   type    = "CAA"
 
   ttl    = 300
-  records = ["0 issue amazonaws.com"]
+  records = ["0 issue \"amazonaws.com\""]
 
 }
 
@@ -178,7 +178,7 @@ resource "aws_route53_record" "datagov_0issueamazontrustcom_caa" {
   type    = "CAA"
 
   ttl    = 300
-  records = ["0 issue amazontrust.com"]
+  records = ["0 issue \"amazontrust.com\""]
 
 }
 
@@ -189,7 +189,7 @@ resource "aws_route53_record" "datagov_0issuedigicertcom_caa" {
   type    = "CAA"
 
   ttl    = 300
-  records = ["0 issue digicert.com"]
+  records = ["0 issue \"digicert.com\""]
 
 }
 
@@ -200,7 +200,7 @@ resource "aws_route53_record" "datagov_0issueamazoncom_caa" {
   type    = "CAA"
 
   ttl    = 300
-  records = ["0 issue amazon.com"]
+  records = ["0 issue \"amazon.com\""]
 
 }
 
