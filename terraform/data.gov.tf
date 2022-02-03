@@ -111,7 +111,7 @@ resource "aws_route53_record" "datagov_34193244109_a" {
   name    = "data.gov"
   type    = "A"
 
-  ttl     = 0
+  ttl    = 300
   records = ["34.193.244.109"]
 
 }
@@ -122,7 +122,7 @@ resource "aws_route53_record" "datagov_manage101771786_a" {
   name    = "manage"
   type    = "A"
 
-  ttl     = 0
+  ttl    = 300
   records = ["10.177.17.86"]
 
 }
@@ -133,7 +133,7 @@ resource "aws_route53_record" "datagov_originssmallbusiness1981012551_a" {
   name    = "origins-smallbusiness"
   type    = "A"
 
-  ttl     = 0
+  ttl    = 300
   records = ["198.10.125.51"]
 
 }
@@ -144,7 +144,7 @@ resource "aws_route53_record" "datagov_0issueawstrustcom_caa" {
   name    = ""
   type    = "CAA"
 
-  ttl     = 0
+  ttl    = 300
   records = ["0 issue awstrust.com"]
 
 }
@@ -155,7 +155,7 @@ resource "aws_route53_record" "datagov_0issueletsencryptorg_caa" {
   name    = ""
   type    = "CAA"
 
-  ttl     = 0
+  ttl    = 300
   records = ["0 issue letsencrypt.org"]
 
 }
@@ -166,7 +166,7 @@ resource "aws_route53_record" "datagov_0issueamazonawscom_caa" {
   name    = ""
   type    = "CAA"
 
-  ttl     = 0
+  ttl    = 300
   records = ["0 issue amazonaws.com"]
 
 }
@@ -177,7 +177,7 @@ resource "aws_route53_record" "datagov_0issueamazontrustcom_caa" {
   name    = ""
   type    = "CAA"
 
-  ttl     = 0
+  ttl    = 300
   records = ["0 issue amazontrust.com"]
 
 }
@@ -188,7 +188,7 @@ resource "aws_route53_record" "datagov_0issuedigicertcom_caa" {
   name    = ""
   type    = "CAA"
 
-  ttl     = 0
+  ttl    = 300
   records = ["0 issue digicert.com"]
 
 }
@@ -199,7 +199,7 @@ resource "aws_route53_record" "datagov_0issueamazoncom_caa" {
   name    = ""
   type    = "CAA"
 
-  ttl     = 0
+  ttl    = 300
   records = ["0 issue amazon.com"]
 
 }
@@ -210,7 +210,7 @@ resource "aws_route53_record" "datagov_acmechallengeacmechallengedatagovexternal
   name    = "_acme-challenge"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -221,7 +221,7 @@ resource "aws_route53_record" "datagov_acmechallengeagricultureacmechallengeagri
   name    = "_acme-challenge.agriculture"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.agriculture.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -232,7 +232,7 @@ resource "aws_route53_record" "datagov_acmechallengecatalogacmechallengecatalogd
   name    = "_acme-challenge.catalog"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.catalog.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -243,7 +243,7 @@ resource "aws_route53_record" "datagov_acmechallengeclimateacmechallengeclimated
   name    = "_acme-challenge.climate"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.climate.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -254,7 +254,7 @@ resource "aws_route53_record" "datagov_acmechallengedashboardacmechallengedashbo
   name    = "_acme-challenge.dashboard"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.dashboard.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -265,7 +265,7 @@ resource "aws_route53_record" "datagov_acmechallengedeveloperacmechallengedevelo
   name    = "_acme-challenge.developer"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.developer.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -276,7 +276,7 @@ resource "aws_route53_record" "datagov_acmechallengeenergyacmechallengeenergydat
   name    = "_acme-challenge.energy"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.energy.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -287,7 +287,7 @@ resource "aws_route53_record" "datagov_acmechallengefoodacmechallengefooddatagov
   name    = "_acme-challenge.food"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.food.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -298,7 +298,7 @@ resource "aws_route53_record" "datagov_acmechallengehighlightsacmechallengehighl
   name    = "_acme-challenge.highlights"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.highlights.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -309,7 +309,7 @@ resource "aws_route53_record" "datagov_acmechallengeinventoryacmechallengeinvent
   name    = "_acme-challenge.inventory"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.inventory.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -320,7 +320,7 @@ resource "aws_route53_record" "datagov_acmechallengelabsacmechallengelabsdatagov
   name    = "_acme-challenge.labs"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.labs.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -331,7 +331,7 @@ resource "aws_route53_record" "datagov_acmechallengeoceanacmechallengeoceandatag
   name    = "_acme-challenge.ocean"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.ocean.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -342,7 +342,7 @@ resource "aws_route53_record" "datagov_acmechallengewwwacmechallengewwwdatagovex
   name    = "_acme-challenge.www"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["_acme-challenge.www.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -353,7 +353,7 @@ resource "aws_route53_record" "datagov_aapinspocsitnethelixgsagov_cname" {
   name    = "aapi"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -364,7 +364,7 @@ resource "aws_route53_record" "datagov_admincatalogadmincatalogbspdatagov_cname"
   name    = "admin-catalog"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["admin-catalog-bsp.data.gov"]
 
 }
@@ -375,7 +375,7 @@ resource "aws_route53_record" "datagov_admincatalogbspnspocsitnethelixgsagov_cna
   name    = "admin-catalog-bsp"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -386,7 +386,7 @@ resource "aws_route53_record" "datagov_admincatalognextnspocsitnethelixgsagov_cn
   name    = "admin-catalog-next"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -397,7 +397,7 @@ resource "aws_route53_record" "datagov_agnspocsitnethelixgsagov_cname" {
   name    = "ag"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -408,7 +408,7 @@ resource "aws_route53_record" "datagov_agricultureagriculturedatagovexternaldoma
   name    = "agriculture"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["agriculture.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -419,7 +419,7 @@ resource "aws_route53_record" "datagov_catalogd2friv3a0qqhqwcloudfrontnet_cname"
   name    = "catalog"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["d2friv3a0qqhqw.cloudfront.net"]
 
 }
@@ -430,7 +430,7 @@ resource "aws_route53_record" "datagov_catalogbspnspocsitnethelixgsagov_cname" {
   name    = "catalog-bsp"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -441,7 +441,7 @@ resource "aws_route53_record" "datagov_catalognextnspocsitnethelixgsagov_cname" 
   name    = "catalog-next"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -452,7 +452,7 @@ resource "aws_route53_record" "datagov_cinspocsitnethelixgsagov_cname" {
   name    = "ci"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -463,7 +463,7 @@ resource "aws_route53_record" "datagov_citiesnspocsitnethelixgsagov_cname" {
   name    = "cities"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -474,7 +474,7 @@ resource "aws_route53_record" "datagov_climateclimatedatagovexternaldomainsprodu
   name    = "climate"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["climate.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -485,7 +485,7 @@ resource "aws_route53_record" "datagov_countiesnspocsitnethelixgsagov_cname" {
   name    = "counties"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -496,7 +496,7 @@ resource "aws_route53_record" "datagov_dashboarddashboarddatagovexternaldomainsp
   name    = "dashboard"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["dashboard.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -507,7 +507,7 @@ resource "aws_route53_record" "datagov_dashboardbspnspocsitnethelixgsagov_cname"
   name    = "dashboard-bsp"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -518,7 +518,7 @@ resource "aws_route53_record" "datagov_dashboardlabsdashboardbspdatagov_cname" {
   name    = "dashboard-labs"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["dashboard-bsp.data.gov"]
 
 }
@@ -529,7 +529,7 @@ resource "aws_route53_record" "datagov_developerdeveloperdatagovexternaldomainsp
   name    = "developer"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["developer.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -540,7 +540,7 @@ resource "aws_route53_record" "datagov_ednspocsitnethelixgsagov_cname" {
   name    = "ed"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -551,7 +551,7 @@ resource "aws_route53_record" "datagov_educationnspocsitnethelixgsagov_cname" {
   name    = "education"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -562,7 +562,7 @@ resource "aws_route53_record" "datagov_energyenergydatagovexternaldomainsproduct
   name    = "energy"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["energy.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -573,7 +573,7 @@ resource "aws_route53_record" "datagov_ethicsnspocsitnethelixgsagov_cname" {
   name    = "ethics"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -584,7 +584,7 @@ resource "aws_route53_record" "datagov_federationd27ayqvgdtxgg3cloudfrontnet_cna
   name    = "federation"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["d27ayqvgdtxgg3.cloudfront.net"]
 
 }
@@ -595,7 +595,7 @@ resource "aws_route53_record" "datagov_federationstagingd30aqfbz27ewe7cloudfront
   name    = "federation-staging"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["d30aqfbz27ewe7.cloudfront.net"]
 
 }
@@ -606,7 +606,7 @@ resource "aws_route53_record" "datagov_filestorenspocsitnethelixgsagov_cname" {
   name    = "filestore"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -617,7 +617,7 @@ resource "aws_route53_record" "datagov_foodfooddatagovexternaldomainsproductionc
   name    = "food"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["food.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -628,7 +628,7 @@ resource "aws_route53_record" "datagov_foodsecuritynspocsitnethelixgsagov_cname"
   name    = "foodsecurity"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -639,7 +639,7 @@ resource "aws_route53_record" "datagov_geospatialnspocsitnethelixgsagov_cname" {
   name    = "geospatial"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -650,7 +650,7 @@ resource "aws_route53_record" "datagov_healthnspocsitnethelixgsagov_cname" {
   name    = "health"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -661,7 +661,7 @@ resource "aws_route53_record" "datagov_highlightshighlightsdatagovexternaldomain
   name    = "highlights"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["highlights.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -672,7 +672,7 @@ resource "aws_route53_record" "datagov_inventoryinventorybspdatagov_cname" {
   name    = "inventory"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["inventory-bsp.data.gov"]
 
 }
@@ -683,7 +683,7 @@ resource "aws_route53_record" "datagov_inventorybspnspocsitnethelixgsagov_cname"
   name    = "inventory-bsp"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -694,7 +694,7 @@ resource "aws_route53_record" "datagov_inventorynextnspocsitnethelixgsagov_cname
   name    = "inventory-next"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -705,7 +705,7 @@ resource "aws_route53_record" "datagov_labslabsdatagovexternaldomainsproductionc
   name    = "labs"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["labs.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -716,7 +716,7 @@ resource "aws_route53_record" "datagov_labsbspnspocsitnethelixgsagov_cname" {
   name    = "labs-bsp"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -727,7 +727,7 @@ resource "aws_route53_record" "datagov_noticenspocsitnethelixgsagov_cname" {
   name    = "notice"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -738,7 +738,7 @@ resource "aws_route53_record" "datagov_nutritionnspocsitnethelixgsagov_cname" {
   name    = "nutrition"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -749,7 +749,7 @@ resource "aws_route53_record" "datagov_oceanoceandatagovexternaldomainsproductio
   name    = "ocean"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ocean.data.gov.external-domains-production.cloud.gov"]
 
 }
@@ -760,7 +760,7 @@ resource "aws_route53_record" "datagov_originsdatagovwwwdatalbgsaakadnsnet_cname
   name    = "origins-data-gov"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["wwwdata.lb.gsa.akadns.net"]
 
 }
@@ -771,7 +771,7 @@ resource "aws_route53_record" "datagov_referencenspocsitnethelixgsagov_cname" {
   name    = "reference"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -782,7 +782,7 @@ resource "aws_route53_record" "datagov_resourcesd9v2xy0mx1ayqcloudfrontnet_cname
   name    = "resources"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["d9v2xy0mx1ayq.cloudfront.net"]
 
 }
@@ -793,7 +793,7 @@ resource "aws_route53_record" "datagov_resourcesstagingd13l8e1a7ekkcacloudfrontn
   name    = "resources-staging"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["d13l8e1a7ekkca.cloudfront.net"]
 
 }
@@ -804,7 +804,7 @@ resource "aws_route53_record" "datagov_ruralnspocsitnethelixgsagov_cname" {
   name    = "rural"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -815,7 +815,7 @@ resource "aws_route53_record" "datagov_sbxnspocsitnethelixgsagov_cname" {
   name    = "sbx"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -826,7 +826,7 @@ resource "aws_route53_record" "datagov_sdgd1z5ray7fqefkvcloudfrontnet_cname" {
   name    = "sdg"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["d1z5ray7fqefkv.cloudfront.net"]
 
 }
@@ -837,7 +837,7 @@ resource "aws_route53_record" "datagov_sdgstagingdhrxft6loyu0ncloudfrontnet_cnam
   name    = "sdg-staging"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["dhrxft6loyu0n.cloudfront.net"]
 
 }
@@ -848,7 +848,7 @@ resource "aws_route53_record" "datagov_searchnspocsitnethelixgsagov_cname" {
   name    = "search"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -859,7 +859,7 @@ resource "aws_route53_record" "datagov_semanticnspocsitnethelixgsagov_cname" {
   name    = "semantic"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -870,7 +870,7 @@ resource "aws_route53_record" "datagov_servicesnspocsitnethelixgsagov_cname" {
   name    = "services"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -881,7 +881,7 @@ resource "aws_route53_record" "datagov_sitesnextnspocsitnethelixgsagov_cname" {
   name    = "sites-next"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -892,7 +892,7 @@ resource "aws_route53_record" "datagov_statesnspocsitnethelixgsagov_cname" {
   name    = "states"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -903,7 +903,7 @@ resource "aws_route53_record" "datagov_staticbspnspocsitnethelixgsagov_cname" {
   name    = "static-bsp"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -914,7 +914,7 @@ resource "aws_route53_record" "datagov_strategyd3mxkpq217356pcloudfrontnet_cname
   name    = "strategy"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["d3mxkpq217356p.cloudfront.net"]
 
 }
@@ -925,7 +925,7 @@ resource "aws_route53_record" "datagov_strategystagingd97qwv40ba5n0cloudfrontnet
   name    = "strategy-staging"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["d97qwv40ba5n0.cloudfront.net"]
 
 }
@@ -936,7 +936,7 @@ resource "aws_route53_record" "datagov_wpbspnspocsitnethelixgsagov_cname" {
   name    = "wp-bsp"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
@@ -947,7 +947,7 @@ resource "aws_route53_record" "datagov_wwwd36thseoamvwaacloudfrontnet_cname" {
   name    = "www"
   type    = "CNAME"
 
-  ttl     = 0
+  ttl    = 300
   records = ["d36thseoamvwaa.cloudfront.net"]
 
 }
@@ -957,7 +957,7 @@ resource "aws_route53_record" "datagov_apins738awsdns28net_ns" {
   name    = "api"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-738.awsdns-28.net."]
 
 }
@@ -968,7 +968,7 @@ resource "aws_route53_record" "datagov_apins1612awsdns09couk_ns" {
   name    = "api"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-1612.awsdns-09.co.uk."]
 
 }
@@ -979,7 +979,7 @@ resource "aws_route53_record" "datagov_apins468awsdns58com_ns" {
   name    = "api"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-468.awsdns-58.com."]
 
 }
@@ -990,7 +990,7 @@ resource "aws_route53_record" "datagov_apins1281awsdns32org_ns" {
   name    = "api"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-1281.awsdns-32.org."]
 
 }
@@ -1001,7 +1001,7 @@ resource "aws_route53_record" "datagov_ssbns658awsdns18net_ns" {
   name    = "ssb"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-658.awsdns-18.net."]
 
 }
@@ -1012,7 +1012,7 @@ resource "aws_route53_record" "datagov_ssbns146awsdns18com_ns" {
   name    = "ssb"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-146.awsdns-18.com."]
 
 }
@@ -1023,7 +1023,7 @@ resource "aws_route53_record" "datagov_ssbns1439awsdns51org_ns" {
   name    = "ssb"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-1439.awsdns-51.org."]
 
 }
@@ -1034,7 +1034,7 @@ resource "aws_route53_record" "datagov_ssbns1688awsdns19couk_ns" {
   name    = "ssb"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-1688.awsdns-19.co.uk."]
 
 }
@@ -1045,7 +1045,7 @@ resource "aws_route53_record" "datagov_ssbdevns1839awsdns37couk_ns" {
   name    = "ssb-dev"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-1839.awsdns-37.co.uk."]
 
 }
@@ -1056,7 +1056,7 @@ resource "aws_route53_record" "datagov_ssbdevns1422awsdns49org_ns" {
   name    = "ssb-dev"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-1422.awsdns-49.org."]
 
 }
@@ -1067,7 +1067,7 @@ resource "aws_route53_record" "datagov_ssbdevns673awsdns20net_ns" {
   name    = "ssb-dev"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-673.awsdns-20.net."]
 
 }
@@ -1078,7 +1078,7 @@ resource "aws_route53_record" "datagov_ssbdevns297awsdns37com_ns" {
   name    = "ssb-dev"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-297.awsdns-37.com."]
 
 }
@@ -1089,7 +1089,7 @@ resource "aws_route53_record" "datagov_ssbstagingns1903awsdns45couk_ns" {
   name    = "ssb-staging"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-1903.awsdns-45.co.uk."]
 
 }
@@ -1100,7 +1100,7 @@ resource "aws_route53_record" "datagov_ssbstagingns510awsdns63com_ns" {
   name    = "ssb-staging"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-510.awsdns-63.com."]
 
 }
@@ -1111,7 +1111,7 @@ resource "aws_route53_record" "datagov_ssbstagingns890awsdns47net_ns" {
   name    = "ssb-staging"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-890.awsdns-47.net."]
 
 }
@@ -1122,7 +1122,7 @@ resource "aws_route53_record" "datagov_ssbstagingns1056awsdns04org_ns" {
   name    = "ssb-staging"
   type    = "NS"
 
-  ttl     = 0
+  ttl    = 300
   records = ["ns-1056.awsdns-04.org."]
 
 }
@@ -1133,7 +1133,7 @@ resource "aws_route53_record" "datagov_621df521f1e44ac69a670f325dc86889_txt" {
   name    = ""
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["621df521f1e44ac69a670f325dc86889"]
 
 }
@@ -1144,7 +1144,7 @@ resource "aws_route53_record" "datagov_vspf1ip434193244109includegsagovall_txt" 
   name    = ""
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["v=spf1 ip4:34.193.244.109 include:gsa.gov ~all"]
 
 }
@@ -1155,7 +1155,7 @@ resource "aws_route53_record" "datagov_n6fgn8dyh1hhqsmghskdplss7zp7yt7q_txt" {
   name    = ""
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["n6fgn8dyh1hhqsmghskdplss7zp7yt7q"]
 
 }
@@ -1166,7 +1166,7 @@ resource "aws_route53_record" "datagov_mloj922e44u1o54qmtbqbi4k6r_txt" {
   name    = "@"
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["mloj922e44u1o54qmtbqbi4k6r"]
 
 }
@@ -1177,7 +1177,7 @@ resource "aws_route53_record" "datagov_acmechallengefederationDVhxe1yzatjC0zzy0f
   name    = "_acme-challenge.federation"
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["DVhxe1y_zatjC0zzy-0f6tN87IACCK2eAz00YqyuzjA"]
 
 }
@@ -1188,7 +1188,7 @@ resource "aws_route53_record" "datagov_acmechallengefederationstagingjBIuzGOGGA8
   name    = "_acme-challenge.federation-staging"
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["jBIuzGOGGA8ahB7kFxAWuAMCAxFoMMEn63xC_VO0LAY"]
 
 }
@@ -1199,7 +1199,7 @@ resource "aws_route53_record" "datagov_acmechallengeresourcesW9OAmioR3ViZvIRze2p
   name    = "_acme-challenge.resources"
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["W9OAmi-oR3ViZvIRze2pvvmDgNtVaYqcP2Cft_0lgcU"]
 
 }
@@ -1210,7 +1210,7 @@ resource "aws_route53_record" "datagov_acmechallengeresourcesstagingCTRQ5trgMF0K
   name    = "_acme-challenge.resources-staging"
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["CTR-Q5trgMF0KKgUZk14YJSRlGD36BWeQENmK8XAWk8"]
 
 }
@@ -1221,7 +1221,7 @@ resource "aws_route53_record" "datagov_acmechallengesdg1cEge5zwHmYap2xfUTEKrx6YW
   name    = "_acme-challenge.sdg"
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["1cEge-5zwHmYap2xfUTEKrx6YWJuN28yJrJAyQMysXc"]
 
 }
@@ -1232,7 +1232,7 @@ resource "aws_route53_record" "datagov_acmechallengesdgstagingbNsofNEUeS3uTsLwl9
   name    = "_acme-challenge.sdg-staging"
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["bNsofNEU-eS3uTsLwl9lXkt5OYOVzcE4WXv7LKQGCLQ"]
 
 }
@@ -1243,7 +1243,7 @@ resource "aws_route53_record" "datagov_acmechallengestrategyHjy5O04QmUqj4qgVY4jR
   name    = "_acme-challenge.strategy"
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["H_jy5O04QmUqj4qgVY4jRisqf9oMl3G3z0pRo4Irlcg"]
 
 }
@@ -1254,7 +1254,7 @@ resource "aws_route53_record" "datagov_acmechallengestrategystagingh6eondVFdMUnF
   name    = "_acme-challenge.strategy-staging"
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["h6eondV-FdM_UnFzj4flKL1jDbO2DL1pVFHdoo1J43k"]
 
 }
@@ -1265,7 +1265,7 @@ resource "aws_route53_record" "datagov_dmarcvDMARC1prejectfo1pct100ri86400ruamai
   name    = "_dmarc"
   type    = "TXT"
 
-  ttl     = 0
+  ttl    = 300
   records = ["v=DMARC1; p=reject; fo=1; pct=100; ri=86400; rua=mailto:gsalogin@rua.agari.com,mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:gsalogin@ruf.agari.com,mailto:dmarcfailures@gsa.gov"]
 
 }
