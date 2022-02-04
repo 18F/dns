@@ -140,7 +140,6 @@ resource "aws_route53_record" "datagov_originssmallbusiness1981012551_a" {
 
 
 resource "aws_route53_record" "datagov__caa" {
-  count   = 0
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = ""
   type    = "CAA"
@@ -920,7 +919,6 @@ resource "aws_route53_record" "datagov_api_ns" {
 }
 
 resource "aws_route53_record" "datagov_ssb_ns" {
-  count   = 0
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "ssb"
   type    = "NS"
@@ -963,7 +961,6 @@ resource "aws_route53_record" "datagov_ssbstaging_ns" {
 }
 
 resource "aws_route53_record" "datagov__txt" {
-  count   = 0
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = ""
   type    = "TXT"
