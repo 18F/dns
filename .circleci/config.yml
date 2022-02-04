@@ -2,44 +2,46 @@ version: "2.1"
 jobs:
   plan:
     docker:
-      - image: hashicorp/terraform:0.14.7
+      - image: hashicorp/terraform:1.1.5
     steps:
       - checkout
       - run:
           name: Set up Terraform
           # https://discuss.circleci.com/t/create-separate-steps-jobs-for-pr-forks-versus-branches/13419/2
           command: |
+            cd terraform
             if [[ $(echo "$CIRCLE_BRANCH" | grep -c "pull") -gt 0 ]]; then
               echo "This is from a fork."
-              terraform init -backend=false -input=false terraform
+              terraform init -backend=false -input=false
             else
-              terraform init -backend-config=terraform/backend.tfvars -input=false terraform
+              terraform init -backend-config=backend.tfvars -input=false
             fi
       - run:
           name: Validate Terraform config
           command: |
+            cd terraform
             if [[ $(echo "$CIRCLE_BRANCH" | grep -c "pull") -gt 0 ]]; then
               echo "This is from a fork."
-              terraform validate terraform
+              terraform validate
             else
-              terraform plan -input=false terraform
+              terraform plan -input=false
             fi
 
       - persist_to_workspace:
           root: .
           paths:
-            - ./*
+            - ./terraform/*
 
   apply:
     docker:
-      - image: hashicorp/terraform:0.14.7
+      - image: hashicorp/terraform:1.1.5
     steps:
       - attach_workspace:
           at: .
 
       - run:
           name: Deploy the full environment
-          command: terraform apply -input=false -auto-approve terraform
+          command: cd terraform && terraform apply -input=false -auto-approve
 
   validate:
     docker:

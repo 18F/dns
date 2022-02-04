@@ -1,16 +1,16 @@
 provider "aws" {
-  region  = "us-east-1"
+  region = "us-east-1"
 }
 
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
-      version = "3.30.0"
+      source  = "hashicorp/aws"
+      version = "3.31.0"
     }
   }
 
-  required_version = "~> 0.14.0"
+  required_version = "~> 1.1"
   backend "s3" {
     region = "us-east-1"
   }

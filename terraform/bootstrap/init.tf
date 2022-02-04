@@ -32,6 +32,22 @@ resource "aws_iam_user_policy" "circleci_deployer_policy" {
       "Resource": "*"
     },
     {
+      "Action": [
+        "kms:CreateAlias",
+        "kms:CreateGrant",
+        "kms:CreateKey",
+        "kms:DeleteAlias",
+        "kms:DescribeKey",
+        "kms:GetKeyPolicy",
+        "kms:GetKeyRotationStatus",
+        "kms:ListAliases",
+        "kms:ListResourceTags",
+        "kms:ScheduleKeyDeletion"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
       "Effect": "Allow",
       "Action": ["s3:ListBucket"],
       "Resource": ["${aws_s3_bucket.backend.arn}"]

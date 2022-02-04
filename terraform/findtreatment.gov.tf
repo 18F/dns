@@ -82,7 +82,7 @@ resource "aws_route53_record" "findtreatment_www_acme_challenge" {
 module "findtreatment_gov__email_security" {
   source = "./email_security"
 
-  zone_id = aws_route53_zone.findtreatment_toplevel.zone_id
+  zone_id   = aws_route53_zone.findtreatment_toplevel.zone_id
   dmarc_rua = "mailto:hhs@rua.agari.com"
   dmarc_ruf = "mailto:hhs@ruf.agari.com"
 }
