@@ -625,29 +625,7 @@ resource "aws_route53_record" "datagov_inventoryinventorybspdatagov_cname" {
   type    = "CNAME"
 
   ttl     = 300
-  records = ["inventory-bsp.data.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_inventorybspnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "inventory-bsp"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_inventorynextnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "inventory-next"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
+  records = ["inventory.data.gov.external-domains-production.cloud.gov"]
 
 }
 
