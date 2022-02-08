@@ -661,13 +661,21 @@ resource "aws_route53_record" "d_18f_gov_federalistapp_18f_gov_cname" {
   records = ["d10jlmxd1n7664.cloudfront.net"]
 }
 
-resource "aws_route53_record" "d_18f_gov_federalistapp-staging_18f_gov_cname" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "federalistapp-staging.18f.gov."
-  type    = "CNAME"
-  ttl     = 60
-  records = ["d1oay2nhnkj8ov.cloudfront.net"]
-}
+# resource "aws_route53_record" "d_18f_gov_federalistapp-staging_18f_gov_cname" {
+#   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+#   name    = "federalistapp-staging.18f.gov."
+#   type    = "CNAME"
+#   ttl     = 60
+#   records = ["federalistapp-staging.18f.gov.external-domains-production.cloud.gov"]
+# }
+
+# resource "aws_route53_record" "d_18f_gov_acme_challenge_admin_federalistapp-staging_18f_gov_cname" {
+#   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+#   name    = "_acme-challenge.federalistapp-staging.18f.gov."
+#   type    = "CNAME"
+#   ttl     = 60
+#   records = ["_acme-challenge.federalistapp-staging.18f.gov.external-domains-production.cloud.gov"]
+# }
 
 resource "aws_route53_record" "d_18f_gov_admin_federalistapp-staging_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
@@ -715,14 +723,6 @@ resource "aws_route53_record" "d_18f_gov_acme_challenge_queues_federalistapp-sta
   type    = "CNAME"
   ttl     = 60
   records = ["_acme-challenge.queues.federalistapp-staging.18f.gov.external-domains-production.cloud.gov"]
-}
-
-resource "aws_route53_record" "d_18f_gov_federalist-builder_18f_gov_cname" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "federalist-builder.18f.gov."
-  type    = "CNAME"
-  ttl     = 60
-  records = ["deej5fwwloisy.cloudfront.net"]
 }
 
 resource "aws_route53_record" "d_18f_gov_federalist-docs_18f_gov_a" {
