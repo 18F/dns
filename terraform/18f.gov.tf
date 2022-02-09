@@ -669,7 +669,7 @@ resource "aws_route53_record" "d_18f_gov_federalistapp-staging_18f_gov_cname" {
   records = ["federalistapp-staging.18f.gov.external-domains-production.cloud.gov"]
 }
 
-resource "aws_route53_record" "d_18f_gov_acme_challenge_admin_federalistapp-staging_18f_gov_cname" {
+resource "aws_route53_record" "d_18f_gov_acme_challenge_federalistapp-staging_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "_acme-challenge.federalistapp-staging.18f.gov."
   type    = "CNAME"
