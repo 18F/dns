@@ -1,7 +1,3 @@
-# managed by Corporate IT - request changes through
-# https://gsa.servicenowservices.com/sp/?id=kb_article&sys_id=075cd185db26578058c2fd721f96193b
-
-# If we're to manage the DNS, create a Route53 zone and set up DNSSEC on it.
 resource "aws_route53_zone" "datagov_zone" {
 
   name = "data.gov"
@@ -104,18 +100,18 @@ output "datagov_instructions" {
 }
 
 
-
-
+# data.gov is an ALIAS record for www.data.gov
 resource "aws_route53_record" "datagov_34193244109_a" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "data.gov"
   type    = "A"
 
-  ttl     = 300
-  records = ["34.193.244.109"]
-
+  alias {
+    name                   = "www.data.gov"
+    zone_id                = aws_route53_zone.datagov_zone.zone_id
+    evaluate_target_health = true
+  }
 }
-
 
 resource "aws_route53_record" "datagov_manage101771786_a" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
