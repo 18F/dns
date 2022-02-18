@@ -107,7 +107,7 @@ resource "aws_route53_record" "datagov_34193244109_a" {
   type    = "A"
 
   alias {
-    name                   = "www.data.gov"
+    name                   = "www"
     zone_id                = aws_route53_zone.datagov_zone.zone_id
     evaluate_target_health = true
   }
