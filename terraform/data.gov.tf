@@ -874,7 +874,7 @@ resource "aws_route53_record" "datagov_wwwd36thseoamvwaacloudfrontnet_cname" {
   type    = "CNAME"
 
   ttl     = 300
-  records = ["d36thseoamvwaa.cloudfront.net"]
+  records = ["wp-bsp.data.gov"]
 
 }
 
