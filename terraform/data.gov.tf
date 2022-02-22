@@ -100,18 +100,18 @@ output "datagov_instructions" {
 }
 
 
-# data.gov is an ALIAS record for www.data.gov
+
+
 resource "aws_route53_record" "datagov_34193244109_a" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "data.gov"
   type    = "A"
 
-  alias {
-    name                   = "www"
-    zone_id                = aws_route53_zone.datagov_zone.zone_id
-    evaluate_target_health = true
-  }
+  ttl     = 300
+  records = ["34.193.244.109"]
+
 }
+
 
 resource "aws_route53_record" "datagov_manage101771786_a" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
@@ -874,7 +874,7 @@ resource "aws_route53_record" "datagov_wwwd36thseoamvwaacloudfrontnet_cname" {
   type    = "CNAME"
 
   ttl     = 300
-  records = ["d36thseoamvwaa.cloudfront.net"]
+  records = ["wp-bsp.data.gov"]
 
 }
 
