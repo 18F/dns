@@ -143,7 +143,7 @@ resource "aws_route53_record" "datagov__caa" {
   ttl = 300
   records = [
     "0 issue \"awstrust.com\"",
-    "0 issue \"lestsencrypt.org\"",
+    "0 issue \"letsencrypt.org\"",
     "0 issue \"amazonaws.com\"",
     "0 issue \"amazontrust.com\"",
     "0 issue \"digicert.com\"",
