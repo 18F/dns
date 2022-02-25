@@ -888,8 +888,7 @@ resource "aws_route53_record" "datagov_wwwd36thseoamvwaacloudfrontnet_cname" {
   type    = "CNAME"
 
   ttl     = 300
-  records = ["wp-bsp.data.gov"]
-
+  records = ["www.data.gov.external-domains-production.cloud.gov"]
 }
 
 resource "aws_route53_record" "datagov_api_ns" {
