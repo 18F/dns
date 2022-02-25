@@ -107,9 +107,23 @@ resource "aws_route53_record" "datagov_34193244109_a" {
   name    = "data.gov"
   type    = "A"
 
-  ttl     = 300
-  records = ["34.193.244.109"]
+  alias {
+    name                   = "dg7ira9sfp69m.cloudfront.net."
+    zone_id                =  local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
 
+resource "aws_route53_record" "datagov_aaaa" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "data.gov"
+  type    = "AAAA"
+
+  alias {
+    name                   = "dg7ira9sfp69m.cloudfront.net."
+    zone_id                =  local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
 }
 
 
@@ -143,7 +157,7 @@ resource "aws_route53_record" "datagov__caa" {
   ttl = 300
   records = [
     "0 issue \"awstrust.com\"",
-    "0 issue \"lestsencrypt.org\"",
+    "0 issue \"letsencrypt.org\"",
     "0 issue \"amazonaws.com\"",
     "0 issue \"amazontrust.com\"",
     "0 issue \"digicert.com\"",
