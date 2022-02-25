@@ -114,6 +114,18 @@ resource "aws_route53_record" "datagov_34193244109_a" {
   }
 }
 
+resource "aws_route53_record" "datagov_aaaa" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "data.gov"
+  type    = "AAAA"
+
+  alias {
+    name                   = "dg7ira9sfp69m.cloudfront.net."
+    zone_id                =  local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
 
 resource "aws_route53_record" "datagov_manage101771786_a" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
