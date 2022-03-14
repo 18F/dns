@@ -284,7 +284,7 @@ resource "aws_route53_record" "digitalgov_gov_support_digitalgov_gov_txt" {
   type    = "TXT"
   ttl     = "3600"
   records = [
-    "v=spf1 mx a:c.spf.service-now.com include:mail.zendesk.com include:amazonses.com include:1962994.spf05.hubspotemail.net ~all"
+    "v=spf1 mx a:spf.servicenowservices.com include:amazonses.com include:1962994.spf05.hubspotemail.net ~all"
   ]
 }
 
