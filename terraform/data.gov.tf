@@ -919,6 +919,16 @@ resource "aws_route53_record" "datagov_ssb_ns" {
   ]
 }
 
+resource "aws_route53_record" "datagov_ssb_ds" {
+ zone_id = aws_route53_zone.datagov_zone.zone_id
+ name    = "ssb"
+ type    = "DS"
+
+ ttl     = 30
+ records = ["4862 13 2 F9C2CD8A4F6AF7EFE48A630EE4AD53431636310D1306A7608D27C7B011CA20B9"]
+
+}
+
 resource "aws_route53_record" "datagov_ssbdev_ns" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "ssb-dev"
@@ -933,6 +943,16 @@ resource "aws_route53_record" "datagov_ssbdev_ns" {
   ]
 }
 
+resource "aws_route53_record" "datagov_ssbdev_ds" {
+ zone_id = aws_route53_zone.datagov_zone.zone_id
+ name    = "ssb-dev"
+ type    = "DS"
+
+ ttl     = 30
+ records = ["46864 13 2 B834DCEE0727D7864D11E31276F3BDE5B35F7D9744F3BEFF042F21B9FF864E1D"]
+
+}
+
 resource "aws_route53_record" "datagov_ssbstaging_ns" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "ssb-staging"
@@ -945,6 +965,16 @@ resource "aws_route53_record" "datagov_ssbstaging_ns" {
     "ns-890.awsdns-47.net.",
     "ns-1056.awsdns-04.org."
   ]
+}
+
+resource "aws_route53_record" "datagov_ssbstaging_ds" {
+ zone_id = aws_route53_zone.datagov_zone.zone_id
+ name    = "ssb-staging"
+ type    = "DS"
+
+ ttl     = 30
+ records = ["28358 13 2 7D70709ECEEA84A93A19277C126F2747AB5655A285731F7D31F39E24F4DD5040"]
+
 }
 
 resource "aws_route53_record" "datagov__txt" {
