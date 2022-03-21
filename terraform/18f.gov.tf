@@ -161,28 +161,20 @@ resource "aws_route53_record" "d_18f_gov_agile_18f_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "d_18f_gov_agile-labor-categories_18f_gov_a" {
+resource "aws_route53_record" "d_18f_gov__acme_challenge_agile-labor-categories_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "agile-labor-categories.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d1p2fryyhm3d02.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.agile-labor-categories.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.agile-labor-categories.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_agile-labor-categories_18f_gov_aaaa" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "agile-labor-categories.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d1p2fryyhm3d02.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+# resource "aws_route53_record" "d_18f_gov_agile-labor-categories_18f_gov_cname" {
+#   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+#   name    = "agile-labor-categories.18f.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["agile-labor-categories.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov_api_18f_gov_cname" {
@@ -296,6 +288,22 @@ resource "aws_route53_record" "d_18f_gov_api-usability-testing_18f_gov_aaaa" {
     evaluate_target_health = false
   }
 }
+
+resource "aws_route53_record" "d_18f_gov__acme_challenge_atf-eregs_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.atf-eregs.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.atf-eregs.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# resource "aws_route53_record" "d_18f_gov_atf-eregs_18f_gov_cname" {
+#   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+#   name    = "atf-eregs.18f.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["atf-eregs.18f.gov.external-domains-production.cloud.gov."]
+# }
 
 resource "aws_route53_record" "d_18f_gov_atf-eregs_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
@@ -1163,29 +1171,21 @@ resource "aws_route53_record" "d_18f_gov_plain-language-tutorial_18f_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "d_18f_gov_private-eye_18f_gov_a" {
+resource "aws_route53_record" "d_18f_gov__acme_challenge_private-eye_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "private-eye.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d3asgf5hc4zmll.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.private-eye.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.private-eye.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_private-eye_18f_gov_aaaa" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "private-eye.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d3asgf5hc4zmll.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
+# resource "aws_route53_record" "d_18f_gov_private-eye_18f_gov_cname" {
+#   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+#   name    = "private-eye.18f.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["private-eye.18f.gov.external-domains-production.cloud.gov."]
+# }
 
 resource "aws_route53_record" "d_18f_gov_product-guide_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
