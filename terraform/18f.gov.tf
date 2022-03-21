@@ -175,7 +175,7 @@ resource "aws_route53_record" "d_18f_gov__acme_challenge_agile-labor-categories_
 #   type    = "CNAME"
 #   ttl     = 120
 #   records = ["agile-labor-categories.18f.gov.external-domains-production.cloud.gov."]
-}
+# }
 
 resource "aws_route53_record" "d_18f_gov_api_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
