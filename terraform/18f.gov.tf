@@ -301,8 +301,8 @@ resource "aws_route53_record" "d_18f_gov_atf-eregs_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "atf-eregs.18f.gov."
   type    = "CNAME"
-  ttl     = 120
-  records = ["atf-eregs.18f.gov.external-domains-production.cloud.gov."]
+  ttl     = 300
+  records = ["d1a8iv0i0iazmn.cloudfront.net"]
 }
 
 # resource "aws_route53_record" "d_18f_gov_atf-eregs_18f_gov_cname" {
