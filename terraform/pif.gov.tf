@@ -127,7 +127,7 @@ resource "aws_route53_record" "fellows_in_innovation_pif_cname" {
   records = ["d3at1jdwnpqw7w.cloudfront.net"]
 }
 
-resource "aws_route53_record" "d_18f_gov__acme_challenge_paygap_pif_cname" {
+resource "aws_route53_record" "d_pif_gov__acme_challenge_paygap_pif_cname" {
   zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "_acme-challenge.paygap.pif.gov."
   type    = "CNAME"
@@ -143,7 +143,7 @@ resource "aws_route53_record" "d_18f_gov__acme_challenge_paygap_pif_cname" {
 #   records = ["d2qm19v1sj7zt0.cloudfront.net"]
 # }
 
-resource "aws_route53_record" "d_18f_gov__acme_challenge_tophealth_pif_cname" {
+resource "aws_route53_record" "d_pif_gov__acme_challenge_tophealth_pif_cname" {
   zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "_acme-challenge.tophealth.pif.gov."
   type    = "CNAME"
