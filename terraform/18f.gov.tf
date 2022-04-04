@@ -169,13 +169,13 @@ resource "aws_route53_record" "d_18f_gov__acme_challenge_agile-labor-categories_
   records = ["_acme-challenge.agile-labor-categories.18f.gov.external-domains-production.cloud.gov."]
 }
 
-# resource "aws_route53_record" "d_18f_gov_agile-labor-categories_18f_gov_cname" {
-#   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-#   name    = "agile-labor-categories.18f.gov."
-#   type    = "CNAME"
-#   ttl     = 120
-#   records = ["agile-labor-categories.18f.gov.external-domains-production.cloud.gov."]
-# }
+resource "aws_route53_record" "d_18f_gov_agile-labor-categories_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "agile-labor-categories.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["agile-labor-categories.18f.gov.external-domains-production.cloud.gov."]
+}
 
 resource "aws_route53_record" "d_18f_gov_api_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
@@ -297,20 +297,12 @@ resource "aws_route53_record" "d_18f_gov__acme_challenge_atf-eregs_18f_gov_cname
   records = ["_acme-challenge.atf-eregs.18f.gov.external-domains-production.cloud.gov."]
 }
 
-# resource "aws_route53_record" "d_18f_gov_atf-eregs_18f_gov_cname" {
-#   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-#   name    = "atf-eregs.18f.gov."
-#   type    = "CNAME"
-#   ttl     = 120
-#   records = ["atf-eregs.18f.gov.external-domains-production.cloud.gov."]
-# }
-
 resource "aws_route53_record" "d_18f_gov_atf-eregs_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "atf-eregs.18f.gov."
   type    = "CNAME"
-  ttl     = 300
-  records = ["d1a8iv0i0iazmn.cloudfront.net"]
+  ttl     = 120
+  records = ["atf-eregs.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov_atul-docker-presentation_18f_gov_a" {
@@ -1179,13 +1171,13 @@ resource "aws_route53_record" "d_18f_gov__acme_challenge_private-eye_18f_gov_cna
   records = ["_acme-challenge.private-eye.18f.gov.external-domains-production.cloud.gov."]
 }
 
-# resource "aws_route53_record" "d_18f_gov_private-eye_18f_gov_cname" {
-#   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-#   name    = "private-eye.18f.gov."
-#   type    = "CNAME"
-#   ttl     = 120
-#   records = ["private-eye.18f.gov.external-domains-production.cloud.gov."]
-# }
+resource "aws_route53_record" "d_18f_gov_private-eye_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "private-eye.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["private-eye.18f.gov.external-domains-production.cloud.gov."]
+}
 
 resource "aws_route53_record" "d_18f_gov_product-guide_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
