@@ -135,13 +135,13 @@ resource "aws_route53_record" "d_pif_gov__acme_challenge_paygap_pif_cname" {
   records = ["_acme-challenge.paygap.pif.gov.external-domains-production.cloud.gov."]
 }
   
-# resource "aws_route53_record" "paygap_pif_cname" {
-#   zone_id = aws_route53_zone.pif_toplevel.zone_id
-#   name    = "paygap.pif.gov."
-#   type    = "CNAME"
-#   ttl     = 300
-#   records = ["d2qm19v1sj7zt0.cloudfront.net"]
-# }
+resource "aws_route53_record" "paygap_pif_cname" {
+  zone_id = aws_route53_zone.pif_toplevel.zone_id
+  name    = "paygap.pif.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["paygap.pif.gov.external-domains-production.cloud.gov."]
+}
 
 resource "aws_route53_record" "d_pif_gov__acme_challenge_tophealth_pif_cname" {
   zone_id = aws_route53_zone.pif_toplevel.zone_id
@@ -151,13 +151,13 @@ resource "aws_route53_record" "d_pif_gov__acme_challenge_tophealth_pif_cname" {
   records = ["_acme-challenge.tophealth.pif.gov.external-domains-production.cloud.gov."]
 }
 
-# resource "aws_route53_record" "tophealth_pif_cname" {
-#  zone_id = aws_route53_zone.pif_toplevel.zone_id
-#  name    = "tophealth.pif.gov."
-#  type    = "CNAME"
-#  ttl     = 300
-#  records = ["d2c5jlxyl3tdbm.cloudfront.net"]
-#}
+resource "aws_route53_record" "tophealth_pif_cname" {
+ zone_id = aws_route53_zone.pif_toplevel.zone_id
+ name    = "tophealth.pif.gov."
+ type    = "CNAME"
+ ttl     = 120
+ records = ["tophealth.pif.gov.external-domains-production.cloud.gov."]
+}
 
 resource "aws_route53_record" "review_cname" {
   zone_id = aws_route53_zone.pif_toplevel.zone_id
