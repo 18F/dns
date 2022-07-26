@@ -70,7 +70,7 @@ resource "aws_route53_record" "staging_vote_gov_cname" {
   records = ["d3rjcr7wk6cbst.cloudfront.net."]
 }
 
-resource "aws_route53_record" "staging_vote_gov_cname" {
+resource "aws_route53_record" "search_vote_gov_cname" {
   zone_id = aws_route53_zone.vote_gov_zone.zone_id
   name    = "search.vote.gov."
   type    = "CNAME"
