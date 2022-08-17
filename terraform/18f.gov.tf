@@ -658,7 +658,15 @@ resource "aws_route53_record" "d_18f_gov_federalist_18f_gov_cname" {
   name    = "federalist.18f.gov."
   type    = "CNAME"
   ttl     = 60
-  records = ["d189ghshxys967.cloudfront.net"]
+  records = ["federalist.18f.gov.external-domains-production.cloud.gov"]
+}
+
+resource "aws_route53_record" "d_18f_gov_acme_challenge_federalist_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.federalist.18f.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["_acme-challenge.federalist.18f.gov.external-domains-production.cloud.gov"]
 }
 
 resource "aws_route53_record" "d_18f_gov_federalistapp_18f_gov_cname" {
