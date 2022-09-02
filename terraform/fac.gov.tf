@@ -22,6 +22,15 @@ resource "aws_route53_record" "d_fac_gov__acme_challenge_wwwfac_cname" {
   records = ["_acme-challenge.www.fac.gov.external-domains-production.cloud.gov."]
 }
 
+module "fac_gov__email_security" {
+  source = "./email_security"
+
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
+  txt_records = [
+    local.spf_no_mail
+  ]
+}
+
 output "fac_gov_ns" {
   value = aws_route53_zone.fac_gov_zone.name_servers
 }
