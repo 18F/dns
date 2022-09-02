@@ -6,20 +6,36 @@ resource "aws_route53_zone" "fac_gov_zone" {
   }
 }
 
-resource "aws_route53_record" "d_fac_gov__acme_challenge_fac_gov_cname" {
+resource "aws_route53_record" "fac_gov__fac_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "fac.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["fac.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "fac_gov__www_fac_gov_cname" {
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
+  name    = "www.fac.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["fac.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "fac_gov__acme_challenge_fac_gov_cname" {
   zone_id = aws_route53_zone.fac_gov_zone.zone_id
   name    = "_acme-challenge.fac.gov."
   type    = "CNAME"
-  ttl     = 120
+  ttl     = 60
   records = ["_acme-challenge.fac.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_fac_gov__acme_challenge_wwwfac_cname" {
+resource "aws_route53_record" "fac_gov__acme_challenge_www_fac_cname" {
   zone_id = aws_route53_zone.fac_gov_zone.zone_id
   name    = "_acme-challenge.www.fac.gov."
   type    = "CNAME"
-  ttl     = 120
-  records = ["_acme-challenge.www.fac.gov.external-domains-production.cloud.gov."]
+  ttl     = 60
+  records = ["_acme-challenge.fac.gov.external-domains-production.cloud.gov."]
 }
 
 module "fac_gov__email_security" {
