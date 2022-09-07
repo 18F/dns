@@ -10,24 +10,16 @@ resource "aws_route53_record" "tts_gsa_gov_a" {
   zone_id = aws_route53_zone.tts_gsa_gov_zone.zone_id
   name    = "tts.gsa.gov."
   type    = "A"
-
-  alias {
-    name                   = "159.142.191.107"
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  records = ["159.142.191.107"]
+  ttl     = "300"
 }
 
 resource "aws_route53_record" "tts_gsa_gov_aaaa" {
   zone_id = aws_route53_zone.tts_gsa_gov_zone.zone_id
   name    = "tts.gsa.gov."
   type    = "AAAA"
-
-  alias {
-    name                   = "159.142.191.107"
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  records = ["159.142.191.107"]
+  ttl     = "300"
 }
 
 resource "aws_route53_record" "join_tts_gsa_gov" {
