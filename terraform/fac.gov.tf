@@ -7,7 +7,7 @@ resource "aws_route53_zone" "fac_gov_zone" {
 }
 
 resource "aws_route53_record" "fac_gov__fac_gov_cname" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
   name    = "fac.gov."
   type    = "CNAME"
   ttl     = 60
