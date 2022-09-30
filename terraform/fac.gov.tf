@@ -12,7 +12,7 @@ resource "aws_route53_record" "fac_gov_fac_gov_a" {
   type    = "A"
 
   alias {
-    name                   = "fac.gov.external-domains-production.cloud.gov."
+    name                   = "d3bkpuj8pzucbe.cloudfront.net"
     zone_id                = local.cloud_gov_cloudfront_zone_id
     evaluate_target_health = false
   }
@@ -24,7 +24,7 @@ resource "aws_route53_record" "fac_gov_fac_gov_aaaa" {
   type    = "AAAA"
 
   alias {
-    name                   = "fac.gov.external-domains-production.cloud.gov."
+    name                   = "d3bkpuj8pzucbe.cloudfront.net"
     zone_id                = local.cloud_gov_cloudfront_zone_id
     evaluate_target_health = false
   }
