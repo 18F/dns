@@ -19,6 +19,18 @@ resource "aws_route53_zone" "fac_gov_zone" {
 #   }
 # }
 
+# resource "aws_route53_record" "fac_gov_fac_gov_apex" {
+#   zone_id = aws_route53_zone.fac_gov_zone.zone_id
+#   name    = "fac.gov."
+#   type    = "AAAA"
+
+#   alias {
+#     name                   = "fac.gov.external-domains-production.cloud.gov."
+#     zone_id                = local.cloud_gov_cloudfront_zone_id
+#     evaluate_target_health = false
+#   }
+# }
+
 resource "aws_route53_record" "fac_gov__acme_challenge_fac_gov_cname" {
   zone_id = aws_route53_zone.fac_gov_zone.zone_id
   name    = "_acme-challenge.fac.gov."
