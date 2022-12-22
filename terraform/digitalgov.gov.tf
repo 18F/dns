@@ -122,6 +122,20 @@ resource "aws_route53_record" "find_digitalgov_gov_a" {
   ]
 }
 
+# U.S. Digital Registry
+# Redirects to cloud.gov External Domains using https://github.com/18f/pages-redirects
+# Contact feedback-analytics@gsa.gov regarding changes
+
+# U.S. Digital Registry (staging)
+# stage-socialmobileregistry.digitalgov.gov
+resource "aws_route53_record" "redirect_stage_socialmobileregistry_digitalgov_gov" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "_acme-challenge.stage-socialmobileregistry.digitalgov.gov"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["_acme-challenge.stage-socialmobileregistry.digitalgov.gov.external-domains-production.cloud.gov."]
+}
+
 # END REDIRECTS
 
 # =================================
@@ -137,18 +151,6 @@ resource "aws_route53_record" "usdigitalregistry_digitalgov_gov_a" {
   ttl     = "300"
   records = [
     "alb-smr-prod-pub-2-970074805.us-east-1.elb.amazonaws.com."
-  ]
-}
-
-# U.S. Digital Registry / Staging
-# stage-socialmobileregistry.digitalgov.gov
-resource "aws_route53_record" "stage-socialmobileregistry_digitalgov_gov_a" {
-  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
-  name    = "stage-socialmobileregistry.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "alb-scmdrg-stg-digitalgov-pub-1-286604225.us-east-1.elb.amazonaws.com."
   ]
 }
 
