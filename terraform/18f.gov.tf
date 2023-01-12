@@ -1227,14 +1227,6 @@ resource "aws_route53_record" "d_18f_gov_requests_18f_gov_cname" {
   records = ["d2ukxgg8kqcdx6.cloudfront.net."]
 }
 
-resource "aws_route53_record" "d_18f_gov_tmate_18f_gov_a" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "tmate.18f.gov."
-  type    = "A"
-  ttl     = 300
-  records = ["52.22.14.222"]
-}
-
 resource "aws_route53_record" "d_18f_gov_testing-cookbook_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "testing-cookbook.18f.gov."
