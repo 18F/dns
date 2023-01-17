@@ -376,13 +376,13 @@ resource "aws_route53_record" "datagov_agricultureagriculturedatagovexternaldoma
 }
 
 
-resource "aws_route53_record" "datagov_catalogd2friv3a0qqhqwcloudfrontnet_cname" {
+resource "aws_route53_record" "datagov_catalogd2s65feajdp88kcloudfrontnet_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "catalog"
   type    = "CNAME"
 
   ttl     = 300
-  records = ["d2friv3a0qqhqw.cloudfront.net"]
+  records = ["d2s65feajdp88k.cloudfront.net"]
 
 }
 
