@@ -376,13 +376,13 @@ resource "aws_route53_record" "datagov_agricultureagriculturedatagovexternaldoma
 }
 
 
-resource "aws_route53_record" "datagov_catalogd2friv3a0qqhqwcloudfrontnet_cname" {
+resource "aws_route53_record" "datagov_catalogd2s65feajdp88kcloudfrontnet_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "catalog"
   type    = "CNAME"
 
   ttl     = 300
-  records = ["d2friv3a0qqhqw.cloudfront.net"]
+  records = ["d2s65feajdp88k.cloudfront.net"]
 
 }
 
@@ -1099,3 +1099,13 @@ resource "aws_route53_record" "datagov_dmarcvDMARC1prejectfo1pct100ri86400ruamai
 
 }
 
+
+resource "aws_route53_record" "datagov_00bc66d9e476816ba3d1521a99299217catalog8f05f6bd13f92abbf416a1a1bebd7a94xmkpffzlvdacmvalidationsaws_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "_00bc66d9e476816ba3d1521a99299217.catalog"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["_8f05f6bd13f92abbf416a1a1bebd7a94.xmkpffzlvd.acm-validations.aws."]
+
+}
