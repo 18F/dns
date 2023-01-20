@@ -130,20 +130,20 @@ resource "aws_route53_record" "find_digitalgov_gov_a" {
 # usdigitalregistry.digitalgov.gov
 resource "aws_route53_record" "redirect_usdigitalregistry_digitalgov_gov" {
   zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
-  name    = "_acme-challenge.usdigitalregistry.digitalgov.gov."
+  name    = "usdigitalregistry.digitalgov.gov."
   type    = "CNAME"
   ttl     = 300
-  records = ["_acme-challenge.usdigitalregistry.digitalgov.gov.external-domains-production.cloud.gov."]
+  records = ["usdigitalregistry.digitalgov.gov.external-domains-production.cloud.gov."]
 }
 
 # U.S. Digital Registry (www)
 # www.usdigitalregistry.digitalgov.gov
 resource "aws_route53_record" "redirect_www_usdigitalregistry_digitalgov_gov" {
   zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
-  name    = "_acme-challenge.www.usdigitalregistry.digitalgov.gov."
+  name    = "www.usdigitalregistry.digitalgov.gov."
   type    = "CNAME"
   ttl     = 300
-  records = ["_acme-challenge.usdigitalregistry.digitalgov.gov.external-domains-production.cloud.gov."]
+  records = ["usdigitalregistry.digitalgov.gov.external-domains-production.cloud.gov."]
 }
 
 # END REDIRECTS
