@@ -122,46 +122,35 @@ resource "aws_route53_record" "find_digitalgov_gov_a" {
   ]
 }
 
+# U.S. Digital Registry
+# Redirects to cloud.gov External Domains using https://github.com/18f/pages-redirects
+# Contact feedback-analytics@gsa.gov regarding changes
+
+# U.S. Digital Registry
+# usdigitalregistry.digitalgov.gov
+resource "aws_route53_record" "redirect_usdigitalregistry_digitalgov_gov" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "usdigitalregistry.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = 300
+  records = ["usdigitalregistry.digitalgov.gov.external-domains-production.cloud.gov."]
+}
+
+# U.S. Digital Registry
+# usdigitalregistry.digitalgov.gov ACME Challenge
+resource "aws_route53_record" "acme_challenge_usdigitalregistry_digitalgov_gov" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "_acme-challenge.usdigitalregistry.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = 300
+  records = ["_acme-challenge.usdigitalregistry.digitalgov.gov.external-domains-production.cloud.gov."]
+}
+
 # END REDIRECTS
 
 # =================================
 
 # SERVICES
-
-# U.S. Digital Registry
-# usdigitalregistry.digitalgov.gov
-resource "aws_route53_record" "usdigitalregistry_digitalgov_gov_a" {
-  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
-  name    = "usdigitalregistry.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "alb-smr-prod-pub-2-970074805.us-east-1.elb.amazonaws.com."
-  ]
-}
-
-# U.S. Digital Registry / Staging
-# stage-socialmobileregistry.digitalgov.gov
-resource "aws_route53_record" "stage-socialmobileregistry_digitalgov_gov_a" {
-  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
-  name    = "stage-socialmobileregistry.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "alb-scmdrg-stg-digitalgov-pub-1-286604225.us-east-1.elb.amazonaws.com."
-  ]
-}
-
-# U.S. Digital Registry / Certificate Verification
-resource "aws_route53_record" "verification_usdigitalregistry_digitalgov_gov_a" {
-  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
-  name    = "_D670A36BBFD8C7415F5A5997E8DD36A6.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = "300"
-  records = [
-    "289FD47634D927D0054C6123597F4F24.FF461CB01C73BC95FD87C0AE0955A9CC.5e2f421173150.comodoca.com."
-  ]
-}
 
 # Digital Analytics Program (DAP) —
 # dap.digitalgov.gov
