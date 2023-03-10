@@ -387,6 +387,28 @@ resource "aws_route53_record" "datagov_catalogd2s65feajdp88kcloudfrontnet_cname"
 }
 
 
+resource "aws_route53_record" "datagov_catalogstaged1u59lafwydg4acloudfrontnet_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "catalog-stage"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["d1u59lafwydg4a.cloudfront.net"]
+
+}
+
+
+resource "aws_route53_record" "datagov_catalogdevd2jqk88ququ1n9cloudfrontnet_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "catalog-dev"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["d2jqk88ququ1n9.cloudfront.net"]
+
+}
+
+
 resource "aws_route53_record" "datagov_catalogbspnspocsitnethelixgsagov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "catalog-bsp"
@@ -1107,5 +1129,26 @@ resource "aws_route53_record" "datagov_00bc66d9e476816ba3d1521a99299217catalog8f
 
   ttl     = 300
   records = ["_8f05f6bd13f92abbf416a1a1bebd7a94.xmkpffzlvd.acm-validations.aws."]
+
+}
+
+
+resource "aws_route53_record" "datagov_bafcc0ee223ea343cb6b478aa300a182catalogstagefb09f0b389b6e9a8eeefc817364e9df9cltjbwlkcyacmvalidationsaws_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "_bafcc0ee223ea343cb6b478aa300a182.catalog-stage"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["_fb09f0b389b6e9a8eeefc817364e9df9.cltjbwlkcy.acm-validations.aws."]
+}
+
+
+resource "aws_route53_record" "datagov_108d9367ec7e67814fe17cc2a0173a81catalogdevfb09f0b389b6e9a8eeefc817364e9df9cltjbwlkcyacmvalidationsaws_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "_108d9367ec7e67814fe17cc2a0173a81.catalog-dev"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["_fb09f0b389b6e9a8eeefc817364e9df9.cltjbwlkcy.acm-validations.aws."]
 
 }
