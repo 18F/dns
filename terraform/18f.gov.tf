@@ -669,6 +669,22 @@ resource "aws_route53_record" "d_18f_gov_acme_challenge_federalist_18f_gov_cname
   records = ["_acme-challenge.federalist.18f.gov.external-domains-production.cloud.gov"]
 }
 
+resource "aws_route53_record" "d_18f_gov_federalistapp_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "federalistapp.18f.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["federalistapp.18f.gov.external-domains-production.cloud.gov"]
+}
+
+resource "aws_route53_record" "d_18f_gov_acme_challenge_federalistapp_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.federalistapp.18f.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["_acme-challenge.federalistapp.18f.gov.external-domains-production.cloud.gov"]
+}
+
 resource "aws_route53_record" "d_18f_gov_files_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "files.18f.gov."
