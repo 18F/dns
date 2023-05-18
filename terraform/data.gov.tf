@@ -387,6 +387,28 @@ resource "aws_route53_record" "datagov_energyenergydatagovexternaldomainsproduct
 }
 
 
+resource "aws_route53_record" "datagov_federationd27ayqvgdtxgg3cloudfrontnet_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "federation"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["d27ayqvgdtxgg3.cloudfront.net"]
+
+}
+
+
+resource "aws_route53_record" "datagov_federationstagingd30aqfbz27ewe7cloudfrontnet_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "federation-staging"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["d30aqfbz27ewe7.cloudfront.net"]
+
+}
+
+
 resource "aws_route53_record" "datagov_foodfooddatagovexternaldomainsproductioncloudgov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "food"
