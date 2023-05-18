@@ -109,7 +109,7 @@ resource "aws_route53_record" "datagov_34193244109_a" {
 
   alias {
     name                   = "dg7ira9sfp69m.cloudfront.net."
-    zone_id                =  local.cloud_gov_cloudfront_zone_id
+    zone_id                = local.cloud_gov_cloudfront_zone_id
     evaluate_target_health = false
   }
 }
@@ -121,7 +121,7 @@ resource "aws_route53_record" "datagov_aaaa" {
 
   alias {
     name                   = "dg7ira9sfp69m.cloudfront.net."
-    zone_id                =  local.cloud_gov_cloudfront_zone_id
+    zone_id                = local.cloud_gov_cloudfront_zone_id
     evaluate_target_health = false
   }
 }
@@ -310,17 +310,6 @@ resource "aws_route53_record" "datagov_acmechallengewwwacmechallengewwwdatagovex
 }
 
 
-resource "aws_route53_record" "datagov_aapinspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "aapi"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
 resource "aws_route53_record" "datagov_admincatalogadmincatalogbspdatagov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "admin-catalog"
@@ -328,39 +317,6 @@ resource "aws_route53_record" "datagov_admincatalogadmincatalogbspdatagov_cname"
 
   ttl     = 300
   records = ["admin-catalog-bsp.data.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_admincatalogbspnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "admin-catalog-bsp"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_admincatalognextnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "admin-catalog-next"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_agnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ag"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
 
@@ -387,50 +343,6 @@ resource "aws_route53_record" "datagov_catalogd2s65feajdp88kcloudfrontnet_cname"
 }
 
 
-resource "aws_route53_record" "datagov_catalogbspnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "catalog-bsp"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_catalognextnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "catalog-next"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_cinspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ci"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_citiesnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "cities"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
 resource "aws_route53_record" "datagov_climateclimatedatagovexternaldomainsproductioncloudgov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "climate"
@@ -438,17 +350,6 @@ resource "aws_route53_record" "datagov_climateclimatedatagovexternaldomainsprodu
 
   ttl     = 300
   records = ["climate.data.gov.external-domains-production.cloud.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_countiesnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "counties"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
 
@@ -464,28 +365,6 @@ resource "aws_route53_record" "datagov_dashboarddashboarddatagovexternaldomainsp
 }
 
 
-resource "aws_route53_record" "datagov_dashboardbspnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "dashboard-bsp"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_dashboardlabsdashboardbspdatagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "dashboard-labs"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["dashboard-bsp.data.gov"]
-
-}
-
-
 resource "aws_route53_record" "datagov_developerdeveloperdatagovexternaldomainsproductioncloudgov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "developer"
@@ -493,28 +372,6 @@ resource "aws_route53_record" "datagov_developerdeveloperdatagovexternaldomainsp
 
   ttl     = 300
   records = ["developer.data.gov.external-domains-production.cloud.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_ednspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ed"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_educationnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "education"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
 
@@ -530,50 +387,6 @@ resource "aws_route53_record" "datagov_energyenergydatagovexternaldomainsproduct
 }
 
 
-resource "aws_route53_record" "datagov_ethicsnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "ethics"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_federationd27ayqvgdtxgg3cloudfrontnet_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "federation"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["d27ayqvgdtxgg3.cloudfront.net"]
-
-}
-
-
-resource "aws_route53_record" "datagov_federationstagingd30aqfbz27ewe7cloudfrontnet_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "federation-staging"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["d30aqfbz27ewe7.cloudfront.net"]
-
-}
-
-
-resource "aws_route53_record" "datagov_filestorenspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "filestore"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
 resource "aws_route53_record" "datagov_foodfooddatagovexternaldomainsproductioncloudgov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "food"
@@ -581,39 +394,6 @@ resource "aws_route53_record" "datagov_foodfooddatagovexternaldomainsproductionc
 
   ttl     = 300
   records = ["food.data.gov.external-domains-production.cloud.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_foodsecuritynspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "foodsecurity"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_geospatialnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "geospatial"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_healthnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "health"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
 
@@ -651,39 +431,6 @@ resource "aws_route53_record" "datagov_labslabsdatagovexternaldomainsproductionc
 }
 
 
-resource "aws_route53_record" "datagov_labsbspnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "labs-bsp"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_noticenspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "notice"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_nutritionnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "nutrition"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
 resource "aws_route53_record" "datagov_oceanoceandatagovexternaldomainsproductioncloudgov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "ocean"
@@ -702,17 +449,6 @@ resource "aws_route53_record" "datagov_originsdatagovwwwdatalbgsaakadnsnet_cname
 
   ttl     = 300
   records = ["wwwdata.lb.gsa.akadns.net"]
-
-}
-
-
-resource "aws_route53_record" "datagov_referencenspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "reference"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
 
@@ -739,28 +475,6 @@ resource "aws_route53_record" "datagov_resourcesstagingd13l8e1a7ekkcacloudfrontn
 }
 
 
-resource "aws_route53_record" "datagov_ruralnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "rural"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_sbxnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "sbx"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
 resource "aws_route53_record" "datagov_sdgd1z5ray7fqefkvcloudfrontnet_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "sdg"
@@ -779,72 +493,6 @@ resource "aws_route53_record" "datagov_sdgstagingdhrxft6loyu0ncloudfrontnet_cnam
 
   ttl     = 300
   records = ["dhrxft6loyu0n.cloudfront.net"]
-
-}
-
-
-resource "aws_route53_record" "datagov_searchnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "search"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_semanticnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "semantic"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_servicesnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "services"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_sitesnextnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "sites-next"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_statesnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "states"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_staticbspnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "static-bsp"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
 
 }
 
@@ -869,18 +517,6 @@ resource "aws_route53_record" "datagov_strategystagingd97qwv40ba5n0cloudfrontnet
   records = ["d97qwv40ba5n0.cloudfront.net"]
 
 }
-
-
-resource "aws_route53_record" "datagov_wpbspnspocsitnethelixgsagov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "wp-bsp"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["nsp-ocsit.net.helix.gsa.gov"]
-
-}
-
 
 resource "aws_route53_record" "datagov_wwwd36thseoamvwaacloudfrontnet_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
@@ -920,12 +556,12 @@ resource "aws_route53_record" "datagov_ssb_ns" {
 }
 
 resource "aws_route53_record" "datagov_ssb_ds" {
- zone_id = aws_route53_zone.datagov_zone.zone_id
- name    = "ssb"
- type    = "DS"
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "ssb"
+  type    = "DS"
 
- ttl     = 30
- records = ["4862 13 2 F9C2CD8A4F6AF7EFE48A630EE4AD53431636310D1306A7608D27C7B011CA20B9"]
+  ttl     = 30
+  records = ["4862 13 2 F9C2CD8A4F6AF7EFE48A630EE4AD53431636310D1306A7608D27C7B011CA20B9"]
 
 }
 
@@ -944,12 +580,12 @@ resource "aws_route53_record" "datagov_ssbdev_ns" {
 }
 
 resource "aws_route53_record" "datagov_ssbdev_ds" {
- zone_id = aws_route53_zone.datagov_zone.zone_id
- name    = "ssb-dev"
- type    = "DS"
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "ssb-dev"
+  type    = "DS"
 
- ttl     = 30
- records = ["46864 13 2 B834DCEE0727D7864D11E31276F3BDE5B35F7D9744F3BEFF042F21B9FF864E1D"]
+  ttl     = 30
+  records = ["46864 13 2 B834DCEE0727D7864D11E31276F3BDE5B35F7D9744F3BEFF042F21B9FF864E1D"]
 
 }
 
@@ -968,12 +604,12 @@ resource "aws_route53_record" "datagov_ssbstaging_ns" {
 }
 
 resource "aws_route53_record" "datagov_ssbstaging_ds" {
- zone_id = aws_route53_zone.datagov_zone.zone_id
- name    = "ssb-staging"
- type    = "DS"
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "ssb-staging"
+  type    = "DS"
 
- ttl     = 30
- records = ["28358 13 2 7D70709ECEEA84A93A19277C126F2747AB5655A285731F7D31F39E24F4DD5040"]
+  ttl     = 30
+  records = ["28358 13 2 7D70709ECEEA84A93A19277C126F2747AB5655A285731F7D31F39E24F4DD5040"]
 
 }
 
