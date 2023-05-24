@@ -57,7 +57,7 @@ resource "aws_route53_record" "notify_gov_dmarc" {
     type = "TXT"
 
     ttl = 600
-    records = ["v=DMARC1; p=reject; pct=100; fo=1; ri=86400; rua=mailto:notify-support@gsa.gov; ruf=mailto:notify-support@gsa.gov"]
+    records = ["v=DMARC1; p=reject; pct=100; fo=1; ri=86400; rua=mailto:notify-support@gsa.gov,mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:notify-support@gsa.gov,mailto:dmarcfailures@gsa.gov"]
 }
 
 resource "aws_route53_record" "notify_gov_spf" {
