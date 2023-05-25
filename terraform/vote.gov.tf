@@ -63,12 +63,12 @@ resource "aws_route53_record" "dev_files_vote_gov_cname" {
   records = ["cg-2f9c7fcb-b096-4a37-b184-a88e1b031105.s3-us-gov-west-1.amazonaws.com."]
 }
 
-#                     _ 
-# _ __  _ __ ___   __| |
-#| '_ \| '__/ _ \ / _` |
-#| |_) | | | (_) | (_| |
-#| .__/|_|  \___/ \__,_|
-#|_|                    
+#                      _ 
+#  _ __  _ __ ___   __| |
+# | '_ \| '__/ _ \ / _` |
+# | |_) | | | (_) | (_| |
+# | .__/|_|  \___/ \__,_|
+# |_|                    
 #
 
 resource "aws_route53_record" "prod__acme_challenge_ssg_prod_vote_gov_cname" {
@@ -100,7 +100,7 @@ resource "aws_route53_record" "prod_cms_vote_gov_cname" {
   name    = "cms.vote.gov."
   type    = "CNAME"
   ttl     = 120
-  records = ["vote-waf-stage.app.cloud.gov."]
+  records = ["vote-waf-prod.app.cloud.gov."]
 }
 
 resource "aws_route53_record" "prod_files_vote_gov_cname" {
