@@ -60,7 +60,17 @@ resource "aws_route53_record" "notify_gov_dmarc" {
     records = ["v=DMARC1; p=reject; pct=100; fo=1; ri=86400; rua=mailto:notify-support@gsa.gov,mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:notify-support@gsa.gov,mailto:dmarcfailures@gsa.gov"]
 }
 
+
 resource "aws_route53_record" "notify_gov_spf" {
+    zone_id = aws_route53_zone.notify_gov_zone.zone_id
+    name = "notify.gov"
+    type = "TXT"
+
+    ttl = 600
+    records = ["v=spf1 include:amazonses.com -all"]
+}
+
+resource "aws_route53_record" "notify_gov_mail_spf" {
     zone_id = aws_route53_zone.notify_gov_zone.zone_id
     name = "mail"
     type = "TXT"
