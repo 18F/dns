@@ -61,7 +61,7 @@ resource "aws_route53_record" "notify_gov_dmarc" {
 }
 
 
-resource "aws_route53_record" "notify_gov_spf" {
+resource "aws_route53_record" "notify_gov_root_spf" {
     zone_id = aws_route53_zone.notify_gov_zone.zone_id
     name = "notify.gov"
     type = "TXT"
@@ -70,7 +70,7 @@ resource "aws_route53_record" "notify_gov_spf" {
     records = ["v=spf1 include:amazonses.com -all"]
 }
 
-resource "aws_route53_record" "notify_gov_mail_spf" {
+resource "aws_route53_record" "notify_gov_spf" {
     zone_id = aws_route53_zone.notify_gov_zone.zone_id
     name = "mail"
     type = "TXT"
@@ -109,6 +109,15 @@ resource "aws_route53_record" "notify_gov_ssb_ds" {
 
     ttl = 600
     records = ["62629 13 2 2626E4C8594EA7F41B0F8C471FA50F9334A33F8E4EC17FD38556D90EB926163E"]
+}
+
+module "notify_gov_email_security" {
+  source = "./email_security"
+
+  zone_id = aws_route53_zone.notify_gov_zone.zone_id
+  txt_records = [
+    local.spf_no_mail
+  ]
 }
 
 output "notify_gov_ns" {
