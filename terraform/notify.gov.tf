@@ -69,6 +69,15 @@ resource "aws_route53_record" "notify_gov_spf" {
     records = ["v=spf1 include:amazonses.com -all"]
 }
 
+resource "aws_route53_record" "notify_gov_txt" {
+    zone_id = aws_route53_zone.notify_gov_zone.zone_id
+    name = ""
+    type = "TXT"
+
+    ttl = 600
+    records = ["v=spf1 include:amazonses.com -all"]
+}
+
 resource "aws_route53_record" "notify_gov_mx" {
     zone_id = aws_route53_zone.notify_gov_zone.zone_id
     name = "mail"
