@@ -60,19 +60,18 @@ resource "aws_route53_record" "notify_gov_dmarc" {
     records = ["v=DMARC1; p=reject; pct=100; fo=1; ri=86400; rua=mailto:notify-support@gsa.gov,mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:notify-support@gsa.gov,mailto:dmarcfailures@gsa.gov"]
 }
 
-
-resource "aws_route53_record" "notify_gov_root_spf" {
+resource "aws_route53_record" "notify_gov_spf" {
     zone_id = aws_route53_zone.notify_gov_zone.zone_id
-    name = "notify.gov"
+    name = "mail"
     type = "TXT"
 
     ttl = 600
     records = ["v=spf1 include:amazonses.com -all"]
 }
 
-resource "aws_route53_record" "notify_gov_spf" {
+resource "aws_route53_record" "notify_gov_txt" {
     zone_id = aws_route53_zone.notify_gov_zone.zone_id
-    name = "mail"
+    name = ""
     type = "TXT"
 
     ttl = 600
@@ -109,15 +108,6 @@ resource "aws_route53_record" "notify_gov_ssb_ds" {
 
     ttl = 600
     records = ["62629 13 2 2626E4C8594EA7F41B0F8C471FA50F9334A33F8E4EC17FD38556D90EB926163E"]
-}
-
-module "notify_gov_email_security" {
-  source = "./email_security"
-
-  zone_id = aws_route53_zone.notify_gov_zone.zone_id
-  txt_records = [
-    local.spf_no_mail
-  ]
 }
 
 output "notify_gov_ns" {
