@@ -178,17 +178,6 @@ resource "aws_route53_record" "datagov_acmechallengeacmechallengedatagovexternal
 }
 
 
-resource "aws_route53_record" "datagov_acmechallengeagricultureacmechallengeagriculturedatagovexternaldomainsproductioncloudgov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "_acme-challenge.agriculture"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["_acme-challenge.agriculture.data.gov.external-domains-production.cloud.gov"]
-
-}
-
-
 resource "aws_route53_record" "datagov_acmechallengecatalogacmechallengecatalogdatagovexternaldomainsproductioncloudgov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "_acme-challenge.catalog"
@@ -218,17 +207,6 @@ resource "aws_route53_record" "datagov_acmechallengedashboardacmechallengedashbo
 
   ttl     = 300
   records = ["_acme-challenge.dashboard.data.gov.external-domains-production.cloud.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_acmechallengeenergyacmechallengeenergydatagovexternaldomainsproductioncloudgov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "_acme-challenge.energy"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["_acme-challenge.energy.data.gov.external-domains-production.cloud.gov"]
 
 }
 
@@ -266,17 +244,6 @@ resource "aws_route53_record" "datagov_admincatalogadmincatalogbspdatagov_cname"
 }
 
 
-resource "aws_route53_record" "datagov_agricultureagriculturedatagovexternaldomainsproductioncloudgov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "agriculture"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["agriculture.data.gov.external-domains-production.cloud.gov"]
-
-}
-
-
 resource "aws_route53_record" "datagov_catalogd2s65feajdp88kcloudfrontnet_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "catalog"
@@ -306,17 +273,6 @@ resource "aws_route53_record" "datagov_dashboarddashboarddatagovexternaldomainsp
 
   ttl     = 300
   records = ["dashboard.data.gov.external-domains-production.cloud.gov"]
-
-}
-
-
-resource "aws_route53_record" "datagov_energyenergydatagovexternaldomainsproductioncloudgov_cname" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "energy"
-  type    = "CNAME"
-
-  ttl     = 300
-  records = ["energy.data.gov.external-domains-production.cloud.gov"]
 
 }
 
