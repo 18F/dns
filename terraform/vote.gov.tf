@@ -44,7 +44,7 @@ resource "aws_route53_record" "dev_ssg_vote_gov_cname" {
   name    = "ssg-dev.vote.gov."
   type    = "CNAME"
   ttl     = 120
-  records = ["vote-waf-dev.app.cloud.gov."]
+  records = ["ssg-dev.vote.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "dev_cms_vote_gov_cname" {
@@ -52,7 +52,7 @@ resource "aws_route53_record" "dev_cms_vote_gov_cname" {
   name    = "cms-dev.vote.gov."
   type    = "CNAME"
   ttl     = 120
-  records = ["vote-waf-dev.app.cloud.gov."]
+  records = ["cms-dev.vote.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "dev_files_vote_gov_cname" {
@@ -92,7 +92,7 @@ resource "aws_route53_record" "prod_ssg_vote_gov_cname" {
   name    = "ssg.vote.gov."
   type    = "CNAME"
   ttl     = 120
-  records = ["vote-waf-prod.app.cloud.gov."]
+  records = ["ssg.vote.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "prod_cms_vote_gov_cname" {
@@ -100,7 +100,7 @@ resource "aws_route53_record" "prod_cms_vote_gov_cname" {
   name    = "cms.vote.gov."
   type    = "CNAME"
   ttl     = 120
-  records = ["vote-waf-prod.app.cloud.gov."]
+  records = ["cms.vote.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "prod_files_vote_gov_cname" {
@@ -140,7 +140,7 @@ resource "aws_route53_record" "stage_ssg_vote_gov_cname" {
   name    = "ssg-stage.vote.gov."
   type    = "CNAME"
   ttl     = 120
-  records = ["vote-waf-stage.app.cloud.gov."]
+  records = ["ssg-stage.vote.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "stage_cms_vote_gov_cname" {
@@ -148,7 +148,7 @@ resource "aws_route53_record" "stage_cms_vote_gov_cname" {
   name    = "cms-stage.vote.gov."
   type    = "CNAME"
   ttl     = 120
-  records = ["vote-waf-stage.app.cloud.gov."]
+  records = ["cms-stage.vote.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "stage_files_vote_gov_cname" {
@@ -188,7 +188,7 @@ resource "aws_route53_record" "test_ssg_vote_gov_cname" {
   name    = "ssg-test.vote.gov."
   type    = "CNAME"
   ttl     = 120
-  records = ["vote-waf-test.app.cloud.gov."]
+  records = ["ssg-test.vote.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "test_cms_vote_gov_cname" {
@@ -196,7 +196,7 @@ resource "aws_route53_record" "test_cms_vote_gov_cname" {
   name    = "cms-test.vote.gov."
   type    = "CNAME"
   ttl     = 120
-  records = ["vote-waf-test.app.cloud.gov."]
+  records = ["cms-test.vote.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "test_files_vote_gov_cname" {
