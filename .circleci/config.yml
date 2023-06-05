@@ -1,4 +1,7 @@
-version: "2.1"
+version: 2.1
+orbs:
+  tfsec: mycodeself/tfsec@1.1.0
+
 jobs:
   plan:
     docker:
@@ -32,6 +35,27 @@ jobs:
           paths:
             - ./terraform/*
 
+  tfsec:
+    executor: tfsec/default
+    steps:
+      - checkout
+      - tfsec/scan:
+          directory: ./terraform/
+          #exclude-checks: ''
+
+  checkov:
+     docker:
+       - image: circleci/python:latest
+     steps:
+       - checkout
+       - run:
+           name: Install checkov
+           command: pip install checkov
+       - run:
+           name: Run checkov
+           command: checkov -d ./terraform/
+           # temp add --skip-check flag if needed above
+
   apply:
     docker:
       - image: hashicorp/terraform:1.1.5
@@ -61,6 +85,8 @@ workflows:
   validate_and_deploy:
     jobs:
       - plan
+      - tfsec
+      - checkov
       - apply:
           filters:
             branches:
