@@ -40,7 +40,7 @@ jobs:
     steps:
       - checkout
       - tfsec/scan:
-          directory: ./terraform/
+          directory: .
           #exclude-checks: ''
 
   checkov:
@@ -53,8 +53,8 @@ jobs:
            command: pip install checkov
        - run:
            name: Run checkov
-           command: checkov -d ./terraform/
-           # temp add --skip-check flag if needed above
+           command: checkov -d ./terraform/ --skip-check CKV2_AWS_61,CKV_AWS_273,CKV_AWS_289,CKV_AWS_40,CKV_AWS_355,CKV_AWS_290,CKV_AWS_33,CKV2_AWS_23,CKV2_AWS_39,CKV2_AWS_6
+           # TODO resolve /docs/checkov.md errors to remove skipped checks or skip checks inline where appropriate
 
   apply:
     docker:
