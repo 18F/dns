@@ -59,7 +59,22 @@ module "fac_gov__email_security" {
 
   zone_id = aws_route53_zone.fac_gov_zone.zone_id
   txt_records = [
-    local.spf_no_mail
+    "v=spf1 include:_spf.google.com ~all",
+    "google-site-verification=Mn_07QfFVDwIFVW5EYimMZZK_kqYdFX9EtHjlpIX_-c",
+  ]
+}
+
+resource "aws_route53_record" "fac_gov__mx" {
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
+  name    = "fac.gov."
+  type    = "MX"
+  ttl     = 60
+  records = [
+    "1 aspmx.l.google.com.", 
+    "5 alt1.aspmx.l.google.com.", 
+    "5 alt2.aspmx.l.google.com.",
+    "10 alt3.aspmx.l.google.com.", 
+    "10 alt4.aspmx.l.google.com.", 
   ]
 }
 
