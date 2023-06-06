@@ -104,6 +104,14 @@ resource "aws_route53_record" "fac_gov__mx" {
   ]
 }
 
+resource "aws_route53_record" "fac_gov__support_fac_gov_cname" {
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
+  name    = "support.fac.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["fac-gov.zendesk.com."]
+}
+
 output "fac_gov_ns" {
   value = aws_route53_zone.fac_gov_zone.name_servers
 }
