@@ -115,6 +115,17 @@ resource "aws_route53_record" "fac_gov__mx" {
   ]
 }
 
+# DMARC record for mail from fac.gov
+resource "aws_route53_record" "fac_gov__dmarc" {
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
+  name    = "dmarc.fac.gov."
+  type    = "TXT"
+  ttl     = 300
+  records = [
+    "v=DMARC1; p=reject; pct=100; fo=1; ri=86400; rua=mailto:dmarcreports@gsa.gov,mailto:reports@dmarc.cyber.dhs.gov; ruf=mailto:dmarcfailures@gsa.gov",
+  ]
+}
+
 # CNAME for support.fac.gov via ZenDesk
 resource "aws_route53_record" "fac_gov__support_fac_gov_cname" {
   zone_id = aws_route53_zone.fac_gov_zone.zone_id
