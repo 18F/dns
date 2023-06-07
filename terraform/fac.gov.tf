@@ -89,7 +89,7 @@ module "fac_gov__email_security" {
   ]
 }
 
-# MX records for fac.gov
+# MX records for mail from fac.gov
 resource "aws_route53_record" "fac_gov__mx" {
   zone_id = aws_route53_zone.fac_gov_zone.zone_id
   name    = "fac.gov."
@@ -103,7 +103,19 @@ resource "aws_route53_record" "fac_gov__mx" {
     "10 alt4.aspmx.l.google.com.", 
   ]
 }
+  
+# DKIM record for mail from fac.gov
+  resource "aws_route53_record" "fac_gov__dkim" {
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
+  name    = "google._domainkey.fac.gov."
+  type    = "TXT"
+  ttl     = 60
+  records = [
+    "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDaRrmLRMyVzod2xJGqfN7oMP4T4oNeQ6z53uyJUK76Hs5qUg7dQyNgVeMck18aRN0iuHPPqA+e5z3Lm564Sa2LtDbybA9Q6HuYidkeoFPHHzjRDf8GsXogpji8oIc5TIVv17KG8niWB0MPfZPb4WlhKiCfgkPUbyuL8Q3IRd3iFQIDAQAB",
+  ]
+}
 
+# CNAME for support.fac.gov via ZenDesk
 resource "aws_route53_record" "fac_gov__support_fac_gov_cname" {
   zone_id = aws_route53_zone.fac_gov_zone.zone_id
   name    = "support.fac.gov."
