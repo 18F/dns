@@ -78,6 +78,24 @@ resource "aws_route53_record" "fac_gov__app_fac_gov_cname" {
   records = ["www.fac.gov.external-domains-production.cloud.gov."]
 }
 
+# ACME challenge for api.fac.gov
+resource "aws_route53_record" "fac_gov__api_fac_gov_acme" {
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
+  name    = "_acme-challenge.api.fac.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["_acme-challenge-api-fac-gov.domains.api.data.gov"]
+}
+
+# CNAME for api.fac.gov
+resource "aws_route53_record" "fac_gov__api_fac_gov_cname" {
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
+  name    = "api.fac.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["api-fac-gov.domains.api.data.gov"]
+}
+
 # SPF for mail from fac.gov
 module "fac_gov__email_security" {
   source = "./email_security"
