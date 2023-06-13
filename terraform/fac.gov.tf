@@ -75,7 +75,7 @@ resource "aws_route53_record" "fac_gov__app_fac_gov_cname" {
   name    = "app.fac.gov."
   type    = "CNAME"
   ttl     = 60
-  records = ["www.fac.gov.external-domains-production.cloud.gov."]
+  records = ["app.fac.gov.external-domains-production.cloud.gov."]
 }
 
 # ACME challenge for api.fac.gov
