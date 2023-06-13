@@ -63,7 +63,7 @@ resource "aws_route53_record" "fac_gov__www_fac_gov_cname" {
 # ACME challege for app.fac.gov
 resource "aws_route53_record" "fac_gov__acme_challenge_app_fac_gov_cname" {
   zone_id = aws_route53_zone.fac_gov_zone.zone_id
-  name    = "acme_challenge.app.fac.gov."
+  name    = "_acme-challenge.app.fac.gov."
   type    = "CNAME"
   ttl     = 60
   records = ["_acme-challenge.app.fac.gov.external-domains-production.cloud.gov."]
