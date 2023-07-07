@@ -337,7 +337,7 @@ resource "aws_route53_record" "datagov_sdgd1z5ray7fqefkvcloudfrontnet_cname" {
   type    = "CNAME"
 
   ttl     = 300
-  records = ["d1z5ray7fqefkv.cloudfront.net"]
+  records = ["sdg.data.gov.external-domains-production.cloud.gov"]
 
 }
 
@@ -348,7 +348,7 @@ resource "aws_route53_record" "datagov_sdgstagingdhrxft6loyu0ncloudfrontnet_cnam
   type    = "CNAME"
 
   ttl     = 300
-  records = ["dhrxft6loyu0n.cloudfront.net"]
+  records = ["sdg-staging.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -543,7 +543,7 @@ resource "aws_route53_record" "datagov_acmechallengesdg1cEge5zwHmYap2xfUTEKrx6YW
   type    = "TXT"
 
   ttl     = 300
-  records = ["1cEge-5zwHmYap2xfUTEKrx6YWJuN28yJrJAyQMysXc"]
+  records = ["_acme-challenge.sdg.data.gov.external-domains-production.cloud.gov"]
 
 }
 
@@ -554,7 +554,7 @@ resource "aws_route53_record" "datagov_acmechallengesdgstagingbNsofNEUeS3uTsLwl9
   type    = "TXT"
 
   ttl     = 300
-  records = ["bNsofNEU-eS3uTsLwl9lXkt5OYOVzcE4WXv7LKQGCLQ"]
+  records = ["_acme-challenge.sdg-staging.data.gov.external-domains-production.cloud.gov."]
 
 }
 
