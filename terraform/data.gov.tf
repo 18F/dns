@@ -348,7 +348,7 @@ resource "aws_route53_record" "datagov_sdgstagingdhrxft6loyu0ncloudfrontnet_cnam
   type    = "CNAME"
 
   ttl     = 300
-  records = ["sdg-staging.data.gov.external-domains-production.cloud.gov."]
+  records = ["sdg-staging.data.gov.external-domains-production.cloud.gov"]
 
 }
 
@@ -554,7 +554,7 @@ resource "aws_route53_record" "datagov_acmechallengesdgstagingbNsofNEUeS3uTsLwl9
   type    = "TXT"
 
   ttl     = 300
-  records = ["_acme-challenge.sdg-staging.data.gov.external-domains-production.cloud.gov."]
+  records = ["_acme-challenge.sdg-staging.data.gov.external-domains-production.cloud.gov"]
 
 }
 
