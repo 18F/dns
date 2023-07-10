@@ -173,7 +173,7 @@ resource "aws_route53_record" "datagov_acmechallengeacmechallengedatagovexternal
   type    = "CNAME"
 
   ttl     = 300
-  records = ["_acme-challenge.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -184,7 +184,7 @@ resource "aws_route53_record" "datagov_acmechallengecatalogacmechallengecatalogd
   type    = "CNAME"
 
   ttl     = 300
-  records = ["_acme-challenge.catalog.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.catalog.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -195,7 +195,7 @@ resource "aws_route53_record" "datagov_acmechallengeclimateacmechallengeclimated
   type    = "CNAME"
 
   ttl     = 300
-  records = ["_acme-challenge.climate.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.climate.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -206,7 +206,7 @@ resource "aws_route53_record" "datagov_acmechallengedashboardacmechallengedashbo
   type    = "CNAME"
 
   ttl     = 300
-  records = ["_acme-challenge.dashboard.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.dashboard.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -217,7 +217,7 @@ resource "aws_route53_record" "datagov_acmechallengeinventoryacmechallengeinvent
   type    = "CNAME"
 
   ttl     = 300
-  records = ["_acme-challenge.inventory.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.inventory.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -228,7 +228,7 @@ resource "aws_route53_record" "datagov_acmechallengewwwacmechallengewwwdatagovex
   type    = "CNAME"
 
   ttl     = 300
-  records = ["_acme-challenge.www.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.www.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -261,7 +261,7 @@ resource "aws_route53_record" "datagov_climateclimatedatagovexternaldomainsprodu
   type    = "CNAME"
 
   ttl     = 300
-  records = ["climate.data.gov.external-domains-production.cloud.gov"]
+  records = ["climate.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -272,7 +272,7 @@ resource "aws_route53_record" "datagov_dashboarddashboarddatagovexternaldomainsp
   type    = "CNAME"
 
   ttl     = 300
-  records = ["dashboard.data.gov.external-domains-production.cloud.gov"]
+  records = ["dashboard.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -293,7 +293,7 @@ resource "aws_route53_record" "datagov_inventoryinventorybspdatagov_cname" {
   type    = "CNAME"
 
   ttl     = 300
-  records = ["inventory.data.gov.external-domains-production.cloud.gov"]
+  records = ["inventory.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -337,7 +337,7 @@ resource "aws_route53_record" "datagov_sdgd1z5ray7fqefkvcloudfrontnet_cname" {
   type    = "CNAME"
 
   ttl     = 300
-  records = ["sdg.data.gov.external-domains-production.cloud.gov"]
+  records = ["sdg.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -348,7 +348,7 @@ resource "aws_route53_record" "datagov_sdgstagingdhrxft6loyu0ncloudfrontnet_cnam
   type    = "CNAME"
 
   ttl     = 300
-  records = ["sdg-staging.data.gov.external-domains-production.cloud.gov"]
+  records = ["sdg-staging.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -380,7 +380,7 @@ resource "aws_route53_record" "datagov_wwwd36thseoamvwaacloudfrontnet_cname" {
   type    = "CNAME"
 
   ttl     = 300
-  records = ["www.data.gov.external-domains-production.cloud.gov"]
+  records = ["www.data.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "datagov_api_ns" {
@@ -543,7 +543,7 @@ resource "aws_route53_record" "datagov_acmechallengesdg1cEge5zwHmYap2xfUTEKrx6YW
   type    = "TXT"
 
   ttl     = 300
-  records = ["_acme-challenge.sdg.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.sdg.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -554,7 +554,7 @@ resource "aws_route53_record" "datagov_acmechallengesdgstagingbNsofNEUeS3uTsLwl9
   type    = "TXT"
 
   ttl     = 300
-  records = ["_acme-challenge.sdg-staging.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.sdg-staging.data.gov.external-domains-production.cloud.gov."]
 
 }
 
