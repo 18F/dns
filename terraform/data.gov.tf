@@ -173,7 +173,7 @@ resource "aws_route53_record" "datagov_acmechallengeacmechallengedatagovexternal
   type    = "CNAME"
 
   ttl     = 300
-  records = ["_acme-challenge.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -184,7 +184,7 @@ resource "aws_route53_record" "datagov_acmechallengecatalogacmechallengecatalogd
   type    = "CNAME"
 
   ttl     = 300
-  records = ["_acme-challenge.catalog.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.catalog.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -195,7 +195,7 @@ resource "aws_route53_record" "datagov_acmechallengeclimateacmechallengeclimated
   type    = "CNAME"
 
   ttl     = 300
-  records = ["_acme-challenge.climate.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.climate.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -206,7 +206,7 @@ resource "aws_route53_record" "datagov_acmechallengedashboardacmechallengedashbo
   type    = "CNAME"
 
   ttl     = 300
-  records = ["_acme-challenge.dashboard.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.dashboard.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -217,7 +217,7 @@ resource "aws_route53_record" "datagov_acmechallengeinventoryacmechallengeinvent
   type    = "CNAME"
 
   ttl     = 300
-  records = ["_acme-challenge.inventory.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.inventory.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -228,7 +228,7 @@ resource "aws_route53_record" "datagov_acmechallengewwwacmechallengewwwdatagovex
   type    = "CNAME"
 
   ttl     = 300
-  records = ["_acme-challenge.www.data.gov.external-domains-production.cloud.gov"]
+  records = ["_acme-challenge.www.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -255,13 +255,35 @@ resource "aws_route53_record" "datagov_catalogd2s65feajdp88kcloudfrontnet_cname"
 }
 
 
+resource "aws_route53_record" "datagov_catalogstaged1u59lafwydg4acloudfrontnet_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "catalog-stage"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["d1u59lafwydg4a.cloudfront.net"]
+
+}
+
+
+resource "aws_route53_record" "datagov_catalogdevd2jqk88ququ1n9cloudfrontnet_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "catalog-dev"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["d2jqk88ququ1n9.cloudfront.net"]
+
+}
+
+
 resource "aws_route53_record" "datagov_climateclimatedatagovexternaldomainsproductioncloudgov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "climate"
   type    = "CNAME"
 
   ttl     = 300
-  records = ["climate.data.gov.external-domains-production.cloud.gov"]
+  records = ["climate.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -272,7 +294,7 @@ resource "aws_route53_record" "datagov_dashboarddashboarddatagovexternaldomainsp
   type    = "CNAME"
 
   ttl     = 300
-  records = ["dashboard.data.gov.external-domains-production.cloud.gov"]
+  records = ["dashboard.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -293,7 +315,7 @@ resource "aws_route53_record" "datagov_inventoryinventorybspdatagov_cname" {
   type    = "CNAME"
 
   ttl     = 300
-  records = ["inventory.data.gov.external-domains-production.cloud.gov"]
+  records = ["inventory.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -337,7 +359,7 @@ resource "aws_route53_record" "datagov_sdgd1z5ray7fqefkvcloudfrontnet_cname" {
   type    = "CNAME"
 
   ttl     = 300
-  records = ["d1z5ray7fqefkv.cloudfront.net"]
+  records = ["sdg.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -348,7 +370,7 @@ resource "aws_route53_record" "datagov_sdgstagingdhrxft6loyu0ncloudfrontnet_cnam
   type    = "CNAME"
 
   ttl     = 300
-  records = ["dhrxft6loyu0n.cloudfront.net"]
+  records = ["sdg-staging.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -380,7 +402,7 @@ resource "aws_route53_record" "datagov_wwwd36thseoamvwaacloudfrontnet_cname" {
   type    = "CNAME"
 
   ttl     = 300
-  records = ["www.data.gov.external-domains-production.cloud.gov"]
+  records = ["www.data.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "datagov_api_ns" {
@@ -543,7 +565,7 @@ resource "aws_route53_record" "datagov_acmechallengesdg1cEge5zwHmYap2xfUTEKrx6YW
   type    = "TXT"
 
   ttl     = 300
-  records = ["1cEge-5zwHmYap2xfUTEKrx6YWJuN28yJrJAyQMysXc"]
+  records = ["_acme-challenge.sdg.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -554,7 +576,7 @@ resource "aws_route53_record" "datagov_acmechallengesdgstagingbNsofNEUeS3uTsLwl9
   type    = "TXT"
 
   ttl     = 300
-  records = ["bNsofNEU-eS3uTsLwl9lXkt5OYOVzcE4WXv7LKQGCLQ"]
+  records = ["_acme-challenge.sdg-staging.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -599,5 +621,27 @@ resource "aws_route53_record" "datagov_00bc66d9e476816ba3d1521a99299217catalog8f
 
   ttl     = 300
   records = ["_8f05f6bd13f92abbf416a1a1bebd7a94.xmkpffzlvd.acm-validations.aws."]
+
+}
+
+
+resource "aws_route53_record" "datagov_bafcc0ee223ea343cb6b478aa300a182catalogstagefb09f0b389b6e9a8eeefc817364e9df9cltjbwlkcyacmvalidationsaws_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "_bafcc0ee223ea343cb6b478aa300a182.catalog-stage.data.gov."
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["_6860e6e39504b0ca7f5dcbd5ba8f678c.cltjbwlkcy.acm-validations.aws."]
+  
+}
+
+
+resource "aws_route53_record" "datagov_108d9367ec7e67814fe17cc2a0173a81catalogdevfb09f0b389b6e9a8eeefc817364e9df9cltjbwlkcyacmvalidationsaws_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "_108d9367ec7e67814fe17cc2a0173a81.catalog-dev.data.gov."
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["_fb09f0b389b6e9a8eeefc817364e9df9.cltjbwlkcy.acm-validations.aws."]
 
 }
