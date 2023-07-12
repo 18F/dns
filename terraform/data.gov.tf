@@ -562,7 +562,7 @@ resource "aws_route53_record" "datagov_acmechallengeresourcesstagingCTRQ5trgMF0K
 resource "aws_route53_record" "datagov_acmechallengesdg1cEge5zwHmYap2xfUTEKrx6YWJuN28yJrJAyQMysXc_txt" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "_acme-challenge.sdg"
-  type    = "TXT"
+  type    = "CNAME"
 
   ttl     = 300
   records = ["_acme-challenge.sdg.data.gov.external-domains-production.cloud.gov."]
@@ -573,7 +573,7 @@ resource "aws_route53_record" "datagov_acmechallengesdg1cEge5zwHmYap2xfUTEKrx6YW
 resource "aws_route53_record" "datagov_acmechallengesdgstagingbNsofNEUeS3uTsLwl9lXkt5OYOVzcE4WXv7LKQGCLQ_txt" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "_acme-challenge.sdg-staging"
-  type    = "TXT"
+  type    = "CNAME"
 
   ttl     = 300
   records = ["_acme-challenge.sdg-staging.data.gov.external-domains-production.cloud.gov."]
