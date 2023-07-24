@@ -96,6 +96,42 @@ resource "aws_route53_record" "fac_gov__api_fac_gov_cname" {
   records = ["api-fac-gov.domains.api.data.gov"]
 }
 
+# ACME challenge for api-staging.fac.gov
+resource "aws_route53_record" "fac_gov__api_staging_fac_gov_acme" {
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
+  name    = "_acme-challenge.api-staging.fac.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["_acme-challenge-api-staging-fac-gov.domains.api.data.gov"]
+}
+
+# CNAME for api-staging.fac.gov
+resource "aws_route53_record" "fac_gov__api_staging_fac_gov_cname" {
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
+  name    = "api-staging.fac.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["api-staging-fac-gov.domains.api.data.gov"]
+}
+
+# ACME challenge for api-dev.fac.gov
+resource "aws_route53_record" "fac_gov__api_dev_fac_gov_acme" {
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
+  name    = "_acme-challenge.api-dev.fac.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["_acme-challenge-api-dev-fac-gov.domains.api.data.gov"]
+}
+
+# CNAME for api-dev.fac.gov
+resource "aws_route53_record" "fac_gov__api_dev_fac_gov_cname" {
+  zone_id = aws_route53_zone.fac_gov_zone.zone_id
+  name    = "api-dev.fac.gov."
+  type    = "CNAME"
+  ttl     = 60
+  records = ["api-dev-fac-gov.domains.api.data.gov"]
+}
+
 # SPF for mail from fac.gov
 module "fac_gov__email_security" {
   source = "./email_security"
