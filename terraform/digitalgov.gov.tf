@@ -88,6 +88,17 @@ resource "aws_route53_record" "digitalgov_gov_openopps_digitalgov_gov_aaaa" {
   }
 }
 
+# search.digitalgov.gov
+resource "aws_route53_record" "search_digitalgov_gov_a" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "search.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "600"
+  records = [
+    "dgsearchsite.infr.search.usa.gov."
+  ]
+}
+
 # summit.digitalgov.gov — redirects to digital.gov through pages_redirect
 resource "aws_route53_record" "summit_digitalgov_gov_a" {
   zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
@@ -143,7 +154,7 @@ resource "aws_route53_record" "acme_challenge_usdigitalregistry_digitalgov_gov" 
 
 # Digital Analytics Program (DAP) —
 # dap.digitalgov.gov
-# reach out to dap@gsa.gov before making any changes
+# reach out to dap@support.digitalgov.gov before making any changes
 resource "aws_route53_record" "dap_digitalgov_gov_a" {
   zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
   name    = "dap.digitalgov.gov."
@@ -192,6 +203,88 @@ resource "aws_route53_record" "admin_digitalgov_gov_a" {
   ttl     = "600"
   records = [
     "173.203.40.168"
+  ]
+}
+
+# support.digitalgov.gov — A
+# used a number of teams across TTS in conjunction with Zendesk
+# - USWDS
+# - Search.gov
+# - DAP
+resource "aws_route53_record" "support_digitalgov_gov_a" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "support.digitalgov.gov."
+  type    = "A"
+  ttl     = "600"
+  records = [
+    "216.128.241.47",
+    "173.252.148.104",
+  ]
+}
+
+# required for AWS SES to DKIM-sign emails sent "From" support.digitalgov.gov
+resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_a" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "4ixtpnvpubjuxqvnex727otq55y2ew7w._domainkey.support.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "4ixtpnvpubjuxqvnex727otq55y2ew7w.dkim.amazonses.com"
+  ]
+}
+
+# required for AWS SES to DKIM-sign emails sent "From" support.digitalgov.gov
+resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_b" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "tmoxp5vgftwsmhkukt2z6ayvfj5bw7zo._domainkey.support.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "tmoxp5vgftwsmhkukt2z6ayvfj5bw7zo.dkim.amazonses.com"
+  ]
+}
+
+# required for AWS SES to DKIM-sign emails sent "From" support.digitalgov.gov
+resource "aws_route53_record" "support_digitalgov_gov_ses_dkim_c" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "5uiojtkg7z5grkldq7ajm3zamtzh3h2s._domainkey.support.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "5uiojtkg7z5grkldq7ajm3zamtzh3h2s.dkim.amazonses.com"
+  ]
+}
+
+# required by AWS SES to verify control of the support.digitalgov.gov domain
+resource "aws_route53_record" "support_digitalgov_gov_ses_verification" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "_amazonses.support.digitalgov.gov."
+  type    = "TXT"
+  ttl     = "3600"
+  records = [
+    "T5etn/YylzSUQQWw6HspyK4+2+B9XzE7Kajpz9ogfJI="
+  ]
+}
+
+# support.digitalgov.gov - TXT
+resource "aws_route53_record" "digitalgov_gov_support_digitalgov_gov_txt" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "support.digitalgov.gov."
+  type    = "TXT"
+  ttl     = "3600"
+  records = [
+    "v=spf1 mx a:spf.servicenowservices.com include:amazonses.com include:1962994.spf05.hubspotemail.net ~all"
+  ]
+}
+
+# support.digitalgov.gov — MX
+resource "aws_route53_record" "support_digitalgov_gov_mx" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "support.digitalgov.gov."
+  type    = "MX"
+  ttl     = "600"
+  records = [
+    "10 inbound-smtp.us-east-1.amazonaws.com."
   ]
 }
 
@@ -258,6 +351,30 @@ resource "aws_route53_record" "hubspot2_digitalgov_gov_a" {
   ttl     = "300"
   records = [
     "digitalgov-gov.hs01b.dkim.hubspotemail.net."
+  ]
+}
+
+# Hubspot records for sending email from the digitalgov.gov domain
+# See https://knowledge.hubspot.com/email/can-i-use-a-dmarc-policy-with-hubspot#troubleshoot-issues-with-dmarc-authentication
+resource "aws_route53_record" "hubspot3_digitalgov_gov_a" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "hs1-1962994._domainkey.support.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "support-digitalgov-gov.hs11a.dkim.hubspotemail.net."
+  ]
+}
+
+# Hubspot records for sending email from the digitalgov.gov domain
+# See https://knowledge.hubspot.com/email/can-i-use-a-dmarc-policy-with-hubspot#troubleshoot-issues-with-dmarc-authentication
+resource "aws_route53_record" "hubspot4_digitalgov_gov_a" {
+  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
+  name    = "hs2-1962994._domainkey.support.digitalgov.gov."
+  type    = "CNAME"
+  ttl     = "300"
+  records = [
+    "support-digitalgov-gov.hs11b.dkim.hubspotemail.net."
   ]
 }
 
