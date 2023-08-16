@@ -66,7 +66,7 @@ resource "aws_route53_record" "notify_gov_spf" {
     type = "TXT"
 
     ttl = 600
-    records = ["v=spf1 include:amazonses.com -all"]
+    records = ["v=spf1 include:amazonses.com ~all"]
 }
 
 resource "aws_route53_record" "notify_gov_txt" {
@@ -75,7 +75,7 @@ resource "aws_route53_record" "notify_gov_txt" {
     type = "TXT"
 
     ttl = 600
-    records = ["v=spf1 include:amazonses.com -all"]
+    records = ["v=spf1 include:amazonses.com ~all"]
 }
 
 resource "aws_route53_record" "notify_gov_mx" {
