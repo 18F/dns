@@ -24,6 +24,24 @@ resource "aws_route53_record" "notify_gov_beta_cname" {
     records = ["beta.notify.gov.external-domains-production.cloud.gov"]
 }
 
+resource "aws_route53_record" "notify_gov_root_acmechallenge" {
+    zone_id = aws_route53_zone.notify_gov_zone.zone_id
+    name = "_acme-challenge"
+    type = "CNAME"
+
+    ttl = 600
+    records = ["_acme-challenge.beta.notify.gov.external-domains-production.cloud.gov"]
+}
+
+resource "aws_route53_record" "notify_gov_root_cname" {
+    zone_id = aws_route53_zone.notify_gov_zone.zone_id
+    name = ""
+    type = "CNAME"
+
+    ttl = 600
+    records = ["beta.notify.gov.external-domains-production.cloud.gov"]
+}
+
 resource "aws_route53_record" "notify_gov_dkim0" {
     zone_id = aws_route53_zone.notify_gov_zone.zone_id
     name = "eku6g65dhk3u5cl7hnj2o7vplsct3zky._domainkey"
