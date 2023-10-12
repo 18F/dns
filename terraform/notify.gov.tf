@@ -24,22 +24,22 @@ resource "aws_route53_record" "notify_gov_beta_cname" {
     records = ["beta.notify.gov.external-domains-production.cloud.gov"]
 }
 
-resource "aws_route53_record" "notify_gov_root_acmechallenge" {
+resource "aws_route53_record" "notify_gov_apex_acmechallenge" {
     zone_id = aws_route53_zone.notify_gov_zone.zone_id
     name = "_acme-challenge"
-    type = "ALIAS"
+    type = "CNAME"
 
     ttl = 600
     records = ["_acme-challenge.notify.gov.external-domains-production.cloud.gov"]
 }
 
-resource "aws_route53_record" "notify_gov_root_cname" {
+resource "aws_route53_record" "notify_gov_www_acmechallenge" {
     zone_id = aws_route53_zone.notify_gov_zone.zone_id
-    name = ""
-    type = "ALIAS"
+    name = "_acme-challenge.www"
+    type = "CNAME"
 
     ttl = 600
-    records = ["notify.gov.external-domains-production.cloud.gov"]
+    records = ["_acme-challenge.www.notify.gov.external-domains-production.cloud.gov"]
 }
 
 resource "aws_route53_record" "notify_gov_dkim0" {
