@@ -33,6 +33,18 @@ resource "aws_route53_record" "notify_gov_root_acmechallenge" {
     records = ["_acme-challenge.notify.gov.external-domains-production.cloud.gov"]
 }
 
+resource "aws_route53_record" "notify_gov_root_alias" {
+    zone_id = aws_route53_zone.notify_gov_zone.zone_id
+    name = "notify.gov."
+    type = "A"
+
+    alias {
+        name                   = "notify.gov.external-domains-production.cloud.gov."
+        zone_id                = aws_route53_zone.notify_gov_zone.zone_id
+        evaluate_target_health = false
+    }
+}
+
 resource "aws_route53_record" "notify_gov_www_acmechallenge" {
     zone_id = aws_route53_zone.notify_gov_zone.zone_id
     name = "_acme-challenge.www"
@@ -40,6 +52,15 @@ resource "aws_route53_record" "notify_gov_www_acmechallenge" {
 
     ttl = 600
     records = ["_acme-challenge.www.notify.gov.external-domains-production.cloud.gov"]
+}
+
+resource "aws_route53_record" "notify_gov_www_cname" {
+    zone_id = aws_route53_zone.notify_gov_zone.zone_id
+    name = "www"
+    type = "CNAME"
+
+    ttl = 600
+    records = ["www.notify.gov.external-domains-production.cloud.gov"]
 }
 
 resource "aws_route53_record" "notify_gov_dkim0" {
