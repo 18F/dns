@@ -24,7 +24,7 @@ resource "aws_route53_record" "notify_gov_beta_cname" {
     records = ["beta.notify.gov.external-domains-production.cloud.gov"]
 }
 
-resource "aws_route53_record" "notify_gov_apex_acmechallenge" {
+resource "aws_route53_record" "notify_gov_root_acmechallenge" {
     zone_id = aws_route53_zone.notify_gov_zone.zone_id
     name = "_acme-challenge"
     type = "CNAME"
