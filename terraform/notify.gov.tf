@@ -51,7 +51,7 @@ resource "aws_route53_record" "notify_gov_root_aaaa" {
     type = "AAAA"
 
     alias {
-        name                   = "https://d3ip8kz71rxi2w.cloudfront.net."
+        name                   = "d3ip8kz71rxi2w.cloudfront.net."
         zone_id                = local.cloud_gov_cloudfront_zone_id
         evaluate_target_health = false
     }
