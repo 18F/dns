@@ -783,6 +783,24 @@ resource "aws_route53_record" "d_18f_gov_guides_18f_gov_aaaa" {
   }
 }
 
+# guides.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_guides_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "guides.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["guides.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# guides.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_guides_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.guides.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.guides.18f.gov.external-domains-production.cloud.gov."]
+}
+
 resource "aws_route53_record" "d_18f_gov_guides-template_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "guides-template.18f.gov."
