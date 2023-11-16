@@ -1053,28 +1053,20 @@ resource "aws_route53_record" "d_18f_gov_private-eye_18f_gov_cname" {
   records = ["private-eye.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_product-guide_18f_gov_a" {
+resource "aws_route53_record" "d_18f_gov__acme_challenge_product-guide_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "product-guide.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d2ys0ic6txy8sy.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.product-guide.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.product-guide.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_product-guide_18f_gov_aaaa" {
+resource "aws_route53_record" "d_18f_gov_product-guide_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "product-guide.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d2ys0ic6txy8sy.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["product-guide.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov_requests_18f_gov_cname" {
