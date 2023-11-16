@@ -81,28 +81,20 @@ resource "aws_route53_record" "d_18f_gov_89afa0142502f9be9fba3afd80a703e1_18f_go
 
 # Individual site records start here, alphabetized by subdomain name
 
-resource "aws_route53_record" "d_18f_gov_accessibility_18f_gov_a" {
+resource "aws_route53_record" "d_18f_gov__acme_challenge_accessibility_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "accessibility.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d3gg23ftaba0j8.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.accessibility.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.accessibility.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_accessibility_18f_gov_aaaa" {
+resource "aws_route53_record" "d_18f_gov_accessibility_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "accessibility.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d3gg23ftaba0j8.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["accessibility.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov_ads_18f_gov_a" {
