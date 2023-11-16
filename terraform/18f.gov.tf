@@ -421,28 +421,20 @@ resource "aws_route53_record" "d_18f_gov__acme-challenge_boise_18f_gov_txt" {
   records = ["wtVQL98OnnahVdqneIGLrHfMAD30e7JWDOFouTenqaM"]
 }
 
-resource "aws_route53_record" "d_18f_gov_brand_18f_gov_a" {
+resource "aws_route53_record" "d_18f_gov__acme_challenge_brand_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "brand.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d19y688vepyspr.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.brand.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.brand.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_brand_18f_gov_aaaa" {
+resource "aws_route53_record" "d_18f_gov_brand_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "brand.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d19y688vepyspr.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["brand.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov_c6769c03c29466618a6bd23b158d28a6_18f_gov_cname" {
