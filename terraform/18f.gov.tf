@@ -477,28 +477,20 @@ resource "aws_route53_record" "d_18f_gov_compliance-viewer_18f_gov_cname" {
   records = ["dw68mooipdgv2.cloudfront.net"]
 }
 
-resource "aws_route53_record" "d_18f_gov_content-guide_18f_gov_a" {
+resource "aws_route53_record" "d_18f_gov__acme_challenge_content-guide_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "content-guide.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "dv941ubd2f1ex.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.content-guide.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.content-guide.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_content-guide_18f_gov_aaaa" {
+resource "aws_route53_record" "d_18f_gov_content-guide_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "content-guide.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "dv941ubd2f1ex.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["content-guide.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov_contracting-cookbook_18f_gov_a" {
