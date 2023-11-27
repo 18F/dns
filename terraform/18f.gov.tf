@@ -1522,3 +1522,130 @@ resource "aws_route53_record" "d_18f_gov__acme_challenge_queues_federalistapp_18
   ttl     = 120
   records = ["_acme-challenge.queues.federalistapp.18f.gov.external-domains-production.cloud.gov."]
 }
+
+# accessibility.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_accessibility_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.accessibility.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.accessibility.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# accessibility.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_accessibility_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "accessibility.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["accessibility.18f.gov.external-domains-production.cloud.gov."]
+}
+
+
+# brand.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_brand_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.brand.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.brand.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# brand.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_brand_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "brand.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["brand.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# content-guide.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_content-guide_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.content-guide.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.content-guide.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# content-guide.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_content-guide_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "content-guide.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["content-guide.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# eng-hiring.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_eng-hiring_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.eng-hiring.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.eng-hiring.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# eng-hiring.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_eng-hiring_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "eng-hiring.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["eng-hiring.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# product-guide.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_product-guide_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.product-guide.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.product-guide.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# product-guide.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_product-guide_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "product-guide.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["product-guide.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# engineering.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_engineering_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.engineering.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.engineering.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# engineering.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_engineering_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "engineering.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["engineering.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# ux-guide.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_ux-guide_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.ux-guide.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.ux-guide.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# ux-guide.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_ux-guide_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "ux-guide.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["ux-guide.18f.gov.external-domains-production.cloud.gov."]
+}
