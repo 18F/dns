@@ -1512,14 +1512,6 @@ resource "aws_route53_record" "d_18f_gov__acme-challenge_federalist-proxysite-te
   records = ["qiz18V0W9mHROFHTHqE4_Bn8NIByqMhoLvkKQ3h4Zxg"]
 }
 
-resource "aws_route53_record" "d_18f_gov__acme-challenge_ux-guide_18f_gov_txt" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "_acme-challenge.ux-guide.18f.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["cMHSS7E7SJghSFKvmy-K8Cp78eZ8ihZjzESAuyEi5eY"]
-}
-
 # ux-guide.18f.gov acme challenge — CNAME -------------------------------
 resource "aws_route53_record" "d_18f_gov__acme_challenge_ux-guide_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
