@@ -1306,22 +1306,14 @@ resource "aws_route53_record" "d_18f_gov__acme-challenge_requests_18f_gov_txt" {
   records = ["xqrLG7YoUqvFzGYv8KCSr3nPZadqdu9PMcLh8yfhp0c"]
 }
 
-resource "aws_route53_record" "d_18f_gov__acme-challenge_engineering_18f_gov_txt" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "_acme-challenge.engineering.18f.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["oI10GrfMLy5l2eczdrgMGsCHAooCAvbsq8yQA2Dhvbs"]
-}
-
 # engineering.18f.gov acme challenge — CNAME -------------------------------
-resource "aws_route53_record" "d_18f_gov__acme_challenge_engineering_18f_gov_cname" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "_acme-challenge.engineering.18f.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["_acme-challenge.engineering.18f.gov.external-domains-production.cloud.gov."]
-}
+# resource "aws_route53_record" "d_18f_gov__acme_challenge_engineering_18f_gov_cname" {
+#  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+#  name    = "_acme-challenge.engineering.18f.gov."
+#  type    = "CNAME"
+#  ttl     = 120
+#  records = ["_acme-challenge.engineering.18f.gov.external-domains-production.cloud.gov."]
+# }
 
 # engineering.18f.gov — CNAME -------------------------------
 resource "aws_route53_record" "d_18f_gov_engineering_18f_gov_cname" {
@@ -1513,13 +1505,13 @@ resource "aws_route53_record" "d_18f_gov__acme-challenge_federalist-proxysite-te
 }
 
 # ux-guide.18f.gov acme challenge — CNAME -------------------------------
-resource "aws_route53_record" "d_18f_gov__acme_challenge_ux-guide_18f_gov_cname" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "_acme-challenge.ux-guide.18f.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["_acme-challenge.ux-guide.18f.gov.external-domains-production.cloud.gov."]
-}
+# resource "aws_route53_record" "d_18f_gov__acme_challenge_ux-guide_18f_gov_cname" {
+#  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+#  name    = "_acme-challenge.ux-guide.18f.gov."
+#  type    = "CNAME"
+#  ttl     = 120
+#  records = ["_acme-challenge.ux-guide.18f.gov.external-domains-production.cloud.gov."]
+#}
 
 # ux-guide.18f.gov — CNAME -------------------------------
 resource "aws_route53_record" "d_18f_gov_ux-guide_18f_gov_cname" {
