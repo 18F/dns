@@ -854,30 +854,6 @@ resource "aws_route53_record" "d_18f_gov_lean-product-design_18f_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "d_18f_gov_methods_18f_gov_a" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "methods.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d2z1u02mjhp26x.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "d_18f_gov_methods_18f_gov_aaaa" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "methods.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d2z1u02mjhp26x.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
 # Configured with CDN Broker
 resource "aws_route53_record" "d_18f_gov_micropurchase_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
