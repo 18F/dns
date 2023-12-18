@@ -854,6 +854,26 @@ resource "aws_route53_record" "d_18f_gov_lean-product-design_18f_gov_aaaa" {
   }
 }
 
+# methods.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_methods_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "methods.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["methods.18f.gov.external-domains-production.cloud.gov."]
+}
+
+
+# acme challenge methods.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_methods_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.methods.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.methods.18f.gov.external-domains-production.cloud.gov."]
+}
+
+
 # Configured with CDN Broker
 resource "aws_route53_record" "d_18f_gov_micropurchase_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
