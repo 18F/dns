@@ -854,29 +854,25 @@ resource "aws_route53_record" "d_18f_gov_lean-product-design_18f_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "d_18f_gov_methods_18f_gov_a" {
+# methods.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_methods_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "methods.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d2z1u02mjhp26x.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["methods.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_methods_18f_gov_aaaa" {
+
+# acme challenge methods.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_methods_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "methods.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d2z1u02mjhp26x.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.methods.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.methods.18f.gov.external-domains-production.cloud.gov."]
 }
+
 
 # Configured with CDN Broker
 resource "aws_route53_record" "d_18f_gov_micropurchase_18f_gov_a" {
