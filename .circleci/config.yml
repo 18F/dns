@@ -1,4 +1,7 @@
-version: "2.1"
+version: 2.1
+orbs:
+  tfsec: mycodeself/tfsec@1.1.0
+
 jobs:
   plan:
     docker:
@@ -32,6 +35,27 @@ jobs:
           paths:
             - ./terraform/*
 
+  tfsec:
+    executor: tfsec/default
+    steps:
+      - checkout
+      - tfsec/scan:
+          directory: .
+          #exclude-checks: ''
+
+  checkov:
+     docker:
+       - image: circleci/python:latest
+     steps:
+       - checkout
+       - run:
+           name: Install checkov
+           command: pip install checkov
+       - run:
+           name: Run checkov
+           command: checkov -d ./terraform/ --skip-check CKV2_AWS_61,CKV_AWS_273,CKV_AWS_289,CKV_AWS_40,CKV_AWS_355,CKV_AWS_290,CKV2_AWS_6,CKV_AWS_33,CKV2_AWS_23,CKV2_AWS_39,CKV2_AWS_38,CKV2_AWS_62,CKV_AWS_18,CKV_AWS_144,CKV_AWS_145,
+           # TODO resolve /docs/checkov.md errors to remove skipped checks or skip checks inline where appropriate
+
   apply:
     docker:
       - image: hashicorp/terraform:1.1.5
@@ -61,6 +85,8 @@ workflows:
   validate_and_deploy:
     jobs:
       - plan
+      - tfsec
+      - checkov
       - apply:
           filters:
             branches:

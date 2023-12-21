@@ -81,28 +81,22 @@ resource "aws_route53_record" "d_18f_gov_89afa0142502f9be9fba3afd80a703e1_18f_go
 
 # Individual site records start here, alphabetized by subdomain name
 
-resource "aws_route53_record" "d_18f_gov_accessibility_18f_gov_a" {
+# accessibility.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_accessibility_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "accessibility.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d3gg23ftaba0j8.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.accessibility.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.accessibility.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_accessibility_18f_gov_aaaa" {
+# accessibility.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_accessibility_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "accessibility.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d3gg23ftaba0j8.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["accessibility.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov_ads_18f_gov_a" {
@@ -137,28 +131,20 @@ resource "aws_route53_record" "d_18f_gov__acme-challenge_ads_18f_gov_txt" {
   records = ["fXfES1KVPHxh87Y9iMVwl_ezEGRpKagAL7EzQpuYaBI"]
 }
 
-resource "aws_route53_record" "d_18f_gov_agile_18f_gov_a" {
+resource "aws_route53_record" "d_18f_gov__acme_challenge_agile_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "agile.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d2zsago6kfzgka.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.agile.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.agile.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_agile_18f_gov_aaaa" {
+resource "aws_route53_record" "d_18f_gov_agile_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "agile.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d2zsago6kfzgka.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["agile.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov__acme_challenge_agile-labor-categories_18f_gov_cname" {
@@ -437,28 +423,22 @@ resource "aws_route53_record" "d_18f_gov__acme-challenge_boise_18f_gov_txt" {
   records = ["wtVQL98OnnahVdqneIGLrHfMAD30e7JWDOFouTenqaM"]
 }
 
-resource "aws_route53_record" "d_18f_gov_brand_18f_gov_a" {
+# brand.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_brand_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "brand.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d19y688vepyspr.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.brand.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.brand.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_brand_18f_gov_aaaa" {
+# brand.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_brand_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "brand.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d19y688vepyspr.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["brand.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov_c6769c03c29466618a6bd23b158d28a6_18f_gov_cname" {
@@ -501,28 +481,23 @@ resource "aws_route53_record" "d_18f_gov_compliance-viewer_18f_gov_cname" {
   records = ["dw68mooipdgv2.cloudfront.net"]
 }
 
-resource "aws_route53_record" "d_18f_gov_content-guide_18f_gov_a" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "content-guide.18f.gov."
-  type    = "A"
 
-  alias {
-    name                   = "dv941ubd2f1ex.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+# content-guide.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_content-guide_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.content-guide.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.content-guide.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_content-guide_18f_gov_aaaa" {
+# content-guide.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_content-guide_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "content-guide.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "dv941ubd2f1ex.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["content-guide.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov_contracting-cookbook_18f_gov_a" {
@@ -629,28 +604,23 @@ resource "aws_route53_record" "d_18f_gov_digitalaccelerator_18f_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "d_18f_gov_eng-hiring_18f_gov_a" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "eng-hiring.18f.gov."
-  type    = "A"
 
-  alias {
-    name                   = "d1ju28lhpbkq84.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+# eng-hiring.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_eng-hiring_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.eng-hiring.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.eng-hiring.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_eng-hiring_18f_gov_aaaa" {
+# eng-hiring.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_eng-hiring_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "eng-hiring.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d1ju28lhpbkq84.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["eng-hiring.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov_federalist_18f_gov_cname" {
@@ -759,28 +729,22 @@ resource "aws_route53_record" "d_18f_gov_grouplet-playbook_18f_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "d_18f_gov_guides_18f_gov_a" {
+# guides.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_guides_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "guides.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d10jxiv8e4xcp7.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["guides.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_guides_18f_gov_aaaa" {
+# guides.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_guides_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "guides.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d10jxiv8e4xcp7.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.guides.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.guides.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov_guides-template_18f_gov_a" {
@@ -890,29 +854,25 @@ resource "aws_route53_record" "d_18f_gov_lean-product-design_18f_gov_aaaa" {
   }
 }
 
-resource "aws_route53_record" "d_18f_gov_methods_18f_gov_a" {
+# methods.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_methods_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "methods.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d2z1u02mjhp26x.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["methods.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_methods_18f_gov_aaaa" {
+
+# acme challenge methods.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_methods_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "methods.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d2z1u02mjhp26x.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.methods.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.methods.18f.gov.external-domains-production.cloud.gov."]
 }
+
 
 # Configured with CDN Broker
 resource "aws_route53_record" "d_18f_gov_micropurchase_18f_gov_a" {
@@ -1099,28 +1059,23 @@ resource "aws_route53_record" "d_18f_gov_private-eye_18f_gov_cname" {
   records = ["private-eye.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_product-guide_18f_gov_a" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "product-guide.18f.gov."
-  type    = "A"
 
-  alias {
-    name                   = "d2ys0ic6txy8sy.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+# product-guide.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_product-guide_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "_acme-challenge.product-guide.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.product-guide.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_product-guide_18f_gov_aaaa" {
+# product-guide.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_product-guide_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "product-guide.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d2ys0ic6txy8sy.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["product-guide.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov_requests_18f_gov_cname" {
@@ -1347,36 +1302,22 @@ resource "aws_route53_record" "d_18f_gov__acme-challenge_requests_18f_gov_txt" {
   records = ["xqrLG7YoUqvFzGYv8KCSr3nPZadqdu9PMcLh8yfhp0c"]
 }
 
-resource "aws_route53_record" "d_18f_gov__acme-challenge_engineering_18f_gov_txt" {
+# engineering.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_engineering_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "_acme-challenge.engineering.18f.gov."
-  type    = "TXT"
+  type    = "CNAME"
   ttl     = 120
-  records = ["oI10GrfMLy5l2eczdrgMGsCHAooCAvbsq8yQA2Dhvbs"]
+  records = ["_acme-challenge.engineering.18f.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "d_18f_gov_engineering_18f_gov_a" {
+# engineering.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_engineering_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "engineering.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d1ah19wbgikahf.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "d_18f_gov_engineering_18f_gov_aaaa" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "engineering.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d1ah19wbgikahf.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 120
+  records = ["engineering.18f.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "d_18f_gov__acme_challenge_handbook_18f_gov_cname" {
@@ -1559,36 +1500,22 @@ resource "aws_route53_record" "d_18f_gov__acme-challenge_federalist-proxysite-te
   records = ["qiz18V0W9mHROFHTHqE4_Bn8NIByqMhoLvkKQ3h4Zxg"]
 }
 
-resource "aws_route53_record" "d_18f_gov_ux-guide_18f_gov_a" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "ux-guide.18f.gov."
-  type    = "A"
-
-  alias {
-    name                   = "d2mhwjcivqpysk.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "d_18f_gov_ux-guide_18f_gov_aaaa" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "ux-guide.18f.gov."
-  type    = "AAAA"
-
-  alias {
-    name                   = "d2mhwjcivqpysk.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "d_18f_gov__acme-challenge_ux-guide_18f_gov_txt" {
+# ux-guide.18f.gov acme challenge — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov__acme_challenge_ux-guide_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "_acme-challenge.ux-guide.18f.gov."
-  type    = "TXT"
+  type    = "CNAME"
   ttl     = 120
-  records = ["cMHSS7E7SJghSFKvmy-K8Cp78eZ8ihZjzESAuyEi5eY"]
+  records = ["_acme-challenge.ux-guide.18f.gov.external-domains-production.cloud.gov."]
+}
+
+# ux-guide.18f.gov — CNAME -------------------------------
+resource "aws_route53_record" "d_18f_gov_ux-guide_18f_gov_cname" {
+  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
+  name    = "ux-guide.18f.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["ux-guide.18f.gov.external-domains-production.cloud.gov."]
 }
 
 # portfolios.18f.gov — CNAME -------------------------------
