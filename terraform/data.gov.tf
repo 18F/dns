@@ -500,7 +500,8 @@ resource "aws_route53_record" "datagov__txt" {
   records = [
     "621df521f1e44ac69a670f325dc86889",
     "v=spf1 ip4:34.193.244.109 include:gsa.gov ~all",
-    "n6fgn8dyh1hhqsmghskdplss7zp7yt7q"
+    "n6fgn8dyh1hhqsmghskdplss7zp7yt7q",
+    "google-site-verification=K1_M1KkxyZYMiqHHAmlUVcXgYxV6myWSNYAyLrUk_PA"
   ]
 }
 
