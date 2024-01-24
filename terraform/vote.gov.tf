@@ -55,14 +55,6 @@ resource "aws_route53_record" "dev_cms_vote_gov_cname" {
   records = ["cms-dev.vote.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "dev_files_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "files-dev.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["cg-2f9c7fcb-b096-4a37-b184-a88e1b031105.s3-us-gov-west-1.amazonaws.com."]
-}
-
 #                      _ 
 #  _ __  _ __ ___   __| |
 # | '_ \| '__/ _ \ / _` |
@@ -101,14 +93,6 @@ resource "aws_route53_record" "prod_cms_vote_gov_cname" {
   type    = "CNAME"
   ttl     = 120
   records = ["cms.vote.gov.external-domains-production.cloud.gov."]
-}
-
-resource "aws_route53_record" "prod_files_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "files.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["cg-5dad5a82-fb4c-479c-82a7-695244d261bf.s3-us-gov-west-1.amazonaws.com."]
 }
 
 #      _                   
@@ -151,14 +135,6 @@ resource "aws_route53_record" "stage_cms_vote_gov_cname" {
   records = ["cms-stage.vote.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "stage_files_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "files-stage.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["cg-23d63d26-2e30-441d-b6e1-de8313af6a86.s3-us-gov-west-1.amazonaws.com."]
-}
-
 #
 #  _            _   
 # | |_ ___  ___| |_ 
@@ -197,14 +173,6 @@ resource "aws_route53_record" "test_cms_vote_gov_cname" {
   type    = "CNAME"
   ttl     = 120
   records = ["cms-test.vote.gov.external-domains-production.cloud.gov."]
-}
-
-resource "aws_route53_record" "test_files_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "files-test.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["cg-990cadfa-7889-4531-9736-bea483302876.s3-us-gov-west-1.amazonaws.com."]
 }
 
 #
