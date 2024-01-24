@@ -11,8 +11,8 @@ resource "aws_route53_record" "businessusa_gov_apex" {
   name    = "businessusa.gov."
   type    = "A"
   alias {
-    name                   = "businessusa.gov.external-domains-production.cloud.gov."
-    zone_id                = "Z33AYJ8TM3BH4J"
+    name                   = "d2gvzfl08lmr7j.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
     evaluate_target_health = false
   }
 }
@@ -22,8 +22,8 @@ resource "aws_route53_record" "businessusa_gov_apex_aaaa" {
   name    = "businessusa.gov."
   type    = "AAAA"
   alias {
-    name                   = "businessusa.gov.external-domains-production.cloud.gov."
-    zone_id                = "Z33AYJ8TM3BH4J"
+    name                   = "d2gvzfl08lmr7j.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
     evaluate_target_health = false
   }
 }
