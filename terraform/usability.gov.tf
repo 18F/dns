@@ -73,3 +73,15 @@ resource "aws_route53_record" "usability_gov__acme-challenge_txt" {
 output "usability_ns" {
   value = aws_route53_zone.usability_toplevel.name_servers
 }
+
+# redirect www.usability.gov to wwww.digital.gov/topics/usability
+#module "d_18f_gov__join_18f_gov_redirect" {
+#  source  = "mediapop/redirect/aws"
+#  version = "1.2.1"
+#
+#  domains = {
+#    "usability.gov." = ["usability.gov"]
+#  }
+#
+#  redirect_to = "https://www.digital.gov/topics/usability"
+#}
