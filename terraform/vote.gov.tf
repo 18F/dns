@@ -249,14 +249,6 @@ resource "aws_route53_record" "new_vote_gov_cname" {
   records = ["d2fr19uaud3s4h.cloudfront.net."]
 }
 
-resource "aws_route53_record" "beta_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "beta.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["di5gyq0wmd14q.cloudfront.net."]
-}
-
 resource "aws_route53_record" "staging_vote_gov_cname" {
   zone_id = aws_route53_zone.vote_gov_zone.zone_id
   name    = "staging.vote.gov."
