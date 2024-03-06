@@ -95,6 +95,22 @@ resource "aws_route53_record" "prod_cms_vote_gov_cname" {
   records = ["cms.vote.gov.external-domains-production.cloud.gov."]
 }
 
+resource "aws_route53_record" "prod__acme_challenge_beta_vote_gov_cname" {
+  zone_id = aws_route53_zone.vote_gov_zone.zone_id
+  name    = "_acme-challenge.beta.vote.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.beta.vote.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "prod_beta_vote_gov_cname" {
+  zone_id = aws_route53_zone.vote_gov_zone.zone_id
+  name    = "beta.vote.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["beta.vote.gov.external-domains-production.cloud.gov."]
+}
+
 #      _                   
 #  ___| |_ __ _  __ _  ___ 
 # / __| __/ _` |/ _` |/ _ \
@@ -231,14 +247,6 @@ resource "aws_route53_record" "new_vote_gov_cname" {
   type    = "CNAME"
   ttl     = 120
   records = ["d2fr19uaud3s4h.cloudfront.net."]
-}
-
-resource "aws_route53_record" "beta_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "beta.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["di5gyq0wmd14q.cloudfront.net."]
 }
 
 resource "aws_route53_record" "staging_vote_gov_cname" {
