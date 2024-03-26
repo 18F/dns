@@ -55,22 +55,22 @@ module "usability_gov__email_security" {
 # ACME Challenge records
 
 # usability.gov CNAME / ACME Challenge
-resource "aws_route53_record" "usability_gov__acme-challenge_cname" {
-  zone_id = aws_route53_zone.usability_toplevel.zone_id
-  name    = "_acme-challenge.usability.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["_acme-challenge.usability.gov.external-domains-production.cloud.gov."]
-}
+# resource "aws_route53_record" "usability_gov__acme-challenge_cname" {
+#   zone_id = aws_route53_zone.usability_toplevel.zone_id
+#   name    = "_acme-challenge.usability.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["_acme-challenge.usability.gov.external-domains-production.cloud.gov."]
+# }
 
 # www.usability.gov CNAME / ACME Challenge
-resource "aws_route53_record" "www_usability_gov__acme-challenge_cname" {
-  zone_id = aws_route53_zone.usability_toplevel.zone_id
-  name    = "_acme-challenge.www.usability.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["_acme-challenge.www.usability.gov.external-domains-production.cloud.gov."]
-}
+# resource "aws_route53_record" "www_usability_gov__acme-challenge_cname" {
+#   zone_id = aws_route53_zone.usability_toplevel.zone_id
+#   name    = "_acme-challenge.www.usability.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["_acme-challenge.www.usability.gov.external-domains-production.cloud.gov."]
+# }
 
 output "usability_ns" {
   value = aws_route53_zone.usability_toplevel.name_servers
