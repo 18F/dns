@@ -186,7 +186,7 @@ resource "aws_route53_record" "public_sans_digital_gov_aaaa" {
 }
 
 # accessibility.digital.gov — CNAME -------------------------------
-resource "aws_route53_record" "_acme-challenge_accessibility_digital_gov_cname" {
+resource "aws_route53_record" "accessibility_digital_gov_cname" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "accessibility.digital.gov."
   type    = "CNAME"
