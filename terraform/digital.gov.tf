@@ -186,50 +186,27 @@ resource "aws_route53_record" "public_sans_digital_gov_aaaa" {
 }
 
 # accessibility.digital.gov — A -------------------------------
-resource "aws_route53_record" "accessibility_digital_gov_a" {
+# *NOTE: Temporarily delete this record so it can be updated
+#        to the new external domain service convention in cloud.gov.
+# resource "aws_route53_record" "accessibility_digital_gov_a" {
+#   zone_id = aws_route53_zone.digital_toplevel.zone_id
+#   name    = "accessibility.digital.gov."
+#   type    = "A"
+#   alias {
+#     name                   = "d2hlc5rjmtb40x.cloudfront.net."
+#     zone_id                = local.cloud_gov_cloudfront_zone_id
+#     evaluate_target_health = false
+#   }
+# }
+
+resource "aws_route53_record" "_acme-challenge_accessibility_digital_gov_cname" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "accessibility.digital.gov."
-  type    = "A"
-  alias {
-    name                   = "d2hlc5rjmtb40x.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.accessibility.digital.gov."
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["_acme-challenge.accessibility.digital.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "accessibility_digital_gov_aaaa" {
-  zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "accessibility.digital.gov."
-  type    = "AAAA"
-  alias {
-    name                   = "d2hlc5rjmtb40x.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
-# demo.accessibility.digital.gov — A -------------------------------
-resource "aws_route53_record" "demo_accessibility_digital_gov_a" {
-  zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "demo.accessibility.digital.gov."
-  type    = "A"
-  alias {
-    name                   = "dnt48lkpo0ew7.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "demo_accessibility_digital_gov_aaaa" {
-  zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "demo.accessibility.digital.gov."
-  type    = "AAAA"
-  alias {
-    name                   = "dnt48lkpo0ew7.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
 
 # emerging.digital.gov — CNAME -------------------------------
 resource "aws_route53_record" "emerging_digital_gov_cname" {
