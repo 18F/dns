@@ -62,6 +62,21 @@ resource "aws_route53_record" "dev_cms_vote_gov_cname" {
 # | .__/|_|  \___/ \__,_|
 # |_|                    
 #
+resource "aws_route53_record" "prod__acme_challenge_vote_gov_cname" {
+  zone_id = aws_route53_zone.vote_gov_zone.zone_id
+  name    = "_acme-challenge.vote.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.vote.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "prod__acme_challenge_www_vote_gov_cname" {
+  zone_id = aws_route53_zone.vote_gov_zone.zone_id
+  name    = "_acme-challenge.www.vote.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.www.vote.gov.external-domains-production.cloud.gov."]
+}
 
 resource "aws_route53_record" "prod__acme_challenge_ssg_vote_gov_cname" {
   zone_id = aws_route53_zone.vote_gov_zone.zone_id
