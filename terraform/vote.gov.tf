@@ -301,3 +301,12 @@ module "vote_gov__email_security" {
 output "vote_gov_ns" {
   value = aws_route53_zone.vote_gov_zone.name_servers
 }
+
+# testing
+resource "aws_route53_record" "staging__acme_challenge_vote_gov_cname" {
+  zone_id = aws_route53_zone.vote_gov_zone.zone_id
+  name    = "_acme-challenge.staging.vote.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.staging.vote.gov.external-domains-production.cloud.gov."]
+}
