@@ -280,13 +280,13 @@ resource "aws_route53_record" "search_vote_gov_cname" {
   records = ["vote-en.sites.infr.search.usa.gov."]
 }
 
-resource "aws_route53_record" "staging_vote_gov_txt" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "_acme-challenge.staging.vote.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["-IQdOpZZcQmMfAedslZpwYCbAsFPC92MLVyVzh53uqc"]
-}
+#resource "aws_route53_record" "staging_vote_gov_txt" {
+#zone_id = aws_route53_zone.vote_gov_zone.zone_id
+#name    = "_acme-challenge.staging.vote.gov."
+#type    = "TXT"
+#ttl     = 120
+#records = ["-IQdOpZZcQmMfAedslZpwYCbAsFPC92MLVyVzh53uqc"]
+#}
 
 module "vote_gov__email_security" {
   source = "./email_security"
