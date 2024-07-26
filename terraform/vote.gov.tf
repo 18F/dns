@@ -269,7 +269,8 @@ resource "aws_route53_record" "staging_vote_gov_cname" {
   name    = "staging.vote.gov."
   type    = "CNAME"
   ttl     = 120
-  records = ["d3rjcr7wk6cbst.cloudfront.net."]
+  #records = ["d3rjcr7wk6cbst.cloudfront.net."]
+  records = ["staging.vote.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "search_vote_gov_cname" {
