@@ -78,14 +78,6 @@ resource "aws_route53_record" "prod__acme_challenge_www_vote_gov_cname" {
   records = ["_acme-challenge.www.vote.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "prod__acme_challenge_ssg_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "_acme-challenge.ssg.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["_acme-challenge.ssg.vote.gov.external-domains-production.cloud.gov."]
-}
-
 resource "aws_route53_record" "prod__acme_challenge_cms_vote_gov_cname" {
   zone_id = aws_route53_zone.vote_gov_zone.zone_id
   name    = "_acme-challenge.cms.vote.gov."
@@ -94,36 +86,12 @@ resource "aws_route53_record" "prod__acme_challenge_cms_vote_gov_cname" {
   records = ["_acme-challenge.cms.vote.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "prod_ssg_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "ssg.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["ssg.vote.gov.external-domains-production.cloud.gov."]
-}
-
 resource "aws_route53_record" "prod_cms_vote_gov_cname" {
   zone_id = aws_route53_zone.vote_gov_zone.zone_id
   name    = "cms.vote.gov."
   type    = "CNAME"
   ttl     = 120
   records = ["cms.vote.gov.external-domains-production.cloud.gov."]
-}
-
-resource "aws_route53_record" "prod__acme_challenge_beta_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "_acme-challenge.beta.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["_acme-challenge.beta.vote.gov.external-domains-production.cloud.gov."]
-}
-
-resource "aws_route53_record" "prod_beta_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "beta.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["beta.vote.gov.external-domains-production.cloud.gov."]
 }
 
 #      _                   
@@ -215,27 +183,35 @@ resource "aws_route53_record" "test_cms_vote_gov_cname" {
 #                       
 #
 
-#resource "aws_route53_record" "vote_gov_vote_gov_a" {
-#zone_id = aws_route53_zone.vote_gov_zone.zone_id
-#name    = "vote.gov."
-#type    = "A"
-#alias {
-#name                   = "d2s5gzwyabrtbd.cloudfront.net"
-#zone_id                = local.cloud_gov_cloudfront_zone_id
-#evaluate_target_health = false
-#}
-#}
+resource "aws_route53_record" "vote_gov_vote_gov_a" {
+  zone_id = aws_route53_zone.vote_gov_zone.zone_id
+  name    = "vote.gov."
+  type    = "A"
+  alias {
+    name                   = "d3uxnatkzd0hy.cloudfront.net"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
 
-#resource "aws_route53_record" "vote_gov_vote_gov_aaaa" {
-#zone_id = aws_route53_zone.vote_gov_zone.zone_id
-#name    = "vote.gov."
-#type    = "AAAA"
-#alias {
-#name                   = "d2s5gzwyabrtbd.cloudfront.net"
-#zone_id                = local.cloud_gov_cloudfront_zone_id
-#evaluate_target_health = false
-#}
-#}
+resource "aws_route53_record" "vote_gov_vote_gov_aaaa" {
+  zone_id = aws_route53_zone.vote_gov_zone.zone_id
+  name    = "vote.gov."
+  type    = "AAAA"
+  alias {
+    name                   = "d3uxnatkzd0hy.cloudfront.net"
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "www_vote_gov_vote_gov_cname" {
+  zone_id = aws_route53_zone.vote_gov_zone.zone_id
+  name    = "www.vote.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["vote.gov."]
+}
 
 resource "aws_route53_record" "vote_gov_01872332dafeeb93b927e2d9e9b2c53d_vote_gov_cname" {
   zone_id = aws_route53_zone.vote_gov_zone.zone_id
@@ -243,14 +219,6 @@ resource "aws_route53_record" "vote_gov_01872332dafeeb93b927e2d9e9b2c53d_vote_go
   type    = "CNAME"
   ttl     = 5
   records = ["799928229b505d839d0482696552a70fb9c456e0.comodoca.com."]
-}
-
-resource "aws_route53_record" "new_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "new.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["d2fr19uaud3s4h.cloudfront.net."]
 }
 
 resource "aws_route53_record" "search_vote_gov_cname" {
