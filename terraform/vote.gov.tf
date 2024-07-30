@@ -134,14 +134,6 @@ resource "aws_route53_record" "prod_beta_vote_gov_cname" {
 #               |___/      
 #
 
-resource "aws_route53_record" "stage__acme_challenge_ssg_stage_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "_acme-challenge.ssg-stage.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["_acme-challenge.ssg-stage.vote.gov.external-domains-production.cloud.gov."]
-}
-
 resource "aws_route53_record" "stage__acme_challenge_stage_cms_vote_gov_cname" {
   zone_id = aws_route53_zone.vote_gov_zone.zone_id
   name    = "_acme-challenge.cms-stage.vote.gov."
@@ -150,12 +142,20 @@ resource "aws_route53_record" "stage__acme_challenge_stage_cms_vote_gov_cname" {
   records = ["_acme-challenge.cms-stage.vote.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "stage_ssg_vote_gov_cname" {
+resource "aws_route53_record" "staging__acme_challenge_vote_gov_cname" {
   zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "ssg-stage.vote.gov."
+  name    = "_acme-challenge.staging.vote.gov."
   type    = "CNAME"
   ttl     = 120
-  records = ["ssg-stage.vote.gov.external-domains-production.cloud.gov."]
+  records = ["_acme-challenge.staging.vote.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "staging_vote_gov_cname" {
+  zone_id = aws_route53_zone.vote_gov_zone.zone_id
+  name    = "staging.vote.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["staging.vote.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "stage_cms_vote_gov_cname" {
@@ -215,27 +215,27 @@ resource "aws_route53_record" "test_cms_vote_gov_cname" {
 #                       
 #
 
-resource "aws_route53_record" "vote_gov_vote_gov_a" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "vote.gov."
-  type    = "A"
-  alias {
-    name                   = "d2s5gzwyabrtbd.cloudfront.net"
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
+#resource "aws_route53_record" "vote_gov_vote_gov_a" {
+#zone_id = aws_route53_zone.vote_gov_zone.zone_id
+#name    = "vote.gov."
+#type    = "A"
+#alias {
+#name                   = "d2s5gzwyabrtbd.cloudfront.net"
+#zone_id                = local.cloud_gov_cloudfront_zone_id
+#evaluate_target_health = false
+#}
+#}
 
-resource "aws_route53_record" "vote_gov_vote_gov_aaaa" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "vote.gov."
-  type    = "AAAA"
-  alias {
-    name                   = "d2s5gzwyabrtbd.cloudfront.net"
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
-}
+#resource "aws_route53_record" "vote_gov_vote_gov_aaaa" {
+#zone_id = aws_route53_zone.vote_gov_zone.zone_id
+#name    = "vote.gov."
+#type    = "AAAA"
+#alias {
+#name                   = "d2s5gzwyabrtbd.cloudfront.net"
+#zone_id                = local.cloud_gov_cloudfront_zone_id
+#evaluate_target_health = false
+#}
+#}
 
 resource "aws_route53_record" "vote_gov_01872332dafeeb93b927e2d9e9b2c53d_vote_gov_cname" {
   zone_id = aws_route53_zone.vote_gov_zone.zone_id
@@ -245,32 +245,12 @@ resource "aws_route53_record" "vote_gov_01872332dafeeb93b927e2d9e9b2c53d_vote_go
   records = ["799928229b505d839d0482696552a70fb9c456e0.comodoca.com."]
 }
 
-#module "vote_gov__www_vote_gov_redirect" {
-#  source = "mediapop/redirect/aws"
-#  version = "1.3.0"
-
-#  domains = {
-#    "vote.gov." = ["www.vote.gov"]
-#  }
-
-#  redirect_to = "vote.gov"
-#}
-
 resource "aws_route53_record" "new_vote_gov_cname" {
   zone_id = aws_route53_zone.vote_gov_zone.zone_id
   name    = "new.vote.gov."
   type    = "CNAME"
   ttl     = 120
   records = ["d2fr19uaud3s4h.cloudfront.net."]
-}
-
-resource "aws_route53_record" "staging_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "staging.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  #records = ["d3rjcr7wk6cbst.cloudfront.net."]
-  records = ["staging.vote.gov.external-domains-production.cloud.gov."]
 }
 
 resource "aws_route53_record" "search_vote_gov_cname" {
@@ -280,14 +260,6 @@ resource "aws_route53_record" "search_vote_gov_cname" {
   ttl     = 120
   records = ["vote-en.sites.infr.search.usa.gov."]
 }
-
-#resource "aws_route53_record" "staging_vote_gov_txt" {
-#zone_id = aws_route53_zone.vote_gov_zone.zone_id
-#name    = "_acme-challenge.staging.vote.gov."
-#type    = "TXT"
-#ttl     = 120
-#records = ["-IQdOpZZcQmMfAedslZpwYCbAsFPC92MLVyVzh53uqc"]
-#}
 
 module "vote_gov__email_security" {
   source = "./email_security"
@@ -301,13 +273,4 @@ module "vote_gov__email_security" {
 
 output "vote_gov_ns" {
   value = aws_route53_zone.vote_gov_zone.name_servers
-}
-
-# testing
-resource "aws_route53_record" "staging__acme_challenge_vote_gov_cname" {
-  zone_id = aws_route53_zone.vote_gov_zone.zone_id
-  name    = "_acme-challenge.staging.vote.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["_acme-challenge.staging.vote.gov.external-domains-production.cloud.gov."]
 }
