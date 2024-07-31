@@ -3,3 +3,4 @@ checkdmarc~=4.6
 pytest~=7.3
 dnspython~=2.6.0rc1
 urllib3~=1.26
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
