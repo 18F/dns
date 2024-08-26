@@ -465,14 +465,6 @@ resource "aws_route53_record" "d_18f_gov_charlie_18f_gov_cname" {
   records = ["d30i8aauyor9vc.cloudfront.net"]
 }
 
-resource "aws_route53_record" "d_18f_gov_chat_18f_gov_a" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "chat.18f.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["d2yc8l40kkdvr0.cloudfront.net"]
-}
-
 resource "aws_route53_record" "d_18f_gov_compliance-viewer_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "compliance-viewer.18f.gov."
