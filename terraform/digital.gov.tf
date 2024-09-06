@@ -479,6 +479,30 @@ resource "aws_route53_record" "touchpoints_digital_gov_ses_cname_3" {
   records = ["pwa5cvp3cde3aghrojag7ketcjaeytp2.dkim.amazonses.com"]
 }
 
+resource "aws_route53_record" "touchpoints_digital_gov_dkim_1" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "q7e7jvcl23omte4fum6jgp5lpwgxdp7a._domainkey.touchpoints.digital.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["q7e7jvcl23omte4fum6jgp5lpwgxdp7a.dkim.amazonses.com"]
+}
+
+resource "aws_route53_record" "touchpoints_digital_gov_dkim_2" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "y5bm3fsnhjdr5ar2qwyneeiy7wr5c64e._domainkey.touchpoints.digital.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["y5bm3fsnhjdr5ar2qwyneeiy7wr5c64e.dkim.amazonses.com"]
+}
+
+resource "aws_route53_record" "touchpoints_digital_gov_dkim_3" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "anyljchthsaitorr6matbfeoeyug34jh._domainkey.touchpoints.digital.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["anyljchthsaitorr6matbfeoeyug34jh.dkim.amazonses.com"]
+}
+
 # Touchpoints APP / MX Records
 # app.touchpoints.digital.gov
 resource "aws_route53_record" "touchpoints_digital_gov_mx" {
