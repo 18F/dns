@@ -515,6 +515,24 @@ resource "aws_route53_record" "touchpoints_digital_gov_mx" {
   ]
 }
 
+resource "aws_route53_record" "mail_from_touchpoints_digital_gov_mx" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "mail.touchpoints.digital.gov"
+  type    = "MX"
+  ttl     = "600"
+  records = [
+    "10 feedback-smtp.us-east-1.amazonses.com"
+  ]
+}
+
+resource "aws_route53_record" "touchpoints_digital_gov_spf" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name = "mail.touchpoints.digital.gov"
+  type = "TXT"
+  ttl = 600
+  records = ["v=spf1 include:amazonses.com ~all"]
+}
+
 # Compliance and ACME records -------------------------------
 
 module "digital_gov__email_security" {
