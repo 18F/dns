@@ -50,6 +50,7 @@ resource "aws_route53_record" "benefits_gov_ssabest_acmechallenge" {
   type    = "CNAME"
   ttl     = 300
   records = ["_acme-challenge.ssabest.benefits.gov.external-domains-production.cloud.gov."]
+}
 
 resource "aws_route53_record" "benefits_gov_ssabest" {
   zone_id = aws_route53_zone.benefits_gov_zone.zone_id
