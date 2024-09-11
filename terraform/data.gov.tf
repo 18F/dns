@@ -211,6 +211,17 @@ resource "aws_route53_record" "datagov_acmechallengedashboardacmechallengedashbo
 }
 
 
+resource "aws_route53_record" "datagov_acmechallengefederationacmechallengefederationdatagovexternaldomainsproductioncloudgov_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "_acme-challenge.federation"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["_acme-challenge.federation.data.gov.external-domains-production.cloud.gov."]
+
+}
+
+
 resource "aws_route53_record" "datagov_acmechallengeinventoryacmechallengeinventorydatagovexternaldomainsproductioncloudgov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "_acme-challenge.inventory"
@@ -299,13 +310,13 @@ resource "aws_route53_record" "datagov_dashboarddashboarddatagovexternaldomainsp
 }
 
 
-resource "aws_route53_record" "datagov_federationd27ayqvgdtxgg3cloudfrontnet_cname" {
+resource "aws_route53_record" "datagov_federationfederationdatagovexternaldomainsproductioncloudgov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "federation"
   type    = "CNAME"
 
   ttl     = 300
-  records = ["d27ayqvgdtxgg3.cloudfront.net"]
+  records = ["federation.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -633,7 +644,7 @@ resource "aws_route53_record" "datagov_bafcc0ee223ea343cb6b478aa300a182catalogst
 
   ttl     = 300
   records = ["_6860e6e39504b0ca7f5dcbd5ba8f678c.cltjbwlkcy.acm-validations.aws."]
-  
+
 }
 
 
