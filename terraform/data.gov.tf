@@ -527,28 +527,6 @@ resource "aws_route53_record" "datagov_mloj922e44u1o54qmtbqbi4k6r_txt" {
 }
 
 
-resource "aws_route53_record" "datagov_acmechallengefederationDVhxe1yzatjC0zzy0f6tN87IACCK2eAz00YqyuzjA_txt" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "_acme-challenge.federation"
-  type    = "TXT"
-
-  ttl     = 300
-  records = ["DVhxe1y_zatjC0zzy-0f6tN87IACCK2eAz00YqyuzjA"]
-
-}
-
-
-resource "aws_route53_record" "datagov_acmechallengefederationstagingjBIuzGOGGA8ahB7kFxAWuAMCAxFoMMEn63xCVO0LAY_txt" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "_acme-challenge.federation-staging"
-  type    = "TXT"
-
-  ttl     = 300
-  records = ["jBIuzGOGGA8ahB7kFxAWuAMCAxFoMMEn63xC_VO0LAY"]
-
-}
-
-
 resource "aws_route53_record" "datagov_acmechallengeresourcesW9OAmioR3ViZvIRze2pvvmDgNtVaYqcP2Cft0lgcU_txt" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "_acme-challenge.resources"
