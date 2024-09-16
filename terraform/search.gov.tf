@@ -68,8 +68,8 @@ resource "aws_route53_record" "search_gov_find" {
 resource "aws_route53_record" "search_gov_downtime" {
   zone_id = aws_route53_zone.search_toplevel.zone_id
   name    = "admin-center-downtime.search.gov."
-  type    = "A"
-  records = ["34.238.89.30"]
+  type    = "CNAME"
+  records = ["admin-center-downtime.search.usa.gov."]
   ttl     = "300"
 }
 
