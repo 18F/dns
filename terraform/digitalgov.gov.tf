@@ -122,30 +122,6 @@ resource "aws_route53_record" "find_digitalgov_gov_a" {
   ]
 }
 
-# U.S. Digital Registry
-# Redirects to cloud.gov External Domains using https://github.com/18f/pages-redirects
-# Contact feedback-analytics@gsa.gov regarding changes
-
-# U.S. Digital Registry
-# usdigitalregistry.digitalgov.gov
-resource "aws_route53_record" "redirect_usdigitalregistry_digitalgov_gov" {
-  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
-  name    = "usdigitalregistry.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["usdigitalregistry.digitalgov.gov.external-domains-production.cloud.gov."]
-}
-
-# U.S. Digital Registry
-# usdigitalregistry.digitalgov.gov ACME Challenge
-resource "aws_route53_record" "acme_challenge_usdigitalregistry_digitalgov_gov" {
-  zone_id = aws_route53_zone.digitalgov_gov_zone.zone_id
-  name    = "_acme-challenge.usdigitalregistry.digitalgov.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["_acme-challenge.usdigitalregistry.digitalgov.gov.external-domains-production.cloud.gov."]
-}
-
 # END REDIRECTS
 
 # =================================
