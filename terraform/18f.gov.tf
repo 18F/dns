@@ -449,14 +449,6 @@ resource "aws_route53_record" "d_18f_gov_c6769c03c29466618a6bd23b158d28a6_18f_go
   records = ["25dcca43a0e035f9109366532ca4bea5a552e1ba.comodoca.com."]
 }
 
-resource "aws_route53_record" "d_18f_gov_cap_18f_gov_cname" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "cap.18f.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["d2xzdqyn2qvwoo.cloudfront.net."]
-}
-
 resource "aws_route53_record" "d_18f_gov_charlie_18f_gov_cname" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "charlie.18f.gov."
@@ -464,15 +456,6 @@ resource "aws_route53_record" "d_18f_gov_charlie_18f_gov_cname" {
   ttl     = 300
   records = ["d30i8aauyor9vc.cloudfront.net"]
 }
-
-resource "aws_route53_record" "d_18f_gov_compliance-viewer_18f_gov_cname" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "compliance-viewer.18f.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["dw68mooipdgv2.cloudfront.net"]
-}
-
 
 # content-guide.18f.gov acme challenge — CNAME -------------------------------
 resource "aws_route53_record" "d_18f_gov__acme_challenge_content-guide_18f_gov_cname" {
@@ -1069,15 +1052,6 @@ resource "aws_route53_record" "d_18f_gov_product-guide_18f_gov_cname" {
   ttl     = 120
   records = ["product-guide.18f.gov.external-domains-production.cloud.gov."]
 }
-
-resource "aws_route53_record" "d_18f_gov_requests_18f_gov_cname" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "requests.18f.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["d2ukxgg8kqcdx6.cloudfront.net."]
-}
-
 resource "aws_route53_record" "d_18f_gov_testing-cookbook_18f_gov_a" {
   zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
   name    = "testing-cookbook.18f.gov."
@@ -1276,22 +1250,6 @@ resource "aws_route53_record" "d_18f_gov__acme-challenge_slides_18f_gov_txt" {
   type    = "TXT"
   ttl     = 120
   records = ["Ij5FclXKU_n8jvVITVWMnBJsMfpVLTaiaV2xi54x31o"]
-}
-
-resource "aws_route53_record" "d_18f_gov__cap_18f_gov_txt" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "_acme-challenge.cap.18f.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["8aYF3jbkX9y2KaYu1YVTlymVdPKLf0BLHkc6S03R3BM"]
-}
-
-resource "aws_route53_record" "d_18f_gov__acme-challenge_requests_18f_gov_txt" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "_acme-challenge.requests.18f.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["xqrLG7YoUqvFzGYv8KCSr3nPZadqdu9PMcLh8yfhp0c"]
 }
 
 # engineering.18f.gov acme challenge — CNAME -------------------------------
@@ -1582,24 +1540,6 @@ resource "aws_route53_record" "d_18f_gov__acme_challenge_climate_data_user_study
   type    = "CNAME"
   ttl     = 120
   records = ["_acme-challenge.climate-data-user-study.18f.gov.external-domains-production.cloud.gov."]
-}
-
-# c2.18f.gov — CNAME -------------------------------
-resource "aws_route53_record" "d_18f_gov_c2_18f_gov_cname" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "c2.18f.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["c2.18f.gov.external-domains-production.cloud.gov."]
-}
-
-# c2.18f.gov acme challenge — CNAME -------------------------------
-resource "aws_route53_record" "d_18f_gov__acme_challenge_c2_18f_gov_cname" {
-  zone_id = aws_route53_zone.d_18f_gov_zone.zone_id
-  name    = "_acme-challenge.c2.18f.gov."
-  type    = "CNAME"
-  ttl     = 120
-  records = ["_acme-challenge.c2.18f.gov.external-domains-production.cloud.gov."]
 }
 
 output "d_18f_gov_ns" {
