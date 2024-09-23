@@ -581,6 +581,26 @@ resource "aws_route53_record" "touchpoints_digital_gov__acme-challenge_txt" {
   records = ["Ho5lFIaJK7J44nLyBWGpfMBRNc96eL7-QnMuBII-4Uc"]
 }
 
+# standards.digital.gov — CNAME -------------------------------
+# (Redirects to standards.digital.gov via "pages redirect")
+resource "aws_route53_record" "standards_digital_gov_cname" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "standards.digital.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["standards.digital.gov.external-domains-production.cloud.gov."]
+}
+
+# standards.digital.gov — CNAME -------------------------------
+# (Redirects to standards.digital.gov via "pages redirect")
+resource "aws_route53_record" "_acme-challenge_standards_digital_gov_cname" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "_acme-challenge.standards.digital.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.standards.digital.gov.external-domains-production.cloud.gov."]
+}
+
 # =================================
 
 # EMAIL NEWSLETTER (HubSpot)
