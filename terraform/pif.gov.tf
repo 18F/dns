@@ -119,14 +119,6 @@ resource "aws_route53_record" "proposal_txt" {
   records = ["1dHcUZofJi9on3jRwR4I0o-2fGKbMV0OtmF140lvKmU"]
 }
 
-resource "aws_route53_record" "fellows_in_innovation_pif_cname" {
-  zone_id = aws_route53_zone.pif_toplevel.zone_id
-  name    = "fellows-in-innovation.pif.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["d3at1jdwnpqw7w.cloudfront.net"]
-}
-
 resource "aws_route53_record" "d_pif_gov__acme_challenge_paygap_pif_cname" {
   zone_id = aws_route53_zone.pif_toplevel.zone_id
   name    = "_acme-challenge.paygap.pif.gov."
