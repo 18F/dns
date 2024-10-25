@@ -220,50 +220,38 @@ resource "aws_route53_record" "_acme-challenge_emerging_digital_gov_cname" {
   records = ["_acme-challenge.emerging.digital.gov.external-domains-production.cloud.gov."]
 }
 
-# pra.digital.gov — A -------------------------------
-resource "aws_route53_record" "pra_digital_gov_a" {
+# pra.digital.gov — CNAME -------------------------------
+resource "aws_route53_record" "pra_digital_gov_cname" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "pra.digital.gov."
-  type    = "A"
-  alias {
-    name                   = "d3vwm5h0acan67.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 300
+  records = ["pra.digital.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "pra_digital_gov_aaaa" {
+resource "aws_route53_record" "_acme-challenge_pra_digital_gov_cname" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "pra.digital.gov."
-  type    = "AAAA"
-  alias {
-    name                   = "d3vwm5h0acan67.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.pra.digital.gov."
+  type    = "CNAME"
+  ttl     = 300
+  records = ["_acme-challenge.pra.digital.gov.external-domains-production.cloud.gov."]
 }
 
-# demo.pra.digital.gov — A -------------------------------
-resource "aws_route53_record" "demo_pra_digital_gov_a" {
+# demo.pra.digital.gov — CNAME -------------------------------
+resource "aws_route53_record" "demo_pra_digital_gov_cname" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "demo.pra.digital.gov."
-  type    = "A"
-  alias {
-    name                   = "d18cp08a73t0c1.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  type    = "CNAME"
+  ttl     = 300
+  records = ["demo.pra.digital.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "demo_pra_digital_gov_aaaa" {
+resource "aws_route53_record" "_acme-challenge_demo_pra_digital_gov_cname" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "demo.pra.digital.gov."
-  type    = "AAAA"
-  alias {
-    name                   = "d18cp08a73t0c1.cloudfront.net."
-    zone_id                = local.cloud_gov_cloudfront_zone_id
-    evaluate_target_health = false
-  }
+  name    = "_acme-challenge.demo.pra.digital.gov."
+  type    = "CNAME"
+  ttl     = 300
+  records = ["_acme-challenge.demo.pra.digital.gov.external-domains-production.cloud.gov."]
 }
 
 # Touchpoints ------------------------------------------------------------------
