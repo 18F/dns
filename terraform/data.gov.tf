@@ -211,6 +211,17 @@ resource "aws_route53_record" "datagov_acmechallengedashboardacmechallengedashbo
 }
 
 
+resource "aws_route53_record" "datagov_acmechallengefederationacmechallengefederationdatagovexternaldomainsproductioncloudgov_cname" {
+  zone_id = aws_route53_zone.datagov_zone.zone_id
+  name    = "_acme-challenge.federation"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["_acme-challenge.federation.data.gov.external-domains-production.cloud.gov."]
+
+}
+
+
 resource "aws_route53_record" "datagov_acmechallengeinventoryacmechallengeinventorydatagovexternaldomainsproductioncloudgov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "_acme-challenge.inventory"
@@ -299,13 +310,13 @@ resource "aws_route53_record" "datagov_dashboarddashboarddatagovexternaldomainsp
 }
 
 
-resource "aws_route53_record" "datagov_federationd27ayqvgdtxgg3cloudfrontnet_cname" {
+resource "aws_route53_record" "datagov_federationfederationdatagovexternaldomainsproductioncloudgov_cname" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "federation"
   type    = "CNAME"
 
   ttl     = 300
-  records = ["d27ayqvgdtxgg3.cloudfront.net"]
+  records = ["federation.data.gov.external-domains-production.cloud.gov."]
 
 }
 
@@ -516,28 +527,6 @@ resource "aws_route53_record" "datagov_mloj922e44u1o54qmtbqbi4k6r_txt" {
 }
 
 
-resource "aws_route53_record" "datagov_acmechallengefederationDVhxe1yzatjC0zzy0f6tN87IACCK2eAz00YqyuzjA_txt" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "_acme-challenge.federation"
-  type    = "TXT"
-
-  ttl     = 300
-  records = ["DVhxe1y_zatjC0zzy-0f6tN87IACCK2eAz00YqyuzjA"]
-
-}
-
-
-resource "aws_route53_record" "datagov_acmechallengefederationstagingjBIuzGOGGA8ahB7kFxAWuAMCAxFoMMEn63xCVO0LAY_txt" {
-  zone_id = aws_route53_zone.datagov_zone.zone_id
-  name    = "_acme-challenge.federation-staging"
-  type    = "TXT"
-
-  ttl     = 300
-  records = ["jBIuzGOGGA8ahB7kFxAWuAMCAxFoMMEn63xC_VO0LAY"]
-
-}
-
-
 resource "aws_route53_record" "datagov_acmechallengeresourcesW9OAmioR3ViZvIRze2pvvmDgNtVaYqcP2Cft0lgcU_txt" {
   zone_id = aws_route53_zone.datagov_zone.zone_id
   name    = "_acme-challenge.resources"
@@ -633,7 +622,7 @@ resource "aws_route53_record" "datagov_bafcc0ee223ea343cb6b478aa300a182catalogst
 
   ttl     = 300
   records = ["_6860e6e39504b0ca7f5dcbd5ba8f678c.cltjbwlkcy.acm-validations.aws."]
-  
+
 }
 
 

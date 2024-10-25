@@ -479,6 +479,30 @@ resource "aws_route53_record" "touchpoints_digital_gov_ses_cname_3" {
   records = ["pwa5cvp3cde3aghrojag7ketcjaeytp2.dkim.amazonses.com"]
 }
 
+resource "aws_route53_record" "touchpoints_digital_gov_dkim_1" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "q7e7jvcl23omte4fum6jgp5lpwgxdp7a._domainkey.touchpoints.digital.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["q7e7jvcl23omte4fum6jgp5lpwgxdp7a.dkim.amazonses.com"]
+}
+
+resource "aws_route53_record" "touchpoints_digital_gov_dkim_2" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "y5bm3fsnhjdr5ar2qwyneeiy7wr5c64e._domainkey.touchpoints.digital.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["y5bm3fsnhjdr5ar2qwyneeiy7wr5c64e.dkim.amazonses.com"]
+}
+
+resource "aws_route53_record" "touchpoints_digital_gov_dkim_3" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "anyljchthsaitorr6matbfeoeyug34jh._domainkey.touchpoints.digital.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["anyljchthsaitorr6matbfeoeyug34jh.dkim.amazonses.com"]
+}
+
 # Touchpoints APP / MX Records
 # app.touchpoints.digital.gov
 resource "aws_route53_record" "touchpoints_digital_gov_mx" {
@@ -489,6 +513,24 @@ resource "aws_route53_record" "touchpoints_digital_gov_mx" {
   records = [
     "10 inbound-smtp.us-east-1.amazonaws.com"
   ]
+}
+
+resource "aws_route53_record" "mail_from_touchpoints_digital_gov_mx" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "mail.touchpoints.digital.gov"
+  type    = "MX"
+  ttl     = "600"
+  records = [
+    "10 feedback-smtp.us-east-1.amazonses.com"
+  ]
+}
+
+resource "aws_route53_record" "touchpoints_digital_gov_spf" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name = "mail.touchpoints.digital.gov"
+  type = "TXT"
+  ttl = 600
+  records = ["v=spf1 include:amazonses.com ~all"]
 }
 
 # Compliance and ACME records -------------------------------
@@ -550,6 +592,26 @@ resource "aws_route53_record" "touchpoints_digital_gov__acme-challenge_txt" {
   type    = "TXT"
   ttl     = 120
   records = ["Ho5lFIaJK7J44nLyBWGpfMBRNc96eL7-QnMuBII-4Uc"]
+}
+
+# standards.digital.gov — CNAME -------------------------------
+# (Redirects to standards.digital.gov via "pages redirect")
+resource "aws_route53_record" "standards_digital_gov_cname" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "standards.digital.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["standards.digital.gov.external-domains-production.cloud.gov."]
+}
+
+# standards.digital.gov — CNAME -------------------------------
+# (Redirects to standards.digital.gov via "pages redirect")
+resource "aws_route53_record" "_acme-challenge_standards_digital_gov_cname" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "_acme-challenge.standards.digital.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.standards.digital.gov.external-domains-production.cloud.gov."]
 }
 
 # =================================
