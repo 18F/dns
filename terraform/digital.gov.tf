@@ -551,19 +551,6 @@ resource "aws_route53_record" "demo_pra_digital_gov__acme-challenge_txt" {
   records = ["qzIXA_qU7a3io8b_FRxFVbPBUKZ83XtglufzS7qKnlg"]
 }
 
-# PRA Demo Redirect
-# redirect demo.pra.digital.gov to pra.digital.gov/
-module "demo_pra_digital_redirect_to_pra_digital" {
-  source  = "mediapop/redirect/aws"
-  version = "1.2.1"
-
-  domains = {
-    "demo.pra.digital.gov." = ["demo.pra.digital.gov"]
-  }
-
-  redirect_to = "https://pra.digital.gov/"
-}
-
 # demo.touchpoints.digital.gov TXT / ACME Challenge
 resource "aws_route53_record" "demo_touchpoints_digital_gov__acme-challenge_txt" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
