@@ -542,15 +542,6 @@ resource "aws_route53_record" "pra_digital_gov__acme-challenge_txt" {
   records = ["0VxlpUbA2CXBDx1GKUlr-SujwU0ep9KvGrM0BvE6o4E"]
 }
 
-# demo.pra.digital.gov TXT / ACME Challenge
-resource "aws_route53_record" "demo_pra_digital_gov__acme-challenge_txt" {
-  zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "_acme-challenge.demo.pra.digital.gov."
-  type    = "TXT"
-  ttl     = 120
-  records = ["qzIXA_qU7a3io8b_FRxFVbPBUKZ83XtglufzS7qKnlg"]
-}
-
 # demo.touchpoints.digital.gov TXT / ACME Challenge
 resource "aws_route53_record" "demo_touchpoints_digital_gov__acme-challenge_txt" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
