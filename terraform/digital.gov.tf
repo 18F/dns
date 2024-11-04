@@ -220,39 +220,45 @@ resource "aws_route53_record" "_acme-challenge_emerging_digital_gov_cname" {
   records = ["_acme-challenge.emerging.digital.gov.external-domains-production.cloud.gov."]
 }
 
-# pra.digital.gov — CNAME -------------------------------
-resource "aws_route53_record" "pra_digital_gov_cname" {
+# pra.digital.gov — A -------------------------------
+resource "aws_route53_record" "pra_digital_gov_a" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "pra.digital.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["pra.digital.gov.external-domains-production.cloud.gov."]
+  type    = "A"
+  alias {
+    name                   = "d3vwm5h0acan67.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
 }
 
-resource "aws_route53_record" "_acme-challenge_pra_digital_gov_cname" {
+resource "aws_route53_record" "pra_digital_gov_aaaa" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "_acme-challenge.pra.digital.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["_acme-challenge.pra.digital.gov.external-domains-production.cloud.gov."]
+  name    = "pra.digital.gov."
+  type    = "AAAA"
+  alias {
+    name                   = "d3vwm5h0acan67.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
 }
 
 # demo.pra.digital.gov — CNAME -------------------------------
-resource "aws_route53_record" "demo_pra_digital_gov_cname" {
-  zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "demo.pra.digital.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["demo.pra.digital.gov.external-domains-production.cloud.gov."]
-}
+#resource "aws_route53_record" "demo_pra_digital_gov_cname" {
+#  zone_id = aws_route53_zone.digital_toplevel.zone_id
+#  name    = "demo.pra.digital.gov."
+#  type    = "CNAME"
+#  ttl     = 300
+#  records = ["demo.pra.digital.gov.external-domains-production.cloud.gov."]
+#}
 
-resource "aws_route53_record" "_acme-challenge_demo_pra_digital_gov_cname" {
-  zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "_acme-challenge.demo.pra.digital.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["_acme-challenge.demo.pra.digital.gov.external-domains-production.cloud.gov."]
-}
+#resource "aws_route53_record" "_acme-challenge_demo_pra_digital_gov_cname" {
+#  zone_id = aws_route53_zone.digital_toplevel.zone_id
+#  name    = "_acme-challenge.demo.pra.digital.gov."
+#  type    = "CNAME"
+#  ttl     = 300
+#  records = ["_acme-challenge.demo.pra.digital.gov.external-domains-production.cloud.gov."]
+#}
 
 # Touchpoints ------------------------------------------------------------------
 # A simple, flexible, and convenient way to collect customer feedback.
