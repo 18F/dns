@@ -237,21 +237,27 @@ resource "aws_route53_record" "_acme-challenge_pra_digital_gov_cname" {
   records = ["_acme-challenge.pra.digital.gov.external-domains-production.cloud.gov."]
 }
 
-# demo.pra.digital.gov — CNAME -------------------------------
-resource "aws_route53_record" "demo_pra_digital_gov_cname" {
+# demo.pra.digital.gov — A -------------------------------
+resource "aws_route53_record" "demo_pra_digital_gov_a" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "demo.pra.digital.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["demo.pra.digital.gov.external-domains-production.cloud.gov."]
+  type    = "A"
+  alias {
+    name                   = "d18cp08a73t0c1.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
 }
 
-resource "aws_route53_record" "_acme-challenge_demo_pra_digital_gov_cname" {
+resource "aws_route53_record" "demo_pra_digital_gov_aaaa" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "_acme-challenge.demo.pra.digital.gov."
-  type    = "CNAME"
-  ttl     = 300
-  records = ["_acme-challenge.demo.pra.digital.gov.external-domains-production.cloud.gov."]
+  name    = "demo.pra.digital.gov."
+  type    = "AAAA"
+  alias {
+    name                   = "d18cp08a73t0c1.cloudfront.net."
+    zone_id                = local.cloud_gov_cloudfront_zone_id
+    evaluate_target_health = false
+  }
 }
 
 # Touchpoints ------------------------------------------------------------------
