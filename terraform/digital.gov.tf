@@ -254,30 +254,30 @@ resource "aws_route53_record" "_acme-challenge_emerging_digital_gov_cname" {
 #}
 
 #resource "aws_route53_record" "_acme-challenge_pra_digital_gov_cname" {
-#  zone_id = aws_route53_zone.digital_toplevel.zone_id
-#  name    = "_acme-challenge.pra.digital.gov."
-#  type    = "CNAME"
-#  ttl     = 300
-#  records = ["_acme-challenge.pra.digital.gov.external-domains-production.cloud.gov."]
-#}
-
-
-
-# demo.pra.digital.gov — CNAME -------------------------------
-resource "aws_route53_record" "demo_pra_digital_gov_cname" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "demo.pra.digital.gov."
+  name    = "_acme-challenge.pra.digital.gov."
   type    = "CNAME"
   ttl     = 300
-  records = ["demo.pra.digital.gov.external-domains-production.cloud.gov."]
+  records = ["_acme-challenge.pra.digital.gov.external-domains-production.cloud.gov."]
+}
+
+
+
+# pra.digital.gov — CNAME -------------------------------
+resource "aws_route53_record" "demo_pra_digital_gov_cname" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "pra.digital.gov."
+  type    = "CNAME"
+  ttl     = 300
+  records = ["pra.digital.gov.external-domains-production.cloud.gov."]
 }
 
 #resource "aws_route53_record" "_acme-challenge_demo_pra_digital_gov_cname" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
-  name    = "_acme-challenge.demo.pra.digital.gov."
+  name    = "_acme-challenge.pra.digital.gov."
   type    = "CNAME"
   ttl     = 300
-  records = ["_acme-challenge.demo.pra.digital.gov.external-domains-production.cloud.gov."]
+  records = ["_acme-challenge.pra.digital.gov.external-domains-production.cloud.gov."]
 }
 
 # demo.pra.digital.gov — CNAME -------------------------------
