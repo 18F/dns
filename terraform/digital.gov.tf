@@ -268,7 +268,7 @@ resource "aws_route53_record" "demo_pra_digital_gov_cname" {
   name    = "demo.pra.digital.gov."
   type    = "CNAME"
   ttl     = 300
-  records = ["pra.demo.digital.gov.external-domains-production.cloud.gov."]
+  records = ["demo.pra.digital.gov.external-domains-production.cloud.gov."]
 }
 
 # demo.pra.digital.gov — CNAME ACME  -------------------------------
