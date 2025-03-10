@@ -1,4 +1,17 @@
-credentials.yml
+# Terraform artifacts
 .terraform/
 *.tfstate*
+crash.log
+
+# Python bytecode and caches
 __pycache__/
+*.pyc
+
+# macOS system files
+.DS_Store
+._.DS_Store
+
+# Sensitive files
+credentials.yml
+credentials.yml.example
+credentials.*
