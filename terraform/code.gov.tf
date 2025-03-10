@@ -65,6 +65,52 @@ resource "aws_route53_record" "code_gov__acme-challenge_www_code_gov_cname" {
 
 }
 
+## CNAME for staging.code.gov
+resource "aws_route53_record" "code_gov_staging_code_gov_cname" {
+  zone_id = aws_route53_zone.code_toplevel.zone_id
+  name    = "staging"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["staging.code.gov.external-domains-production.cloud.gov."]
+
+}
+
+## CNAME Acme Challenge Record for staging.code.gov
+resource "aws_route53_record" "code_gov__acme-challenge_staging_code_gov_cname" {
+  zone_id = aws_route53_zone.code_toplevel.zone_id
+  name    = "_acme-challenge.staging"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["_acme-challenge.staging.code.gov.external-domains-production.cloud.gov."]
+
+}
+
+## CNAME for api.code.gov
+resource "aws_route53_record" "code_gov_api_code_gov_cname" {
+  zone_id = aws_route53_zone.code_toplevel.zone_id
+  name    = "api"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["api.code.gov.external-domains-production.cloud.gov."]
+
+}
+
+## CNAME Acme Challenge Record for api.code.gov
+resource "aws_route53_record" "code_gov__acme-challenge_api_code_gov_cname" {
+  zone_id = aws_route53_zone.code_toplevel.zone_id
+  name    = "_acme-challenge.api"
+  type    = "CNAME"
+
+  ttl     = 300
+  records = ["_acme-challenge.api.code.gov.external-domains-production.cloud.gov."]
+
+}
+
+
+
 # resource "aws_route53_record" "code_gov_api_cname" {
 #   zone_id = aws_route53_zone.code_toplevel.zone_id
 #   name    = "api.code.gov."
