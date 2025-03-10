@@ -7,8 +7,7 @@ resource "aws_route53_zone" "code_toplevel" {
 }
 
 
-// Remove code.gov records to allow for a redploy of the updated
-// record names.
+// Wait to deploy cloud.gov external domain service to set apex cloudfront name
 # resource "aws_route53_record" "code_gov_apex" {
 #   zone_id = aws_route53_zone.code_toplevel.zone_id
 #   name    = "code.gov."
@@ -33,53 +32,38 @@ resource "aws_route53_zone" "code_toplevel" {
 #   }
 # }
 
-# resource "aws_route53_record" "code_gov_www" {
-#   zone_id = aws_route53_zone.code_toplevel.zone_id
-#   name    = "www.code.gov."
-#   type    = "A"
+## CNAME Acme Challenge Record for code.gov
+resource "aws_route53_record" "code_gov__acme-challenge_code_gov_cname" {
+  zone_id = aws_route53_zone.code_toplevel.zone_id
+  name    = "_acme-challenge"
+  type    = "CNAME"
 
-#   alias {
-#     name                   = "dqziuvpgrykcy.cloudfront.net."
-#     zone_id                = local.cloud_gov_cloudfront_zone_id
-#     evaluate_target_health = false
-#   }
-# }
+  ttl     = 300
+  records = ["_acme-challenge.code.gov.external-domains-production.cloud.gov."]
 
-# resource "aws_route53_record" "code_gov_www_aaaa" {
-#   zone_id = aws_route53_zone.code_toplevel.zone_id
-#   name    = "www.code.gov."
-#   type    = "AAAA"
+}
 
-#   alias {
-#     name                   = "dqziuvpgrykcy.cloudfront.net."
-#     zone_id                = local.cloud_gov_cloudfront_zone_id
-#     evaluate_target_health = false
-#   }
-# }
+## CNAME for www.code.gov
+resource "aws_route53_record" "code_gov_www_code_gov_cname" {
+  zone_id = aws_route53_zone.code_toplevel.zone_id
+  name    = "www"
+  type    = "CNAME"
 
-# resource "aws_route53_record" "staging_code_gov_a" {
-#   zone_id = aws_route53_zone.code_toplevel.zone_id
-#   name    = "staging.code.gov."
-#   type    = "A"
+  ttl     = 300
+  records = ["www.code.gov.external-domains-production.cloud.gov."]
 
-#   alias {
-#     name                   = "d3g0jy911fqt1l.cloudfront.net."
-#     zone_id                = local.cloud_gov_cloudfront_zone_id
-#     evaluate_target_health = false
-#   }
-# }
+}
 
-# resource "aws_route53_record" "staging_code_gov_aaaa" {
-#   zone_id = aws_route53_zone.code_toplevel.zone_id
-#   name    = "staging.code.gov."
-#   type    = "AAAA"
+## CNAME Acme Challenge Record for www.code.gov
+resource "aws_route53_record" "code_gov__acme-challenge_www_code_gov_cname" {
+  zone_id = aws_route53_zone.code_toplevel.zone_id
+  name    = "_acme-challenge.www"
+  type    = "CNAME"
 
-#   alias {
-#     name                   = "d3g0jy911fqt1l.cloudfront.net."
-#     zone_id                = local.cloud_gov_cloudfront_zone_id
-#     evaluate_target_health = false
-#   }
-# }
+  ttl     = 300
+  records = ["_acme-challenge.www.code.gov.external-domains-production.cloud.gov."]
+
+}
 
 # resource "aws_route53_record" "code_gov_api_cname" {
 #   zone_id = aws_route53_zone.code_toplevel.zone_id
