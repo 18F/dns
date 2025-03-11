@@ -1,10 +1,9 @@
 # TTS DNS configuration
 
-[![CircleCI](https://circleci.com/gh/18F/dns.svg?branch=main&style-svg)](https://circleci.com/gh/18F/dns)
+[![CircleCI](https://circleci.com/gh/GSA-TTS/dns.svg?branch=main&style-svg)](https://circleci.com/gh/GSA-TTS/dns)
 
-This repository holds the source code for configuring DNS for domains managed by GSA TTS, including 18F and the Presidential Innovation Fellows. See also:
+This repository holds the source code for configuring DNS for domains managed by GSA TTS.
 
-- [Blog post](https://18f.gsa.gov/2018/08/15/shared-infrastructure-as-code/) written about this repository and its benefit to government
 - [Technical details about this repository](doc/architecture.md)
 
 ## Making changes
@@ -18,22 +17,18 @@ Assuming you're TTS staff, it's recommended that you **make the change in a bran
         - [`analytics.usa.gov`](terraform/analytics.usa.gov.tf) is a good example to copy from.
         - You'll be using Terraform's [`aws_route53_zone`](https://www.terraform.io/docs/providers/aws/d/route53_zone.html).
         - If it's an existing domain, you'll want to make sure all existing records are copied over, so that they don't break when the cutover happens. You can ask the existing DNS managers for a list of records or a [zone file](https://en.wikipedia.org/wiki/Zone_file) for the domain and all subdomains.
-     1. After the pull request is merged, to get the name servers for your domain check the output for your build in [CircleCI](https://circleci.com/gh/18F/dns). If you need further assistance, check with [#admins-dns](https://gsa-tts.slack.com/messages/C4L58EQ5T).
+     1. After the pull request is merged, to get the name servers for your domain check the output for your build in [CircleCI](https://circleci.com/gh/GSA-TTS/dns). If you need further assistance, check with [#admins-dns](https://gsa-tts.slack.com/messages/C4L58EQ5T).
      1. Change the nameservers for the domain to point to AWS.
         - For second-level domains, this will be done by the "domain manager" in [dotgov.gov](https://www.dotgov.gov/). [More information about .gov domain management.](https://home.dotgov.gov/management/)
 1. Add the relevant additional [record sets](http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/rrsets-working-with.html). In Terraform, these are known as [`aws_route53_record`](https://www.terraform.io/docs/providers/aws/r/route53_record.html)s.
 
-It's worth noting that if you are pointing to a CloudFront distro, you should use Route 53's own `alias` and not a CNAME record. In fact, CNAMEing a top-level domain (or the top level of a delegated subdomain) is not allowed in DNS. See the various examples in the repo, such as [this one](https://github.com/18F/dns/blob/deploy/terraform/usa.gov.tf#L8-L17).
+It's worth noting that if you are pointing to a CloudFront distro, you should use Route 53's own `alias` and not a CNAME record. In fact, CNAMEing a top-level domain (or the top level of a delegated subdomain) is not allowed in DNS. See the various examples in the repo, such as [this one](https://github.com/GSA-TTS/dns/blob/deploy/terraform/usa.gov.tf#L8-L17).
 
-On merge, changes are deployed to an AWS account hosting the Route53 records automatically by a [CircleCI](https://circleci.com/gh/18F/dns) job.
-
-**Please note: only production systems with an ATO that are [categorized](https://before-you-ship.18f.gov/ato/levels/) as Low impact should have their DNS configuration here.**
+On merge, changes are deployed to an AWS account hosting the Route53 records automatically by a [CircleCI](https://circleci.com/gh/GSA-TTS/dns) job.
 
 ### Redirects
 
-We are [moving](https://github.com/18F/pages-redirects/issues/149) from [pages-redirects](https://github.com/18F/pages-redirects#domain-redirects) to fully configuring them in this repository. See the [`18f_gov__join_18f_gov_redirect`](https://github.com/18F/dns/search?q=18f_gov__join_18f_gov_redirect) example.
-
-Leave the trailing slash off the destination domain.
+[Redirects are managed here](https://github.com/cloud-gov/pages-redirects) 
 
 If the redirecting domain is assigned to any CloudFront distribution in any AWS account, it will need to be unassociated before the module above can be successfully deployed.
 
