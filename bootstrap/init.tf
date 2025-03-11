@@ -40,6 +40,25 @@ resource "aws_s3_bucket" "backend" {
     target_bucket = aws_s3_bucket.access_logs.id
     target_prefix = "log/backend-state-bucket/"
   }
+
+  # Setup cross-region replication
+  replication_configuration {
+    role = aws_iam_role.replication.arn
+
+    rules {
+      id     = "state-replication"
+      status = "Enabled"
+      destination {
+        bucket        = aws_s3_bucket.backend_replica.arn
+        storage_class = "STANDARD"
+      }
+    }
+  }
+
+  tags = {
+    Name    = "terraform-state"
+    Project = "dns"
+  }
 }
 
 # Create bucket for access logs
@@ -68,6 +87,12 @@ resource "aws_s3_bucket" "access_logs" {
     expiration {
       days = 365
     }
+  }
+
+  # Block public access
+  tags = {
+    Name    = "terraform-state-logs"
+    Project = "dns"
   }
 }
 
@@ -187,4 +212,160 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     events        = ["s3:ObjectCreated:*"]
     filter_suffix = ".tfstate"
   }
+}
+
+# Create replica bucket in another region
+resource "aws_s3_bucket" "backend_replica" {
+  provider = aws.west
+  bucket   = "tts-dns-terraform-state-replica"
+  
+  versioning {
+    enabled = true
+  }
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = aws_kms_key.s3_encryption_key_west.arn
+        sse_algorithm     = "aws:kms"
+      }
+    }
+  }
+  
+  tags = {
+    Name    = "terraform-state-replica"
+    Project = "dns"
+  }
+}
+
+# Block public access for backend bucket
+resource "aws_s3_bucket_public_access_block" "backend" {
+  bucket = aws_s3_bucket.backend.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+# Block public access for replica bucket
+resource "aws_s3_bucket_public_access_block" "backend_replica" {
+  provider = aws.west
+  bucket = aws_s3_bucket.backend_replica.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+# Create IAM role for S3 replication
+resource "aws_iam_role" "replication" {
+  name = "terraform-state-replication-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Principal = {
+          Service = "s3.amazonaws.com"
+        }
+      }
+    ]
+  })
+}
+
+# Create KMS key in west region
+resource "aws_kms_key" "s3_encryption_key_west" {
+  provider                = aws.west
+  description             = "KMS key for terraform state S3 bucket encryption in west region"
+  deletion_window_in_days = 10
+  enable_key_rotation     = true
+  
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid    = "Enable IAM User Permissions"
+        Effect = "Allow"
+        Principal = {
+          AWS = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
+        }
+        Action   = "kms:*"
+        Resource = "*"
+      }
+    ]
+  })
+  
+  tags = {
+    Name    = "terraform-state-kms-key-west"
+    Project = "dns"
+  }
+}
+
+# Create replication policy
+resource "aws_iam_policy" "replication" {
+  name = "terraform-state-replication-policy"
+  
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "s3:GetReplicationConfiguration",
+          "s3:ListBucket"
+        ]
+        Effect = "Allow"
+        Resource = [
+          aws_s3_bucket.backend.arn
+        ]
+      },
+      {
+        Action = [
+          "s3:GetObjectVersion",
+          "s3:GetObjectVersionAcl"
+        ]
+        Effect = "Allow"
+        Resource = [
+          "${aws_s3_bucket.backend.arn}/*"
+        ]
+      },
+      {
+        Action = [
+          "s3:ReplicateObject",
+          "s3:ReplicateDelete"
+        ]
+        Effect = "Allow"
+        Resource = [
+          "${aws_s3_bucket.backend_replica.arn}/*"
+        ]
+      },
+      {
+        Action = [
+          "kms:Decrypt"
+        ]
+        Effect = "Allow"
+        Resource = [
+          aws_kms_key.s3_encryption_key.arn
+        ]
+      },
+      {
+        Action = [
+          "kms:Encrypt"
+        ]
+        Effect = "Allow"
+        Resource = [
+          aws_kms_key.s3_encryption_key_west.arn
+        ]
+      }
+    ]
+  })
+}
+
+# Attach replication policy to role
+resource "aws_iam_role_policy_attachment" "replication" {
+  role       = aws_iam_role.replication.name
+  policy_arn = aws_iam_policy.replication.arn
 }

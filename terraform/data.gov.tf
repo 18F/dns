@@ -47,7 +47,7 @@ resource "aws_kms_key" "datagov_zone" {
         Action = "kms:*"
         Effect = "Allow"
         Principal = {
-          AWS = "*"
+          AWS = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
         }
         Resource = "*"
         Sid      = "IAM User Permissions"
