@@ -75,11 +75,12 @@ resource "aws_s3_bucket" "access_logs" {
     enabled = true
   }
   
-  # Server-side encryption for logs
+  # Server-side encryption for logs - using KMS instead of AES256
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
+        kms_master_key_id = aws_kms_key.s3_encryption_key.arn
+        sse_algorithm     = "aws:kms"
       }
     }
   }
@@ -94,11 +95,59 @@ resource "aws_s3_bucket" "access_logs" {
     }
   }
 
+  # Log access to this log bucket to the logs-logs bucket
+  logging {
+    target_bucket = aws_s3_bucket.logs_for_logs.id
+    target_prefix = "log/logs-bucket/"
+  }
+  
   # Block public access
   tags = {
     Name    = "terraform-state-logs"
     Project = "dns"
   }
+}
+
+# Create bucket for logs of logs
+resource "aws_s3_bucket" "logs_for_logs" {
+  bucket = "tts-dns-terraform-state-logs-logs"
+  
+  versioning {
+    enabled = true
+  }
+  
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = aws_kms_key.s3_encryption_key.arn
+        sse_algorithm     = "aws:kms"
+      }
+    }
+  }
+  
+  lifecycle_rule {
+    id      = "logs-retention"
+    enabled = true
+    
+    expiration {
+      days = 365
+    }
+  }
+  
+  tags = {
+    Name    = "terraform-state-logs-logs"
+    Project = "dns"
+  }
+}
+
+# Block public access to logs-logs bucket
+resource "aws_s3_bucket_public_access_block" "logs_for_logs_public_access_block" {
+  bucket = aws_s3_bucket.logs_for_logs.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
 # Block public access to the state bucket
@@ -160,23 +209,77 @@ data "aws_caller_identity" "current" {}
 resource "aws_sns_topic" "s3_events" {
   name = "terraform-state-bucket-events"
   
+  # Enable SNS topic encryption with KMS
+  kms_master_key_id = "alias/aws/sns"
+  
   tags = {
     Name    = "terraform-state-sns-topic"
     Project = "dns"
   }
 }
 
-# Subscribe TTS operations email to the SNS topic
+# Create logs SNS topic for log bucket event notifications
+resource "aws_sns_topic" "logs_events" {
+  name = "terraform-logs-bucket-events"
+  
+  # Enable SNS topic encryption with KMS
+  kms_master_key_id = "alias/aws/sns"
+  
+  tags = {
+    Name    = "terraform-logs-sns-topic"
+    Project = "dns"
+  }
+}
+
+# Create replica logs SNS topic for replica bucket event notifications
+resource "aws_sns_topic" "replica_events" {
+  name = "terraform-replica-bucket-events"
+  provider = aws.west
+  
+  # Enable SNS topic encryption with KMS
+  kms_master_key_id = "alias/aws/sns"
+  
+  tags = {
+    Name    = "terraform-replica-sns-topic"
+    Project = "dns"
+  }
+}
+
+# Subscribe TTS operations email to the SNS topics
 resource "aws_sns_topic_subscription" "s3_events_email" {
   topic_arn = aws_sns_topic.s3_events.arn
   protocol  = "email"
-  endpoint  = "tts-tech-operatons@gsa.gov"
+  endpoint  = "devops+dns@gsa.gov"
 }
 
-# Allow S3 to publish to the SNS topic
+resource "aws_sns_topic_subscription" "logs_events_email" {
+  topic_arn = aws_sns_topic.logs_events.arn
+  protocol  = "email"
+  endpoint  = "devops+dns@gsa.gov"
+}
+
+resource "aws_sns_topic_subscription" "replica_events_email" {
+  provider = aws.west
+  topic_arn = aws_sns_topic.replica_events.arn
+  protocol  = "email"
+  endpoint  = "devops+dns@gsa.gov"
+}
+
+# Allow S3 to publish to the SNS topics
 resource "aws_sns_topic_policy" "s3_events_policy" {
   arn    = aws_sns_topic.s3_events.arn
   policy = data.aws_iam_policy_document.s3_events_policy_document.json
+}
+
+resource "aws_sns_topic_policy" "logs_events_policy" {
+  arn    = aws_sns_topic.logs_events.arn
+  policy = data.aws_iam_policy_document.logs_events_policy_document.json
+}
+
+resource "aws_sns_topic_policy" "replica_events_policy" {
+  provider = aws.west
+  arn    = aws_sns_topic.replica_events.arn
+  policy = data.aws_iam_policy_document.replica_events_policy_document.json
 }
 
 data "aws_iam_policy_document" "s3_events_policy_document" {
@@ -200,6 +303,48 @@ data "aws_iam_policy_document" "s3_events_policy_document" {
   }
 }
 
+data "aws_iam_policy_document" "logs_events_policy_document" {
+  statement {
+    sid    = "AllowS3ToPublishToSNS"
+    effect = "Allow"
+    
+    principals {
+      type        = "Service"
+      identifiers = ["s3.amazonaws.com"]
+    }
+    
+    actions   = ["sns:Publish"]
+    resources = [aws_sns_topic.logs_events.arn]
+    
+    condition {
+      test     = "ArnLike"
+      variable = "aws:SourceArn"
+      values   = [aws_s3_bucket.access_logs.arn]
+    }
+  }
+}
+
+data "aws_iam_policy_document" "replica_events_policy_document" {
+  statement {
+    sid    = "AllowS3ToPublishToSNS"
+    effect = "Allow"
+    
+    principals {
+      type        = "Service"
+      identifiers = ["s3.amazonaws.com"]
+    }
+    
+    actions   = ["sns:Publish"]
+    resources = [aws_sns_topic.replica_events.arn]
+    
+    condition {
+      test     = "ArnLike"
+      variable = "aws:SourceArn"
+      values   = [aws_s3_bucket.backend_replica.arn]
+    }
+  }
+}
+
 # Configure S3 event notifications
 resource "aws_s3_bucket_notification" "bucket_notification" {
   bucket = aws_s3_bucket.backend.id
@@ -216,6 +361,22 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     topic_arn     = aws_sns_topic.s3_events.arn
     events        = ["s3:ObjectCreated:*"]
     filter_suffix = ".tfstate"
+  }
+}
+
+resource "aws_s3_bucket_notification" "logs_bucket_notification" {
+  bucket = aws_s3_bucket.access_logs.id
+  
+  topic {
+    topic_arn     = aws_sns_topic.logs_events.arn
+    events        = ["s3:ObjectRemoved:*"]
+    filter_suffix = ".log"
+  }
+  
+  topic {
+    topic_arn     = aws_sns_topic.logs_events.arn
+    events        = ["s3:ObjectCreated:*"]
+    filter_suffix = ".log"
   }
 }
 
@@ -237,9 +398,86 @@ resource "aws_s3_bucket" "backend_replica" {
     }
   }
   
+  # Adding lifecycle configuration
+  lifecycle_rule {
+    id      = "state-files"
+    enabled = true
+
+    noncurrent_version_transition {
+      days          = 30
+      storage_class = "STANDARD_IA"
+    }
+
+    noncurrent_version_transition {
+      days          = 60
+      storage_class = "GLACIER"
+    }
+
+    noncurrent_version_expiration {
+      days = 90
+    }
+  }
+  
+  # Create replica logs bucket in west region
+  logging {
+    target_bucket = aws_s3_bucket.replica_logs.id
+    target_prefix = "log/replica-bucket/"
+  }
+  
   tags = {
     Name    = "terraform-state-replica"
     Project = "dns"
+  }
+}
+
+# Create replica logs bucket in west region
+resource "aws_s3_bucket" "replica_logs" {
+  provider = aws.west
+  bucket   = "tts-dns-terraform-state-replica-logs"
+  
+  versioning {
+    enabled = true
+  }
+  
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        kms_master_key_id = aws_kms_key.s3_encryption_key_west.arn
+        sse_algorithm     = "aws:kms"
+      }
+    }
+  }
+  
+  lifecycle_rule {
+    id      = "logs-retention"
+    enabled = true
+    
+    expiration {
+      days = 365
+    }
+  }
+  
+  tags = {
+    Name    = "terraform-state-replica-logs"
+    Project = "dns"
+  }
+}
+
+# Event notifications for replica bucket
+resource "aws_s3_bucket_notification" "replica_bucket_notification" {
+  provider = aws.west
+  bucket = aws_s3_bucket.backend_replica.id
+  
+  topic {
+    topic_arn     = aws_sns_topic.replica_events.arn
+    events        = ["s3:ObjectRemoved:*"]
+    filter_suffix = ".tfstate"
+  }
+  
+  topic {
+    topic_arn     = aws_sns_topic.replica_events.arn
+    events        = ["s3:ObjectCreated:*"]
+    filter_suffix = ".tfstate"
   }
 }
 
@@ -257,6 +495,17 @@ resource "aws_s3_bucket_public_access_block" "backend" {
 resource "aws_s3_bucket_public_access_block" "backend_replica" {
   provider = aws.west
   bucket = aws_s3_bucket.backend_replica.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+# Block public access for replica logs bucket
+resource "aws_s3_bucket_public_access_block" "replica_logs" {
+  provider = aws.west
+  bucket = aws_s3_bucket.replica_logs.id
 
   block_public_acls       = true
   block_public_policy     = true
