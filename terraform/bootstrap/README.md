@@ -59,6 +59,21 @@ Some security checks are bypassed with checkov skip comments because:
 3. Some wildcard resources are necessary for the CI/CD pipeline functionality
 4. Log buckets don't need cross-region replication as they're not critical
 
+### Log Bucket Considerations
+
+We've made specific security decisions regarding log buckets:
+
+- **Log-of-logs bucket**: 
+  - Doesn't have its own access logging to avoid circular dependencies
+  - Doesn't need event notifications as these are tertiary logs
+  - Doesn't need cross-region replication as log data is less critical than state files
+
+- **Replica buckets in disaster recovery region**:
+  - Don't need cross-region replication as they are already replicas
+  - Log buckets for replicas don't need further access logging
+
+These decisions balance security needs with practical implementation considerations while maintaining a strong security posture for the primary state files.
+
 ## Example IAM Policy
 
 ```hcl

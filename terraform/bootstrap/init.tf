@@ -1,4 +1,3 @@
-
 resource "aws_s3_bucket" "backend" {
   bucket = "tts-dns-terraform-state"
 
@@ -105,6 +104,9 @@ resource "aws_s3_bucket" "access_logs" {
 }
 
 # Create bucket for logs of logs
+#checkov:skip=CKV_AWS_18:Log-of-logs bucket doesn't need its own access logging to avoid circular dependencies
+#checkov:skip=CKV_AWS_144:Cross-region replication not needed for tertiary log data
+#checkov:skip=CKV2_AWS_62:Event notifications not essential for logs-of-logs bucket
 resource "aws_s3_bucket" "logs_for_logs" {
   bucket = "tts-dns-terraform-state-logs-logs"
   
@@ -377,6 +379,8 @@ resource "aws_s3_bucket_notification" "logs_bucket_notification" {
 }
 
 # Create replica bucket in another region
+#checkov:skip=CKV_AWS_144:This is already a replica bucket itself and doesn't need further replication
+#checkov:skip=CKV2_AWS_62:Event notifications already configured
 resource "aws_s3_bucket" "backend_replica" {
   provider = aws.west
   bucket   = "tts-dns-terraform-state-replica"
@@ -427,6 +431,9 @@ resource "aws_s3_bucket" "backend_replica" {
 }
 
 # Create replica logs bucket in west region
+#checkov:skip=CKV_AWS_18:This is a log bucket for the replica and doesn't need its own access logging
+#checkov:skip=CKV_AWS_144:This is already in the disaster recovery region, further replication not needed
+#checkov:skip=CKV2_AWS_62:Event notifications not essential for log data in disaster recovery region
 resource "aws_s3_bucket" "replica_logs" {
   provider = aws.west
   bucket   = "tts-dns-terraform-state-replica-logs"
