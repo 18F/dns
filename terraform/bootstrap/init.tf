@@ -1,7 +1,3 @@
-provider "aws" {
-  version = "~> 1.0"
-  region  = "us-east-1"
-}
 
 resource "aws_s3_bucket" "backend" {
   bucket = "tts-dns-terraform-state"
