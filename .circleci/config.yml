@@ -53,7 +53,7 @@ jobs:
            command: pip install checkov
        - run:
            name: Run checkov
-           command: checkov -d ./terraform/ --skip-check CKV_AWS_18,CKV_AWS_40,KV_AWS_144,CKV_AWS_273,CKV_AWS_289,CKV_AWS_290,CKV_AWS_355,CKV2_AWS_23,CKV2_AWS_39,CKV2_AWS_38,CKV2_AWS_62
+           command: checkov -d ./terraform/ --skip-check CKV_AWS_18,CKV_AWS_40,CKV_AWS_144,CKV_AWS_273,CKV_AWS_289,CKV_AWS_290,CKV_AWS_355,CKV2_AWS_23,CKV2_AWS_39,CKV2_AWS_38,CKV2_AWS_62
            # Removed CKV2_AWS_61, CKV_AWS_145, CKV_AWS_18, CKV2_AWS_6 as those are now fixed
 
   apply:
