@@ -242,20 +242,20 @@ resource "aws_sns_topic" "replica_events" {
 resource "aws_sns_topic_subscription" "s3_events_email" {
   topic_arn = aws_sns_topic.s3_events.arn
   protocol  = "email"
-  endpoint  = "devops+dns@gsa.gov"
+  endpoint  = var.notification_email
 }
 
 resource "aws_sns_topic_subscription" "logs_events_email" {
   topic_arn = aws_sns_topic.logs_events.arn
   protocol  = "email"
-  endpoint  = "devops+dns@gsa.gov"
+  endpoint  = var.notification_email
 }
 
 resource "aws_sns_topic_subscription" "replica_events_email" {
   provider = aws.west
   topic_arn = aws_sns_topic.replica_events.arn
-  protocol  = "email"
-  endpoint  = "devops+dns@gsa.gov"
+  protocol = "email"
+  endpoint = var.notification_email
 }
 
 # Allow S3 to publish to the SNS topics
