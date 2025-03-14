@@ -29,6 +29,7 @@ The bootstrap configuration has been updated to address several security finding
 6. **KMS Encryption**
    - All buckets now use KMS encryption instead of AES256
    - Log buckets now use the same KMS key as the main bucket
+   - KMS key deletion window extended to 30 days for better safety
 
 ## Resources Created
 
@@ -125,4 +126,17 @@ resource "aws_iam_user_policy" "circleci_deployer_policy" {
 }
 EOF
 }
+```
+
+## Configuration Options
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `notification_email` | Email address for S3 event notifications | `devops+dns@gsa.gov` |
+
+To customize, create or modify the `terraform.tfvars` file:
+
+```hcl
+# Example terraform.tfvars
+notification_email = "custom-notifications@example.com"
 ```
