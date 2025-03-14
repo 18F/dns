@@ -25,13 +25,8 @@ resource "aws_s3_bucket" "backend" {
       storage_class = "STANDARD_IA"
     }
 
-    noncurrent_version_transition {
-      days          = 60
-      storage_class = "GLACIER"
-    }
-
     noncurrent_version_expiration {
-      days = 90
+      days = 914
     }
   }
 
@@ -408,13 +403,8 @@ resource "aws_s3_bucket" "backend_replica" {
       storage_class = "STANDARD_IA"
     }
 
-    noncurrent_version_transition {
-      days          = 60
-      storage_class = "GLACIER"
-    }
-
     noncurrent_version_expiration {
-      days = 90
+      days = 914
     }
   }
   
