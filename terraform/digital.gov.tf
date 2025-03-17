@@ -434,7 +434,7 @@ resource "aws_route53_record" "d_app_staging_touchpoints_digital_gov_cname" {
   records = ["app-staging.touchpoints.digital.gov.external-domains-production.cloud.gov."]
 }
 
-resource "aws_route53_record" "staging_app_touchpoints_digital_gov_ses_cname_1" {
+resource "aws_route53_record" "app_staging_touchpoints_digital_gov_ses_cname_1" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "stbimes7zj4vgflonbsq6olxg6zizkaf._domainkey.app-staging.touchpoints.digital.gov"
   type    = "CNAME"
@@ -442,7 +442,7 @@ resource "aws_route53_record" "staging_app_touchpoints_digital_gov_ses_cname_1" 
   records = ["stbimes7zj4vgflonbsq6olxg6zizkaf.dkim.amazonses.com"]
 }
 
-resource "aws_route53_record" "staging_app_touchpoints_digital_gov_ses_cname_2" {
+resource "aws_route53_record" "app_staging_touchpoints_digital_gov_ses_cname_2" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "cwgheubcxgxzulqmzqbwvpnrs52scxpp._domainkey.app-staging.touchpoints.digital.gov"
   type    = "CNAME"
@@ -450,7 +450,7 @@ resource "aws_route53_record" "staging_app_touchpoints_digital_gov_ses_cname_2" 
   records = ["cwgheubcxgxzulqmzqbwvpnrs52scxpp.dkim.amazonses.com"]
 }
 
-resource "aws_route53_record" "staging_app_touchpoints_digital_gov_ses_cname_3" {
+resource "aws_route53_record" "app_staging_touchpoints_digital_gov_ses_cname_3" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "rvym6qcpuuxomyqroq73lpy2xqs6vbbk._domainkey.app-staging.touchpoints.digital.gov"
   type    = "CNAME"
