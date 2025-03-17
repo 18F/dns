@@ -12,6 +12,289 @@ resource "aws_route53_zone" "digital_toplevel" {
   }
 }
 
+##
+##   _____  _   _  _____ _____ ______ _____ 
+##  |  __ \| \ | |/ ____/ ____|  ____/ ____|
+##  | |  | |  \| | (___| (___ | |__ | |     
+##  | |  | | . ` |\___ \\___ \|  __|| |     
+##  | |__| | |\  |____) |___) | |___| |____ 
+##  |_____/|_| \_|_____/_____/|______\_____|
+##
+
+# Create a KMS key for DNSSEC signing
+#checkov:skip=CKV_AWS_33:Required for DNSSEC configuration with Route53                         
+resource "aws_kms_key" "digital_gov_dnssec_zone" {
+
+  # See Route53 key requirements here: 
+  # https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring-dnssec-cmk-requirements.html
+  customer_master_key_spec = "ECC_NIST_P256"
+  deletion_window_in_days  = 7
+  key_usage                = "SIGN_VERIFY"
+  policy = jsonencode({
+    Statement = [
+      {
+        Action = [
+          "kms:DescribeKey",
+          "kms:GetPublicKey",
+          "kms:Sign",
+        ],
+        Effect = "Allow"
+        Principal = {
+          Service = "dnssec-route53.amazonaws.com"
+        }
+        Sid      = "Allow Route 53 DNSSEC Service",
+        Resource = "*"
+      },
+      {
+        Action = "kms:CreateGrant",
+        Effect = "Allow"
+        Principal = {
+          Service = "dnssec-route53.amazonaws.com"
+        }
+        Sid      = "Allow Route 53 DNSSEC Service to CreateGrant",
+        Resource = "*"
+        Condition = {
+          Bool = {
+            "kms:GrantIsForAWSResource" = "true"
+          }
+        }
+      },
+      {
+        Action = "kms:*"
+        Effect = "Allow"
+        Principal = {
+          # checkov:skip=CKV_AWS_33: "Ensure KMS key policy does not contain wildcard (*) principal"
+          AWS = "*"
+        }
+        Resource = "*"
+        Sid      = "IAM User Permissions"
+      },
+    ]
+    Version = "2012-10-17"
+  })
+}
+
+# Make it easier for admins to identify the key in the KMS console
+resource "aws_kms_alias" "digital_gov_dnssec_zone" {
+  name          = "alias/DNSSEC-${replace(aws_route53_zone.digital_toplevel.name, "/[^a-zA-Z0-9:/_-]/", "-")}"
+  target_key_id = aws_kms_key.digital_gov_dnssec_zone.key_id
+}
+
+resource "aws_route53_key_signing_key" "digital_gov_dnssec_zone" {
+  hosted_zone_id             = aws_route53_zone.digital_toplevel.id
+  key_management_service_arn = aws_kms_key.digital_gov_dnssec_zone.arn
+  name                       = "digital.gov"
+}
+
+resource "aws_route53_hosted_zone_dnssec" "digital_gov_dnssec_zone" {
+  depends_on = [
+    aws_route53_key_signing_key.digital_gov_dnssec_zone
+  ]
+  hosted_zone_id = aws_route53_key_signing_key.digital_gov_dnssec_zone.hosted_zone_id
+}
+
+##
+##       _______  _   _  _____ _____ ______ _____ 
+##      / /  __ \| \ | |/ ____/ ____|  ____/ ____|
+##     / /| |  | |  \| | (___| (___ | |__ | |     
+##    / / | |  | | . ` |\___ \\___ \|  __|| |     
+##   / /  | |__| | |\  |____) |___) | |___| |____ 
+##  /_/   |_____/|_| \_|_____/_____/|______\_____|
+##
+
+
+##
+##  _____                         _ 
+##  |  __ \                       | |
+##  | |  | |_ __ _   _ _ __   __ _| |
+##  | |  | | '__| | | | '_ \ / _` | |
+##  | |__| | |  | |_| | |_) | (_| | |
+##  |_____/|_|   \__,_| .__/ \__,_|_|
+##                    | |            
+##                    |_|            
+##
+
+##
+##     _____           _         _   _         
+##    |  _  |___ ___ _| |_ _ ___| |_|_|___ ___ 
+##    |   __|  _| . | . | | |  _|  _| | . |   |
+##    |__|  |_| |___|___|___|___|_| |_|___|_|_|
+##
+
+resource "aws_route53_record" "prod__acme_challenge_digital_gov_cname" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "_acme-challenge.digital.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.digital.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "prod__acme_challenge_www_digital_gov_cname" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "_acme-challenge.www.digital.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.www.digital.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "prod__acme_challenge_cms_digital_gov_cname" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "_acme-challenge.cms.digital.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.cms.digital.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "prod_cms_digital_gov_cname" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "cms.digital.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["cms.digital.gov.external-domains-production.cloud.gov."]
+}
+
+# resource "aws_route53_record" "digital_gov_digital_gov_a" {
+#   zone_id = aws_route53_zone.digital_toplevel.zone_id
+#   name    = "digital.gov."
+#   type    = "A"
+#   alias {
+#     name                   = ".cloudfront.net"                    ## Fill in when generated.
+#     zone_id                = local.cloud_gov_cloudfront_zone_id
+#     evaluate_target_health = false
+#   }
+# }
+
+# resource "aws_route53_record" "digital_gov_digital_gov_aaaa" {
+#   zone_id = aws_route53_zone.digital_toplevel.zone_id
+#   name    = "digital.gov."
+#   type    = "AAAA"
+#   alias {
+#     name                   = ".cloudfront.net"                    ## Fill in when generated.
+#     zone_id                = local.cloud_gov_cloudfront_zone_id
+#     evaluate_target_health = false
+#   }
+# }
+
+# resource "aws_route53_record" "www_digital_gov_digital_gov_cname" {
+#   zone_id = aws_route53_zone.digital_toplevel.zone_id
+#   name    = "www.digital.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["digital.gov."]
+#   }
+
+##
+##       _ _____           _         _   _         
+##      / |  _  |___ ___ _| |_ _ ___| |_|_|___ ___ 
+##     / /|   __|  _| . | . | | |  _|  _| | . |   |
+##    |_/ |__|  |_| |___|___|___|___|_| |_|___|_|_|
+##
+
+##
+##     ____          
+##    |    \ ___ _ _ 
+##    |  |  | -_| | |
+##    |____/|___|\_/ 
+##
+
+# resource "aws_route53_record" "dev__acme_challenge_cms-dev_digital_gov_cname" {
+#   zone_id = aws_route53_zone.digital_toplevel.zone_id
+#   name    = "_acme-challenge.cms-dev.digital.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["_acme-challenge.cms-dev.digital.gov.external-domains-production.cloud.gov."]
+# }
+
+# resource "aws_route53_record" "dev__acme_challenge_static-dev_digital_gov_cname" {
+#   zone_id = aws_route53_zone.digital_toplevel.zone_id
+#   name    = "_acme-challenge.static-dev.digital.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["_acme-challenge.static-dev.digital.gov.external-domains-production.cloud.gov."]
+# }
+
+# resource "aws_route53_record" "dev_cms-dev_digital_gov_cname" {
+#   zone_id = aws_route53_zone.digital_toplevel.zone_id
+#   name    = "cms-dev.digital.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["cms-dev.digital.gov.external-domains-production.cloud.gov."]
+# }
+
+# resource "aws_route53_record" "dev_static-dev_digital_gov_cname" {
+#   zone_id = aws_route53_zone.digital_toplevel.zone_id
+#   name    = "static-dev.digital.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["static-dev.digital.gov.external-domains-production.cloud.gov."]
+# }
+
+##
+##       _ ____          
+##      / |    \ ___ _ _ 
+##     / /|  |  | -_| | |
+##    |_/ |____/|___|\_/ 
+##
+
+##
+##     _____ _           _         
+##    |   __| |_ ___ ___|_|___ ___ 
+##    |__   |  _| .'| . | |   | . |
+##    |_____|_| |__,|_  |_|_|_|_  |
+##                  |___|     |___|
+##
+
+# resource "aws_route53_record" "staging__acme_challenge_cms-staging_digital_gov_cname" {
+#   zone_id = aws_route53_zone.digital_toplevel.zone_id
+#   name    = "_acme-challenge.cms-staging.digital.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["_acme-challenge.cms-staging.digital.gov.external-domains-production.cloud.gov."]
+# }
+
+# resource "aws_route53_record" "staging__acme_challenge_static-staging_digital_gov_cname" {
+#   zone_id = aws_route53_zone.digital_toplevel.zone_id
+#   name    = "_acme-challenge.static-staging.digital.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["_acme-challenge.static-staging.digital.gov.external-domains-production.cloud.gov."]
+# }
+
+# resource "aws_route53_record" "staging_cms-staging_digital_gov_cname" {
+#   zone_id = aws_route53_zone.digital_toplevel.zone_id
+#   name    = "cms-staging.digital.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["cms-staging.digital.gov.external-domains-production.cloud.gov."]
+# }
+
+# resource "aws_route53_record" "staging_static-staging_digital_gov_cname" {
+#   zone_id = aws_route53_zone.digital_toplevel.zone_id
+#   name    = "static-staging.digital.gov."
+#   type    = "CNAME"
+#   ttl     = 120
+#   records = ["static-staging.digital.gov.external-domains-production.cloud.gov."]
+# }
+
+##
+##       _ _____ _           _         
+##      / |   __| |_ ___ ___|_|___ ___ 
+##     / /|__   |  _| .'| . | |   | . |
+##    |_/ |_____|_| |__,|_  |_|_|_|_  |
+##                      |___|     |___|
+##
+
+##  
+##       _______                         _ 
+##      / /  __ \                       | |
+##     / /| |  | |_ __ _   _ _ __   __ _| |
+##    / / | |  | | '__| | | | '_ \ / _` | |
+##   / /  | |__| | |  | |_| | |_) | (_| | |
+##  /_/   |_____/|_|   \__,_| .__/ \__,_|_|
+##                           | |            
+##                           |_|            
+##  
+
 resource "aws_route53_record" "digital_gov_apex" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "digital.gov."
