@@ -1,0 +1,95 @@
+graph TD
+    %% Define main resources
+    User("CircleCI User")
+    MainS3["S3 Bucket<br>tts-dns-terraform-state<br>(Main)"]
+    LogsS3["S3 Bucket<br>tts-dns-terraform-state-logs<br>(Logs)"]
+    LogsLogsS3["S3 Bucket<br>tts-dns-terraform-state-logs-logs<br>(Logs of Logs)"]
+    ReplicaS3["S3 Bucket<br>tts-dns-terraform-state-replica<br>(DR Replica)"]
+    ReplicaLogsS3["S3 Bucket<br>tts-dns-terraform-state-replica-logs<br>(DR Logs)"]
+    
+    %% KMS Keys
+    KMSKey["KMS Key<br>terraform-state-key<br>(East)"]
+    KMSKeyWest["KMS Key<br>terraform-state-key-west<br>(West)"]
+    
+    %% SNS Topics
+    SNSMain["SNS Topic<br>terraform-state-bucket-events"]
+    SNSLogs["SNS Topic<br>terraform-logs-bucket-events"]
+    SNSReplica["SNS Topic<br>terraform-replica-bucket-events"]
+    
+    %% IAM Resources
+    IAMUser["IAM User<br>circleci-deployer"]
+    IAMPolicy["IAM Policy<br>route53-deployment"]
+    IAMRole["IAM Role<br>terraform-state-replication-role"]
+    IAMReplication["IAM Policy<br>terraform-state-replication-policy"]
+    
+    %% Email Notifications
+    Email["Email Notifications<br><a href='mailto:devops+dns@gsa.gov'>notification_email</a>"]
+    
+    %% Security configurations
+    PABMain["Public Access Block<br>(Main Bucket)"]
+    PABLogs["Public Access Block<br>(Logs Bucket)"]
+    PABLogsLogs["Public Access Block<br>(Logs of Logs Bucket)"]
+    PABReplica["Public Access Block<br>(Replica Bucket)"]
+    PABReplicaLogs["Public Access Block<br>(Replica Logs Bucket)"]
+
+    %% Define regions
+    subgraph "US-EAST-1 (Primary Region)"
+        MainS3
+        LogsS3
+        LogsLogsS3
+        KMSKey
+        SNSMain
+        SNSLogs
+        IAMUser
+        IAMPolicy
+        IAMRole
+        IAMReplication
+        PABMain
+        PABLogs
+        PABLogsLogs
+    end
+
+    subgraph "US-WEST-2 (DR Region)"
+        ReplicaS3
+        ReplicaLogsS3
+        KMSKeyWest
+        SNSReplica
+        PABReplica
+        PABReplicaLogs
+    end
+    
+    %% Define relationships
+    User -->|Uses| IAMUser
+    IAMUser -->|Has| IAMPolicy
+    IAMPolicy -->|Manages| MainS3
+    IAMPolicy -->|Uses| KMSKey
+    
+    MainS3 -->|Replicated to| ReplicaS3
+    MainS3 -->|Logs to| LogsS3
+    LogsS3 -->|Logs to| LogsLogsS3
+    ReplicaS3 -->|Logs to| ReplicaLogsS3
+    
+    MainS3 -->|Encrypted by| KMSKey
+    LogsS3 -->|Encrypted by| KMSKey
+    LogsLogsS3 -->|Encrypted by| KMSKey
+    ReplicaS3 -->|Encrypted by| KMSKeyWest
+    ReplicaLogsS3 -->|Encrypted by| KMSKeyWest
+    
+    MainS3 -->|Notifies| SNSMain
+    LogsS3 -->|Notifies| SNSLogs
+    ReplicaS3 -->|Notifies| SNSReplica
+    
+    SNSMain -->|Sends to| Email
+    SNSLogs -->|Sends to| Email
+    SNSReplica -->|Sends to| Email
+    
+    IAMRole -->|Assumes| IAMReplication
+    IAMReplication -->|Allows| MainS3
+    IAMReplication -->|To| ReplicaS3
+    
+    MainS3 --- PABMain
+    LogsS3 --- PABLogs
+    LogsLogsS3 --- PABLogsLogs
+    ReplicaS3 --- PABReplica
+    ReplicaLogsS3 --- PABReplicaLogs
+    

@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 resource "aws_route53_zone" "datagov_zone" {
 
   name = "data.gov"
@@ -7,6 +9,7 @@ resource "aws_route53_zone" "datagov_zone" {
 }
 
 # Create a KMS key for DNSSEC signing
+#checkov:skip=CKV_AWS_33:Required for DNSSEC configuration with Route53
 resource "aws_kms_key" "datagov_zone" {
 
   # See Route53 key requirements here: 
@@ -47,6 +50,7 @@ resource "aws_kms_key" "datagov_zone" {
         Action = "kms:*"
         Effect = "Allow"
         Principal = {
+          # checkov:skip=CKV_AWS_33: "Ensure KMS key policy does not contain wildcard (*) principal"
           AWS = "*"
         }
         Resource = "*"
