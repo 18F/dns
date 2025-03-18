@@ -434,6 +434,14 @@ resource "aws_route53_record" "d_app_staging_touchpoints_digital_gov_cname" {
   records = ["app-staging.touchpoints.digital.gov.external-domains-production.cloud.gov."]
 }
 
+resource "aws_route53_record" "app_staging_touchpoints_digital_gov__acme-challenge_cname" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "_acme-challenge.app-staging.touchpoints.digital.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["_acme-challenge.app-staging.touchpoints.digital.gov.external-domains-production.cloud.gov."]
+}
+
 resource "aws_route53_record" "app_staging_touchpoints_digital_gov_ses_cname_1" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
   name    = "stbimes7zj4vgflonbsq6olxg6zizkaf._domainkey.app-staging.touchpoints.digital.gov"
