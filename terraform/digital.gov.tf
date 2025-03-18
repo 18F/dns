@@ -425,6 +425,39 @@ resource "aws_route53_record" "touchpoints_digital_gov_verification_txt" {
   ]
 }
 
+# app-staging.touchpoints.digital.gov
+resource "aws_route53_record" "d_app_staging_touchpoints_digital_gov_cname" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "app-staging.touchpoints.digital.gov."
+  type    = "CNAME"
+  ttl     = 120
+  records = ["app-staging.touchpoints.digital.gov.external-domains-production.cloud.gov."]
+}
+
+resource "aws_route53_record" "app_staging_touchpoints_digital_gov_ses_cname_1" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "stbimes7zj4vgflonbsq6olxg6zizkaf._domainkey.app-staging.touchpoints.digital.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["stbimes7zj4vgflonbsq6olxg6zizkaf.dkim.amazonses.com"]
+}
+
+resource "aws_route53_record" "app_staging_touchpoints_digital_gov_ses_cname_2" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "cwgheubcxgxzulqmzqbwvpnrs52scxpp._domainkey.app-staging.touchpoints.digital.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["cwgheubcxgxzulqmzqbwvpnrs52scxpp.dkim.amazonses.com"]
+}
+
+resource "aws_route53_record" "app_staging_touchpoints_digital_gov_ses_cname_3" {
+  zone_id = aws_route53_zone.digital_toplevel.zone_id
+  name    = "rvym6qcpuuxomyqroq73lpy2xqs6vbbk._domainkey.app-staging.touchpoints.digital.gov"
+  type    = "CNAME"
+  ttl     = 1800
+  records = ["rvym6qcpuuxomyqroq73lpy2xqs6vbbk.dkim.amazonses.com"]
+}
+
 # Touchpoints Staging APP / Amazon SES Verification TXT Record
 resource "aws_route53_record" "touchpoints_staging_aws_ses" {
   zone_id = aws_route53_zone.digital_toplevel.zone_id
